@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  place-content: center;
+  background-color: rgb(201, 201, 201);
+}
+
+.container {
+  width: 400px;
+  height: 700px;
+  padding: 40px 20px;
+  background-color: rgb(250, 250, 250);
+  overflow-y: scroll;
+}
+.container .card {
+  width: 100%;
+  height: 100px;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 10px 10px 26px 0px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  margin: 25px 0;
+}
+.container .card .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.container .card .info h2 {
+  color: purple;
+  font-size: 34px;
+}
+.container .card .info .info__type {
+  display: flex;
+  width: 85px;
+  position: relative;
+  bottom: 7px;
+}
+.container .card .info .info__type i {
+  color: purple;
+  margin: 0 10px 0 0;
+}
+.container .card .info .info__type p {
+  text-align: center;
+  position: relative;
+}
+.container .card .imagen {
+  width: 100px;
+  height: 100%;
+  position: relative;
+}
+.container .card .imagen img {
+  position: absolute;
+  right: -20px;
+  top: -25px;
+  width: 190px;
+  height: auto;
+}
+
+.grass {
+  background-color: rgba(85, 183, 85, 0.635);
+}
+
+.fire {
+  background-color: rgba(183, 134, 85, 0.635);
+}
+
+.water {
+  background-color: rgba(85, 157, 183, 0.635);
+}
+
+.electric {
+  background-color: rgba(183, 183, 85, 0.635);
+}
+
+.poison {
+  background-color: rgba(144, 85, 183, 0.635);
+}
+
+.rock {
+  background-color: rgba(204, 194, 135, 0.635);
+}
+
+.normal {
+  background-color: rgba(207, 207, 207, 0.635);
+}
+
+.bug {
+  background-color: rgba(197, 103, 27, 0.507);
+}
+
+.feiry {
+  background-color: rgba(218, 86, 191, 0.507);
+}/*# sourceMappingURL=Pokestyle.css.map */

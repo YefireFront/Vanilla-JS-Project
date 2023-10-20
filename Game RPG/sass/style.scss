@@ -1,0 +1,173 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  background-image: url(../img/background2.jpg);
+
+  .card {
+    width: 300px;
+    height: 500px;
+    border-radius: 24px;
+    min-width: 300px;
+    box-shadow: -20px 19px 42px -16px rgba(0,0,0,0.73);
+
+    &__img {
+      height: 40%;
+      background-image: url(../img/fondo.jpg);
+
+      img {
+        width: 110%;
+        position: relative;
+        top: -68px;
+        right: 20px;
+      }
+    }
+    &__info {
+      background-color: white;
+      height: 30%;
+      padding: 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      color: gray;
+
+      h2{
+        text-transform: uppercase;
+      }
+
+      h4{
+        font-weight: 100;
+        letter-spacing: 2px;
+      }
+      
+      
+      .skills{
+        width: 100%;
+        height: 200px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        i{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border: 2px solid rgb(195, 195, 195);
+          font-size: 21px;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          cursor: pointer;
+          transition: all 0.2s ease-in ;
+
+          &:hover{
+            transform: scale(1.2);
+            color: white;
+          }
+          
+        }
+        
+      }
+
+      .skills-Healer{
+        i{
+          color:green;
+          &:hover{
+            background-color: green;
+          }
+          
+        }
+        
+      }
+      #active{
+        
+        transform: scale(1.4);
+        color: white;
+        background-color: green;
+       
+      }
+     
+
+      .skills-Warrior{
+        i{
+          color: darkred;
+          
+          &:hover{
+            background-color:darkred
+          }
+          
+        }
+
+      }
+      .skills-Witcher{
+        i{
+          color: darkcyan;
+
+          &:hover{
+            background-color: darkcyan;
+          }
+          
+        }
+
+      }
+
+ 
+    }
+
+    &__weapon {
+      height: 15%;
+      background-color: darkcyan;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      color: white;
+      div {
+        padding: 10px 0 0 0;
+        height: 100%;
+        width: 33%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        p {
+          margin: 10px;
+        }
+      }
+    }
+
+    &__stats {
+      height: 15%;
+      background-color: #ec9b3b;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      color: white;
+
+      div {
+        padding: 10px 0 0 0;
+        height: 100%;
+        width: 33%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        p {
+          margin: 10px;
+        }
+      }
+    }
+  }
+
+
+}
