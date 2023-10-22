@@ -62,4 +62,8 @@ body {
 .container .yourself__card img {
   width: 100%;
   height: 100%;
+}
+
+.select {
+  box-shadow: 15px 20px 5px rgba(0, 0, 0, 0.15);
 }/*# sourceMappingURL=yugioh.css.map */
