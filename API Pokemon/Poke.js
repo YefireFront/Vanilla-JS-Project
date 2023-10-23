@@ -182,5 +182,5 @@ function cards(ArrayPokemon) {
 
 
 
-ejecucionAsincronica()
+// ejecucionAsincronica()
 
