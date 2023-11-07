@@ -173,7 +173,7 @@ class Personaje {
   
   const Yeffer = new Warrior({
     name: "Yeffer",
-    atk: 60,
+    atk: 70,
     def: 40,
   });
   const Yefire = new Warrior({
