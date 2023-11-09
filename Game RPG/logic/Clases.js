@@ -177,25 +177,11 @@ class Personaje {
   
   
   
-  const Yeffer = new Warrior({
-    name: "Yeffer",
- 
-  });
-  const Yefire = new Warrior({
-    name: "Yefire",
-    atk: 60,
-    def: 60,
-  });
-  const Arley = new Witcher({
-    name: "Arley",
-    atk: 60,
-    def: 40,
-  });
-  const Walter = new Healer({
-    name: "Walter",
-    atk: 60,
-    def: 60,
-  });
+  const Yeffer = new Warrior({name: "Yeffer"});
+
+  const Arley = new Witcher({ name: "Arley"});
+  
+  const Walter = new Healer({name: "Walter"});
 
 
  
