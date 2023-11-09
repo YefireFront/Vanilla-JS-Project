@@ -1,10 +1,10 @@
 
 class Personaje {
-    constructor({ name, atk, def }) {
+    constructor({ name }) {
       this.name = name;
       this.life = 100;
-      this.atk = atk;
-      this.def = def;
+      this.atk = 0;
+      this.def = 0;
       this.energy = 100;
     }
     dead(objetivo = false) {
@@ -50,7 +50,7 @@ class Personaje {
   
   class Warrior extends Personaje {
     constructor({ name }) {
-      super({ name, atk, def });
+      super({ name });
       this.special = 0;
       this.atk = 60
       this.def = 40
@@ -180,7 +180,7 @@ class Personaje {
   const Yeffer = new Warrior({name: "Yeffer"});
 
   const Arley = new Witcher({ name: "Arley"});
-  
+
   const Walter = new Healer({name: "Walter"});
 
 

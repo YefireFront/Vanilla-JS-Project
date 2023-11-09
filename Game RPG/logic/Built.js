@@ -1,7 +1,7 @@
 
 
 
-const PersonajeGame = [Arley,Yeffer,Walter];
+const PersonajeGame = [Yeffer,Walter,Arley];
 const allplayers = []
 
 PersonajeGame.forEach((pj) => {
