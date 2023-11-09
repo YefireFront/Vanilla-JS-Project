@@ -183,7 +183,7 @@ class Personaje {
   });
   const Arley = new Witcher({
     name: "Arley",
-    atk: 70,
+    atk: 60,
     def: 40,
   });
   const Walter = new Healer({
