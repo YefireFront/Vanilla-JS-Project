@@ -49,9 +49,11 @@ class Personaje {
   }
   
   class Warrior extends Personaje {
-    constructor({ name, atk, def }) {
+    constructor({ name }) {
       super({ name, atk, def });
       this.special = 0;
+      this.atk = 60
+      this.def = 40
     }
   
     blindar() {
@@ -80,9 +82,11 @@ class Personaje {
   }
   
   class Healer extends Personaje{
-    constructor({name,atk,def}){
-      super({name , atk, def});
+    constructor({name}){
+      super({name });
       this.special = 1;
+      this.atk = 30
+      this.def = 60
     };
   
     curar = function (objetivo) {
@@ -141,9 +145,11 @@ class Personaje {
   }
   
   class Witcher extends Personaje{
-    constructor({name,atk,def}){
-      super({name,atk,def})
+    constructor({name}){
+      super({name})
       this.special = 1
+      this.atk = 70
+      this.def = 30
     }
   
     Mejora = function (objetivo) {
@@ -173,8 +179,7 @@ class Personaje {
   
   const Yeffer = new Warrior({
     name: "Yeffer",
-    atk: 70,
-    def: 40,
+ 
   });
   const Yefire = new Warrior({
     name: "Yefire",
