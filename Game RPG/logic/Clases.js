@@ -188,7 +188,7 @@ class Personaje {
   });
   const Walter = new Healer({
     name: "Walter",
-    atk: 50,
+    atk: 60,
     def: 60,
   });
 
