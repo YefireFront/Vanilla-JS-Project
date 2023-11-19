@@ -1,10 +1,10 @@
 
 class Personaje {
-    constructor({ name, atk , def }) {
+    constructor({ name }) {
       this.name = name;
-      this.atk = atk;
-      this.def = def ;
       this.life = 100;
+      this.atk = 0;
+      this.def = 0;
       this.energy = 100;
     }
     dead(objetivo = false) {
@@ -50,9 +50,10 @@ class Personaje {
   
   class Warrior extends Personaje {
     constructor({ name }) {
-      super({ name, atk:100, def:90 });
+      super({ name });
       this.special = 0;
-     
+      this.atk = 60
+      this.def = 40
     }
   
     blindar() {
