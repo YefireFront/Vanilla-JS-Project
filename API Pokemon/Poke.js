@@ -1,7 +1,7 @@
 const apiUrl = 'https://pokeapi.co/api/v2/pokemon';
 let PokemonList = []
 
-fetch(`${apiUrl}?limit=100`)
+fetch(`${apiUrl}?limit=10`)
   .then(response => response.json())
   .then(data => {
     const pokemons = data.results;
