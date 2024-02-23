@@ -182,7 +182,6 @@ class Personaje {
   const Arley = new Witcher({ name: "Arley"});
 
   const Walter = new Healer({name: "Walter"});
-  const sa = new Healer({name: "sa"});
 
 
  
