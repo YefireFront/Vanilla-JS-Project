@@ -22,8 +22,8 @@ async function getmovieList() {
 // getmovieList();
 
 async function getGenderMovieList() {
+    
   const {data} = await api(`genre/movie/list`);
-//   const data = await list.json()
   const genres = data.genres;
 
   genres.forEach((genres) => {
