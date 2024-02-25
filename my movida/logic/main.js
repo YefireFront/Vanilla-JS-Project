@@ -19,7 +19,7 @@ async function getmovieList() {
   });
 }
 
-// getmovieList();
+getmovieList();
 
 async function getGenderMovieList() {
     
