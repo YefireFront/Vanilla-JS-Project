@@ -1,0 +1,24 @@
+
+.todos{
+    display: flex;
+    justify-content: center;
+}
+.pokemon-todos{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+}
+
+.pokemon{
+
+}
+
+.pokemon-id-back{
+
+}
+
+
+.pokemon-imagen img{
+    width: 100%;
+    max-width: 6rem;
+}
