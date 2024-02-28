@@ -55,7 +55,7 @@ button{
 
 body{
     min-height: 100vh;
-    background-color: var(--clr-gray);
+    /* background-color: var(--clr-gray); */
 }
 
 
