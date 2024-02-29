@@ -2,7 +2,7 @@ const PokemonList = document.querySelector("#listaPokemon");
 const apiUrl = "https://pokeapi.co/api/v2/pokemon/";
 const pokemonlista = [];
 
-fetch(`${apiUrl}?limit=3`)
+fetch(`${apiUrl}?limit=5`)
   .then((response) => response.json())
   .then((data) => {
     const pokemons = data.results;
@@ -10,7 +10,12 @@ fetch(`${apiUrl}?limit=3`)
       fetch(pokemon.url)
         .then((response) => response.json())
         .then((pokemonData) => {
-          console.log(pokemonData);
+            // Create stats Data Pokemon
+          let objetoStatsPokemon = {};
+           pokemonData.stats.forEach((e) => {
+            objetoStatsPokemon[e.stat.name] = e.base_stat;
+          });
+
           pokemonlista.push({
             order: pokemonData.order,
             name: pokemonData.name,
@@ -18,7 +23,8 @@ fetch(`${apiUrl}?limit=3`)
             img: pokemonData.sprites.other["official-artwork"].front_default,
             weight: pokemonData.weight,
             height: pokemonData.height,
-            types: pokemonData.types.map(e=>e.type.name)
+            types: pokemonData.types.map((e) => e.type.name),
+            stats: objetoStatsPokemon,
           });
         })
         .catch((error) => {
@@ -30,5 +36,4 @@ fetch(`${apiUrl}?limit=3`)
     });
   });
 
-
-  console.log(pokemonlista);
+console.log(pokemonlista);
