@@ -1,60 +1,59 @@
 const listwrapper = document.querySelector("#listaPokemon");
 const apiUrl = "https://pokeapi.co/api/v2/pokemon/";
-const pokemonlista = [];
 
-function Fetching(apiUrl) {
-
-   fetch(`${apiUrl}?limit=13`)
-  .then((response) => response.json())
-  .then((data) => {
-    const pokemons = data.results;
-    pokemons.forEach((pokemon) => {
-      fetch(pokemon.url)
-        .then((response) => response.json())
-        .then((pokemonData) => {
-          // Create stats Data Pokemon
-          let objetoStatsPokemon = {};
-          pokemonData.stats.forEach((e) => {
-            objetoStatsPokemon[e.stat.name] = e.base_stat;
-          });
-
-          pokemonlista.push({
-            order: pokemonData.order,
-            name: pokemonData.name,
-            type: pokemonData.types[0].type.name,
-            img: pokemonData.sprites.other["official-artwork"].front_default,
-            weight: pokemonData.weight,
-            height: pokemonData.height,
-            types: pokemonData.types.map((e) => e.type.name),
-            stats: objetoStatsPokemon,
-          });
-
-          BuiltPokemon(pokemonlista);
-        })
-        .catch((error) => {
-          console.error(
-            "Hubo un error al obtener los datos del Pokémon:",
-            error
-          );
-        });
-    });
-  })
-  .catch((error) => {
-    console.log(error);
-  });
-
+async function fetchinData() {
+  const pokemonlista = [];
   
+  fetch(`${apiUrl}?limit=13`)
+    .then((response) => response.json())
+    .then((data) => {
+      const pokemons = data.results;
+      pokemons.forEach((pokemon) => {
+        fetch(pokemon.url)
+          .then((response) => response.json())
+          .then((pokemonData) => {
+            // Create stats Data Pokemon
+            let objetoStatsPokemon = {};
+            pokemonData.stats.forEach((e) => {
+              objetoStatsPokemon[e.stat.name] = e.base_stat;
+            });
+  
+            pokemonlista.push({
+              order: pokemonData.order,
+              name: pokemonData.name,
+              type: pokemonData.types[0].type.name,
+              img: pokemonData.sprites.other["official-artwork"].front_default,
+              weight: pokemonData.weight,
+              height: pokemonData.height,
+              types: pokemonData.types.map((e) => e.type.name),
+              stats: objetoStatsPokemon,
+            });
+  
+            BuiltPokemon(pokemonlista);
+          })
+          .catch((error) => {
+            console.error(
+              "Hubo un error al obtener los datos del Pokémon:",
+              error
+            );
+          });
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
+    return pokemonlista
 }
 
 
-console.log(pokemonlista);
-
-function orderPokemons(arraysPokemon) {
+async function orderPokemons(arraysPokemon) {
+  
   arraysPokemon.sort((a, b) => a.order - b.orde);
   console.log(arrayObjetos);
 }
 
-function BuiltPokemon(ListAllPokemon) {
+async function BuiltPokemon(ListAllPokemon) {
   listwrapper.innerHTML = "";
 
   ListAllPokemon.forEach((pokemon) => {
@@ -88,3 +87,27 @@ function BuiltPokemon(ListAllPokemon) {
     listwrapper.appendChild(cardPokemon);
   });
 }
+
+
+
+async function showTime() {
+  
+
+  try {
+
+    const PokemonData = await fetchinData();
+
+    const SortPokemonData = await orderPokemons(pokemonData);
+
+    console.log(SortPokemonData);
+
+    return SortPokemonData;
+    
+  } catch (error) {
+    console.log('Vamos a lo riBer ', error);
+    
+  }
+}
+
+
+ showTime() 
