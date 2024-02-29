@@ -2,7 +2,7 @@ const PokemonList = document.querySelector("#listaPokemon");
 const apiUrl = "https://pokeapi.co/api/v2/pokemon/";
 const pokemonlista = [];
 
-fetch(`${apiUrl}?limit=5`)
+fetch(`${apiUrl}?limit=180`)
   .then((response) => response.json())
   .then((data) => {
     const pokemons = data.results;
