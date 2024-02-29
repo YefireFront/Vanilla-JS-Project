@@ -1,8 +1,10 @@
 const listwrapper = document.querySelector("#listaPokemon");
 const apiUrl = "https://pokeapi.co/api/v2/pokemon/";
-const pokemonlista=[];
+const pokemonlista = [];
 
-fetch(`${apiUrl}?limit=3`)
+function Fetching(apiUrl) {
+
+   fetch(`${apiUrl}?limit=13`)
   .then((response) => response.json())
   .then((data) => {
     const pokemons = data.results;
@@ -10,10 +12,9 @@ fetch(`${apiUrl}?limit=3`)
       fetch(pokemon.url)
         .then((response) => response.json())
         .then((pokemonData) => {
-          
           // Create stats Data Pokemon
           let objetoStatsPokemon = {};
-           pokemonData.stats.forEach((e) => {
+          pokemonData.stats.forEach((e) => {
             objetoStatsPokemon[e.stat.name] = e.base_stat;
           });
 
@@ -27,9 +28,8 @@ fetch(`${apiUrl}?limit=3`)
             types: pokemonData.types.map((e) => e.type.name),
             stats: objetoStatsPokemon,
           });
-          
-          
-          // BuiltPokemon(pokemonlista)
+
+          BuiltPokemon(pokemonlista);
         })
         .catch((error) => {
           console.error(
@@ -38,16 +38,29 @@ fetch(`${apiUrl}?limit=3`)
           );
         });
     });
+  })
+  .catch((error) => {
+    console.log(error);
   });
 
   
-  function BuiltPokemon(ListAllPokemon) {
-    listwrapper.innerHTML = "";
+}
 
-    ListAllPokemon.forEach((pokemon) => {
-      const cardPokemon = document.createElement("div");
-      cardPokemon.className = "pokemon";
-      cardPokemon.innerHTML = `
+
+console.log(pokemonlista);
+
+function orderPokemons(arraysPokemon) {
+  arraysPokemon.sort((a, b) => a.order - b.orde);
+  console.log(arrayObjetos);
+}
+
+function BuiltPokemon(ListAllPokemon) {
+  listwrapper.innerHTML = "";
+
+  ListAllPokemon.forEach((pokemon) => {
+    const cardPokemon = document.createElement("div");
+    cardPokemon.className = "pokemon";
+    cardPokemon.innerHTML = `
       <div class="number-wrap">
           <p class="pokemon-id-back">${pokemon.order}</p>
           <div class="pokemon-imagen">
@@ -60,7 +73,7 @@ fetch(`${apiUrl}?limit=3`)
                   <h2 class="pokemon-nombre">${pokemon.name}</h2>
               </div>
               <div class="pokemon-tipos">
-              
+                           
                   <p class="electric tipo">ELECTRIC</p>
                   <p class="fighting tipo">FIGHTING</p>
               </div>
@@ -72,24 +85,6 @@ fetch(`${apiUrl}?limit=3`)
       </div>
       `;
 
-
-  
-      listwrapper.appendChild(cardPokemon);
-  
-    });
-    
-  }
-
-
-
-
-  async function ejecucionAsincronica() {
-    await new Promise(resolve => setTimeout(resolve,3000));  
-    pokemonlista.forEach(e=>{
-      console.log(e);
-    })
-  
-  }
-
-
-  ejecucionAsincronica()
+    listwrapper.appendChild(cardPokemon);
+  });
+}
