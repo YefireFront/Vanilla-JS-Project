@@ -55,9 +55,7 @@ async function fetchinData() {
 async function getPokemonevolution(id = 115) {
   let ways = 2;
 
-  const response = await fetch(
-    `https://pokeapi.co/api/v2/pokemon-species/${id}/`
-  );
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}/`);
   const data = await response.json();
   const dataEvolution = await fetch(data.evolution_chain.url);
   const Evolution = await dataEvolution.json();
@@ -68,6 +66,7 @@ async function getPokemonevolution(id = 115) {
   let evolution2 = "";
 
   
+  // we validate if any path to obtain the evolution fails
   try {
     evolution2 = Evolution.chain.evolves_to[0].evolves_to[0].species.name;
   } catch (error) {
@@ -79,9 +78,6 @@ async function getPokemonevolution(id = 115) {
   } catch (error) {
     ways = 0;
   }
-
-
-
 
   if (ways === 0) {
     // console.log(`${PokemonName}  don't have evolution `);
