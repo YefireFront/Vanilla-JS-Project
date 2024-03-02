@@ -1,11 +1,23 @@
 const listwrapper = document.querySelector("#listaPokemon");
 const apiUrl = "https://pokeapi.co/api/v2/pokemon/";
 
+async function showTime() {
+  try {
+    const PokemonData     =   await fetchinData();
+    const SortPokemonData =   await orderPokemons(PokemonData);
+
+    BuiltPokemon(SortPokemonData);
+
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 async function fetchinData() {
   try {
     const pokemonlista = [];
 
-    const response = await fetch(`${apiUrl}?limit=30`);
+    const response = await fetch(`${apiUrl}?limit=63`);
     const data = await response.json();
 
     const pokemons = data.results;
@@ -20,7 +32,7 @@ async function fetchinData() {
       });
 
       pokemonlista.push({
-        order: pokemonData.order,
+        order: pokemonData.id,
         name: pokemonData.name,
         type: pokemonData.types[0].type.name,
         img: pokemonData.sprites.other["official-artwork"].front_default,
@@ -28,8 +40,10 @@ async function fetchinData() {
         height: pokemonData.height,
         types: pokemonData.types.map((e) => e.type.name),
         stats: objetoStatsPokemon,
+        evolution: await getPokemonevolution(pokemonData.id)
       });
     }
+    console.log(pokemonlista);
 
     return pokemonlista;
   } catch (error) {
@@ -38,11 +52,62 @@ async function fetchinData() {
   }
 }
 
+async function getPokemonevolution(id = 115) {
+  let ways = 2;
+
+  const response = await fetch(
+    `https://pokeapi.co/api/v2/pokemon-species/${id}/`
+  );
+  const data = await response.json();
+  const dataEvolution = await fetch(data.evolution_chain.url);
+  const Evolution = await dataEvolution.json();
+
+  //*VALIDATION EVOLUTION
+  let PokemonName = Evolution.chain.species.name;
+  let evolution1 = "";
+  let evolution2 = "";
+
+  
+  try {
+    evolution2 = Evolution.chain.evolves_to[0].evolves_to[0].species.name;
+  } catch (error) {
+    ways = 1;
+  }
+
+  try {
+    evolution1 = Evolution.chain.evolves_to[0].evolution_details
+  } catch (error) {
+    ways = 0;
+  }
+
+
+
+
+  if (ways === 0) {
+    // console.log(`${PokemonName}  don't have evolution `);
+    return null
+  }
+
+  if (ways === 1) {
+    // console.log(`${PokemonName} can evolution to ${evolution1} `);
+    evolution1 = Evolution.chain.evolves_to[0].species.name;
+    return [PokemonName,evolution1]
+  }
+  
+  if (ways === 2) {
+    // console.log(`${PokemonName} can evolution to ${evolution1} and ${evolution2}`);
+    evolution1 = Evolution.chain.evolves_to[0].species.name;
+    evolution2 = Evolution.chain.evolves_to[0].evolves_to[0].species.name;
+    return [PokemonName,evolution1,evolution2]
+  }
+}
+
 async function orderPokemons(arraysPokemon) {
   // Ordenar por el número de orden de los Pokémon
   arraysPokemon.sort((a, b) => a.order - b.order);
   return arraysPokemon;
 }
+
 
 async function BuiltPokemon(ListAllPokemon) {
   listwrapper.innerHTML = "";
@@ -79,62 +144,6 @@ async function BuiltPokemon(ListAllPokemon) {
   });
 }
 
-async function showTime() {
-  try {
-    const PokemonData = await fetchinData();
-    const SortPokemonData = await orderPokemons(PokemonData);
-    BuiltPokemon(SortPokemonData);
-  } catch (error) {
-    console.log("Vamos a lo riBer ", error);
-  }
-}
 
-// showTime();
 
-async function getPokemonevolution(id = 152) {
-  let ways = 3;
-
-  const response = await fetch(
-    `https://pokeapi.co/api/v2/pokemon-species/${id}/`
-  );
-  const data = await response.json();
-  const dataEvolution = await fetch(data.evolution_chain.url);
-  const Evolution = await dataEvolution.json();
-
-  //*VALIDATION EVOLUTION
-  let firstForm = Evolution.chain.species.name;
-  let secunForm = "";
-  let thirdForm = "";
-
-  try {
-    secunForm = Evolution.chain.evolves_to[0].species.name;
-  } catch (error) {
-    ways = 1;
-  }
-
-  try {
-    thirdForm = Evolution.chain.evolves_to[0].evolves_to[0].species.name;
-  } catch (error) {
-    ways = 2;
-  }
-
-  if (ways == 1) {
-    console.log(`${firstForm}  don't have evolution `);
-    return false
-  }
-
-  if (ways == 2) {
-    secunForm = Evolution.chain.evolves_to[0].species.name;
-    console.log(`${firstForm} can evolution to ${secunForm} `);
-    return [firstForm,secunForm]
-  }
-  
-  if (ways == 3) {
-    secunForm = Evolution.chain.evolves_to[0].species.name;
-    thirdForm = Evolution.chain.evolves_to[0].evolves_to[0].species.name;
-    console.log(`${firstForm} can evolution to ${secunForm} and ${thirdForm}`);
-    return [firstForm,secunForm,thirdForm]
-  }
-}
-
-getPokemonevolution();
+showTime()
