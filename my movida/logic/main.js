@@ -5,18 +5,23 @@ const api = axios.create({
 });
 
 async function getmovieList() {
+  const moveList = []
   const { data } = await api(`movie/popular`);
   const movies = data.results;
 
   movies.forEach((movie) => {
-    console.log(movie);
-    const poster = movie.poster_path;
-    const moviename = movie.original_title;
-    const backGround = movie.backdrop_path;
-    const overview = movie.overview;
-    const date = movie.release_date;
-    const rate = movie.vote_average;
+
+    moveList.push({   
+       poster     : movie.poster_path,
+       movieName  : movie.original_title,
+       backGround : movie.backdrop_path,
+       overView   : movie.overview,
+       date       : movie.release_date,
+       rate       : movie.vote_average,
+    })
   });
+
+  console.log(moveList);
 }
 
 getmovieList();
@@ -25,8 +30,10 @@ async function getGenderMovieList() {
     
   const {data} = await api(`genre/movie/list`);
   const genres = data.genres;
-
+  console.log(genres);
+  
   genres.forEach((genres) => {
+    
     console.log(`${genres.id} - ${genres.name}`);
   });
 }

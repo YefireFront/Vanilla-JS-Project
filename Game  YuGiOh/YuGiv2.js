@@ -1,29 +1,16 @@
-fechingData()
 const monsterList = [];
-class Player{
-    constructor(name , deck ){
-        this.name = name,
-        this.deck = deck,
-        this.points = 10000
-    }
 
-    play(target){
-
-        let place = Math.floor(Math.random() * (4 - 0 + 0) + 0)
-        console.log(place);
-        console.log(this.deck[place]);
-
-        // if (this.deck[place]) {
-        //     console.log(`${this.deck}  ${place}`   );
-        // }
-
-    }
-
-
+const playerOne = {
+  name : 'Yugi Moto ',
+  deck : [],
+  lifePoints: 10000
 }
 
-const yeffer = new Player("Yeffer");
-const yefire = new Player("Yefire");
+const playerTwo = {
+  name : 'Seto Kaiba',
+  deck : [],
+  lifePoints: 10000
+}
 
 
 async function fechingData() {
@@ -35,6 +22,7 @@ async function fechingData() {
     }
 
     const { data: cardsData } = await response.json();
+    console.log(cardsData);
 
     const filteredCards = cardsData.filter((card) => card.type !== "Spell Card" && card.type !== "Trap Card");
 
@@ -63,14 +51,6 @@ async function createDeck() {
   const deckOne = generaPositionCardInDecks(max, min);
   const deckTwo = generaPositionCardInDecks(max, min);
 
-  yeffer.deck = deckOne
-  yefire.deck = deckTwo
-  
-
-
-//   Its_time_to_Duel(deckOne,deckTwo );
-
-
   function generaPositionCardInDecks(max, min) {
 
     const deck = [];
@@ -80,18 +60,32 @@ async function createDeck() {
     return deck;
   }
 
+  playerOne.deck = (deckOne)
+  playerTwo.deck = (deckTwo)
+
+
+  BuiltUI( playerOne.deck, playerTwo.deck);
+
 }
 
 
+function BuiltUI(playerOneDeck, playerTwoDeck) {
+  const UiOne = document.querySelectorAll("body > div > div.your > div > img");
+  const UiTow = document.querySelectorAll("body > div > div.yourself > div > img");
 
-// function Its_time_to_Duel(p1 , p2) {
-//     console.log(p1);
-//     console.log(p2);  
-// }
+  setCardAttributes(UiOne, playerOneDeck)
+  setCardAttributes(UiTow, playerTwoDeck)
+
+  function setCardAttributes(UiCards, deck) {
+    UiCards.forEach((card, index) => {
+      const { img } = deck[index];
+      card.setAttribute("src", img.img1);
+    });
+  
+  
+}
+
+}
 
 
- 
-
-
-
-
+fechingData()
