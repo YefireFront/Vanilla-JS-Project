@@ -1,33 +1,43 @@
-<!DOCTYPE html>
+b<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style/style.css" />
     <title>Todo List</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1>Ed's todo List</h1>
+      <h1>Ed's todo List</h1>
     </header>
-    <form >
-        <input type="text" class="todo-input">
-        <button class="todo-button" type="submit" >
-            <i class="fas fa-plus-square"></i>
-        </button>
+    <form>
+      <input type="text" class="todo-input" />
+      <button class="todo-button" type="submit">
+        <i class="fas fa-plus-square"></i>
+      </button>
+      <div class="select">
+        <select name="todos" class="filter-todos ">
+            <option value="All">All</option>
+            <option value="checked">checked</option>
+            <option value="unchecked">unchecked</option>
+        </select>
+      </div>
     </form>
 
     <div class="todo-container">
-        <ul class="todo-list">
-            <div class="todo">
+      <ul class="todo-list">
+        <!-- <div class="todo">
             <li>Hat three</li>
             <button class="">Delete</button>
             <button class="">checked</button>
-            </div>
-        </ul>
+            </div> -->
+      </ul>
     </div>
 
-    <script src="https://kit.fontawesome.com/851857b65b.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/851857b65b.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="./logic/main.js"></script>
-</body>
+  </body>
 </html>

@@ -1,96 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap')
-;
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-
-
-body{
-    background-image:  linear-gradient(120deg, #f6d365, #fda085);
-    color: white;
-    font-family: "Poppins", sans-serif;
-    min-height: 100vh;
+body {
+  background-image: linear-gradient(120deg, #f6d365, #fda085);
+  color: white;
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
 }
 
-
-header{
-    font-size: 1.5rem;
+header {
+  font-size: 1.5rem;
 }
 
-
-header , form{
-    min-height: 20vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+header,
+form {
+  min-height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-form input, form button{
-    padding: 0.4rem;
-    font-size: 2rem;
-    border: none;
-    background: white;
+form input,
+form button {
+  padding: 0.4rem;
+  font-size: 2rem;
+  border: none;
+  background: white;
 }
 
-form button{
-    color: #d88771;
-    background: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
+form button {
+  color: #d88771;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-form button:hover{
-    background: #d88771;
-    color: white;
-
+form button:hover {
+  background: #d88771;
+  color: white;
 }
 
-.todo-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+.todo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.todo-list{
-    min-width: 30%;
-    list-style: none
+.todo-list {
+  min-width: 30%;
+  list-style: none;
 }
 
-
-.todo{
-    margin: 0.5rem;
-    background: white;
-    color: #000;
-    font-size: 0.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.todo {
+  margin: 0.5rem;
+  background: white;
+  color: #000;
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.todo li{
-    flex: 1;
+.todo li {
+  flex: 1;
 }
 
-.Checked-btn, .complete-btn{
-    background: #ff6f47;
-    color: white;
-    border: none;
-    padding: 1rem;
-    cursor: pointer;
-    font-size: 1rem;
+.Checked-btn,
+.complete-btn {
+  background: #ff6f47;
+  color: white;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  font-size: 1rem;
 }
 
-.complete-btn{
-    background: #41e87b;
+.complete-btn {
+  background: #41e87b;
 }
 
+.todo-item {
+  padding: 0rem 0.5rem;
+}
 
-.todo-item{
-    padding: 0rem 0.5rem;
+.checked {
+  opacity: 0.5;
+}
+
+select {
+  appearance: none;
+  outline: none;
+  border: none;
+}
+
+.select {
+  margin: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+select {
+  width: 10rem;
+  color: #ff6f47;
+  cursor: pointer;
+  padding: 1rem;
+}
+
+.select::after {
+  content: "\25BC";
+  background: #ff6f47;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+  pointer-events: none;
 }
