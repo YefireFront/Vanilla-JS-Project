@@ -79,12 +79,8 @@ function todo(events, todo) {
       }
       break;
     }
-    case "Unchecked": {
+    case 'undefined': {
       todo.style.display = "flex";
-      if (a) {
-      } else {
-        todo.style.display = "none";
-      }
       break;
     }
   }
