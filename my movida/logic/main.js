@@ -16,7 +16,7 @@ async function getmovieList() {
       backGround: movie.backdrop_path,
       overView: movie.overview,
       date: movie.release_date,
-      //  rate       : movie.vote_average,
+      rate: movie.vote_average,
     });
   });
 
