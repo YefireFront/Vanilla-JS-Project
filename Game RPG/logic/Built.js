@@ -29,6 +29,7 @@ PersonajeGame.forEach((pj) => {
   const $skill2   = document.createElement("i");
   const $skill3   = document.createElement("i");
   const $skill4   = document.createElement("i");
+  
   //% INTRODUCING TEXT
   info_h2.textContent= pj.name
   info_h4.textContent= pj.constructor.name
