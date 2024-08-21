@@ -19,6 +19,8 @@ class Personaje {
     tired() {
       if (this.energy < 30) return true;
     }
+
+    
     Atacar(objetivo) {
       if (this.dead(objetivo)) return false;
   
@@ -122,7 +124,10 @@ class Personaje {
   
     };
   
-    revivir = function (objetivo){
+    revivir = function (objetivo , costo = 28){
+
+      suficientePoder(costo)
+
   
         if (this.special == 0) return false;
         if (this.life === 0)   return false;  
