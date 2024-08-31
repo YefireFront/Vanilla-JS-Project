@@ -77,7 +77,7 @@ class Guerrero extends Jugador {
     constructor({ nombre, velocidad }) {
         super({ nombre, velocidad });
         this.cargaEspecial = 0;
-        this.ataque = 60;
+        this.ataque = 100;
         this.defensa = 40;
     }
 
@@ -93,24 +93,18 @@ class Guerrero extends Jugador {
         if (this.estaFueraDeCombate()) return false;
         if (!GestorDeTurnos.esTurno(this)) return false; 
         
-        this.defensa += 15;
-        this.energia -= 30;
-        objetivo.defensa += 15;
-        
+        this.defensa += 20;
+        objetivo.defensa -= 20;
 
-        UpdateInfo(this, objetivo)
         GestorDeTurnos.finalizarTurno(); 
+        UpdateInfo(this, objetivo)
     }
     
     furiaBerserker(objetivo) {
         if (this.estaFueraDeCombate(objetivo)) return false;
         if (!GestorDeTurnos.esTurno(this)) return false; 
         
-        let diferencia = this.ataque - objetivo.defensa;
-        if (diferencia >= 30) {
-            objetivo.vida = 0;
-            this.energia -= 70;
-        }
+      
         
         UpdateInfo(this , objetivo)
         GestorDeTurnos.finalizarTurno(); 

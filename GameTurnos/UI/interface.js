@@ -124,33 +124,36 @@ function PersonajeTurno() {
   });
 }
 
-// Inicializa la selección del personaje atacante como null
 let personajeAtacante = null;
 
-// Función para asignar el personaje que va a atacar
-function Atacar(PJ) {
-  console.log(PJ)
-  personajeAtacante = PJ;
-}
+
 
 function usarPoder(personaje, poderNombre) {
-  if (typeof personaje[poderNombre] === 'function') {
-    personaje[poderNombre]();
-    console.log(`${personaje.nombre} usa ${poderNombre}`);
-  } else {
-    console.log(`El poder ${poderNombre} no existe para ${personaje.nombre}`);
+  personajeAtacante = {
+    personajeId: personaje,
+    accion : poderNombre
   }
+
+  console.log(personajeAtacante);
+
+
 }
 
 // Función para realizar la batalla entre el personaje atacante y el objetivo
 function Batalla(Personaje_Objetivo) {
+  let poder = personajeAtacante.accion;
+  let personajeAtacante = personajeAtacante.personajeId;
+  console.log(Personaje_Objetivo);
+
   if (personajeAtacante) {
-    console.log(`${personajeAtacante.nombre} ataca a ${Personaje_Objetivo.nombre}`);
-    personajeAtacante.atacar(Personaje_Objetivo);
-    personajeAtacante = null; // Resetea el atacante después de la acción
-  } else {
-    console.log("Selecciona un ataque");
+    console.log('hay personaje atacante');
+
   }
+
+  // if (personajeAtacante) {
+  //   personajeAtacante.accion(Personaje_Objetivo);
+  // }
+
 }
 
 // Inicia la UI con la asignación del turno al primer personaje
