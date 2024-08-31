@@ -15,7 +15,7 @@ body{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 70vh;
+    height: 80vh;
     border: 2px solid #fff;
     /* flex-direction: column; */
 }
@@ -23,7 +23,8 @@ body{
 
 .personaje{
     border: 2px solid #fff;
-    width: 300px;
+    width: 250px;
+    height: 80%;
     
 }
 

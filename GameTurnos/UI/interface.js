@@ -65,9 +65,9 @@ personajesJuego.forEach((personaje) => {
 
   // Asigna eventos a los botones y a la imagen del personaje
   atacar.onclick = () => { Atacar(personaje) };
-  poder1.onclick = () => { poder1(personaje) };
-  poder2.onclick = () => { poder2(personaje) };
-  poder3.onclick = () => { poder3(personaje) };
+  poder1.onclick = () => { usarPoder(personaje, poderes[0]) };
+  poder2.onclick = () => { usarPoder(personaje, poderes[1]) };
+  poder3.onclick = () => { usarPoder(personaje, poderes[2]) };
   personaje_IMG.onclick = () => { Batalla(personaje) };
 
 
@@ -129,7 +129,17 @@ let personajeAtacante = null;
 
 // Función para asignar el personaje que va a atacar
 function Atacar(PJ) {
+  console.log(PJ)
   personajeAtacante = PJ;
+}
+
+function usarPoder(personaje, poderNombre) {
+  if (typeof personaje[poderNombre] === 'function') {
+    personaje[poderNombre]();
+    console.log(`${personaje.nombre} usa ${poderNombre}`);
+  } else {
+    console.log(`El poder ${poderNombre} no existe para ${personaje.nombre}`);
+  }
 }
 
 // Función para realizar la batalla entre el personaje atacante y el objetivo

@@ -89,14 +89,16 @@ class Guerrero extends Jugador {
         }
     }
 
-    fortificar() {
+    fortificar(objetivo) {
         if (this.estaFueraDeCombate()) return false;
         if (!GestorDeTurnos.esTurno(this)) return false; 
         
         this.defensa += 15;
         this.energia -= 30;
+        objetivo.defensa += 15;
+        
 
-         UpdateInfo(this)
+        UpdateInfo(this, objetivo)
         GestorDeTurnos.finalizarTurno(); 
     }
     
