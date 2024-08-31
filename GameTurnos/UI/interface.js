@@ -157,4 +157,4 @@ function Batalla(Personaje_Objetivo) {
 }
 
 // Inicia la UI con la asignación del turno al primer personaje
-PersonajeTurno();
+// PersonajeTurno();
