@@ -29,6 +29,7 @@ personajesJuego.forEach((personaje) => {
   const poder3 = document.createElement("button");
 
   // Asigna clases CSS a los elementos para su estilo
+  Personaje.id = personaje.id;
   Personaje.classList.add("personaje", `P${personaje.id}`);
   personaje_IMG.classList.add("character");
   Personaje_Info.classList.add("info");
@@ -41,6 +42,7 @@ personajesJuego.forEach((personaje) => {
   energia.classList.add("energia");
 
   // Asigna la imagen correspondiente al tipo de personaje
+  img.src = `./UI/assets/img/${personaje.constructor.name}.gif`;
   img.src = `./UI/assets/img/${personaje.constructor.name}.gif`;
   if (personaje.constructor.name === "Hechicero" || personaje.constructor.name === "Sanador") {
     img.src = `./UI/assets/img/${personaje.constructor.name}.webp`;
@@ -56,15 +58,15 @@ personajesJuego.forEach((personaje) => {
   // Asigna el texto a los botones de ataque y poderes según el tipo de personaje
   atacar.textContent = "Atacar";
   let poderes;
-  if (personaje.constructor.name === "Sanador" || personaje.constructor.name === "Hechicero" || personaje.constructor.name === "Guerrero") {
-    poderes = Object.getOwnPropertyNames(personaje.constructor.prototype).filter((poder) => poder !== "constructor");
+  if (personaje.constructor.name === "Sanador" || personaje.constructor.name === "Hechicero" || personaje.constructor.name === "Guerrero" || personaje.constructor.name === "Ladron") {
+    poderes = Object.getOwnPropertyNames(personaje.constructor.prototype).filter((poder) => poder !== "constructor" && poder !== "atacar");
     poder1.textContent = poderes[0];
     poder2.textContent = poderes[1];
     poder3.textContent = poderes[2];
   }
 
   // Asigna eventos a los botones y a la imagen del personaje
-  atacar.onclick = () => { Atacar(personaje) };
+  atacar.onclick = () => { usarPoder(personaje, 'atacar'  ) };
   poder1.onclick = () => { usarPoder(personaje, poderes[0]) };
   poder2.onclick = () => { usarPoder(personaje, poderes[1]) };
   poder3.onclick = () => { usarPoder(personaje, poderes[2]) };
@@ -141,20 +143,58 @@ function usarPoder(personaje, poderNombre) {
 
 // Función para realizar la batalla entre el personaje atacante y el objetivo
 function Batalla(Personaje_Objetivo) {
-  let poder = personajeAtacante.accion;
-  let personajeAtacante = personajeAtacante.personajeId;
-  console.log(Personaje_Objetivo);
 
-  if (personajeAtacante) {
-    console.log('hay personaje atacante');
+  if (personajeAtacante === null) {
+    console.log("No has seleccionado un poder")
+    return;
+    
+  }
+  let Poder = personajeAtacante.accion;
+  let Atacante = personajeAtacante.personajeId;
 
+  if (Atacante) {
+    Atacante[Poder](Personaje_Objetivo);
+  }else{
+    console.log("No hay personaje atacante")
   }
 
-  // if (personajeAtacante) {
-  //   personajeAtacante.accion(Personaje_Objetivo);
-  // }
+  botones.forEach( boton => {
+    boton.classList.remove("btn__active");
+  })
+
+
+  personajeAtacante = null;
+
 
 }
 
 // Inicia la UI con la asignación del turno al primer personaje
-// PersonajeTurno();
+PersonajeTurno();
+
+
+const botones = document.querySelectorAll(".poderes button");
+
+botones.forEach( boton => {
+  boton.addEventListener("click", ActivacionBoton);
+})
+
+
+function ActivacionBoton(e) {
+
+  // console.log(GestorDeTurnos.personajes[GestorDeTurnos.indiceTurnoActual].id)
+  // console.log(this.parentElement.parentElement.id);
+
+  if (GestorDeTurnos.personajes[GestorDeTurnos.indiceTurnoActual].id != this.parentElement.parentElement.id) {
+    console.log("No es tu turno");
+    return;
+  }
+
+
+  botones.forEach( boton => {
+    boton.classList.remove("btn__active");
+  })
+
+  this.classList.add("btn__active");
+
+}
+

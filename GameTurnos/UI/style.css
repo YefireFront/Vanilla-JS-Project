@@ -72,7 +72,7 @@ body{
     flex-wrap: wrap;
 }
 
-.personaje button{
+ button{
     background-color: #fff;
     color: #043247;
     padding: 10px 20px;
@@ -86,3 +86,10 @@ body{
 .turn{
     border: 5px solid #bfc205;
 }
+
+
+.btn__active{
+    background-color: #bfc205;
+    color: #fff;
+}
+
