@@ -1,0 +1,88 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
+* {
+  box-sizing: border-box;
+  margin: 0;padding: 0;
+}
+
+body{
+    background-color: #043247;
+
+}
+
+
+
+.contenedor{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 70vh;
+    border: 2px solid #fff;
+    /* flex-direction: column; */
+}
+
+
+.personaje{
+    border: 2px solid #fff;
+    width: 300px;
+    
+}
+
+.character{
+    border: 2px solid #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.personaje img{
+    width: 80%;
+    object-fit: cover;
+}
+
+.personaje .info h2{
+    text-align: center;
+    color: #fff;
+    font-size: 1.5rem;
+    margin: 10px 0;
+}
+
+.estadisticas{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10px 0;
+    border-bottom: 1px solid #fff;
+    padding: 10px;
+
+}
+
+.estadisticas p{
+    color: #fff;
+    /* font-size: 1.2rem; */
+}
+
+
+.poderes{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10px 0;
+    padding: 10px;
+    flex-wrap: wrap;
+}
+
+.personaje button{
+    background-color: #fff;
+    color: #043247;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    margin: 10px 0;
+}
+
+
+.turn{
+    border: 5px solid #bfc205;
+}
