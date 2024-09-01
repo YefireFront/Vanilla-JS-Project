@@ -177,3 +177,22 @@ botones.forEach( boton => {
   boton.addEventListener("click", ActivacionBoton);
 })
 
+
+function ActivacionBoton(e) {
+
+  // console.log(GestorDeTurnos.personajes[GestorDeTurnos.indiceTurnoActual].id)
+  // console.log(this.parentElement.parentElement.id);
+
+  if (GestorDeTurnos.personajes[GestorDeTurnos.indiceTurnoActual].id != this.parentElement.parentElement.id) {
+    return;
+  }
+
+
+  botones.forEach( boton => {
+    boton.classList.remove("btn__active");
+  })
+
+  this.classList.add("btn__active");
+
+}
+
