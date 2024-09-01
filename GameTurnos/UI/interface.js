@@ -136,7 +136,6 @@ function usarPoder(personaje, poderNombre) {
     accion : poderNombre
   }
 
-  console.log(personajeAtacante);
 
 
 }
@@ -185,7 +184,6 @@ function ActivacionBoton(e) {
   // console.log(this.parentElement.parentElement.id);
 
   if (GestorDeTurnos.personajes[GestorDeTurnos.indiceTurnoActual].id != this.parentElement.parentElement.id) {
-    console.log("No es tu turno");
     return;
   }
 
