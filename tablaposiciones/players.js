@@ -9,7 +9,6 @@ class Jugador {
     if (!GestorDeTurnos.esTurno(this)) return;
     this.puntos += cantidad;
     console.log(`${this.nombre} anotó ${cantidad} puntos!`);
-    GestorDeTurnos.mostrarTablaDePosiciones();
     GestorDeTurnos.finalizarTurno();
   }
 }
@@ -68,5 +67,65 @@ GestorDeTurnos.agregarJugador(mateo);
 GestorDeTurnos.agregarJugador(brandon);
 GestorDeTurnos.agregarJugador(valery);
 
-// Iniciar la partida
+
+
+
+const players = GestorDeTurnos.jugadores;
+const contenedor = document.querySelector(".contenedor");
+function render() {
+  contenedor.innerHTML = '';
+
+  players.forEach((player, i) => {  
+
+    
+    const Jugador = document.createElement("div");
+    const Posiciones = document.createElement("div");
+    const imagen = document.createElement("div");
+    const nombre = document.createElement("div");
+    const puntos = document.createElement("div");
+
+    const h2posicion = document.createElement("h2");
+    const img = document.createElement("img");
+    const h2nombre = document.createElement("h2");
+    const h2puntos = document.createElement("h2");
+
+    Jugador.classList.add("jugador");
+    Posiciones.classList.add("posicione");
+    imagen.classList.add("imagen");
+    nombre.classList.add("nombre");
+    puntos.classList.add("puntos");
+
+    h2posicion.textContent = i + 1;
+    // img.src = player.imagen;
+    h2nombre.textContent = player.nombre;
+    h2puntos.textContent = player.puntos;
+
+    Posiciones.appendChild(h2posicion);
+    imagen.appendChild(img);
+    nombre.appendChild(h2nombre);
+    puntos.appendChild(h2puntos);
+
+    Jugador.appendChild(Posiciones);
+    Jugador.appendChild(imagen);
+    Jugador.appendChild(nombre);
+    Jugador.appendChild(puntos);
+
+    contenedor.appendChild(Jugador);
+
+
+
+    
+    
+});
+
+
+}
+
+
+
+// Iniciar el sistema de turnos
 GestorDeTurnos.iniciar();
+
+
+
+
