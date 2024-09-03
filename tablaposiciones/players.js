@@ -1,115 +1,76 @@
+// Clase Jugador
+class Jugador {
+  constructor(nombre) {
+    this.nombre = nombre;
+    this.puntos = 0;
+  }
 
-
-const anderson = {
-  nombre: "Anderson",
-  puntos: 0,
   anotarPuntos(cantidad) {
-    if (!gestorDeTurnos.esTurno(this)) return;
+    if (!GestorDeTurnos.esTurno(this)) return;
     this.puntos += cantidad;
     console.log(`${this.nombre} anotó ${cantidad} puntos!`);
-    gestorDeTurnos.mostrarTablaDePosiciones();
-    gestorDeTurnos.finalizarTurno();
-  },
-};
+    GestorDeTurnos.finalizarTurno();
+  }
+}
 
-const mateo = {
-  nombre: "Mateo",
-  puntos: 0,
-  anotarPuntos(cantidad) {
-    if (!gestorDeTurnos.esTurno(this)) return;
-    this.puntos += cantidad;
-    console.log(`${this.nombre} anotó ${cantidad} puntos!`);
-    gestorDeTurnos.mostrarTablaDePosiciones();
-    gestorDeTurnos.finalizarTurno();
-  },
-};
+// Clase GestorDeTurnos con métodos estáticos
+class GestorDeTurnos {
+  static jugadores = [];
+  static indiceTurnoActual = 0;
 
-const brandon = {
-  nombre: "Brandon",
-  puntos: 0,
-  anotarPuntos(cantidad) {
-    if (!gestorDeTurnos.esTurno(this)) return;
-    this.puntos += cantidad;
-    console.log(`${this.nombre} anotó ${cantidad} puntos!`);
-    gestorDeTurnos.mostrarTablaDePosiciones();
-    gestorDeTurnos.finalizarTurno();
-  },
-};
-
-const valery = {
-  nombre: "Valery",
-  puntos: 0,
-  anotarPuntos(cantidad) {
-    if (!gestorDeTurnos.esTurno(this)) return;
-    this.puntos += cantidad;
-    console.log(`${this.nombre} anotó ${cantidad} puntos!`);
-    gestorDeTurnos.mostrarTablaDePosiciones();
-    gestorDeTurnos.finalizarTurno();
-  },
-};
-
-
-const gestorDeTurnos = {
-  jugadores: [],
-  indiceTurnoActual: 0,
-
-  agregarJugador(jugador) {
+  static agregarJugador(jugador) {
     this.jugadores.push(jugador);
-  },
+  }
 
-  esTurno(jugador) {
+  static esTurno(jugador) {
     if (this.jugadores[this.indiceTurnoActual] !== jugador) {
       console.log(
-        `No es tu turno, ${jugador.nombre}. Es el turno de ${
-          this.jugadores[this.indiceTurnoActual].nombre
-        }`
+        `No es tu turno, ${jugador.nombre}. Es el turno de ${this.jugadores[this.indiceTurnoActual].nombre}`
       );
       return false;
     }
     return true;
-  },
+  }
 
-  finalizarTurno() {
-    this.indiceTurnoActual =
-      (this.indiceTurnoActual + 1) % this.jugadores.length;
-    console.log(
-      `Es el turno de ${this.jugadores[this.indiceTurnoActual].nombre}`
-    );
-
-    render()
+  static finalizarTurno() {
+    this.indiceTurnoActual = (this.indiceTurnoActual + 1) % this.jugadores.length;
+    console.log(`Es el turno de ${this.jugadores[this.indiceTurnoActual].nombre}`);
+    render();
     this.mostrarTablaDePosiciones();
-  },
+  }
 
-  mostrarTablaDePosiciones() {
+  static mostrarTablaDePosiciones() {
     console.log("\nTabla de Posiciones:");
     this.jugadores
       .sort((a, b) => b.puntos - a.puntos)
       .forEach((jugador, index) => {
-        console.log(
-          `${index + 1}. ${jugador.nombre} - ${jugador.puntos} puntos`
-        );
+        console.log(`${index + 1}. ${jugador.nombre} - ${jugador.puntos} puntos`);
       });
     console.log(""); // Espacio adicional para legibilidad
-  },
+  }
 
-  iniciar() {
+  static iniciar() {
     console.log(`Comienza la partida. Es el turno de ${this.jugadores[this.indiceTurnoActual].nombre}`);
-    render()
+    render();
+  }
+}
 
-  },
-};
+// Creación de los jugadores
+const anderson = new Jugador("Anderson");
+const mateo = new Jugador("Mateo");
+const brandon = new Jugador("Brandon");
+const valery = new Jugador("Valery");
 
 // Agregar jugadores al gestor de turnos
-gestorDeTurnos.agregarJugador(anderson);
-gestorDeTurnos.agregarJugador(mateo);
-gestorDeTurnos.agregarJugador(brandon);
-gestorDeTurnos.agregarJugador(valery);
+GestorDeTurnos.agregarJugador(anderson);
+GestorDeTurnos.agregarJugador(mateo);
+GestorDeTurnos.agregarJugador(brandon);
+GestorDeTurnos.agregarJugador(valery);
 
 
 
 
-
-const players = gestorDeTurnos.jugadores;
+const players = GestorDeTurnos.jugadores;
 const contenedor = document.querySelector(".contenedor");
 function render() {
   contenedor.innerHTML = '';
@@ -163,7 +124,7 @@ function render() {
 
 
 // Iniciar el sistema de turnos
-gestorDeTurnos.iniciar();
+GestorDeTurnos.iniciar();
 
 
 
