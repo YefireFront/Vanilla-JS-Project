@@ -1,7 +1,8 @@
 // Clase Jugador
 class Jugador {
-  constructor(nombre) {
+  constructor(nombre, img) {
     this.nombre = nombre;
+    this.imagen = img
     this.puntos = 0;
   }
 
@@ -35,19 +36,23 @@ class GestorDeTurnos {
   static finalizarTurno() {
     this.indiceTurnoActual = (this.indiceTurnoActual + 1) % this.jugadores.length;
     console.log(`Es el turno de ${this.jugadores[this.indiceTurnoActual].nombre}`);
-    render();
     this.mostrarTablaDePosiciones();
+    render();
   }
 
   static mostrarTablaDePosiciones() {
-    console.log("\nTabla de Posiciones:");
-    this.jugadores
-      .sort((a, b) => b.puntos - a.puntos)
-      .forEach((jugador, index) => {
-        console.log(`${index + 1}. ${jugador.nombre} - ${jugador.puntos} puntos`);
-      });
-    console.log(""); // Espacio adicional para legibilidad
+    this.jugadores.sort((a, b) => b.puntos - a.puntos)
+
   }
+  // static mostrarTablaDePosiciones() {
+  //   console.log("\nTabla de Posiciones:");
+  //   this.jugadores
+  //     .sort((a, b) => b.puntos - a.puntos)
+  //     .forEach((jugador, index) => {
+  //       console.log(`${index + 1}. ${jugador.nombre} - ${jugador.puntos} puntos`);
+  //     });
+  //   console.log(""); // Espacio adicional para legibilidad
+  // }
 
   static iniciar() {
     console.log(`Comienza la partida. Es el turno de ${this.jugadores[this.indiceTurnoActual].nombre}`);
@@ -56,18 +61,13 @@ class GestorDeTurnos {
 }
 
 // Creación de los jugadores
-const anderson = new Jugador("Anderson");
-const mateo = new Jugador("Mateo");
-const brandon = new Jugador("Brandon");
-const valery = new Jugador("Valery");
+const fila1 = new Jugador("fila1","avatar1");
+const fila2 = new Jugador("fila2","avatar2");
+
 
 // Agregar jugadores al gestor de turnos
-GestorDeTurnos.agregarJugador(anderson);
-GestorDeTurnos.agregarJugador(mateo);
-GestorDeTurnos.agregarJugador(brandon);
-GestorDeTurnos.agregarJugador(valery);
-
-
+GestorDeTurnos.agregarJugador(fila1);
+GestorDeTurnos.agregarJugador(fila2);
 
 
 const players = GestorDeTurnos.jugadores;
@@ -96,7 +96,7 @@ function render() {
     puntos.classList.add("puntos");
 
     h2posicion.textContent = i + 1;
-    // img.src = player.imagen;
+    img.src = `./img/${player.imagen}.jpg`
     h2nombre.textContent = player.nombre;
     h2puntos.textContent = player.puntos;
 
@@ -122,10 +122,5 @@ function render() {
 }
 
 
-
 // Iniciar el sistema de turnos
 GestorDeTurnos.iniciar();
-
-
-
-
