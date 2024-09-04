@@ -44,7 +44,15 @@ class GestorDeTurnos {
     this.jugadores.sort((a, b) => b.puntos - a.puntos)
 
   }
-
+  // static mostrarTablaDePosiciones() {
+  //   console.log("\nTabla de Posiciones:");
+  //   this.jugadores
+  //     .sort((a, b) => b.puntos - a.puntos)
+  //     .forEach((jugador, index) => {
+  //       console.log(`${index + 1}. ${jugador.nombre} - ${jugador.puntos} puntos`);
+  //     });
+  //   console.log(""); // Espacio adicional para legibilidad
+  // }
 
   static iniciar() {
     console.log(`Comienza la partida. Es el turno de ${this.jugadores[this.indiceTurnoActual].nombre}`);
