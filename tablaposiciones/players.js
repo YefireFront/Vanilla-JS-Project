@@ -60,9 +60,6 @@ class GestorDeTurnos {
   }
 }
 
-// Creación de los jugadores
-const fila1 = new Jugador("fila1","avatar1");
-const fila2 = new Jugador("fila2","avatar2");
 
 
 // Agregar jugadores al gestor de turnos
