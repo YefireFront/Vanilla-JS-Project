@@ -119,3 +119,10 @@ select {
   padding: 1rem;
   pointer-events: none;
 }
+
+#Principal:focus{
+  background: #000000;
+  color: white;
+  outline: none;
+  border-bottom: 5px solid #41e87b;
+}
