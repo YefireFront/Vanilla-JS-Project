@@ -1,0 +1,181 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+Body {
+  font-family: "Poppins", sans-serif;
+  background: #043247;
+}
+
+button {
+  background: #f9a826;
+  color: #043247;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 10px;
+  transition: 0.3s;
+}
+
+img:hover {
+  /* filter: grayscale(100%) brightness(80%) contrast(120%) blur(2px) sepia(30%); */
+  /* filter: invert(100%); */
+  /* filter: drop-shadow(10px 10px 5px rgba(202, 122, 9, 0.833)); */
+}
+
+.esenario {
+  min-width: 1200px;
+  max-width: 1920px;
+  max-height: 1100px;
+  height: 100vh;
+
+  margin: 0 auto;
+
+  background-image: url("../img/BG.png");
+  background-size: cover;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.personaje {
+  position: relative;
+  /* border: 1px solid red; */
+  width: 450px;
+  display: flex;
+}
+
+.personaje_Principal {
+  width: 50%;
+}
+
+.personaje_Secundario {
+  width: 50%;
+  /* border: 1px solid black; */
+}
+
+.personaje img {
+  width: 120%;
+  filter: blur(1px);
+  /* filter: blur(0); */
+}
+
+.shadow_left {
+  position: absolute;
+  bottom: 0;
+  left: 30%;
+  transform: translateX(-50%) rotateX(75deg);
+  width: 120px; /* ajusta para el tamaño de la sombra */
+  height: 75px; /* la mitad del ancho para mantener proporción */
+  background: radial-gradient(ellipse at center,rgba(0, 0, 0, 0.63),transparent);
+  background: radial-gradient(ellipse at center,rgba(0, 0, 0, 0.6),transparent 70%);
+  border-radius: 50%;
+  border: 10px solid goldenrod;
+}
+
+.shadow_right {
+  position: absolute;
+  bottom: 0;
+  left: 80%;
+  transform: translateX(-50%) rotateX(75deg);
+  width: 120px; /* ajusta para el tamaño de la sombra */
+  height: 75px; /* la mitad del ancho para mantener proporción */
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0.63),
+    transparent
+  );
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0.6),
+    transparent 70%
+  );
+  border-radius: 50%;
+}
+
+.esenario__left {
+  width: 50%;
+  min-width: 750px;
+  /* border: 3px solid rgb(0, 67, 252); */
+  height: 100%;
+  position: relative;
+}
+
+.esenario_right {
+  width: 50%;
+  min-width: 750px;
+  /* border: 3px solid rgb(255, 0, 0); */
+  position: relative;
+  height: 100%;
+}
+
+.p1 {
+  position: absolute;
+  top: 850px;
+  left: 450px;
+}
+
+.p2 {
+  position: absolute;
+  top: 650px;
+  left: 450px;
+}
+
+.p3 {
+  position: absolute;
+  top: 480px;
+  left: 570px;
+}
+
+.p4 {
+  position: absolute;
+
+  top: 850px;
+  left: 100px;
+}
+
+.p5 {
+  position: absolute;
+
+  top: 650px;
+  left: 180px;
+}
+
+.p6 {
+  position: absolute;
+
+  top: 470px;
+  left: 100px;
+}
+
+.esenario__left .personaje_Secundario {
+  position: relative;
+  right: 100px;
+  width: 200px;
+}
+
+.esenario_right .personaje_Secundario {
+  position: relative;
+  left: 100px;
+}
+
+@media (max-width: 1600px) {
+  .esenario {
+    background-position: -200px;
+  }
+}
+@media (max-width: 1400px) {
+  .esenario {
+    background-position: -300px;
+  }
+}
+@media (max-width: 1200px) {
+  .esenario {
+    background-position: -300px;
+  }
+}

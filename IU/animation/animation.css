@@ -1,0 +1,129 @@
+@keyframes teleport {
+  0% {
+    filter: invert(100%);
+  }
+  50% {
+    filter: invert(0%);
+  }
+  70% {
+    filter: invert(100%);
+  }
+  100% {
+    filter: invert(0%);
+  }
+}
+
+@keyframes poisonEffect {
+  0% {
+    filter: hue-rotate(0deg) brightness(100%) blur(0px);
+  }
+  25% {
+    filter: hue-rotate(90deg) brightness(80%) blur(0.5px);
+  }
+  50% {
+    filter: hue-rotate(-90deg) brightness(60%) blur(1px);
+  }
+  75% {
+    filter: hue-rotate(90deg) brightness(80%) blur(0.5px);
+  }
+  100% {
+    filter: hue-rotate(0deg) brightness(100%) blur(0px);
+  }
+}
+
+@keyframes healingEffect {
+  0% {
+    transform: scale(1);
+    filter: brightness(100%) blur(0px) drop-shadow(0 0 0 rgba(0, 255, 0, 0));
+    opacity: 1;
+  }
+  25% {
+    transform: scale(1.05);
+    filter: brightness(130%) blur(2px)
+      drop-shadow(0 10px 20px rgba(0, 255, 0, 0.5));
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.1);
+    filter: brightness(160%) blur(1px)
+      drop-shadow(0 20px 30px rgba(0, 255, 0, 0.7));
+    opacity: 0.7;
+  }
+  75% {
+    transform: scale(1.05);
+    filter: brightness(130%) blur(2px)
+      drop-shadow(0 10px 20px rgba(0, 255, 0, 0.5));
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(100%) blur(0px) drop-shadow(0 0 0 rgba(0, 255, 0, 0));
+    opacity: 1;
+  }
+}
+
+
+@keyframes ghostEffect {
+
+    0% {
+        filter: brightness(80%) saturate(60%) grayscale(20%) blur(2px);
+        opacity: 0.8;
+    }
+
+    50% {
+        filter: brightness(70%) saturate(40%) grayscale(30%) blur(2px);
+        opacity: 0.7;
+    }
+    100% {
+        filter: brightness(60%) saturate(20%) grayscale(40%) blur(1px);
+        opacity: 0.6;
+    }
+
+}
+
+/* Aplicación de la animación de fantasma */
+.animate-ghost {
+    animation: ghostEffect 4s ease-in-out infinite; /* Ajusta la duración y el tipo de animación */
+}
+
+
+
+
+.animate-healing {
+  animation: healingEffect 2s ease-in-out; /* Aplica la animación */
+}
+
+.animate-damage {
+  animation: teleport 0.5s infinite;
+}
+
+.animate-poison {
+  animation: poisonEffect 1s infinite;
+}
+
+
+
+img:hover {
+  /* animation: poisonEffect 0.5s ease-in-out infinite; */
+  animation: temblor 0.1s infinite, colorFrio 2s forwards;
+}
+
+
+.frio {
+}
+
+/* Animación de temblor */
+@keyframes temblor {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-2px, 2px); }
+  50% { transform: translate(2px, -2px); }
+  75% { transform: translate(-2px, -2px); }
+  100% { transform: translate(2px, 2px); }
+}
+
+/* Animación de cambio a tonos fríos */
+@keyframes colorFrio {
+  0% { filter: none; }
+  /* 100% { filter: brightness(1.2) hue-rotate(200deg) saturate(0.8); } */
+  100% { filter: brightness(1.2) hue-rotate(180deg) saturate(0) contrast(1.5); }
+}
