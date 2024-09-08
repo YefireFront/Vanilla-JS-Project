@@ -69,18 +69,13 @@ class Juego {
   static verificarVictoria() {
     // Lógica para verificar si un equipo ha ganado
     if (this.equipo1.every((personaje) => personaje.vida <= 0)) {
-      this.estadoJuego = "finalizado";
       console.log("Equipo 2 ha ganado.");
     } else if (this.equipo2.every((personaje) => personaje.vida <= 0)) {
-      this.estadoJuego = "finalizado";
       console.log("Equipo 1 ha ganado.");
     }
+
   }
 
-  static finalizarJuego() {
-    this.estadoJuego = "finalizado";
-    console.log("El juego ha terminado.");
-  }
 }
 
 

@@ -136,7 +136,6 @@ function crearVeneno() {
         }
     );
 }
-
 function crearEscudo() {
     return new Efecto(
         "Escudo",
