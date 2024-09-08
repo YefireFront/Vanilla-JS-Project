@@ -60,6 +60,7 @@ class Sanador extends Personaje {
   }
 }
 
+
 // Ejemplo de uso
 const guerrero2 = new Guerrero("Rogers",6);
 const guerrero1 = new Guerrero("Thor",5);
