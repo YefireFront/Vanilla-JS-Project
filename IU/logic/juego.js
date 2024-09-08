@@ -77,17 +77,3 @@ class Juego {
   }
 
 }
-
-
-
-
-Juego.agregarPersonaje(1, guerrero1);
-Juego.agregarPersonaje(1, guerrero2);
-Juego.agregarPersonaje(1, guerrero3);
-
-Juego.agregarPersonaje(2, guerrero5);
-Juego.agregarPersonaje(2, guerrero4);
-
-
-Juego.iniciarJuego();
-

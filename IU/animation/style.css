@@ -4,9 +4,11 @@
   box-sizing: border-box;
 }
 
-Body {
+body {
   font-family: "Poppins", sans-serif;
   background: #043247;
+  height: 100vh;
+  width: 100vw;
 }
 
 .esenario {
@@ -30,7 +32,6 @@ Body {
 
 .esenario__left {
   width: 50%;
-  min-width: 750px;
   border: 3px solid rgb(0, 67, 252);
   height: 100%;
   position: relative;
@@ -38,8 +39,7 @@ Body {
 
 .esenario_right {
   width: 50%;
-  min-width: 750px;
-  /* border: 3px solid rgb(255, 0, 0); */
+  border: 3px solid rgb(255, 0, 0);
   position: relative;
   height: 100%;
 }
@@ -66,7 +66,8 @@ Body {
 }
 
 .personaje img {
-  width: 120%;
+  width: 95%;
+  filter: blur(1.2px);
   filter: blur(1px);
   /* filter: blur(0); */
 }
@@ -81,7 +82,7 @@ Body {
   background: radial-gradient(ellipse at center,rgba(0, 0, 0, 0.63),transparent);
   background: radial-gradient(ellipse at center,rgba(0, 0, 0, 0.6),transparent 70%);
   border-radius: 50%;
-  border: 10px solid goldenrod;
+  /* border: 10px solid goldenrod; */
 }
 
 .shadow_right {
@@ -108,41 +109,41 @@ Body {
 
 .p1 {
   position: absolute;
-  top: 850px;
-  left: 450px;
+  top: 350px;
+  left: 250px;
 }
 
 .p2 {
   position: absolute;
-  top: 650px;
-  left: 450px;
+  top: 240px;
+  left: 320px;
 }
 
 .p3 {
   position: absolute;
-  top: 480px;
-  left: 570px;
+  top: 150px;
+  left: 400px;
 }
 
 .p4 {
   position: absolute;
 
-  top: 850px;
-  left: 100px;
+  top: 350px;
+  left: -50px;
 }
 
 .p5 {
   position: absolute;
 
-  top: 650px;
-  left: 180px;
+  top: 250px;
+  left: -100px;
 }
 
 .p6 {
   position: absolute;
 
-  top: 470px;
-  left: 100px;
+  top: 150px;
+  left: -130px;
 }
 
 .esenario__left .personaje_Secundario {
