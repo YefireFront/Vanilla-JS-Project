@@ -77,3 +77,8 @@ class Juego {
   }
 
 }
+
+
+
+Juego.agregarPersonaje(1, darkOz);
+Juego.agregarPersonaje(2, pullsMonje);

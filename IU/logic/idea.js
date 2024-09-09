@@ -5,7 +5,6 @@ class Personaje {
     this.defensa = defensa;
     this.velocidad = velocidad;
     this.vida = 100;
-    this.energia = 100;
     this.debilitamiento = [];
     this.fortalecimiento = [];
     this.habilidades = [];
@@ -42,31 +41,27 @@ class Personaje {
 
 }
 
-class Guerrero extends Personaje {
-  constructor(nombre, velocidad) {
-    super(nombre, 40, 20,velocidad);
+class DarkOz extends Personaje {
+  constructor(nombre, ataque, defensa, velocidad){
+    super(nombre, ataque, defensa , velocidad);
 
 
     this.habilidades.push(crearFuria());
-    this.habilidades.push(crearEscudoProtector());
-  }
-}
-
-class Sanador extends Personaje {
-  constructor(nombre, velocidad) {
-    super(nombre, 30, 20, velocidad);
     this.habilidades.push(crearCuracion());
-    this.habilidades.push(crearEscudoProtector());
+
   }
 }
 
+class PullsMonje extends Personaje {
+  constructor(nombre, ataque, defensa, velocidad){
+    super(nombre, ataque, defensa , velocidad);
 
-// Ejemplo de uso
-const guerrero2 = new Guerrero("Rogers",6);
-const guerrero1 = new Guerrero("Thor",5);
-const guerrero3 = new Guerrero("Tony",4);
+    this.habilidades.push(crearCuracion());
+    this.habilidades.push(crearFuria());
+    
+}
+}
 
-const sanador1 = new Sanador("Bruce",3);
-const sanador2 = new Sanador("Peter",2);
-const sanador3 = new Sanador("Stephen",1);
 
+const darkOz = new DarkOz("Dark Oz", 40, 20, 7);
+const pullsMonje = new PullsMonje("Pulls Monje", 30, 30, 5);

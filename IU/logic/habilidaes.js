@@ -51,10 +51,9 @@ function crearEscudoProtector() {
   return new Habilidad(
     "Escudo Protector",
     4,
-    "Aumenta la defensa del objetivo en 15 durante un turno y reduce el daño recibido en un 10% durante ese turno.",
+    "Aumenta la defensa del objetivo en 15 durante un turno.",
     (lanzador, objetivo) => {
       objetivo.defensa += 15;
-      objetivo.reduccionDanio = 0.1; // Añade una propiedad para reducción de daño
       console.log(
         `${lanzador.nombre} ha usado Escudo Protector en ${objetivo.nombre}. Defensa aumentada y reducción de daño aplicada.`
       );
@@ -75,19 +74,6 @@ function crearCuracion() {
     );
 }
 
-function crearEscudoProtector () {
-    return new Habilidad(
-        "Escudo Protector",
-        4,
-        "Aumenta la defensa del objetivo en 15 durante un turno y reduce el daño recibido en un 10% durante ese turno.",
-        (lanzador, objetivo) => {
-            objetivo.defensa += 15;
-            // objetivo.reduccionDanio = 0.1;
-            console.log(`${lanzador.nombre} ha usado Escudo Protector en ${objetivo.nombre}. Defensa aumentada y reducción de daño aplicada.`
-        );
-        }
-    );
-}
 
 
 
@@ -133,17 +119,6 @@ function crearVeneno() {
         (objetivo) => {
         objetivo.vida -= 10;
         console.log(`${objetivo.nombre} ha recibido daño por veneno.`);
-        }
-    );
-}
-function crearEscudo() {
-    return new Efecto(
-        "Escudo",
-        "Reduce el daño recibido en 5 puntos.",
-        3,
-        (objetivo) => {
-        objetivo.reduccionDanio += 5;
-        console.log(`${objetivo.nombre} ha recibido un escudo protector.`);
         }
     );
 }
