@@ -51,17 +51,30 @@ class DarkOz extends Personaje {
 
   }
 }
-
-class PullsMonje extends Personaje {
+class Skells extends Personaje {
   constructor(nombre, ataque, defensa, velocidad){
     super(nombre, ataque, defensa , velocidad);
 
-    this.habilidades.push(crearCuracion());
     this.habilidades.push(crearFuria());
+    this.habilidades.push(crearCuracion());
+    
+}
+}
+class Valviius extends Personaje {
+  constructor(nombre, ataque, defensa, velocidad){
+    super(nombre, ataque, defensa , velocidad);
+
+    this.habilidades.push(crearFuria());
+    this.habilidades.push(crearCuracion());
     
 }
 }
 
 
-const darkOz = new DarkOz("Dark Oz", 40, 20, 7);
-const pullsMonje = new PullsMonje("Pulls Monje", 30, 30, 5);
+
+
+const darkOz = new DarkOz("Darkoz", 40, 20, 1);
+const skells = new Skells("Skells", 50, 10, 4);
+const Valvius = new Valviius("Valvius", 30, 30, 8);
+
+
