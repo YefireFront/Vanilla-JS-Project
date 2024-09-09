@@ -75,5 +75,6 @@ class Valviius extends Personaje {
 
 const darkOz = new DarkOz("Darkoz", 40, 20, 1);
 const skells = new Skells("Skells", 50, 10, 4);
+const Valvius = new Valviius("Valvius", 30, 30, 8);
 
 
