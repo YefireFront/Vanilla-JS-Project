@@ -54,6 +54,7 @@ Juego.equipo1.forEach((personaje, index) => {
 
   console.log(personaje1);
 });
+
 Juego.equipo2.forEach((personaje, index) => {
   // creando personajes en el escenario Left / 1
 
