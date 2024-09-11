@@ -78,3 +78,13 @@ class Juego {
 
 }
 
+
+
+Juego.agregarPersonaje(1, darkOz);
+Juego.agregarPersonaje(1, skells);
+Juego.agregarPersonaje(1, Valvius);
+
+Juego.agregarPersonaje(2, skells);
+Juego.agregarPersonaje(2, darkOz);
+Juego.agregarPersonaje(2, Valvius);
+
