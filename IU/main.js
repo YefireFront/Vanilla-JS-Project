@@ -84,5 +84,5 @@ Juego.equipo2.forEach((personaje, index) => {
   const peronaje_secundario = document.createElement("div");
   peronaje_secundario.classList.add("personaje_Secundario");
 
-  console.log(personaje1);
+  // console.log(personaje1);
 });
