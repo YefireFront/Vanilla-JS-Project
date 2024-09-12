@@ -22,14 +22,7 @@ Juego.equipo1.forEach((personaje, index) => {
   personaje1.classList.add("personaje", `p${index + 1}`);
   escenarioLeft.appendChild(personaje1);
 
-  //boton poderes 
-    const boton_poderes = document.createElement("div");
-    boton_poderes.classList.add("poderes");
-    const boton_podere_1 = document.createElement("button");
-    const boton_podere_2 = document.createElement("button");
-    boton_poderes.appendChild(boton_podere_1);
-    boton_poderes.appendChild(boton_podere_2);
-    personaje1.appendChild(boton_poderes);
+
 
   // Creacion personaje principal
   const peronaje_principal = document.createElement("div");
