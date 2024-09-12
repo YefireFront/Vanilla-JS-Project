@@ -15,95 +15,66 @@
 
 @keyframes poisonEffect {
   0% {
-    filter: hue-rotate(0deg) bright ness(100%) blur(0px);
+    filter: hue-rotate(0deg) brightness(100%) blur(0px);
   }
   25% {
-    filter: hue-rotate(90deg) bright ness(80%) blur(0.5px);
+    filter: hue-rotate(90deg) brightness(80%) blur(0.5px);
   }
   50% {
-    filter: hue-rotate(-90deg) bright ness(60%) blur(1px);
+    filter: hue-rotate(-90deg) brightness(60%) blur(1px);
   }
   75% {
-    filter: hue-rotate(90deg) bright ness(80%) blur(0.5px);
+    filter: hue-rotate(90deg) brightness(80%) blur(0.5px);
   }
   100% {
-    filter: hue-rotate(0deg) bright ness(100%) blur(0px);
+    filter: hue-rotate(0deg) brightness(100%) blur(0px);
   }
 }
 
 @keyframes healingEffect {
   0% {
     transform: scale(1);
-    filter: bright ness(100%) blur(0px) drop-shadow(0 0 0 rgba(0, 255, 0, 0));
+    filter: brightness(100%) blur(1px) drop-shadow(0 0 0 rgba(0, 255, 0, 0))  ;
     opacity: 1;
   }
   25% {
     transform: scale(1.05);
-    filter: bright ness(130%) blur(2px)
-      drop-shadow(0 10px 20px rgba(0, 255, 0, 0.5));
+    filter: brightness(130%) blur(1px) drop-shadow(0 10px 20px rgba(0, 255, 0, 0.5));
     opacity: 0.9;
   }
   50% {
     transform: scale(1.1);
-    filter: bright ness(160%) blur(1px)
-      drop-shadow(0 20px 30px rgba(0, 255, 0, 0.7));
+    filter: brightness(160%) blur(1px) drop-shadow(0 20px 30px rgba(0, 255, 0, 0.7));
     opacity: 0.7;
   }
   75% {
     transform: scale(1.05);
-    filter: bright ness(130%) blur(2px)
-      drop-shadow(0 10px 20px rgba(0, 255, 0, 0.5));
+    filter: brightness(130%) blur(1px) drop-shadow(0 10px 20px rgba(0, 255, 0, 0.5));
     opacity: 0.9;
   }
   100% {
     transform: scale(1);
-    filter: bright ness(100%) blur(0px) drop-shadow(0 0 0 rgba(0, 255, 0, 0));
+    filter: brightness(100%) blur(1px) drop-shadow(0 0 0 rgba(0, 255, 0, 0));
     opacity: 1;
   }
 }
 
 @keyframes ghostEffect {
   0% {
-    filter: bright ness(80%) saturate(60%) grayscale(20%) blur(2px);
+    filter: brightness(80%) saturate(60%) grayscale(20%) blur(2px);
     opacity: 0.8;
   }
 
   50% {
-    filter: bright ness(70%) saturate(40%) grayscale(30%) blur(2px);
+    filter: brightness(70%) saturate(40%) grayscale(30%) blur(2px);
     opacity: 0.7;
   }
   100% {
-    filter: bright ness(60%) saturate(20%) grayscale(40%) blur(1px);
+    filter: brightness(60%) saturate(20%) grayscale(40%) blur(1px);
     opacity: 0.6;
   }
 }
 
-/* Aplicación de la animación de fantasma */
-.animate-ghost {
-  animation: ghostEffect 4s ease-in-out infinite; /* Ajusta la duración y el tipo de animación */
-}
-
-.animate-healing {
-  animation: healingEffect 2s ease-in-out; /* Aplica la animación */
-}
-
-.animate-damage {
-  animation: teleport 0.5s infinite;
-}
-
-.animate-poison {
-  animation: poisonEffect 1s infinite;
-}
-
-img:hover {
-  /* animation: poisonEffect 0.5s ease-in-out infinite; */
-  animation: temblor 0.1s infinite, colorFrio 2s forwards;
-}
-
-.frio {
-}
-
-/* Animación de temblor */
 @keyframes temblor {
   0% {
     transform: translate(0, 0);
@@ -122,7 +93,6 @@ img:hover {
   }
 }
 
-/* Animación de cambio a tonos fríos */
 @keyframes colorFrio {
   0% {
     filter: none;
@@ -132,3 +102,23 @@ img:hover {
     filter: bright ness(1.2) hue-rotate(180deg) saturate(0) contrast(1.5);
   }
 }
+
+
+/* Aplicación de la animación de fantasma */
+#PJNA {
+  /* animation: poisonEffect 4s ease-in-out infinite, temblor  0.1s ease-in-out infinite  Ajusta la duración y el tipo de animación */
+}
+
+.animate-healing {
+  animation: healingEffect 2s ease-in-out; /* Aplica la animación */
+}
+
+.animate-damage {
+  animation: teleport 0.5s infinite;
+}
+
+.animate-poison {
+  animation: poisonEffect 1s infinite;
+}
+
+

@@ -12,14 +12,10 @@ body {
 }
 
 .esenario {
-  /* min-width: 1000px; */
-  /* max-height: 1100px; */
   width: 1300px;
   height: 610px;
-
   border: 1px solid red;
   margin: 0 auto;
-
   background-image: url("../img/BG.png");
   background-size: cover;
   background-repeat: no-repeat;
@@ -28,42 +24,53 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+
+    .esenario__left {
+      width: 50%;
+      /* border: 3px solid rgb(0, 67, 252); */
+      height: 100%;
+      position: relative;
+    
+      .informacion_left{
+        width: 200px;
+        height: 250px;
+        border: 1px solid black;
+        position: absolute;
+        top: 300px;
+        left: 50px;
+        background: whitesmoke;
+        border-radius: 14px;
+        opacity: 0;
+      }
+
+      .personaje_Secundario {
+        position: relative;
+        right: 100px;
+        width: 200px;
+      }
+    }
+    
+    .esenario_right {
+      width: 50%;
+      /* border: 3px solid rgb(255, 0, 0); */
+      position: relative;
+      height: 100%;
+    
+      .informacion_right{
+        width: 200px;
+        height: 250px;
+        border: 1px solid black;
+        position: absolute;
+        top: 300px;
+        right: 60px;
+        background: whitesmoke;
+        border-radius: 14px;
+        opacity: 0;
+    
+    
+      }
+    } 
 }
-
-.esenario__left {
-  width: 50%;
-  /* border: 3px solid rgb(0, 67, 252); */
-  height: 100%;
-  position: relative;
-}
-
-.esenario_right {
-  width: 50%;
-  /* border: 3px solid rgb(255, 0, 0); */
-  position: relative;
-  height: 100%;
-} 
-
-.esenario__left .poderes {
-  border:  1px solid green;
-  width: 100px;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-}
-
-
-.esenario__left .poderes button {
-  width: 50px;
-  height: 50px;
-  background: #fff;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: 0.3s;
-} 
 
 
 
@@ -73,6 +80,14 @@ body {
   /* border: 1px solid red; */
   width: 450px;
   display: flex;
+
+    img {
+      width: 95%;
+      filter: blur(1.2px);
+      filter: blur(1px);
+      cursor: pointer;
+      border: 1px solid black;
+    }
 }
 
 .personaje_Principal {
@@ -84,12 +99,7 @@ body {
   /* border: 1px solid black; */
 }
 
-.personaje img {
-  width: 95%;
-  filter: blur(1.2px);
-  filter: blur(1px);
-  /* filter: blur(0); */
-}
+
 
 .shadow_left {
   position: absolute;
@@ -165,32 +175,12 @@ body {
   left: -130px;
 }
 
-.esenario__left .personaje_Secundario {
-  position: relative;
-  right: 100px;
-  width: 200px;
-}
+.esenario__left 
 
 .esenario_right .personaje_Secundario {
   position: relative;
   left: 100px;
 }
-
-/* @media (max-width: 1600px) {
-  .esenario {
-    background-position: -200px;
-  }
-}
-@media (max-width: 1400px) {
-  .esenario {
-    background-position: -300px;
-  }
-}
-@media (max-width: 1200px) {
-  .esenario {
-    background-position: -300px;
-  }
-} */
 
 
 .backGround{
@@ -207,6 +197,21 @@ body {
     width: 55%;
     height: 100%;
     /* border: 2px solid red; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    div{
+      width: 150px;
+      height: 200px;
+      /* border: 2px solid blue; */
+
+      img{
+        width: 100%;
+        height: 100%;
+        opacity: 0.8;
+      }
+    }
     
   }
   
@@ -220,7 +225,7 @@ body {
       width: 100%;
       height: 100%;
       opacity: 0.7;
-      animation: slideAnimation 70s linear infinite;
+      animation: slideAnimation 50s linear infinite;
     }
 
   }
@@ -233,7 +238,7 @@ body {
   }
 
   50% {
-    transform: translateX(-30%);
+    transform: translateX(-18%);
   }
  
   100% {
@@ -241,3 +246,39 @@ body {
   }
 }
 
+
+
+
+.parpadeo{
+  animation: parpadeo 0.2s  forwards;
+} 
+
+@keyframes parpadeo{
+  0%{
+    opacity: 1;
+  }
+
+  25%{
+    opacity: 0.5;
+  }
+
+  50%{
+    opacity: 1;
+  }
+
+  75%{
+    opacity: 0.5;
+  }
+
+  100%{
+    opacity: 0.8;
+  }
+}
+
+
+
+
+.prueba{
+  width: 300px;
+  height: 450px;
+}
