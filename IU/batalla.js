@@ -1,17 +1,28 @@
 const poder1 = document.querySelector(".poder1");
 const ObjetivoDerecha = document.querySelectorAll(".esenario_right .personaje");
 const ObjetivoIzquierda = document.querySelectorAll(".esenario__left .personaje");
-console.log(ObjetivoDerecha);
-console.log(ObjetivoIzquierda);
-
+const idatacanteDerecha = 1
+const idDesaparece= document.getElementById("1");
+console.log(idDesaparece);
 ObjetivoDerecha.forEach(element => {
 
     element.addEventListener("click", (e) => {
         const lugarDeAtaque = e.target.parentElement.previousElementSibling
-        lugarDeAtaque.children[0].src = "./img/ATK1.gif";
         const objetivo = e.target
+        lugarDeAtaque.children[0].src = `./players/${idatacanteDerecha}/Atacando.gif`;
+        console.log('atacante',lugarDeAtaque);
+        console.log('Objetivo', objetivo);
+
+
+        idDesaparece.style.display = "none";
+        setTimeout(() => {
+            idDesaparece.style.display = "block";
+        }, 1500);
+
+     
+        
         objetivo.classList.add("daño");
-        objetivo.classList.add("poisonEffect");
+        // objetivo.classList.add("poisonEffect");
 
 
         setTimeout(() => {
@@ -26,17 +37,18 @@ ObjetivoDerecha.forEach(element => {
     
 });
 
+const idatacanteIzquierda = 5
 
 ObjetivoIzquierda.forEach(element => { 
 
     element.addEventListener("click", (e) => {
         const lugarDeAtaque = e.target.parentElement.nextElementSibling
-        lugarDeAtaque.style.display = "block";
         console.log(lugarDeAtaque);
-        lugarDeAtaque.children[0].src = "./img/ATK10.gif";
+        lugarDeAtaque.children[0].src = `./players/${idatacanteIzquierda}/Atacando.gif`;
         const objetivo = e.target
+
         objetivo.classList.add("daño");
-        objetivo.classList.add("poisonEffect");
+        // objetivo.classList.add("poisonEffect");
 
         setTimeout(() => {
             objetivo.classList.remove("daño");

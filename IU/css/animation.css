@@ -140,6 +140,33 @@
   }
 }
 
+@keyframes distortion {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+    filter: blur(0px);
+  }
+  20% {
+    opacity: 0.8;
+    transform: scale(1.05) skew(5deg, 5deg);
+    filter: blur(3px) brightness(1.2) contrast(1.5);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1) skew(-3deg, -3deg);
+    filter: blur(6px) brightness(1.4) contrast(1.8);
+  }
+  80% {
+    opacity: 0.3;
+    transform: scale(1.05) skew(2deg, 2deg);
+    filter: blur(3px) brightness(1.2) contrast(1.5);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+    filter: blur(0px);
+  }
+}
 
 
 
@@ -152,5 +179,10 @@
 }
 
 .parpadeo{
-  animation: parpadeo .3s linear  .5s  forwards;
+  animation: parpadeo .3s linear  1.5s  forwards;
+}
+
+
+.distortion{
+  animation: distortion .5s linear  1.2s  ;
 }

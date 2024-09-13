@@ -63,8 +63,6 @@ class Juego {
 
   }
 
-
-
   
   static verificarVictoria() {
     // Lógica para verificar si un equipo ha ganado
@@ -80,11 +78,11 @@ class Juego {
 
 
 
-Juego.agregarPersonaje(1, darkOz);
-Juego.agregarPersonaje(1, skells);
-Juego.agregarPersonaje(1, Valvius);
+Juego.agregarPersonaje(1, darkOz_izquierda);
+Juego.agregarPersonaje(1, skells_izquierda);
+Juego.agregarPersonaje(1, Valvius_izquierda);
 
-Juego.agregarPersonaje(2, skells);
-Juego.agregarPersonaje(2, darkOz);
-Juego.agregarPersonaje(2, Valvius);
+Juego.agregarPersonaje(2, darkOz_derecha);
+Juego.agregarPersonaje(2, skells_derecha);
+Juego.agregarPersonaje(2, Valvius_derecha);
 
