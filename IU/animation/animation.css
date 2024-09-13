@@ -142,3 +142,15 @@
 
 
 
+
+.daño{
+  animation: daño 0.5s linear  1.2s  infinite;
+}
+
+.poisonEffect{
+  animation: poisonEffect 1s linear  1.2s  infinite;
+}
+
+.parpadeo{
+  animation: parpadeo .3s linear  .5s  forwards;
+}
