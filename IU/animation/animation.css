@@ -1,4 +1,4 @@
-@keyframes teleport {
+@keyframes daño {
   0% {
     filter: invert(100%);
   }
@@ -104,21 +104,53 @@
 }
 
 
-/* Aplicación de la animación de fantasma */
-#PJNA {
-  /* animation: poisonEffect 4s ease-in-out infinite, temblor  0.1s ease-in-out infinite  Ajusta la duración y el tipo de animación */
+@keyframes slideAnimation {
+  0% {
+    transform: translateX(0%);
+  }
+
+  50% {
+    transform: translateX(-18%);
+  }
+ 
+  100% {
+    transform: translateX(-0%);
+  }
 }
 
-.animate-healing {
-  animation: healingEffect 2s ease-in-out; /* Aplica la animación */
+@keyframes parpadeo{
+  0%{
+    opacity: 1;
+  }
+
+  25%{
+    opacity: 0.5;
+  }
+
+  50%{
+    opacity: 1;
+  }
+
+  75%{
+    opacity: 0.5;
+  }
+
+  100%{
+    opacity: 0.8;
+  }
 }
 
-.animate-damage {
-  animation: teleport 0.5s infinite;
+
+
+
+.daño{
+  animation: daño 0.5s linear  1.2s  infinite;
 }
 
-.animate-poison {
-  animation: poisonEffect 1s infinite;
+.poisonEffect{
+  animation: poisonEffect 1s linear  1.2s  infinite;
 }
 
-
+.parpadeo{
+  animation: parpadeo .3s linear  .5s  forwards;
+}
