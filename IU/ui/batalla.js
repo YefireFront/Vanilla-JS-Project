@@ -2,8 +2,9 @@ const poder1 = document.querySelector(".poder1");
 const ObjetivoDerecha = document.querySelectorAll(".esenario_right .personaje");
 const ObjetivoIzquierda = document.querySelectorAll(".esenario__left .personaje");
 
-console.log(ObjetivoDerecha);
-console.log(ObjetivoIzquierda);
+// console.log(ObjetivoDerecha);
+// console.log(ObjetivoIzquierda);
+// console.log(poder1)
 
 
 

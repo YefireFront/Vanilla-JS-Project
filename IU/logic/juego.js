@@ -76,9 +76,9 @@ class Juego {
 
 
     actualizarInfomacionPersonajeActual();
-    // AsignarTurno()
+    AsignarTurno()
 
-    // Render()
+   
 
   }
 

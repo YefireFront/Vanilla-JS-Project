@@ -257,28 +257,20 @@ console.log(turno_derecha)
 
 function AsignarTurno() {
     
-    turno_izquierda.forEach((turno, i) => {
-    
+    turno_izquierda.forEach((turno, i) => {    
         if (Juego.personajeActual.id == turno_izquierda[i].nextElementSibling.id) {
-           
-            console.log( turno_izquierda[i].nextElementSibling.id)
-           console.log(Juego.personajeActual.id)
-            turno_izquierda[i].nextElementSibling.classList.add("turno_actual");            
+           turno.style.display = "block";
         }else{
-            turno_izquierda[i].nextElementSibling.classList.remove("turno_actual");
+          turno.style.display = "none";
         }
-    
     });
 
     turno_derecha.forEach((turno, i) => {
     
         if (Juego.personajeActual.id == turno_derecha[i].previousElementSibling.id) {
-           
-            console.log( turno_derecha[i].previousElementSibling.id)
-           console.log(Juego.personajeActual.id)
-            turno_derecha[i].previousElementSibling.classList.add("turno_actual");            
+          turno.style.display = "block";
         }else{
-            turno_derecha[i].previousElementSibling.classList.remove("turno_actual");
+          turno.style.display = "none";
         }
     
     });
