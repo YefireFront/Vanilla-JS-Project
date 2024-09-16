@@ -75,11 +75,11 @@ class Valviius extends Personaje {
 
 
 
-const darkOz_izquierda = new DarkOz("Yeffer", 40, 20, 1);
-const Valvius_izquierda = new Valviius("Arley", 30, 30, 8);
-const skells_izquierda = new Skells("Walter", 50, 10, 4);
+const darkOz_izquierda = new DarkOz("Bot Purple", 40, 20, 11);
+const skells_izquierda = new Skells("Dimont  Best", 50, 10, 4);
+const Valvius_izquierda = new Valviius("Shild Man", 30, 30, 8);
 
-const darkOz_derecha= new DarkOz("Trafagaro", 40, 20, 12);
-const Valvius_derecha = new Valviius("Kaido", 30, 30, 8);
-const skells_derecha = new Skells("Doflamingo", 50, 10, 4);
+const darkOz_derecha= new DarkOz("Vakulo Azul", 40, 20, 12);
+const Valvius_derecha = new Valviius("Monje Punch", 30, 30, 8);
+const skells_derecha = new Skells("Blue Sky", 50, 10, 4);
 
