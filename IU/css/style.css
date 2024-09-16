@@ -361,3 +361,8 @@ body {
 .turno_derecha{
 left: 250px;
 }
+
+.turno_actual{
+  background: goldenrod;
+  border: 2px solid black;
+}

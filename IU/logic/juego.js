@@ -46,6 +46,7 @@ class Juego {
       this.personajeActual = this.equipo2[this.turnoActualEquipo2];
       // console.log(`Es el turno de ${this.personajeActual.nombre}`);
     }
+
     
   }
 
@@ -75,6 +76,8 @@ class Juego {
 
 
     actualizarInfomacionPersonajeActual();
+    // AsignarTurno()
+
     // Render()
 
   }

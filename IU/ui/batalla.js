@@ -2,6 +2,9 @@ const poder1 = document.querySelector(".poder1");
 const ObjetivoDerecha = document.querySelectorAll(".esenario_right .personaje");
 const ObjetivoIzquierda = document.querySelectorAll(".esenario__left .personaje");
 
+console.log(ObjetivoDerecha);
+console.log(ObjetivoIzquierda);
+
 
 
 
@@ -14,8 +17,8 @@ ObjetivoDerecha.forEach(element => {
         const lugarDeAtaque = e.target.parentElement.previousElementSibling
         const objetivo = e.target
         lugarDeAtaque.children[0].src = `./players/${idatacanteDerecha}/Atacando.gif`;
-        // console.log('atacante',lugarDeAtaque);
-        // console.log('Objetivo', objetivo);
+        console.log('atacante',lugarDeAtaque);
+        console.log('Objetivo', objetivo);
 
 
         idDesaparece.style.display = "none";
@@ -48,7 +51,7 @@ ObjetivoIzquierda.forEach(element => {
 
     element.addEventListener("click", (e) => {
         const lugarDeAtaque = e.target.parentElement.nextElementSibling
-        // console.log(lugarDeAtaque);
+        console.log(lugarDeAtaque);
         lugarDeAtaque.children[0].src = `./players/${idatacanteIzquierda}/Atacando.gif`;
         const objetivo = e.target
 

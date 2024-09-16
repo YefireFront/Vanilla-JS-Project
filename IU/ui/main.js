@@ -26,13 +26,18 @@ informacion_right.classList.add("informacion_right")
 escenarioright.appendChild(informacion_right);
 
 
-function Render() {
   Juego.equipo1.forEach((personaje, index) => {
     // creando personajes en el escenario Left / 1
   
     const personaje1 = document.createElement("div");
     personaje1.classList.add("personaje", `p${index + 1}`);
     escenarioLeft.appendChild(personaje1);
+
+
+    //idetifcador de turno
+    const turno = document.createElement("div");
+    turno.classList.add("turno", "turno_izquierda");
+    personaje1.appendChild(turno);
   
   
   
@@ -88,10 +93,7 @@ function Render() {
     });
 
 
-    // Idetificar personaje turno
 
-    if (Juego.personajeActual.id === personaje.id)  peronaje_principal.classList.add("turno");
-    if (Juego.personajeActual.id !== personaje.id)  peronaje_principal.classList.remove("turno");
   
   });
   
@@ -113,6 +115,12 @@ function Render() {
     peronaje_principal.classList.add("personaje_Principal");
     peronaje_principal.id = personaje.id;
     personaje1.appendChild(peronaje_principal);
+
+
+    //idetifcador de turno
+    const turno = document.createElement("div");
+    turno.classList.add("turno", "turno_derecha");
+    personaje1.appendChild(turno);
   
     //crear imagen personaje secundario
     const imagen_personaje_secundario = document.createElement("img");
@@ -133,8 +141,7 @@ function Render() {
 
 
     
-    if (Juego.personajeActual.id === personaje.id)  peronaje_principal.classList.add("turno");
-    if (Juego.personajeActual.id !== personaje.id)  peronaje_principal.classList.remove("turno");
+
     
   
   
@@ -157,7 +164,7 @@ function Render() {
     });
   
   });
-}
+
 
 
 
@@ -241,4 +248,46 @@ habilidadAtacar.addEventListener("click", () =>seleccionarHabilidad(habilidadAta
 
 
 
-Render()
+const turno_izquierda = document.querySelectorAll(".turno_izquierda");
+const turno_derecha = document.querySelectorAll(".turno_derecha");
+console.log(turno_izquierda)
+console.log(turno_derecha)
+
+
+
+function AsignarTurno() {
+    
+    turno_izquierda.forEach((turno, i) => {
+    
+        if (Juego.personajeActual.id == turno_izquierda[i].nextElementSibling.id) {
+           
+            console.log( turno_izquierda[i].nextElementSibling.id)
+           console.log(Juego.personajeActual.id)
+            turno_izquierda[i].nextElementSibling.classList.add("turno_actual");            
+        }else{
+            turno_izquierda[i].nextElementSibling.classList.remove("turno_actual");
+        }
+    
+    });
+
+    turno_derecha.forEach((turno, i) => {
+    
+        if (Juego.personajeActual.id == turno_derecha[i].previousElementSibling.id) {
+           
+            console.log( turno_derecha[i].previousElementSibling.id)
+           console.log(Juego.personajeActual.id)
+            turno_derecha[i].previousElementSibling.classList.add("turno_actual");            
+        }else{
+            turno_derecha[i].previousElementSibling.classList.remove("turno_actual");
+        }
+    
+    });
+
+
+}
+
+
+
+
+AsignarTurno()
+
