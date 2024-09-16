@@ -325,7 +325,20 @@ body {
     color: white;
     font-size: 20px;
     margin: 5px;
-}
+
+    &:hover{
+      background: #09586b;
+      cursor: pointer;
+      transform: scale(1.03);
+    }
+ }
+
+ .boton_activo{
+  background: #09586b;
+  cursor: pointer;
+  transform: scale(1.03);
+  border: 2px solid goldenrod;
+ }
 
 
 }

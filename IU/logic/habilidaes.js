@@ -76,9 +76,6 @@ function crearCuracion() {
 
 
 
-
-
-
 class Efecto {
   constructor(nombre, descripcion, duracion, efecto) {
     this.nombre = nombre;

@@ -36,15 +36,15 @@ class Juego {
     this.turnoEquipo = Math.floor(Math.random() * 2) + 1;
     this.turnoActualEquipo1 =(this.turnoActualEquipo1 ) % this.equipo1.length
     this.turnoActualEquipo2 =(this.turnoActualEquipo2 ) % this.equipo2.length
-    console.log(`Inicio del juego. Equipo ${this.turnoEquipo} comienza.`);
+    // console.log(`Inicio del juego. Equipo ${this.turnoEquipo} comienza.`);
     
     // jugador al iniciar el juego
     if (this.turnoEquipo === 1) {
       this.personajeActual = this.equipo1[this.turnoActualEquipo1];
-      console.log(`Es el turno de ${this.personajeActual.nombre}`);      
+      // console.log(`Es el turno de ${this.personajeActual.nombre}`);      
     }else{
       this.personajeActual = this.equipo2[this.turnoActualEquipo2];
-      console.log(`Es el turno de ${this.personajeActual.nombre}`);
+      // console.log(`Es el turno de ${this.personajeActual.nombre}`);
     }
     
   }
@@ -72,6 +72,9 @@ class Juego {
         this.personajeActual.activarEfectos();
 
     }
+
+
+    actualizarInfomacionPersonajeActual();
 
   }
 

@@ -107,8 +107,31 @@ Juego.equipo2.forEach((personaje, index) => {
   const peronaje_secundario = document.createElement("div");
   peronaje_secundario.classList.add("personaje_Secundario");
 
+
+  imagen_personaje.addEventListener("click", (e) => {
+    const idPersonaje = e.target.parentElement.id;
+    const personaje = Juego.equipo2.find((personaje) => personaje.id == idPersonaje);
+    
+    if (habilidadSeleccionada) {
+      Juego.personajeActual.usarHabilidad(habilidadSeleccionada, personaje);
+      habilidadSeleccionada = null;
+    }
+    
+    
+
+  });
+
 });
 
+
+function actualizarInfomacionPersonajeActual() {
+  nombreJugadorActual.textContent = Juego.personajeActual.nombre;
+  vidaJugadorActual.textContent = `Vida: ${Juego.personajeActual.vida}`;
+  ataqueJugadorActual.textContent = `Ataque: ${Juego.personajeActual.ataque}`;
+  defensaJugadorActual.textContent = `Defensa: ${Juego.personajeActual.defensa}`;
+  habilidad1.textContent = Juego.personajeActual.habilidades[0].nombre;
+  habilidad2.textContent = Juego.personajeActual.habilidades[1].nombre;
+}
 
 
 
@@ -130,6 +153,17 @@ stats.classList.add("stats");
 informacion.classList.add("informacion");
 
 
+body.appendChild(informacion);
+informacion.appendChild(stats);
+stats.appendChild(nombreJugadorActual);
+stats.appendChild(vidaJugadorActual);
+stats.appendChild(ataqueJugadorActual);
+stats.appendChild(defensaJugadorActual);
+informacion.appendChild(habilidades);
+habilidades.appendChild(habilidad1);
+habilidades.appendChild(habilidad2);
+
+
 nombreJugadorActual.textContent = Juego.personajeActual.nombre;
 vidaJugadorActual.textContent = `Vida: ${Juego.personajeActual.vida}`;
 ataqueJugadorActual.textContent = `Ataque: ${Juego.personajeActual.ataque}`;
@@ -138,16 +172,34 @@ habilidad1.textContent = Juego.personajeActual.habilidades[0].nombre;
 habilidad2.textContent = Juego.personajeActual.habilidades[1].nombre;
 
 
-body.appendChild(informacion);
-  informacion.appendChild(stats);
-    stats.appendChild(nombreJugadorActual);
-    stats.appendChild(vidaJugadorActual);
-    stats.appendChild(ataqueJugadorActual);
-    stats.appendChild(defensaJugadorActual);
-  informacion.appendChild(habilidades);
-    habilidades.appendChild(habilidad1);
-    habilidades.appendChild(habilidad2);
 
+let habilidadSeleccionada = null
+
+habilidad1.addEventListener("click", (e) => { 
+  // Juego.personajeActual.usarHabilidad(habilidad1.textContent, Juego.personajeActual);
+  if (habilidadSeleccionada !== habilidad1.textContent) {
+    habilidadSeleccionada = e.target.textContent;
+    console.log(` Habilidad seleccionada: ${habilidadSeleccionada}`); 
+    habilidad1.classList.add("boton_activo");
+  }else{
+    habilidadSeleccionada = null;
+    console.log(` Habilidad seleccionada: ${habilidadSeleccionada}`);
+    habilidad1.classList.remove("boton_activo");
+  }
+ });
+
+habilidad2.addEventListener("click", (e) => {
+  if (!habilidadSeleccionada) {
+    habilidadSeleccionada = e.target.textContent;
+    console.log(` Habilidad seleccionada: ${habilidadSeleccionada}`); 
+    habilidad2.classList.add("boton_activo");
+  }else{
+    habilidadSeleccionada = null;
+    console.log(` Habilidad seleccionada: ${habilidadSeleccionada}`);
+    habilidad2.classList.remove("boton_activo");
+  }
+
+});
 
 
 
