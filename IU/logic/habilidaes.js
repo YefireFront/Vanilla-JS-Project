@@ -68,6 +68,8 @@ function crearCuracion() {
         "Recupera 20 de vida al objetivo.",
         (lanzador, objetivo) => {
             objetivo.vida += 20;
+            if (objetivo.vida > 100)  objetivo.vida = 100;
+            
             console.log(`${lanzador.nombre} ha usado Curación en ${objetivo.nombre}. Vida recuperada 20 puntos.`
         );
         }

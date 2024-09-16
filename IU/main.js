@@ -69,6 +69,24 @@ Juego.equipo1.forEach((personaje, index) => {
   personaje_Secundario.appendChild(imagen_personaje_secundario);
 
 
+  imagen_personaje.addEventListener("click", (e) => {
+    const idPersonaje = e.target.parentElement.id;
+    const personaje = Juego.equipo1.find((personaje) => personaje.id == idPersonaje);
+    
+    if (habilidadSeleccionada) {
+      if (habilidadSeleccionada === "atacar") {
+        Juego.personajeActual.atacar(personaje);
+        habilidadSeleccionada = null;
+      }else{
+        Juego.personajeActual.usarHabilidad(habilidadSeleccionada, personaje);
+        habilidadSeleccionada = null;
+      }
+    }
+    
+    
+
+  });
+
 });
 
 Juego.equipo2.forEach((personaje, index) => {
@@ -113,8 +131,13 @@ Juego.equipo2.forEach((personaje, index) => {
     const personaje = Juego.equipo2.find((personaje) => personaje.id == idPersonaje);
     
     if (habilidadSeleccionada) {
-      Juego.personajeActual.usarHabilidad(habilidadSeleccionada, personaje);
-      habilidadSeleccionada = null;
+      if (habilidadSeleccionada === "atacar") {
+        Juego.personajeActual.atacar(personaje);
+        habilidadSeleccionada = null;
+      }else{
+        Juego.personajeActual.usarHabilidad(habilidadSeleccionada, personaje);
+        habilidadSeleccionada = null;
+      }
     }
     
     
@@ -143,8 +166,10 @@ const informacion = document.createElement("div");
     const defensaJugadorActual = document.createElement("h2");
 
   const habilidades = document.createElement("div");
+    const habilidadAtacar = document.createElement("button");
     const habilidad1 = document.createElement("button");
     const habilidad2 = document.createElement("button");
+
 
 
 
@@ -160,47 +185,43 @@ stats.appendChild(vidaJugadorActual);
 stats.appendChild(ataqueJugadorActual);
 stats.appendChild(defensaJugadorActual);
 informacion.appendChild(habilidades);
+habilidades.appendChild(habilidadAtacar);
 habilidades.appendChild(habilidad1);
 habilidades.appendChild(habilidad2);
+
 
 
 nombreJugadorActual.textContent = Juego.personajeActual.nombre;
 vidaJugadorActual.textContent = `Vida: ${Juego.personajeActual.vida}`;
 ataqueJugadorActual.textContent = `Ataque: ${Juego.personajeActual.ataque}`;
 defensaJugadorActual.textContent = `Defensa: ${Juego.personajeActual.defensa}`;
+habilidadAtacar.textContent = "atacar";
 habilidad1.textContent = Juego.personajeActual.habilidades[0].nombre;
 habilidad2.textContent = Juego.personajeActual.habilidades[1].nombre;
 
 
 
+const metodosPersonaje = Object.getOwnPropertyNames(Object.getPrototypeOf(darkOz_izquierda));
+
+console.log(metodosPersonaje);
 let habilidadSeleccionada = null
 
-habilidad1.addEventListener("click", (e) => { 
-  // Juego.personajeActual.usarHabilidad(habilidad1.textContent, Juego.personajeActual);
-  if (habilidadSeleccionada !== habilidad1.textContent) {
-    habilidadSeleccionada = e.target.textContent;
-    console.log(` Habilidad seleccionada: ${habilidadSeleccionada}`); 
-    habilidad1.classList.add("boton_activo");
-  }else{
+
+function seleccionarHabilidad(habilidad, habilidadDesactivar1, habilidadDesactivar2 ) {
+  if (habilidadSeleccionada !== habilidad.textContent) {
+    habilidadSeleccionada = habilidad.textContent;
+    console.log(`Habilidad seleccionada: ${habilidadSeleccionada}`);
+    habilidad.classList.add("boton_activo");
+    habilidadDesactivar1.classList.remove("boton_activo");
+    habilidadDesactivar2.classList.remove("boton_activo");
+  } else {
     habilidadSeleccionada = null;
-    console.log(` Habilidad seleccionada: ${habilidadSeleccionada}`);
-    habilidad1.classList.remove("boton_activo");
+    console.log(`Habilidad seleccionada: ${habilidadSeleccionada}`);
+    habilidad.classList.remove("boton_activo");
   }
- });
+}
 
-habilidad2.addEventListener("click", (e) => {
-  if (!habilidadSeleccionada) {
-    habilidadSeleccionada = e.target.textContent;
-    console.log(` Habilidad seleccionada: ${habilidadSeleccionada}`); 
-    habilidad2.classList.add("boton_activo");
-  }else{
-    habilidadSeleccionada = null;
-    console.log(` Habilidad seleccionada: ${habilidadSeleccionada}`);
-    habilidad2.classList.remove("boton_activo");
-  }
-
-});
-
-
-
+habilidad1.addEventListener("click", () => seleccionarHabilidad(habilidad1, habilidad2, habilidadAtacar));
+habilidad2.addEventListener("click", () => seleccionarHabilidad(habilidad2, habilidad1, habilidadAtacar));
+habilidadAtacar.addEventListener("click", () =>seleccionarHabilidad(habilidadAtacar ,habilidad1, habilidad2) );
 

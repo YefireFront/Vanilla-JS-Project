@@ -58,7 +58,7 @@ class Skells extends Personaje {
     super(nombre, ataque, defensa , velocidad);
 
     this.habilidades.push(crearFuria());
-    this.habilidades.push(crearCuracion());
+    this.habilidades.push(crearEscudoProtector());
     
 }
 }
