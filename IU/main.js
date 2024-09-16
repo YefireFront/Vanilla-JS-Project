@@ -111,6 +111,6 @@ const personajeTurno = 2
 
 //Cambiar fondo de personaje Turno
 
-const background = document.querySelector(".backGround");
-background.children[1].children[0].src = `/players/${personajeTurno}/Wallpaper.png`
-console.log(background.children[1].children[0]);
+// const background = document.querySelector(".backGround");
+// background.children[1].children[0].src = `/players/${personajeTurno}/Wallpaper.png`
+// console.log(background.children[1].children[0]);

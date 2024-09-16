@@ -1,9 +1,12 @@
 const poder1 = document.querySelector(".poder1");
 const ObjetivoDerecha = document.querySelectorAll(".esenario_right .personaje");
 const ObjetivoIzquierda = document.querySelectorAll(".esenario__left .personaje");
-const idatacanteDerecha = 1
-const idDesaparece= document.getElementById("1");
-console.log(idDesaparece);
+
+
+
+const idatacanteDerecha = 2
+const idDesaparece= document.getElementById("2");
+
 ObjetivoDerecha.forEach(element => {
 
     element.addEventListener("click", (e) => {
@@ -37,7 +40,8 @@ ObjetivoDerecha.forEach(element => {
     
 });
 
-const idatacanteIzquierda = 5
+const idatacanteIzquierda = 4
+
 
 ObjetivoIzquierda.forEach(element => { 
 
