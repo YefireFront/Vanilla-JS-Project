@@ -1,6 +1,8 @@
-console.log(Juego.equipo1);
-console.log(Juego.equipo2);
+// console.log(Juego.equipo1);
+// console.log(Juego.equipo2);
 
+//seleccionado body
+const body = document.querySelector("body");
 // selecioando escenario principal
 const esenario = document.querySelector(".esenario");
 
@@ -107,10 +109,46 @@ Juego.equipo2.forEach((personaje, index) => {
 
 });
 
-const personajeTurno = 2
 
-//Cambiar fondo de personaje Turno
 
-// const background = document.querySelector(".backGround");
-// background.children[1].children[0].src = `/players/${personajeTurno}/Wallpaper.png`
-// console.log(background.children[1].children[0]);
+
+const informacion = document.createElement("div");
+  const stats = document.createElement("div");
+    const nombreJugadorActual = document.createElement("h2");
+    const vidaJugadorActual = document.createElement("h2");
+    const ataqueJugadorActual = document.createElement("h2");
+    const defensaJugadorActual = document.createElement("h2");
+
+  const habilidades = document.createElement("div");
+    const habilidad1 = document.createElement("button");
+    const habilidad2 = document.createElement("button");
+
+
+
+habilidades.classList.add("habilidades");
+stats.classList.add("stats");
+informacion.classList.add("informacion");
+
+
+nombreJugadorActual.textContent = Juego.personajeActual.nombre;
+vidaJugadorActual.textContent = `Vida: ${Juego.personajeActual.vida}`;
+ataqueJugadorActual.textContent = `Ataque: ${Juego.personajeActual.ataque}`;
+defensaJugadorActual.textContent = `Defensa: ${Juego.personajeActual.defensa}`;
+habilidad1.textContent = Juego.personajeActual.habilidades[0].nombre;
+habilidad2.textContent = Juego.personajeActual.habilidades[1].nombre;
+
+
+body.appendChild(informacion);
+  informacion.appendChild(stats);
+    stats.appendChild(nombreJugadorActual);
+    stats.appendChild(vidaJugadorActual);
+    stats.appendChild(ataqueJugadorActual);
+    stats.appendChild(defensaJugadorActual);
+  informacion.appendChild(habilidades);
+    habilidades.appendChild(habilidad1);
+    habilidades.appendChild(habilidad2);
+
+
+
+
+

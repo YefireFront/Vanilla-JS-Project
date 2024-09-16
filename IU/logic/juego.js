@@ -5,6 +5,7 @@ class Juego {
   static turnoActualEquipo2 = 0;
   static turnoEquipo = 0;
   static estadoJuego = "inicial";
+  static personajeActual = null;
 
 
   //* 
@@ -37,6 +38,15 @@ class Juego {
     this.turnoActualEquipo2 =(this.turnoActualEquipo2 ) % this.equipo2.length
     console.log(`Inicio del juego. Equipo ${this.turnoEquipo} comienza.`);
     
+    // jugador al iniciar el juego
+    if (this.turnoEquipo === 1) {
+      this.personajeActual = this.equipo1[this.turnoActualEquipo1];
+      console.log(`Es el turno de ${this.personajeActual.nombre}`);      
+    }else{
+      this.personajeActual = this.equipo2[this.turnoActualEquipo2];
+      console.log(`Es el turno de ${this.personajeActual.nombre}`);
+    }
+    
   }
 
   
@@ -46,18 +56,20 @@ class Juego {
       this.turnoEquipo = 2;
       this.turnoActualEquipo1 =(this.turnoActualEquipo1 + 1) % this.equipo1.length
 
-      let jugadorActual = this.equipo2[this.turnoActualEquipo2];
-      jugadorActual.activarEfectos();
-      console.log(`Es el turno de ${jugadorActual.nombre}`);
+      this.personajeActual = this.equipo2[this.turnoActualEquipo2];
+      this.personajeActual.activarEfectos();
+      console.log(`Es el turno de ${this.personajeActual.nombre}`);
+
+
       
       
       
     } else {
         this.turnoEquipo = 1;
         this.turnoActualEquipo2 =(this.turnoActualEquipo2 + 1) % this.equipo2.length
-        let jugadorActual = this.equipo1[this.turnoActualEquipo1];
-        console.log(`Es el turno de ${jugadorActual.nombre}`);
-        jugadorActual.activarEfectos();
+        this.personajeActual = this.equipo1[this.turnoActualEquipo1];
+        console.log(`Es el turno de ${this.personajeActual.nombre}`);
+        this.personajeActual.activarEfectos();
 
     }
 
@@ -74,6 +86,8 @@ class Juego {
 
   }
 
+
+
 }
 
 
@@ -86,3 +100,4 @@ Juego.agregarPersonaje(2, darkOz_derecha);
 Juego.agregarPersonaje(2, skells_derecha);
 Juego.agregarPersonaje(2, Valvius_derecha);
 
+Juego.iniciarJuego();

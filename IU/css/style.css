@@ -282,9 +282,6 @@ body {
 
 
 
-
-
-
 .snow{
   position: absolute;
   top: 0;
@@ -302,3 +299,33 @@ body {
 
 
 
+.informacion{
+  width: 50%;
+  margin: 10px auto;
+  height: 400px;
+  background: whitesmoke;
+  display: flex;
+  padding: 50px;
+  justify-content: space-evenly;
+  align-items: center;
+
+  .stats{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  button{
+    width: 150px;
+    height: 100px;
+    border: none;
+    background:#043247;
+    border-radius: 12px;
+    color: white;
+    font-size: 20px;
+    margin: 5px;
+}
+
+
+}
