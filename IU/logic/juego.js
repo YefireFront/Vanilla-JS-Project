@@ -75,6 +75,7 @@ class Juego {
 
 
     actualizarInfomacionPersonajeActual();
+    // Render()
 
   }
 
