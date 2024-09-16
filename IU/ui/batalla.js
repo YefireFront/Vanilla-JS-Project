@@ -1,31 +1,36 @@
-const poder1 = document.querySelector(".poder1");
 const ObjetivoDerecha = document.querySelectorAll(".esenario_right .personaje");
 const ObjetivoIzquierda = document.querySelectorAll(".esenario__left .personaje");
-
-// console.log(ObjetivoDerecha);
-// console.log(ObjetivoIzquierda);
-// console.log(poder1)
+console.log(ObjetivoIzquierda)
 
 
 
-
-const idatacanteDerecha = 2
-const idDesaparece= document.getElementById("2");
 
 ObjetivoDerecha.forEach(element => {
 
     element.addEventListener("click", (e) => {
         const lugarDeAtaque = e.target.parentElement.previousElementSibling
         const objetivo = e.target
-        lugarDeAtaque.children[0].src = `./players/${idatacanteDerecha}/Atacando.gif`;
-        console.log('atacante',lugarDeAtaque);
-        console.log('Objetivo', objetivo);
+        lugarDeAtaque.children[0].src = `./players/${Juego.personajeActual.id}/Atacando.gif`;
 
 
-        idDesaparece.style.display = "none";
-        setTimeout(() => {
-            idDesaparece.style.display = "block";
-        }, 1500);
+
+        ObjetivoIzquierda.forEach(elemento => {
+            // Utiliza template string para construir la clase dinámica basada en el id del personaje actual
+            if (elemento.classList.contains(`p${Juego.personajeActual.id}`)) {
+                console.log('El elemento contiene la clase:', `p${Juego.personajeActual.id}`);
+                console.log(elemento);  // Muestra el elemento que contiene la clase
+                elemento.style.display = "none";
+                setTimeout(() => {
+                    elemento.style.display = "block";
+                }, 1500);
+            }else{
+                console.log('El elemento no contiene la clase:', `p${Juego.personajeActual.id}`);
+            }
+        });
+        
+       
+
+
 
      
         
@@ -41,11 +46,14 @@ ObjetivoDerecha.forEach(element => {
         setTimeout(() => {
             lugarDeAtaque.children[0].src = "";
         }, 1500);
+
+
+      
     }); 
     
 });
 
-const idatacanteIzquierda = 4
+const idatacanteIzquierda = 2
 
 
 ObjetivoIzquierda.forEach(element => { 

@@ -1,5 +1,5 @@
-// console.log(Juego.equipo1);
-// console.log(Juego.equipo2);
+console.log(Juego.equipo1);
+console.log(Juego.equipo2);
 
 //seleccionado body
 const body = document.querySelector("body");
@@ -250,33 +250,39 @@ habilidadAtacar.addEventListener("click", () =>seleccionarHabilidad(habilidadAta
 
 const turno_izquierda = document.querySelectorAll(".turno_izquierda");
 const turno_derecha = document.querySelectorAll(".turno_derecha");
-console.log(turno_izquierda)
-console.log(turno_derecha)
-
 
 
 function AsignarTurno() {
-    
-    turno_izquierda.forEach((turno, i) => {    
-        if (Juego.personajeActual.id == turno_izquierda[i].nextElementSibling.id) {
-           turno.style.display = "block";
-        }else{
-          turno.style.display = "none";
-        }
-    });
 
+  // Cambiar a display: none de forma inmediata
+  turno_izquierda.forEach((turno, i) => {
+    if (Juego.personajeActual.id != turno_izquierda[i].nextElementSibling.id) {
+      turno.style.display = "none";
+    }
+  });
+
+  turno_derecha.forEach((turno, i) => {
+    if (Juego.personajeActual.id != turno_derecha[i].previousElementSibling.id) {
+      turno.style.display = "none";
+    }
+  });
+
+  // Usar timeout solo para el display: block después de 1 segundo
+  setTimeout(() => {
+    turno_izquierda.forEach((turno, i) => {
+      if (Juego.personajeActual.id == turno_izquierda[i].nextElementSibling.id) {
+        turno.style.display = "block";
+      }
+    });
+    
     turno_derecha.forEach((turno, i) => {
-    
-        if (Juego.personajeActual.id == turno_derecha[i].previousElementSibling.id) {
-          turno.style.display = "block";
-        }else{
-          turno.style.display = "none";
-        }
-    
+      if (Juego.personajeActual.id == turno_derecha[i].previousElementSibling.id) {
+        turno.style.display = "block";
+      }
     });
-
-
+  }, 1700);
 }
+
 
 
 
