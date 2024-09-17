@@ -6,6 +6,7 @@ class Juego {
   static turnoEquipo = 0;
   static estadoJuego = "inicial";
   static personajeActual = null;
+  static PersonajeAnterior = null
 
 
   //* 
@@ -40,9 +41,11 @@ class Juego {
     
     // jugador al iniciar el juego
     if (this.turnoEquipo === 1) {
+      this.PersonajeAnterior = this.personajeActual
       this.personajeActual = this.equipo1[this.turnoActualEquipo1];
       // console.log(`Es el turno de ${this.personajeActual.nombre}`);      
     }else{
+      this.PersonajeAnterior = this.personajeActual
       this.personajeActual = this.equipo2[this.turnoActualEquipo2];
       // console.log(`Es el turno de ${this.personajeActual.nombre}`);
     }
@@ -57,6 +60,8 @@ class Juego {
       this.turnoEquipo = 2;
       this.turnoActualEquipo1 =(this.turnoActualEquipo1 + 1) % this.equipo1.length
 
+      this.PersonajeAnterior = this.personajeActual
+      
       this.personajeActual = this.equipo2[this.turnoActualEquipo2];
       this.personajeActual.activarEfectos();
       console.log(`Es el turno de ${this.personajeActual.nombre}`);
@@ -68,6 +73,7 @@ class Juego {
     } else {
         this.turnoEquipo = 1;
         this.turnoActualEquipo2 =(this.turnoActualEquipo2 + 1) % this.equipo2.length
+        this.PersonajeAnterior = this.personajeActual
         this.personajeActual = this.equipo1[this.turnoActualEquipo1];
         console.log(`Es el turno de ${this.personajeActual.nombre}`);
         this.personajeActual.activarEfectos();

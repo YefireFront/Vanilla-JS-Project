@@ -1,5 +1,5 @@
-console.log(Juego.equipo1);
-console.log(Juego.equipo2);
+// console.log(Juego.equipo1);
+// console.log(Juego.equipo2);
 
 //seleccionado body
 const body = document.querySelector("body");

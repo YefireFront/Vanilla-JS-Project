@@ -10,21 +10,21 @@ ObjetivoDerecha.forEach(element => {
     element.addEventListener("click", (e) => {
         const lugarDeAtaque = e.target.parentElement.previousElementSibling
         const objetivo = e.target
-        lugarDeAtaque.children[0].src = `./players/${Juego.personajeActual.id}/Atacando.gif`;
+        lugarDeAtaque.children[0].src = `./players/${Juego.PersonajeAnterior.id}/Atacando.gif`;
 
 
 
         ObjetivoIzquierda.forEach(elemento => {
             // Utiliza template string para construir la clase dinámica basada en el id del personaje actual
-            if (elemento.classList.contains(`p${Juego.personajeActual.id}`)) {
-                console.log('El elemento contiene la clase:', `p${Juego.personajeActual.id}`);
+            if (elemento.classList.contains(`p${Juego.PersonajeAnterior.id}`)) {
+                console.log('El elemento contiene la clase:', `p${Juego.PersonajeAnterior.id}`);
                 console.log(elemento);  // Muestra el elemento que contiene la clase
                 elemento.style.display = "none";
                 setTimeout(() => {
                     elemento.style.display = "block";
                 }, 1500);
             }else{
-                console.log('El elemento no contiene la clase:', `p${Juego.personajeActual.id}`);
+                console.log('El elemento no contiene la clase:', `p${Juego.PersonajeAnterior.id}`);
             }
         });
         
@@ -58,7 +58,7 @@ ObjetivoDerecha.forEach(element => {
 const idatacanteIzquierda = 2
 
 
-equipo1.forEach(element => { 
+ObjetivoIzquierda.forEach(element => { 
 
     element.addEventListener("click", (e) => {
         const lugarDeAtaque = e.target.parentElement.nextElementSibling
