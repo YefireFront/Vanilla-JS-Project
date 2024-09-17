@@ -309,6 +309,13 @@ body {
   justify-content: space-evenly;
   align-items: center;
 
+  .habilidades{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 10px;
+  }
+
   .stats{
     display: flex;
     flex-direction: column;
@@ -317,7 +324,7 @@ body {
   }
 
   button{
-    width: 150px;
+    width: 250px;
     height: 100px;
     border: none;
     background:#043247;
@@ -331,14 +338,16 @@ body {
       cursor: pointer;
       transform: scale(1.03);
     }
+
+ 
  }
 
- .boton_activo{
-  background: #09586b;
-  cursor: pointer;
-  transform: scale(1.03);
-  border: 2px solid goldenrod;
- }
+  .boton_activo{
+    background: #09586b;
+    cursor: pointer;
+    transform: scale(1.03);
+    border: 2px solid goldenrod;
+  }
 
 
 }

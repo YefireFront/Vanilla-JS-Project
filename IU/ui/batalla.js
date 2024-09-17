@@ -5,7 +5,6 @@ console.log(equipo1);
 
 
 
-
 equipo2.forEach(element => {
 
     element.addEventListener("click", (e) => {
@@ -14,44 +13,47 @@ equipo2.forEach(element => {
         lugarDeAtaque.children[0].src = `./players/${Juego.personajeActual.id}/Atacando.gif`;
        
 
-        setTimeout(() => {
-            idDesaparece.style.display = "block";
-        }, 1500);
+ 
 
      
         
         objetivo.classList.add("daño");
+        esenario.classList.add("temblor");
         // objetivo.classList.add("poisonEffect");
-
-
+        
+        
         setTimeout(() => {
             objetivo.classList.remove("daño");
+            esenario.classList.remove("temblor");
         }, 2300);
 
 
         setTimeout(() => {
             lugarDeAtaque.children[0].src = "";
-        }, 1500);
+        }, 2000);
     }); 
     
 });
 
-const idatacanteIzquierda = 4
+// const idatacanteIzquierda = 6
 
 
 equipo1.forEach(element => { 
 
     element.addEventListener("click", (e) => {
         const lugarDeAtaque = e.target.parentElement.nextElementSibling
-        console.log(lugarDeAtaque);
-        lugarDeAtaque.children[0].src = `./players/${idatacanteIzquierda}/Atacando.gif`;
+        lugarDeAtaque.children[0].src = `./players/${Juego.personajeActual.id}/Atacando.gif`;
         const objetivo = e.target
 
         objetivo.classList.add("daño");
+        esenario.classList.add("temblor");
+
         // objetivo.classList.add("poisonEffect");
 
         setTimeout(() => {
             objetivo.classList.remove("daño");
+            esenario.classList.remove("temblor");
+
         }, 2300);
 
         setTimeout(() => {

@@ -122,12 +122,10 @@ function crearTormentaElectrica() {
   return new Habilidad(
     "Tormenta Eléctrica",
     5,
-    "Inflige 25 de daño a todos los enemigos.",
-    (lanzador, enemigos) => {
-      enemigos.forEach((enemigo) => {
-        enemigo.vida -= 25;
-        console.log(`${enemigo.nombre} ha sido golpeado por la Tormenta Eléctrica.`);
-      });
+    "Inflige 25 de daño a un solo jugador.",
+    (lanzador, objetivo) => {
+      objetivo.vida -= 25;
+      console.log(`${objetivo.nombre} ha sido golpeado por la Tormenta Eléctrica.`);
     }
   );
 }
@@ -276,6 +274,19 @@ function crearDebilitacionDefensiva() {
     (objetivo) => {
       objetivo.defensa -= 10;
       console.log(`${objetivo.nombre} ha visto su defensa reducida.`);
+    }
+  );
+}
+
+
+function crearVeneno() {
+  return new Efecto(
+    "Veneno",
+    "Recibe 10 de daño por turno durante 3 turnos.",
+    3,
+    (objetivo) => {
+      objetivo.vida -= 10;
+      console.log(`${objetivo.nombre} recibe daño por veneno.`);
     }
   );
 }

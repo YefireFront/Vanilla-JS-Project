@@ -61,9 +61,9 @@ escenarioright.appendChild(informacion_right);
     peronaje_principal.appendChild(imagen_personaje);
   
     // creacion sombra
-    const Shadow = document.createElement("div");
-    Shadow.classList.add("shadow_left");
-    peronaje_principal.appendChild(Shadow);
+    // const Shadow = document.createElement("div");
+    // Shadow.classList.add("shadow_left");
+    // peronaje_principal.appendChild(Shadow);
   
     // Creacion personaje secundario
     const peronaje_secundario = document.createElement("div");
@@ -131,9 +131,9 @@ escenarioright.appendChild(informacion_right);
     imagen_personaje.src = `./players/${personaje.id}/Quieto.gif`;
     peronaje_principal.appendChild(imagen_personaje);
   
-    const Shadow = document.createElement("div");
-    Shadow.classList.add("shadow_right");
-    peronaje_principal.appendChild(Shadow);
+    // const Shadow = document.createElement("div");
+    // Shadow.classList.add("shadow_right");
+    // peronaje_principal.appendChild(Shadow);
   
     // Creacion personaje secundario
     const peronaje_secundario = document.createElement("div");
