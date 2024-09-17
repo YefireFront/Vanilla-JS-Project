@@ -43,43 +43,63 @@ class Personaje {
 
 }
 
-class DarkOz extends Personaje {
-  constructor(nombre, ataque, defensa, velocidad){
-    super(nombre, ataque, defensa , velocidad);
 
-
-    this.habilidades.push(crearFuria());
-    this.habilidades.push(crearCuracion());
-
+class Reptil extends Personaje {
+  constructor(nombre, ataque, defensa, velocidad) {
+    super(nombre, ataque, defensa, velocidad);
+    this.habilidades.push(crearMordidaToxica());
+    this.habilidades.push(crearRegeneracionEscamosa());
   }
 }
-class Skells extends Personaje {
-  constructor(nombre, ataque, defensa, velocidad){
-    super(nombre, ataque, defensa , velocidad);
 
-    this.habilidades.push(crearFuria());
-    this.habilidades.push(crearEscudoProtector());
-    
-}
-}
-class Valviius extends Personaje {
-  constructor(nombre, ataque, defensa, velocidad){
-    super(nombre, ataque, defensa , velocidad);
-
-    this.habilidades.push(crearFuria());
-    this.habilidades.push(crearCuracion());
-    
-}
+class Gigant extends Personaje {
+  constructor(nombre, ataque, defensa, velocidad) {
+    super(nombre, ataque, defensa, velocidad);
+    this.habilidades.push(crearGolpeGigante());
+    this.habilidades.push(crearRugidoTerrenal());
+  }
 }
 
+class Pandawa extends Personaje {
+  constructor(nombre, ataque, defensa, velocidad) {
+    super(nombre, ataque, defensa, velocidad);
+    this.habilidades.push(crearGolpeBorracho());
+    this.habilidades.push(crearDanzaEmbriagante());
+  }
+}
+
+class Thunder extends Personaje {
+  constructor(nombre, ataque, defensa, velocidad) {
+    super(nombre, ataque, defensa, velocidad);
+    this.habilidades.push(crearTormentaElectrica());
+    this.habilidades.push(crearCargaRelampago());
+  }
+}
+
+class Monje extends Personaje {
+  constructor(nombre, ataque, defensa, velocidad) {
+    super(nombre, ataque, defensa, velocidad);
+    this.habilidades.push(crearMeditacion());
+    this.habilidades.push(crearPalmaFuerza());
+  }
+}
+
+class Antorcha extends Personaje {
+  constructor(nombre, ataque, defensa, velocidad) {
+    super(nombre, ataque, defensa, velocidad);
+    this.habilidades.push(crearLlamarada());
+    this.habilidades.push(crearExplosionSolar());
+  }
+}
 
 
 
-const darkOz_izquierda = new DarkOz("Bot Purple", 40, 20, 11);
-const skells_izquierda = new Skells("Dimont  Best", 50, 10, 4);
-const Valvius_izquierda = new Valviius("Shild Man", 30, 30, 8);
+const reptil = new Reptil("Reptil", 40, 20, 11);
+const pandawa = new Pandawa("Pandawa", 30, 30, 8);
+const gigant = new Gigant("Gigant", 50, 10, 4);
 
-const darkOz_derecha= new DarkOz("Vakulo Azul", 40, 20, 12);
-const Valvius_derecha = new Valviius("Monje Punch", 30, 30, 8);
-const skells_derecha = new Skells("Blue Sky", 50, 10, 4);
+const antorcha = new Antorcha("Antorcha", 40, 20, 11);
+const monje = new Monje("Monje", 40, 20, 11);
+const thunder = new Thunder("Thunder", 40, 20, 11);
+
 

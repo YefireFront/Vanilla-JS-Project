@@ -26,11 +26,11 @@ informacion_right.classList.add("informacion_right")
 escenarioright.appendChild(informacion_right);
 
 
-  Juego.equipo1.forEach((personaje, index) => {
+  Juego.equipo1.forEach((personaje) => {
     // creando personajes en el escenario Left / 1
   
     const personaje1 = document.createElement("div");
-    personaje1.classList.add("personaje", `p${index + 1}`);
+    personaje1.classList.add("personaje", `p${personaje.id}`);
     escenarioLeft.appendChild(personaje1);
 
 
@@ -61,9 +61,9 @@ escenarioright.appendChild(informacion_right);
     peronaje_principal.appendChild(imagen_personaje);
   
     // creacion sombra
-    const Shadow = document.createElement("div");
-    Shadow.classList.add("shadow_left");
-    peronaje_principal.appendChild(Shadow);
+    // const Shadow = document.createElement("div");
+    // Shadow.classList.add("shadow_left");
+    // peronaje_principal.appendChild(Shadow);
   
     // Creacion personaje secundario
     const peronaje_secundario = document.createElement("div");
@@ -101,7 +101,7 @@ escenarioright.appendChild(informacion_right);
     // creando personajes en el escenario right / 1
   
     const personaje1 = document.createElement("div");
-    personaje1.classList.add("personaje", `p${index + 4}`);
+    personaje1.classList.add("personaje", `p${personaje.id}`);
     escenarioright.appendChild(personaje1);
   
     // Creacion personaje secundario
@@ -131,9 +131,9 @@ escenarioright.appendChild(informacion_right);
     imagen_personaje.src = `./players/${personaje.id}/Quieto.gif`;
     peronaje_principal.appendChild(imagen_personaje);
   
-    const Shadow = document.createElement("div");
-    Shadow.classList.add("shadow_right");
-    peronaje_principal.appendChild(Shadow);
+    // const Shadow = document.createElement("div");
+    // Shadow.classList.add("shadow_right");
+    // peronaje_principal.appendChild(Shadow);
   
     // Creacion personaje secundario
     const peronaje_secundario = document.createElement("div");
@@ -223,7 +223,7 @@ habilidad2.textContent = Juego.personajeActual.habilidades[1].nombre;
 
 
 
-
+let personajeatacante = null;
 let habilidadSeleccionada = null
 
 

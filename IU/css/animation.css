@@ -171,7 +171,7 @@
 
 
 .daño{
-  animation: daño 0.5s linear  1.2s  infinite;
+  animation: daño 0.5s linear  1.2s  infinite, temblor 0.1s linear  1.2s  infinite;
 }
 
 .poisonEffect{
@@ -185,4 +185,8 @@
 
 .distortion{
   animation: distortion .5s linear  1.2s  ;
+}
+
+.temblor{
+  animation: temblor 0.1s linear  1.2s  infinite;
 }

@@ -35,11 +35,13 @@ ObjetivoDerecha.forEach(element => {
      
         
         objetivo.classList.add("daño");
+        esenario.classList.add("temblor");
         // objetivo.classList.add("poisonEffect");
-
-
+        
+        
         setTimeout(() => {
             objetivo.classList.remove("daño");
+            esenario.classList.remove("temblor");
         }, 2300);
 
 
@@ -56,19 +58,22 @@ ObjetivoDerecha.forEach(element => {
 const idatacanteIzquierda = 2
 
 
-ObjetivoIzquierda.forEach(element => { 
+equipo1.forEach(element => { 
 
     element.addEventListener("click", (e) => {
         const lugarDeAtaque = e.target.parentElement.nextElementSibling
-        console.log(lugarDeAtaque);
-        lugarDeAtaque.children[0].src = `./players/${idatacanteIzquierda}/Atacando.gif`;
+        lugarDeAtaque.children[0].src = `./players/${Juego.personajeActual.id}/Atacando.gif`;
         const objetivo = e.target
 
         objetivo.classList.add("daño");
+        esenario.classList.add("temblor");
+
         // objetivo.classList.add("poisonEffect");
 
         setTimeout(() => {
             objetivo.classList.remove("daño");
+            esenario.classList.remove("temblor");
+
         }, 2300);
 
         setTimeout(() => {
