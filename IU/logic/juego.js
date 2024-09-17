@@ -99,12 +99,12 @@ class Juego {
 
 
 
-Juego.agregarPersonaje(1, darkOz_izquierda);
-Juego.agregarPersonaje(1, skells_izquierda);
-Juego.agregarPersonaje(1, Valvius_izquierda);
+Juego.agregarPersonaje(1, reptil);
+Juego.agregarPersonaje(1, gigant);
+Juego.agregarPersonaje(1, pandawa);
 
-Juego.agregarPersonaje(2, darkOz_derecha);
-Juego.agregarPersonaje(2, skells_derecha);
-Juego.agregarPersonaje(2, Valvius_derecha);
+Juego.agregarPersonaje(2, thunder);
+Juego.agregarPersonaje(2, monje);
+Juego.agregarPersonaje(2, antorcha);
 
 Juego.iniciarJuego();

@@ -1,23 +1,19 @@
-const poder1 = document.querySelector(".poder1");
-const ObjetivoDerecha = document.querySelectorAll(".esenario_right .personaje");
-const ObjetivoIzquierda = document.querySelectorAll(".esenario__left .personaje");
+const equipo2 = document.querySelectorAll(".esenario_right .personaje");
+const equipo1 = document.querySelectorAll(".esenario__left .personaje");
+console.log(equipo2);
+console.log(equipo1);
 
 
 
 
-
-const idatacanteDerecha = 2
-const idDesaparece= document.getElementById("2");
-
-ObjetivoDerecha.forEach(element => {
+equipo2.forEach(element => {
 
     element.addEventListener("click", (e) => {
         const lugarDeAtaque = e.target.parentElement.previousElementSibling
         const objetivo = e.target
-        lugarDeAtaque.children[0].src = `./players/${idatacanteDerecha}/Atacando.gif`;
+        lugarDeAtaque.children[0].src = `./players/${Juego.personajeActual.id}/Atacando.gif`;
        
 
-        idDesaparece.style.display = "none";
         setTimeout(() => {
             idDesaparece.style.display = "block";
         }, 1500);
@@ -43,7 +39,7 @@ ObjetivoDerecha.forEach(element => {
 const idatacanteIzquierda = 4
 
 
-ObjetivoIzquierda.forEach(element => { 
+equipo1.forEach(element => { 
 
     element.addEventListener("click", (e) => {
         const lugarDeAtaque = e.target.parentElement.nextElementSibling

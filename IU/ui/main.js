@@ -1,5 +1,5 @@
-console.log(Juego.equipo1);
-console.log(Juego.equipo2);
+// console.log(Juego.equipo1);
+// console.log(Juego.equipo2);
 
 //seleccionado body
 const body = document.querySelector("body");
@@ -101,7 +101,7 @@ escenarioright.appendChild(informacion_right);
     // creando personajes en el escenario right / 1
   
     const personaje1 = document.createElement("div");
-    personaje1.classList.add("personaje", `p${index + 4}`);
+    personaje1.classList.add("personaje", `p${personaje.id}`);
     escenarioright.appendChild(personaje1);
   
     // Creacion personaje secundario
