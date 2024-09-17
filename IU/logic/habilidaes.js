@@ -96,7 +96,6 @@ function crearGolpeBorracho() {
     2,
     "Inflige 20 de daño al azar a uno de los enemigos.",
     (lanzador, enemigos) => {
-      const enemigo = enemigos[Math.floor(Math.random() * enemigos.length)];
       enemigo.vida -= 20;
       console.log(
         `${lanzador.nombre} ha usado Golpe Borracho en ${enemigo.nombre}.`
