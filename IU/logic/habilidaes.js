@@ -1,16 +1,11 @@
 class Habilidad {
-  constructor(nombre, tiempoDeEspera, descripcion, efecto) {
+  constructor(nombre, tiempoDeEspera, tipo, descripcion, efecto) {
     this.nombre = nombre;
     this.tiempoDeEspera = tiempoDeEspera;
+    this.tipo = tipo; // 'Daño' o 'NoDaño'
     this.descripcion = descripcion;
     this.efecto = efecto;
     this.cooldownActual = 0;
-  } 
-
-  informacion() {
-    console.log(`Nombre: ${this.nombre}`);
-    console.log(`Descripción: ${this.descripcion}`);
-    console.log(`Cooldown: ${this.cooldownActual}/${this.tiempoDeEspera}`);
   }
 
   activar(lanzador, objetivo) {
@@ -18,9 +13,7 @@ class Habilidad {
       this.efecto(lanzador, objetivo);
       this.cooldownActual = this.tiempoDeEspera;
     } else {
-      console.log(
-        `${this.nombre} está en cooldown, espera ${this.cooldownActual} turnos más.`
-      );
+      console.log(`${this.nombre} está en cooldown. Espera ${this.cooldownActual} turnos más.`);
     }
   }
 
@@ -32,18 +25,22 @@ class Habilidad {
 }
 
 
+
+
+
+// Habilidad creada a través de una función
 function crearMordidaToxica() {
   return new Habilidad(
     "Mordida Tóxica",
     3,
-    "Inflige 15 de daño y aplica veneno que causa 10 de daño por turno durante 3 turnos.",
+    "Daño",
+    "Inflige 15 de Daño y aplica veneno que causa 10 de Daño por turno durante 3 turnos.",
     (lanzador, objetivo) => {
       objetivo.vida -= 15;
       objetivo.debilitamiento.push(crearVeneno());
-      console.log(
-        `${lanzador.nombre} ha usado Mordida Tóxica en ${objetivo.nombre}. El objetivo está envenenado.`
-      );
-    }
+      console.log(`${lanzador.nombre} ha usado Mordida Tóxica en ${objetivo.nombre}. El objetivo está envenenado.`);
+    },
+    'Azul' // También aseguramos que el color sea pasado correctamente
   );
 }
 
@@ -51,6 +48,7 @@ function crearRegeneracionEscamosa() {
   return new Habilidad(
     "Regeneración Escamosa",
     5,
+    "Soporte",
     "Recupera 30 de vida en 3 turnos, 10 de vida por turno.",
     (lanzador) => {
       lanzador.fortalecimiento.push(crearRegeneracion());
@@ -59,43 +57,14 @@ function crearRegeneracionEscamosa() {
   );
 }
 
-function crearGolpeGigante() {
-  return new Habilidad(
-    "Golpe Gigante",
-    4,
-    "Inflige 30 de daño, ignorando la defensa del objetivo.",
-    (lanzador, objetivo) => {
-      objetivo.vida -= 30;
-      console.log(
-        `${lanzador.nombre} ha usado Golpe Gigante en ${objetivo.nombre}, ignorando su defensa.`
-      );
-    }
-  );
-}
-
-function crearRugidoTerrenal() {
-  return new Habilidad(
-    "Rugido Terrenal",
-    6,
-    "Reduce la defensa de todos los enemigos en 10 durante 2 turnos.",
-    (lanzador, enemigos) => {
-      enemigos.forEach((enemigo) => {
-        enemigo.defensa -= 10;
-        enemigo.debilitamiento.push(crearDebilitacionDefensiva());
-      });
-      console.log(
-        `${lanzador.nombre} ha usado Rugido Terrenal. La defensa de los enemigos ha sido reducida.`
-      );
-    }
-  );
-}
 
 function crearGolpeBorracho() {
   return new Habilidad(
     "Golpe Borracho",
     2,
-    "Inflige 20 de daño al azar a uno de los enemigos.",
-    (lanzador, enemigos) => {
+    "Daño",
+    "Inflige 20 de Daño al azar a uno de los enemigo.",
+    (lanzador, enemigo) => {
       enemigo.vida -= 20;
       console.log(
         `${lanzador.nombre} ha usado Golpe Borracho en ${enemigo.nombre}.`
@@ -108,6 +77,7 @@ function crearDanzaEmbriagante() {
   return new Habilidad(
     "Danza Embriagante",
     4,
+    "Soporte",
     "Aumenta la velocidad de Pandawa en 15 durante 2 turnos.",
     (lanzador) => {
       lanzador.velocidad += 15;
@@ -117,43 +87,19 @@ function crearDanzaEmbriagante() {
   );
 }
 
-function crearTormentaElectrica() {
+function crearExplosionSolar() {
   return new Habilidad(
-    "Tormenta Eléctrica",
-    5,
-    "Inflige 25 de daño a un solo jugador.",
-    (lanzador, objetivo) => {
-      objetivo.vida -= 25;
-      console.log(`${objetivo.nombre} ha sido golpeado por la Tormenta Eléctrica.`);
-    }
-  );
-}
-
-function crearCargaRelampago() {
-  return new Habilidad(
-    "Carga Relámpago",
-    3,
-    "Aumenta la velocidad de Thunder en 10 y ataca al objetivo causando 15 de daño.",
-    (lanzador, objetivo) => {
-      lanzador.velocidad += 10;
-      objetivo.vida -= 15;
+    "Explosión Solar",
+    6,
+    "Daño",
+    "Inflige 40 de Daño a todos los enemigo, pero reduce 10 de vida de Antorcha.",
+    (lanzador, enemigo) => {
+      enemigo.forEach((enemigo) => {
+        enemigo.vida -= 40;
+      });
+      lanzador.vida -= 10;
       console.log(
-        `${lanzador.nombre} ha usado Carga Relámpago. La velocidad de Thunder ha aumentado y ${objetivo.nombre} ha recibido daño.`
-      );
-    }
-  );
-}
-
-function crearMeditacion() {
-  return new Habilidad(
-    "Meditación",
-    3,
-    "Recupera 20 de vida y elimina efectos negativos del Monje.",
-    (lanzador) => {
-      lanzador.vida += 20;
-      lanzador.debilitamiento = [];
-      console.log(
-        `${lanzador.nombre} ha usado Meditación. Ha recuperado vida y eliminado todos los efectos negativos.`
+        `${lanzador.nombre} ha usado Explosión Solar, causando gran Daño a todos los enemigo pero sacrificando su propia vida.`
       );
     }
   );
@@ -163,7 +109,8 @@ function crearPalmaFuerza() {
   return new Habilidad(
     "Palma de Fuerza",
     4,
-    "Inflige 25 de daño al objetivo y empuja al enemigo, reduciendo su defensa en 5.",
+    "Daño",
+    "Inflige 25 de Daño al objetivo y empuja al enemigo, reduciendo su defensa en 5.",
     (lanzador, objetivo) => {
       objetivo.vida -= 25;
       objetivo.defensa -= 5;
@@ -178,7 +125,8 @@ function crearLlamarada() {
   return new Habilidad(
     "Llamarada",
     3,
-    "Inflige 20 de daño y quema al objetivo, causando 5 de daño por turno durante 3 turnos.",
+    "Daño",
+    "Inflige 20 de Daño y quema al objetivo, causando 5 de Daño por turno durante 3 turnos.",
     (lanzador, objetivo) => {
       objetivo.vida -= 20;
       objetivo.debilitamiento.push(crearQuemadura());
@@ -189,19 +137,33 @@ function crearLlamarada() {
   );
 }
 
-function crearExplosionSolar() {
+function crearRugidoTerrenal() {
   return new Habilidad(
-    "Explosión Solar",
+    "Rugido Terrenal",
     6,
-    "Inflige 40 de daño a todos los enemigos, pero reduce 10 de vida de Antorcha.",
-    (lanzador, enemigos) => {
-      enemigos.forEach((enemigo) => {
-        enemigo.vida -= 40;
+    "Soporte",
+    "Reduce la defensa de todos los enemigo en 10 durante 2 turnos.",
+    (lanzador, enemigo) => {
+      enemigo.forEach((enemigo) => {
+        enemigo.defensa -= 10;
+        enemigo.debilitamiento.push(crearDebilitacionDefensiva());
       });
-      lanzador.vida -= 10;
       console.log(
-        `${lanzador.nombre} ha usado Explosión Solar, causando gran daño a todos los enemigos pero sacrificando su propia vida.`
+        `${lanzador.nombre} ha usado Rugido Terrenal. La defensa de los enemigo ha sido reducida.`
       );
+    }
+  );
+}
+
+
+function crearRegeneracionEscamosa() {
+  return new Habilidad(
+    "Regeneración Escamosa",
+    5,
+    "Recupera 30 de vida en 3 turnos, 10 de vida por turno.",
+    (lanzador) => {
+      lanzador.fortalecimiento.push(crearRegeneracion());
+      console.log(`${lanzador.nombre} ha activado Regeneración Escamosa.`);
     }
   );
 }
@@ -215,7 +177,6 @@ class Efecto {
     this.efecto = efecto;
   }
 
-
   activar(objetivo) {
     this.efecto(objetivo);
     this.duracion--;
@@ -227,7 +188,6 @@ class Efecto {
     }
   }
 }
-
 
 function crearRegeneracion() {
   return new Efecto(
@@ -244,11 +204,11 @@ function crearRegeneracion() {
 function crearQuemadura() {
   return new Efecto(
     "Quemadura",
-    "Recibe 5 de daño por turno durante 3 turnos.",
+    "Recibe 5 de Daño por turno durante 3 turnos.",
     3,
     (objetivo) => {
       objetivo.vida -= 5;
-      console.log(`${objetivo.nombre} recibe daño por quemadura.`);
+      console.log(`${objetivo.nombre} recibe Daño por quemadura.`);
     }
   );
 }
@@ -260,7 +220,9 @@ function crearVelocidadTemporaria() {
     2,
     (objetivo) => {
       objetivo.velocidad += 10;
-      console.log(`${objetivo.nombre} ha aumentado su velocidad temporalmente.`);
+      console.log(
+        `${objetivo.nombre} ha aumentado su velocidad temporalmente.`
+      );
     }
   );
 }
@@ -277,15 +239,14 @@ function crearDebilitacionDefensiva() {
   );
 }
 
-
 function crearVeneno() {
   return new Efecto(
     "Veneno",
-    "Recibe 10 de daño por turno durante 3 turnos.",
+    "Recibe 10 de Daño por turno durante 3 turnos.",
     3,
     (objetivo) => {
       objetivo.vida -= 10;
-      console.log(`${objetivo.nombre} recibe daño por veneno.`);
+      console.log(`${objetivo.nombre} recibe Daño por veneno.`);
     }
   );
 }

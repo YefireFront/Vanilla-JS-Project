@@ -25,7 +25,7 @@ informacion_right.classList.add("informacion_right")
 escenarioright.appendChild(informacion_right);
 
 
-  Juego.equipo1.forEach((personaje) => {
+ Juego.equipo1.forEach((personaje) => {
     // creando personajes en el escenario Left / 1
   
     const personaje1 = document.createElement("div");
@@ -80,8 +80,8 @@ escenarioright.appendChild(informacion_right);
 
       
       if (habilidadSeleccionada) {
-        if (habilidadSeleccionada === "Atacar") {
-          Juego.personajeActual.Atacar(personaje);
+        if (habilidadSeleccionada === "Atacar" && Juego.personajeActual.Atacar(personaje)) {
+          Juego.personajeActual.Atacar(personaje); 
           habilidadSeleccionada = null;
           animacionEquipo1( e.target, e.target.parentElement.nextElementSibling, );
           desactivarBotones();
@@ -109,9 +109,9 @@ escenarioright.appendChild(informacion_right);
 
 
   
-  });
+ });
   
-  Juego.equipo2.forEach((personaje, index) => {
+  Juego.equipo2.forEach((personaje) => {
     // creando personajes en el escenario right / 1
   
     const personaje1 = document.createElement("div");
@@ -166,7 +166,7 @@ escenarioright.appendChild(informacion_right);
 
       
       if (habilidadSeleccionada) {
-        if (habilidadSeleccionada === "Atacar") {
+        if (habilidadSeleccionada === "Atacar" && Juego.personajeActual.Atacar(personaje)) {
           Juego.personajeActual.Atacar(personaje);
           habilidadSeleccionada = null;
           animacionEquipo2( e.target, e.target.parentElement.previousElementSibling, );
@@ -257,7 +257,7 @@ function seleccionarHabilidad(habilidad, habilidadDesactivar1, habilidadDesactiv
     habilidadDesactivar2.classList.remove("boton_activo");
   } else {
     habilidadSeleccionada = null;
-    console.log(`Habilidad seleccionada: ${habilidadSeleccionada}`);
+    console.log(`No hay Habilidad seleccionada`);
     habilidad.classList.remove("boton_activo");
   }
 
@@ -314,4 +314,3 @@ function desactivarBotones() {
 
 
 AsignarTurno()
-Juego.cambiarTurno() ;

@@ -8,9 +8,6 @@ class Juego {
   static personajeActual = null;
   static PersonajeAnterior = null
 
-
-  //* 
-
   static agregarPersonaje(equipo, personaje) {
     if (equipo === 1) {
       if (this.equipo1.length === 3) {
@@ -18,12 +15,14 @@ class Juego {
         return;
       }
       this.equipo1.push(personaje);
+      personaje.equipo = 1;
     } else {
       if (this.equipo2.length === 3) {
         console.log("El equipo 2 ya tiene 3 personajes.");
         return;
       }
       this.equipo2.push(personaje);
+      personaje.equipo = 2;
     }
 
     // console.log(`Se ha agregado a ${personaje.nombre} al equipo ${equipo}.`);
@@ -50,9 +49,10 @@ class Juego {
       // console.log(`Es el turno de ${this.personajeActual.nombre}`);
     }
 
+    this.PersonajeAnterior = this.personajeActual
+
     
   }
-
   
   static cambiarTurno() {
     
@@ -88,7 +88,6 @@ class Juego {
 
   }
 
-  
   static verificarVictoria() {
     // Lógica para verificar si un equipo ha ganado
     if (this.equipo1.every((personaje) => personaje.vida <= 0)) {
@@ -99,12 +98,11 @@ class Juego {
 
   }
 
-
-
 }
 
 
 
+ 
 Juego.agregarPersonaje(1, reptil);
 Juego.agregarPersonaje(1, gigant);
 Juego.agregarPersonaje(1, pandawa);
