@@ -77,11 +77,14 @@ escenarioright.appendChild(informacion_right);
     imagen_personaje.addEventListener("click", (e) => {
       const idPersonaje = e.target.parentElement.id;
       const personaje = Juego.equipo1.find((personaje) => personaje.id == idPersonaje);
+
+
       
       if (habilidadSeleccionada) {
         if (habilidadSeleccionada === "atacar") {
           Juego.personajeActual.atacar(personaje);
           habilidadSeleccionada = null;
+          animacionEquipo1( e.target, e.target.parentElement.nextElementSibling, );
         }else{
           Juego.personajeActual.usarHabilidad(habilidadSeleccionada, personaje);
           habilidadSeleccionada = null;
@@ -148,11 +151,14 @@ escenarioright.appendChild(informacion_right);
     imagen_personaje.addEventListener("click", (e) => {
       const idPersonaje = e.target.parentElement.id;
       const personaje = Juego.equipo2.find((personaje) => personaje.id == idPersonaje);
+
+
       
       if (habilidadSeleccionada) {
         if (habilidadSeleccionada === "atacar") {
           Juego.personajeActual.atacar(personaje);
           habilidadSeleccionada = null;
+          animacionEquipo2( e.target, e.target.parentElement.previousElementSibling, );
         }else{
           Juego.personajeActual.usarHabilidad(habilidadSeleccionada, personaje);
           habilidadSeleccionada = null;
@@ -288,4 +294,4 @@ function AsignarTurno() {
 
 
 AsignarTurno()
-
+Juego.cambiarTurno() ;

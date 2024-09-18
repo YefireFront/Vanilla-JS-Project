@@ -1,84 +1,65 @@
-const ObjetivoDerecha = document.querySelectorAll(".esenario_right .personaje");
-const ObjetivoIzquierda = document.querySelectorAll(".esenario__left .personaje");
-console.log(ObjetivoIzquierda)
+const personajesDeElEquipo1 = document.querySelectorAll(".esenario__left .personaje");
+const personajesDeElEquipo2 = document.querySelectorAll(".esenario_right .personaje");
 
+function animacionEquipo1(objetivo, lugarDeAtaque) {
 
+    lugarDeAtaque.children[0].src = `./players/${Juego.PersonajeAnterior.id}/Atacando.gif`;
 
+    objetivo.classList.add("daño");
+    esenario.classList.add("temblor");
 
-ObjetivoDerecha.forEach(element => {
-
-    element.addEventListener("click", (e) => {
-        const lugarDeAtaque = e.target.parentElement.previousElementSibling
-        const objetivo = e.target
-        lugarDeAtaque.children[0].src = `./players/${Juego.PersonajeAnterior.id}/Atacando.gif`;
-
-
-
-        ObjetivoIzquierda.forEach(elemento => {
-            // Utiliza template string para construir la clase dinámica basada en el id del personaje actual
-            if (elemento.classList.contains(`p${Juego.PersonajeAnterior.id}`)) {
-                console.log('El elemento contiene la clase:', `p${Juego.PersonajeAnterior.id}`);
-                console.log(elemento);  // Muestra el elemento que contiene la clase
-                elemento.style.display = "none";
-                setTimeout(() => {
-                    elemento.style.display = "block";
-                }, 1500);
-            }else{
-                console.log('El elemento no contiene la clase:', `p${Juego.PersonajeAnterior.id}`);
-            }
-        });
-        
-       
-
-
-
-     
-        
-        objetivo.classList.add("daño");
-        esenario.classList.add("temblor");
-        // objetivo.classList.add("poisonEffect");
-        
-        
-        setTimeout(() => {
-            objetivo.classList.remove("daño");
-            esenario.classList.remove("temblor");
-        }, 2300);
-
-
-        setTimeout(() => {
-            lugarDeAtaque.children[0].src = "";
-        }, 1500);
-
-
-      
-    }); 
+    setTimeout(() => {
+        objetivo.classList.remove("daño");
+        esenario.classList.remove("temblor");
+    }, 2300);
     
-});
+    setTimeout(() => {
+        lugarDeAtaque.children[0].src = "";
+    }, 1500);
 
-const idatacanteIzquierda = 2
+    personajesDeElEquipo2.forEach(elemento => {
+        // Utiliza template string para construir la clase dinámica basada en el id del personaje actual
+        if (elemento.classList.contains(`p${Juego.PersonajeAnterior.id}`)) {
+            console.log('El elemento contiene la clase:', `p${Juego.PersonajeAnterior.id}`);
+            console.log(elemento);  // Muestra el elemento que contiene la clase
+            elemento.style.display = "none";
+            setTimeout(() => {
+                elemento.style.display = "flex";
+            }, 1500);
+        }else{
+            console.log('El elemento no contiene la clase:', `p${Juego.PersonajeAnterior.id}`);
+        }
+    });
+
+}
 
 
-ObjetivoIzquierda.forEach(element => { 
+function animacionEquipo2( objetivo , lugarDeAtaque) {
+    lugarDeAtaque.children[0].src = `./players/${Juego.PersonajeAnterior.id}/Atacando.gif`;
 
-    element.addEventListener("click", (e) => {
-        const lugarDeAtaque = e.target.parentElement.nextElementSibling
-        lugarDeAtaque.children[0].src = `./players/${Juego.personajeActual.id}/Atacando.gif`;
-        const objetivo = e.target
+    objetivo.classList.add("daño");
+    esenario.classList.add("temblor");
 
-        objetivo.classList.add("daño");
-        esenario.classList.add("temblor");
-
-        // objetivo.classList.add("poisonEffect");
-
-        setTimeout(() => {
-            objetivo.classList.remove("daño");
-            esenario.classList.remove("temblor");
-
-        }, 2300);
-
-        setTimeout(() => {
-            lugarDeAtaque.children[0].src = "";
-        }, 1500);
-    }); 
+    setTimeout(() => {
+        objetivo.classList.remove("daño");
+        esenario.classList.remove("temblor");
+    }, 2300);
     
-});
+    setTimeout(() => {
+        lugarDeAtaque.children[0].src = "";
+    }, 1500);
+
+    personajesDeElEquipo1.forEach(elemento => {
+        // Utiliza template string para construir la clase dinámica basada en el id del personaje actual
+        if (elemento.classList.contains(`p${Juego.PersonajeAnterior.id}`)) {
+            console.log('El elemento contiene la clase:', `p${Juego.PersonajeAnterior.id}`);
+            console.log(elemento);  // Muestra el elemento que contiene la clase
+            elemento.style.display = "none";
+            setTimeout(() => {
+                elemento.style.display = "flex";
+            }, 1500);
+        }else{
+            console.log('El elemento no contiene la clase:', `p${Juego.PersonajeAnterior.id}`);
+        }
+    });
+}
