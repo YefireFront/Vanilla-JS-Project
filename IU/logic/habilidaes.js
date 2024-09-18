@@ -5,7 +5,7 @@ class Habilidad {
     this.descripcion = descripcion;
     this.efecto = efecto;
     this.cooldownActual = 0;
-  }
+  } 
 
   informacion() {
     console.log(`Nombre: ${this.nombre}`);

@@ -1,8 +1,6 @@
-// console.log(Juego.equipo1);
-// console.log(Juego.equipo2);
-
 //seleccionado body
 const body = document.querySelector("body");
+
 // selecioando escenario principal
 const esenario = document.querySelector(".esenario");
 
@@ -11,6 +9,7 @@ const escenarioLeft = document.createElement("div");
 escenarioLeft.classList.add("esenario__left");
 esenario.appendChild(escenarioLeft);
 
+//
 const informacion_left = document.createElement("div");
 informacion_left.classList.add("informacion_left")
 escenarioLeft.appendChild(informacion_left);
@@ -81,18 +80,30 @@ escenarioright.appendChild(informacion_right);
 
       
       if (habilidadSeleccionada) {
-        if (habilidadSeleccionada === "atacar") {
-          Juego.personajeActual.atacar(personaje);
+        if (habilidadSeleccionada === "Atacar") {
+          Juego.personajeActual.Atacar(personaje);
           habilidadSeleccionada = null;
           animacionEquipo1( e.target, e.target.parentElement.nextElementSibling, );
+          desactivarBotones();
         }else{
           Juego.personajeActual.usarHabilidad(habilidadSeleccionada, personaje);
           habilidadSeleccionada = null;
+          desactivarBotones();
+
         }
       }
       
       
   
+    });
+
+    imagen_personaje.addEventListener("mouseenter", (e) => {
+      informacion_left.classList.add("parpadeo");
+      informacion_left.textContent = personaje.nombre;
+    });
+
+    imagen_personaje.addEventListener("mouseleave", () => {
+      informacion_left.classList.remove("parpadeo");
     });
 
 
@@ -155,13 +166,17 @@ escenarioright.appendChild(informacion_right);
 
       
       if (habilidadSeleccionada) {
-        if (habilidadSeleccionada === "atacar") {
-          Juego.personajeActual.atacar(personaje);
+        if (habilidadSeleccionada === "Atacar") {
+          Juego.personajeActual.Atacar(personaje);
           habilidadSeleccionada = null;
           animacionEquipo2( e.target, e.target.parentElement.previousElementSibling, );
+          desactivarBotones();
+
+
         }else{
           Juego.personajeActual.usarHabilidad(habilidadSeleccionada, personaje);
           habilidadSeleccionada = null;
+          desactivarBotones();
         }
       }
       
@@ -223,7 +238,7 @@ nombreJugadorActual.textContent = Juego.personajeActual.nombre;
 vidaJugadorActual.textContent = `Vida: ${Juego.personajeActual.vida}`;
 ataqueJugadorActual.textContent = `Ataque: ${Juego.personajeActual.ataque}`;
 defensaJugadorActual.textContent = `Defensa: ${Juego.personajeActual.defensa}`;
-habilidadAtacar.textContent = "atacar";
+habilidadAtacar.textContent = "Atacar";
 habilidad1.textContent = Juego.personajeActual.habilidades[0].nombre;
 habilidad2.textContent = Juego.personajeActual.habilidades[1].nombre;
 
@@ -245,6 +260,8 @@ function seleccionarHabilidad(habilidad, habilidadDesactivar1, habilidadDesactiv
     console.log(`Habilidad seleccionada: ${habilidadSeleccionada}`);
     habilidad.classList.remove("boton_activo");
   }
+
+
 }
 
 habilidad1.addEventListener("click", () => seleccionarHabilidad(habilidad1, habilidad2, habilidadAtacar));
@@ -290,7 +307,10 @@ function AsignarTurno() {
 }
 
 
-
+function desactivarBotones() {
+  const botones = document.querySelectorAll(".habilidades button");
+  botones.forEach(boton => boton.classList.remove("boton_activo"));
+}
 
 
 AsignarTurno()

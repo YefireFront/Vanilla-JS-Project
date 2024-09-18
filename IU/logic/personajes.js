@@ -12,7 +12,7 @@ class Personaje {
     this.habilidades = [];
   }
 
-  atacar(objetivo) {
+  Atacar(objetivo) {
     if (objetivo.defensa > this.ataque) {
       console.log("No tienes suficiente fuerza para atacar a este personaje");
     } else {
