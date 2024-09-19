@@ -89,15 +89,23 @@ body {
   position: relative;
 
   .informacion_left{
-    width: 200px;
-    height: 250px;
-    border: 1px solid black;
+    width: 350px;
+    height: 70%;
+    border: 5px solid rgb(5, 185, 59);
     position: absolute;
-    top: 200px;
-    left: 50px;
-    background: whitesmoke;
-    border-radius: 14px;
-    opacity: 0;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .cartas_Info{
+      width: 100%;
+      border: 1px solid black;
+      height: 100px;
+      background: gray;
+      opacity: 0.8;
+    }
   }
 
   
