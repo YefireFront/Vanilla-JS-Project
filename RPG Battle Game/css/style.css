@@ -6,7 +6,13 @@
 }
 
 body {
- 
+  font-family: "Poppins", sans-serif;
+  background: #043247;
+  height: 100vh;
+  width: 100vw;
+}
+
+.esenario {
   width: 1300px;
   height: 610px;
   border: 1px solid red;
@@ -84,9 +90,9 @@ body {
   position: relative;
 
   .informacion_left{
-    width: 350px;
+    width: 240px;
     height: 70%;
-    border: 5px solid rgb(5, 185, 59);
+    /* border: 5px solid rgb(5, 185, 59); */
     position: absolute;
     top: 0px;
     left: 0px;
@@ -100,6 +106,29 @@ body {
       height: 100px;
       background: gray;
       opacity: 0.8;
+      display: flex;
+      transform: translateZ();
+
+
+      .avatar{
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+
+        img{
+          width: 100%;
+        }
+      }
+
+      .estadisticas{
+        padding: 10px;
+        width: 140px;
+        border: 1px solid black;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        /* align-items: center; */
+      }
     }
   }
 
@@ -169,7 +198,7 @@ body {
   .p1 {
     position: absolute;
     top: 450px;
-    left: 350px;
+    left: 390px;
   }
   
   .p2 {
@@ -181,7 +210,7 @@ body {
   .p3 {
     position: absolute;
     top: 200px;
-    left: 450px;
+    left: 430px;
   }
 }
 
@@ -192,15 +221,48 @@ body {
   height: 100%;
 
   .informacion_right{
-    width: 200px;
-    height: 250px;
-    /* border: 1px solid black; */
+    width: 240px;
+    height: 70%;
+    /* border: 5px solid rgb(5, 185, 59); */
     position: absolute;
-    top: 200px;
-    right: 60px;
-    background: whitesmoke;
-    border-radius: 14px;
-    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    position: absolute;
+    top: 0px;
+    right: 0px;
+
+    .cartas_Info{
+      width: 100%;
+      border: 1px solid black;
+      height: 100px;
+      background: gray;
+      opacity: 0.8;
+      display: flex;
+      transform: translateZ();
+
+
+      .avatar{
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+
+        img{
+          width: 100%;
+        }
+      }
+
+      .estadisticas{
+        padding: 10px;
+        width: 130px;
+        border: 1px solid black;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        /* align-items: center; */
+      }
+    }
 
 
   }
@@ -243,21 +305,21 @@ body {
     position: absolute;
 
     top: 450px;
-    left: -50px;
+    left: -100px;
   }
 
   .p5 {
     position: absolute;
 
     top: 300px;
-    left: -0px;
+    left: -50px;
   }
 
   .p6 {
     position: absolute;
 
     top: 200px;
-    left: -100px;
+    left: -120px;
   }
 
   

@@ -26,12 +26,69 @@ escenarioright.appendChild(informacion_right);
 
 
  Juego.equipo1.forEach((personaje) => {
+
+    // crear cartas_Info
+
+    // const cartas_Info = document.createElement("div");
+    // cartas_Info.classList.add("cartas_Info", `personaje_${personaje.id}`);
+    // informacion_left.appendChild(cartas_Info);
+
+    // const avatar = document.createElement("div");
+    // avatar.classList.add("avatar");
+    // cartas_Info.appendChild(avatar);
+
+    // const estadisticas = document.createElement("div");
+    // estadisticas.classList.add("estadisticas");
+    // cartas_Info.appendChild(estadisticas);
+
+    // const avatar_img = document.createElement("img");
+    // avatar_img.src = `./players/${personaje.id}/Quieto.gif`;
+    // avatar.appendChild(avatar_img); 
+
+    // const atk = document.createElement("p");
+    // atk.classList.add("ataque");
+    // atk.textContent = `ATK:${personaje.ataque}`;
+
+
+    // const def = document.createElement("p");
+    // def.classList.add("defensa");
+    // def.textContent = `DEF:${personaje.defensa}`;
+
+
+    // const vida = document.createElement("p");
+    // vida.classList.add("vida");
+    // vida.textContent = `VIDA:${personaje.vida}/100`;
+
+    // estadisticas.appendChild(atk);
+    // estadisticas.appendChild(def);
+    // estadisticas.appendChild(vida);
+    
+
+
+
+
     // creando personajes en el escenario Left / 1
   
     const personaje1 = document.createElement("div");
     personaje1.classList.add("personaje", `p${personaje.id}`);
     escenarioLeft.appendChild(personaje1);
 
+
+    // crear barra de vida
+    const barra_vida = document.createElement("div");
+    barra_vida.classList.add("contenedor_barra_vida" , `personaje_${personaje.id}`);
+    personaje1.appendChild(barra_vida);
+    
+    const porcentajevida = document.createElement("span");
+    porcentajevida.classList.add("porcentajevida");
+    porcentajevida.setAttribute("style", `width: ${personaje.vida}%`);
+    barra_vida.appendChild(porcentajevida);
+    
+    const num_porcentaje = document.createElement("p");
+    num_porcentaje.classList.add("num_porcentaje");
+    num_porcentaje.textContent = `${personaje.vida} / 100`;
+    barra_vida.appendChild(num_porcentaje);
+    
 
     //idetifcador de turno
     const turno = document.createElement("div");
@@ -53,7 +110,6 @@ escenarioright.appendChild(informacion_right);
     personaje1.appendChild(personaje_Secundario);
   
     // Creacion imagen personaje principal
-  
   
     const imagen_personaje = document.createElement("img");
     imagen_personaje.src = `./players/${personaje.id}/Quieto.gif`;
@@ -127,11 +183,75 @@ escenarioright.appendChild(informacion_right);
  });
   
   Juego.equipo2.forEach((personaje) => {
+
+
+
+      // // crear cartas_Info
+      // const cartas_Info = document.createElement("div");
+      // cartas_Info.classList.add("cartas_Info", `personaje_${personaje.id}`);
+      // informacion_right.appendChild(cartas_Info);
+
+      
+      // const estadisticas = document.createElement("div");
+      // estadisticas.classList.add("estadisticas");
+      // cartas_Info.appendChild(estadisticas);
+      // const avatar = document.createElement("div");
+      // avatar.classList.add("avatar");
+      // cartas_Info.appendChild(avatar);
+
+      // const avatar_img = document.createElement("img");
+      // avatar_img.src = `./players/${personaje.id}/Quieto.gif`;
+      // avatar.appendChild(avatar_img); 
+  
+      // const atk = document.createElement("p");
+      // atk.classList.add("ataque");
+      // atk.textContent = `ATK:${personaje.ataque}`;
+  
+  
+      // const def = document.createElement("p");
+      // def.classList.add("defensa");
+      // def.textContent = `DEF:${personaje.defensa}`;
+  
+  
+      // const vida = document.createElement("p");
+      // vida.classList.add("vida");
+      // vida.textContent = `VIDA:${personaje.vida}/100`;
+  
+      // estadisticas.appendChild(atk);
+      // estadisticas.appendChild(def);  
+      // estadisticas.appendChild(vida); 
+
+
+
+
+
+
     // creando personajes en el escenario right / 1
   
     const personaje1 = document.createElement("div");
     personaje1.classList.add("personaje", `p${personaje.id}`);
     escenarioright.appendChild(personaje1);
+
+    // crear barra de vida
+    const barra_vida = document.createElement("div");
+    barra_vida.classList.add("contenedor_barra_vida" , `personaje_${personaje.id}`);
+    personaje1.appendChild(barra_vida);
+    
+    const porcentajevida = document.createElement("span");
+    porcentajevida.classList.add("porcentajevida");
+    porcentajevida.setAttribute("style", `width: ${personaje.vida}%`);
+    barra_vida.appendChild(porcentajevida);
+    
+    const num_porcentaje = document.createElement("p");
+    num_porcentaje.classList.add("num_porcentaje");
+    num_porcentaje.textContent = `${personaje.vida} / 100`;
+    barra_vida.appendChild(num_porcentaje);
+
+
+
+
+
+
   
     // Creacion personaje secundario
   
@@ -225,6 +345,49 @@ function actualizarInfomacionPersonajeActual() {
   defensaJugadorActual.textContent = `Defensa: ${Juego.personajeActual.defensa}`;
   habilidad1.textContent = Juego.personajeActual.habilidades[0].nombre;
   habilidad2.textContent = Juego.personajeActual.habilidades[1].nombre;
+
+
+  //Actualizar barra de vida equipo 
+   const barra_vida = document.querySelectorAll(".contenedor_barra_vida");
+   barra_vida.forEach((barra_vida) => {
+     Juego.equipo1.forEach((personaje) => {
+       // Verificamos si la barra de vida contiene la clase correspondiente al personaje
+       if (barra_vida.classList.contains(`personaje_${personaje.id}`)) {
+         // Seleccionamos los elementos dentro de la barra de vida actual
+         let porcentajevida = barra_vida.querySelector('.porcentajevida');
+         let num_porcentaje = barra_vida.querySelector('.num_porcentaje');
+         
+         // Actualizamos el contenido de texto con los valores del personaje
+         setTimeout(() => {
+           porcentajevida.setAttribute("style", `width: ${personaje.vida}%`);
+           num_porcentaje.textContent = `${personaje.vida} / 100`;
+         }, 1700);
+       }
+     });
+
+     Juego.equipo2.forEach((personaje) => {
+       // Verificamos si la barra de vida contiene la clase correspondiente al personaje
+       if (barra_vida.classList.contains(`personaje_${personaje.id}`)) {
+         // Seleccionamos los elementos dentro de la barra de vida actual
+         let porcentajevida = barra_vida.querySelector('.porcentajevida');
+         let num_porcentaje = barra_vida.querySelector('.num_porcentaje');
+         
+         // Actualizamos el contenido de texto con los valores del personaje
+         setTimeout(() => {                                                   
+           porcentajevida.setAttribute("style", `width: ${personaje.vida}%`);
+           num_porcentaje.textContent = `${personaje.vida} / 100`;
+         }, 1700);
+       }
+     });
+   });
+
+   //Actualizar barra de vida equipo 2
+   
+   
+
+  
+
+
 }
 
 
