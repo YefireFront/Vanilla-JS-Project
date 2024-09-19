@@ -6,13 +6,7 @@
 }
 
 body {
-  font-family: "Poppins", sans-serif;
-  background: #043247;
-  height: 100vh;
-  width: 100vw;
-}
-
-.esenario {
+ 
   width: 1300px;
   height: 610px;
   border: 1px solid red;
