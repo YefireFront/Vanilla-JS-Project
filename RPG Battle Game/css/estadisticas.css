@@ -1,3 +1,5 @@
+/* Barras de vida */
+
 .esenario__left {
     
     .contenedor_barra_vida{
@@ -67,5 +69,36 @@
         position: absolute;
         top: -12px;
         left: 130px;
+    }
+}
+
+
+
+/* Seccion de poderes */
+
+
+
+.esenario__left{
+    .seccion_poder{
+        width: 70%;
+        height: 50px;
+        border: 3px solid black;
+        position: absolute;
+        top: 10px;
+        left:0px ;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+
+
+
+        .poder{
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgb(98, 219, 120);
+            overflow: hidden;
+
+        }
     }
 }

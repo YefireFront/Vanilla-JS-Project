@@ -4,74 +4,26 @@ const body = document.querySelector("body");
 // selecioando escenario principal
 const esenario = document.querySelector(".esenario");
 
-// creando escenario Left / 1
-const escenarioLeft = document.createElement("div");
-escenarioLeft.classList.add("esenario__left");
-esenario.appendChild(escenarioLeft);
-
-//
-const informacion_left = document.createElement("div");
-informacion_left.classList.add("informacion_left")
-escenarioLeft.appendChild(informacion_left);
-
+// creando escenario 
+const Escenario_Equipo_1 = document.createElement("div");
+Escenario_Equipo_1.classList.add("esenario__left");
+esenario.appendChild(Escenario_Equipo_1);
 
 // creando escenario right  / 2
-const escenarioright = document.createElement("div");
-escenarioright.classList.add("esenario_right");
-esenario.appendChild(escenarioright);
+const Escenario_Equipo_2 = document.createElement("div");
+Escenario_Equipo_2.classList.add("esenario_right");
+esenario.appendChild(Escenario_Equipo_2);
 
-const informacion_right = document.createElement("div");
-informacion_right.classList.add("informacion_right")
-escenarioright.appendChild(informacion_right);
+
 
 
  Juego.equipo1.forEach((personaje) => {
-
-    // crear cartas_Info
-
-    // const cartas_Info = document.createElement("div");
-    // cartas_Info.classList.add("cartas_Info", `personaje_${personaje.id}`);
-    // informacion_left.appendChild(cartas_Info);
-
-    // const avatar = document.createElement("div");
-    // avatar.classList.add("avatar");
-    // cartas_Info.appendChild(avatar);
-
-    // const estadisticas = document.createElement("div");
-    // estadisticas.classList.add("estadisticas");
-    // cartas_Info.appendChild(estadisticas);
-
-    // const avatar_img = document.createElement("img");
-    // avatar_img.src = `./players/${personaje.id}/Quieto.gif`;
-    // avatar.appendChild(avatar_img); 
-
-    // const atk = document.createElement("p");
-    // atk.classList.add("ataque");
-    // atk.textContent = `ATK:${personaje.ataque}`;
-
-
-    // const def = document.createElement("p");
-    // def.classList.add("defensa");
-    // def.textContent = `DEF:${personaje.defensa}`;
-
-
-    // const vida = document.createElement("p");
-    // vida.classList.add("vida");
-    // vida.textContent = `VIDA:${personaje.vida}/100`;
-
-    // estadisticas.appendChild(atk);
-    // estadisticas.appendChild(def);
-    // estadisticas.appendChild(vida);
-    
-
-
-
 
     // creando personajes en el escenario Left / 1
   
     const personaje1 = document.createElement("div");
     personaje1.classList.add("personaje", `p${personaje.id}`);
-    escenarioLeft.appendChild(personaje1);
+    Escenario_Equipo_1.appendChild(personaje1);
 
 
     // crear barra de vida
@@ -88,6 +40,28 @@ escenarioright.appendChild(informacion_right);
     num_porcentaje.classList.add("num_porcentaje");
     num_porcentaje.textContent = `${personaje.vida} / 100`;
     barra_vida.appendChild(num_porcentaje);
+
+    // crear seccion poderes
+    const seccion_poder = document.createElement("div");
+    seccion_poder.classList.add("seccion_poder");
+    barra_vida.appendChild(seccion_poder);
+
+    const poder1 = document.createElement("div");
+    poder1.classList.add("poder", "poder1");
+    const imagen_poder = document.createElement("img");
+    imagen_poder.src = `./players/${personaje.id}/poderes/poder1.png`;
+    poder1.appendChild(imagen_poder);
+
+
+    const poder2 = document.createElement("div");
+    poder2.classList.add("poder", "poder2");
+    const imagen_poder2 = document.createElement("img");
+    imagen_poder2.src = `./players/${personaje.id}/poderes/poder2.png`;
+    poder2.appendChild(imagen_poder2);
+
+    seccion_poder.appendChild(poder1);
+    seccion_poder.appendChild(poder2);
+    
     
 
     //idetifcador de turno
@@ -168,15 +142,7 @@ escenarioright.appendChild(informacion_right);
   
     });
 
-    // imagen_personaje.addEventListener("mouseenter", (e) => {
-    //   informacion_left.classList.add("parpadeo");
-    //   informacion_left.textContent = personaje.nombre;
-    // });
-
-    // imagen_personaje.addEventListener("mouseleave", () => {
-    //   informacion_left.classList.remove("parpadeo");
-    // });
-
+ 
 
 
   
@@ -186,51 +152,12 @@ escenarioright.appendChild(informacion_right);
 
 
 
-      // // crear cartas_Info
-      // const cartas_Info = document.createElement("div");
-      // cartas_Info.classList.add("cartas_Info", `personaje_${personaje.id}`);
-      // informacion_right.appendChild(cartas_Info);
-
-      
-      // const estadisticas = document.createElement("div");
-      // estadisticas.classList.add("estadisticas");
-      // cartas_Info.appendChild(estadisticas);
-      // const avatar = document.createElement("div");
-      // avatar.classList.add("avatar");
-      // cartas_Info.appendChild(avatar);
-
-      // const avatar_img = document.createElement("img");
-      // avatar_img.src = `./players/${personaje.id}/Quieto.gif`;
-      // avatar.appendChild(avatar_img); 
-  
-      // const atk = document.createElement("p");
-      // atk.classList.add("ataque");
-      // atk.textContent = `ATK:${personaje.ataque}`;
-  
-  
-      // const def = document.createElement("p");
-      // def.classList.add("defensa");
-      // def.textContent = `DEF:${personaje.defensa}`;
-  
-  
-      // const vida = document.createElement("p");
-      // vida.classList.add("vida");
-      // vida.textContent = `VIDA:${personaje.vida}/100`;
-  
-      // estadisticas.appendChild(atk);
-      // estadisticas.appendChild(def);  
-      // estadisticas.appendChild(vida); 
-
-
-
-
-
 
     // creando personajes en el escenario right / 1
   
     const personaje1 = document.createElement("div");
     personaje1.classList.add("personaje", `p${personaje.id}`);
-    escenarioright.appendChild(personaje1);
+    Escenario_Equipo_2.appendChild(personaje1);
 
     // crear barra de vida
     const barra_vida = document.createElement("div");
@@ -246,8 +173,6 @@ escenarioright.appendChild(informacion_right);
     num_porcentaje.classList.add("num_porcentaje");
     num_porcentaje.textContent = `${personaje.vida} / 100`;
     barra_vida.appendChild(num_porcentaje);
-
-
 
 
 
