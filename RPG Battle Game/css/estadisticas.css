@@ -87,15 +87,20 @@
         display: flex;
         align-items: center;
         justify-content: space-evenly;
-
-
-
+        
+        
+        
         .poder{
             width: 40px;
             height: 40px;
             border-radius: 50%;
             background: rgb(98, 219, 120);
             overflow: hidden;
+            opacity: 0.8;
+    
+            &:hover{
+                opacity: 1;
+            }
 
         }
     }
@@ -120,6 +125,12 @@
             border-radius: 50%;
             background: rgb(98, 219, 201);
             overflow: hidden;
+            opacity: 0.8;
+    
+            &:hover{
+                opacity: 1;
+            }
+
         }
     }
 }

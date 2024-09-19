@@ -340,12 +340,19 @@ esenario.appendChild(Escenario_Equipo_2);
 
 
 function actualizarInfomacionPersonajeActual() {
-  nombreJugadorActual.textContent = Juego.personajeActual.nombre;
-  vidaJugadorActual.textContent = `Vida: ${Juego.personajeActual.vida}`;
-  ataqueJugadorActual.textContent = `Ataque: ${Juego.personajeActual.ataque}`;
-  defensaJugadorActual.textContent = `Defensa: ${Juego.personajeActual.defensa}`;
-  habilidad1.textContent = Juego.personajeActual.habilidades[0].nombre;
-  habilidad2.textContent = Juego.personajeActual.habilidades[1].nombre;
+  // nombreJugadorActual.textContent = Juego.personajeActual.nombre;
+  imagen_personaje.src = `./players/${Juego.personajeActual.id}/Quieto.gif`;
+  vidaJugadorActual.textContent =    `🖤 ${Juego.personajeActual.vida}`;
+  ataqueJugadorActual.textContent =  `⚔ ${Juego.personajeActual.ataque}`;
+  defensaJugadorActual.textContent = `🛡 ${Juego.personajeActual.defensa}`;
+
+  habilidad1.setAttribute("nombrePoder", Juego.personajeActual.habilidades[0].nombre);
+  habilidad2.setAttribute("nombrePoder", Juego.personajeActual.habilidades[1].nombre);
+  habilidadAtacar.setAttribute("nombrePoder", 'Atacar');
+  imagen_poder1.src = `./players/${ Juego.personajeActual.id}/poderes/poder1.png`;
+  imagen_poder2.src = `./players/${ Juego.personajeActual.id}/poderes/poder2.png`;
+
+
 
 
   //Actualizar barra de vida equipo 
@@ -394,45 +401,67 @@ function actualizarInfomacionPersonajeActual() {
 
 
 const informacion = document.createElement("div");
+  const imagen_personaje = document.createElement("img");
   const stats = document.createElement("div");
     const nombreJugadorActual = document.createElement("h2");
     const vidaJugadorActual = document.createElement("h2");
     const ataqueJugadorActual = document.createElement("h2");
     const defensaJugadorActual = document.createElement("h2");
-
+  
   const habilidades = document.createElement("div");
     const habilidadAtacar = document.createElement("button");
     const habilidad1 = document.createElement("button");
     const habilidad2 = document.createElement("button");
 
+    const imagen_poder1 = document.createElement("img");
+    const imagen_poder2 = document.createElement("img");
+    const imagen_atcar = document.createElement("img");
 
 
+  
+  
+  
+  
+  habilidades.classList.add("habilidades");
+  stats.classList.add("stats");
+  informacion.classList.add("informacion");
+  imagen_personaje.classList.add("imagen_personaje");
 
-habilidades.classList.add("habilidades");
-stats.classList.add("stats");
-informacion.classList.add("informacion");
-
-
-body.appendChild(informacion);
+  
+  
+esenario.appendChild(informacion);
+informacion.appendChild(imagen_personaje);
 informacion.appendChild(stats);
 stats.appendChild(nombreJugadorActual);
 stats.appendChild(vidaJugadorActual);
 stats.appendChild(ataqueJugadorActual);
 stats.appendChild(defensaJugadorActual);
 informacion.appendChild(habilidades);
-habilidades.appendChild(habilidadAtacar);
+habilidades.appendChild(habilidadAtacar)
 habilidades.appendChild(habilidad1);
 habilidades.appendChild(habilidad2);
+habilidadAtacar.appendChild(imagen_atcar);
+habilidad1.appendChild(imagen_poder1);
+habilidad2.appendChild(imagen_poder2);
 
 
 
-nombreJugadorActual.textContent = Juego.personajeActual.nombre;
-vidaJugadorActual.textContent = `Vida: ${Juego.personajeActual.vida}`;
-ataqueJugadorActual.textContent = `Ataque: ${Juego.personajeActual.ataque}`;
-defensaJugadorActual.textContent = `Defensa: ${Juego.personajeActual.defensa}`;
-habilidadAtacar.textContent = "Atacar";
-habilidad1.textContent = Juego.personajeActual.habilidades[0].nombre;
-habilidad2.textContent = Juego.personajeActual.habilidades[1].nombre;
+// nombreJugadorActual.textContent = Juego.personajeActual.nombre;
+imagen_personaje.src = `./players/${Juego.personajeActual.id}/Quieto.gif`;
+vidaJugadorActual.textContent =   `❤ ${Juego.personajeActual.vida}`;
+ataqueJugadorActual.textContent =  `⚔ ${Juego.personajeActual.ataque}`;
+defensaJugadorActual.textContent = `🛡 ${Juego.personajeActual.defensa}`;
+habilidad1.setAttribute("nombrePoder", Juego.personajeActual.habilidades[0].nombre);
+habilidad2.setAttribute("nombrePoder", Juego.personajeActual.habilidades[1].nombre);
+habilidadAtacar.setAttribute("nombrePoder", 'Atacar');
+// habilidadAtacar.textContent = "Atacar";
+// habilidad1.textContent = Juego.personajeActual.habilidades[0].nombre;
+// habilidad2.textContent = Juego.personajeActual.habilidades[1].nombre;
+imagen_atcar.src = `./players/condicion/Atacar.png`;
+imagen_poder1.src = `./players/${ Juego.personajeActual.id}/poderes/poder1.png`;
+imagen_poder2.src = `./players/${ Juego.personajeActual.id}/poderes/poder2.png`;
+
+
 
 
 
@@ -441,8 +470,9 @@ let habilidadSeleccionada = null
 
 
 function seleccionarHabilidad(habilidad, habilidadDesactivar1, habilidadDesactivar2 ) {
-  if (habilidadSeleccionada !== habilidad.textContent) {
-    habilidadSeleccionada = habilidad.textContent;
+  console.log(habilidad.getAttribute("nombrePoder"));
+  if (habilidad.getAttribute("nombrePoder") !== habilidad.textContent) {
+    habilidadSeleccionada = habilidad.getAttribute("nombrePoder");
     console.log(`Habilidad seleccionada: ${habilidadSeleccionada}`);
     habilidad.classList.add("boton_activo");
     habilidadDesactivar1.classList.remove("boton_activo");

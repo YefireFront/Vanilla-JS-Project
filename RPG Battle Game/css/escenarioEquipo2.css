@@ -1,0 +1,131 @@
+.esenario_right {
+    width: 50%;
+    /* border: 3px solid rgb(255, 0, 0); */
+    position: relative;
+    height: 100%;
+  
+    .informacion_right{
+      width: 240px;
+      height: 70%;
+      /* border: 5px solid rgb(5, 185, 59); */
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+  
+      position: absolute;
+      top: 0px;
+      right: 0px;
+  
+      .cartas_Info{
+        width: 100%;
+        border: 1px solid black;
+        height: 100px;
+        background: gray;
+        opacity: 0.8;
+        display: flex;
+        transform: translateZ();
+  
+  
+        .avatar{
+          width: 100px;
+          height: 100px;
+          border: 1px solid black;
+  
+          img{
+            width: 100%;
+          }
+        }
+  
+        .estadisticas{
+          padding: 10px;
+          width: 130px;
+          border: 1px solid black;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+          /* align-items: center; */
+        }
+      }
+  
+  
+    }
+  
+    
+    .personaje {
+      position: relative;
+      width: 400px;
+      display: flex;
+  
+        img {
+          width: 100%;
+          filter: blur(1.2px);
+          cursor: pointer;
+          /* border: 1px solid black; */
+        }
+    }
+  
+    .personaje_Principal {
+      /* border: 1px solid #1397b9; */
+      width: 150px;
+    }
+    
+    
+    .personaje_Secundario {
+      width: 200px;
+      /* border: 1px solid #c41010; */
+      position: relative;
+      left: 100px;
+  
+      img{
+        width: 100%;
+        filter: blur(1.2px);
+      }
+  
+    }
+  
+    
+    .p4 {
+      position: absolute;
+  
+      top: 450px;
+      left: -100px;
+    }
+  
+    .p5 {
+      position: absolute;
+  
+      top: 300px;
+      left: -50px;
+    }
+  
+    .p6 {
+      position: absolute;
+  
+      top: 190px;
+      left: -120px;
+    }
+  
+    
+    .shadow_right {
+      position: absolute;
+      bottom: 0;
+      left: 80%;
+      transform: translateX(-50%) rotateX(75deg);
+      width: 120px; /* ajusta para el tamaño de la sombra */
+      height: 75px; /* la mitad del ancho para mantener proporción */
+      background: radial-gradient(
+        ellipse at center,
+        rgba(0, 0, 0, 0.63),
+        transparent
+      );
+      background: radial-gradient(
+        ellipse at center,
+        rgba(0, 0, 0, 0.6),
+        transparent 70%
+      );
+      border-radius: 50%;
+  }
+  
+  } 
+  
