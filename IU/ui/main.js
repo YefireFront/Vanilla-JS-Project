@@ -80,16 +80,31 @@ escenarioright.appendChild(informacion_right);
 
       
       if (habilidadSeleccionada) {
-        if (habilidadSeleccionada === "Atacar" && Juego.personajeActual.Atacar(personaje)) {
-          Juego.personajeActual.Atacar(personaje); 
+        if (habilidadSeleccionada === "Atacar") {
+          let accionCompletada = Juego.personajeActual.Atacar(personaje); 
           habilidadSeleccionada = null;
-          animacionEquipo1( e.target, e.target.parentElement.nextElementSibling, );
-          desactivarBotones();
-        }else{
-          Juego.personajeActual.usarHabilidad(habilidadSeleccionada, personaje);
-          habilidadSeleccionada = null;
+
+          if (accionCompletada) {
+            animacionEquipo1( e.target, e.target.parentElement.nextElementSibling, );
+            desactivarBotones();
+          }
+          
           desactivarBotones();
 
+        }else{
+          desactivarBotones();
+        }
+
+        if (habilidadSeleccionada != null && habilidadSeleccionada != "Atacar") {
+          let accionCompletada= Juego.personajeActual.usarHabilidad(habilidadSeleccionada, personaje);
+          habilidadSeleccionada = null;
+
+          if (accionCompletada) {
+            animacionEquipo1( e.target, e.target.parentElement.nextElementSibling, );
+            desactivarBotones();
+          }
+          desactivarBotones();
+          
         }
       }
       
@@ -97,14 +112,14 @@ escenarioright.appendChild(informacion_right);
   
     });
 
-    imagen_personaje.addEventListener("mouseenter", (e) => {
-      informacion_left.classList.add("parpadeo");
-      informacion_left.textContent = personaje.nombre;
-    });
+    // imagen_personaje.addEventListener("mouseenter", (e) => {
+    //   informacion_left.classList.add("parpadeo");
+    //   informacion_left.textContent = personaje.nombre;
+    // });
 
-    imagen_personaje.addEventListener("mouseleave", () => {
-      informacion_left.classList.remove("parpadeo");
-    });
+    // imagen_personaje.addEventListener("mouseleave", () => {
+    //   informacion_left.classList.remove("parpadeo");
+    // });
 
 
 
@@ -166,17 +181,30 @@ escenarioright.appendChild(informacion_right);
 
       
       if (habilidadSeleccionada) {
-        if (habilidadSeleccionada === "Atacar" && Juego.personajeActual.Atacar(personaje)) {
-          Juego.personajeActual.Atacar(personaje);
+        if (habilidadSeleccionada === "Atacar") {
+          let accionCompletada = Juego.personajeActual.Atacar(personaje);
           habilidadSeleccionada = null;
-          animacionEquipo2( e.target, e.target.parentElement.previousElementSibling, );
-          desactivarBotones();
 
+          if (accionCompletada) {
+            animacionEquipo2( e.target, e.target.parentElement.previousElementSibling, );
+            desactivarBotones();
+          }
+
+          desactivarBotones();
 
         }else{
-          Juego.personajeActual.usarHabilidad(habilidadSeleccionada, personaje);
-          habilidadSeleccionada = null;
           desactivarBotones();
+        }
+
+        if (habilidadSeleccionada != null && habilidadSeleccionada != "Atacar") {
+          let accionCompletada = Juego.personajeActual.usarHabilidad(habilidadSeleccionada, personaje);
+          habilidadSeleccionada = null;
+
+          if (accionCompletada) {
+            animacionEquipo2( e.target, e.target.parentElement.previousElementSibling, );
+            desactivarBotones();
+          }
+          
         }
       }
       

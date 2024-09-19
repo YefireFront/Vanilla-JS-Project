@@ -7,6 +7,7 @@ class Juego {
   static estadoJuego = "inicial";
   static personajeActual = null;
   static PersonajeAnterior = null
+  static campoEfectos = [];
 
   static agregarPersonaje(equipo, personaje) {
     if (equipo === 1) {
@@ -96,6 +97,12 @@ class Juego {
       console.log("Equipo 1 ha ganado.");
     }
 
+  }
+
+
+  static MostrarvidadeLosPersonajes(){
+    console.log(`Equipo 1: ${this.equipo1.map((personaje) => `${personaje.nombre} (${personaje.vida})`).join(", ")}`);
+    console.log(`Equipo 2: ${this.equipo2.map((personaje) => `${personaje.nombre} (${personaje.vida})`).join(", ")}`);
   }
 
 }

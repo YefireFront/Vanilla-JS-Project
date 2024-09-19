@@ -295,6 +295,24 @@ body {
   
 
 }
+.thunder{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 320px;
+  /* mix-blend-mode: color-dodge; */
+  mix-blend-mode: screen;
+  /* height: 100%; */
+
+  video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+
+}
 
 
 

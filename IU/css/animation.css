@@ -93,30 +93,7 @@
   }
 }
 
-@keyframes colorFrio {
-  0% {
-    filter: none;
-  }
-  /* 100% { filter: bright ness(1.2) hue-rotate(200deg) saturate(0.8); } */
-  100% {
-    filter: bright ness(1.2) hue-rotate(180deg) saturate(0) contrast(1.5);
-  }
-}
 
-
-@keyframes slideAnimation {
-  0% {
-    transform: translateX(0%);
-  }
-
-  50% {
-    transform: translateX(-18%);
-  }
- 
-  100% {
-    transform: translateX(-0%);
-  }
-}
 
 @keyframes parpadeo{
   0%{
@@ -189,4 +166,40 @@
 
 .temblor{
   animation: temblor 0.1s linear  1.2s  infinite;
+}
+
+@keyframes fireEffect {
+  0% {
+    filter: brightness(100%) saturate(100%) hue-rotate(0deg) /*blur(0px);
+    /* transform: scale(1); */
+  }
+  20% {
+    filter: brightness(150%) saturate(200%) hue-rotate(-10deg) /*blur(1px);
+    /* transform: scale(1.02); */
+  }
+  40% {
+    filter: brightness(180%) saturate(250%) hue-rotate(10deg) /*blur(2px);
+    /* transform: scale(1.05); */
+  }
+  60% {
+    filter: brightness(220%) saturate(300%) hue-rotate(-15deg) /*blur(3px);
+    /* transform: scale(1.07); */
+  }
+  80% {
+    filter: brightness(180%) saturate(250%) hue-rotate(10deg) /*blur(2px);
+    /* transform: scale(1.05); */
+  }
+  100% {
+    filter: brightness(150%) saturate(200%) hue-rotate(0deg) /*blur(1px);
+    /* transform: scale(1); */
+  }
+}
+
+
+.burnEffect{
+  animation: fireEffect 1s linear  1.2s  infinite;
+}
+
+.fantasma{
+  animation: ghostEffect 1s linear  1.2s  infinite;
 }

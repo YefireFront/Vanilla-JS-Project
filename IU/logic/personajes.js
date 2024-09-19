@@ -18,51 +18,38 @@ class Personaje {
   
     //Validar si el ataque puede hacer daño
     if (objetivo.defensa < this.ataque) {
-
       if (objetivo.vida > 0) {
-
         if (this.equipo != objetivo.equipo) {
-          
           objetivo.vida -= (this.ataque - objetivo.defensa);
+          console.log(`${this.nombre} ha atacado a ${objetivo.nombre} por ${this.ataque - objetivo.defensa} de daño`);
+          Juego.cambiarTurno();
+          return true;
         }else{
-
-          console.log(this)
-          console.log(objetivo)
           console.log("No puede atacar a un aliado")
+          return false;
         }
-
+        
       }else{
-
         console.log(`No puedes atacar a un jugador muerto`)
+        return false;
       }
     }else{
-
-      console.log("No tienes suficiente fuerza para atacar a este personaje");
+      console.log("No tenias suficiente fuerza para herir a este personaje");
+      Juego.cambiarTurno();
+      return true;
     }
   
- 
 
 
-    if (this.equipo === objetivo.equipo) {
-
-      return false
-    }
-
-    if (objetivo.vida < 0) {
-      objetivo.vida = 0      
-      console.log(`${this.nombre} ha atacado a ${objetivo.nombre}. Vida restante: ${objetivo.vida}`);
-    }
-    
-    //Validar no atacar a un aliado
     
     
-    Juego.cambiarTurno();
-    return true
+
   }
 
   usarHabilidad(nombreHabilidad, objetivo) {
     //Extraer habilidad
     const habilidad = this.habilidades.find(habilidad => habilidad.nombre === nombreHabilidad);
+
     if (habilidad) {
 
       //Valoidar que si la habilidad es de daño y no se use en un aliado
@@ -72,16 +59,19 @@ class Personaje {
       }
 
       //vailidar si la habilidad esta en cooldown
-      if (habilidad.cooldownActual === 0) {
-        console.log(`esta `)
+      if (habilidad.cooldownActual > 0) {
+        console.log(`estas en cooldown. Espera ${habilidad.cooldownActual} turnos más.`);
+        return false;
       }
 
       //Activar la habilidad
       habilidad.activar(this, objetivo);
       Juego.cambiarTurno();
+      return true;
 
     } else {
       console.log("Habilidad no encontrada.");
+      return false;
     }
   }
 
@@ -106,8 +96,8 @@ class Gigant extends Personaje {
   constructor(nombre, ataque, defensa, velocidad) {
     super(nombre, ataque, defensa, velocidad);
     // this.habilidades.push(crearGolpeGigante());
-    this.habilidades.push(crearRugidoTerrenal());
-    this.habilidades.push(crearGolpeBorracho());
+    this.habilidades.push(crearLlamadoCeleste());
+    this.habilidades.push(crearArmadurarota());
 
   }
 }
@@ -115,16 +105,16 @@ class Gigant extends Personaje {
 class Pandawa extends Personaje {
   constructor(nombre, ataque, defensa, velocidad) {
     super(nombre, ataque, defensa, velocidad);
-    this.habilidades.push(crearGolpeBorracho());
-    this.habilidades.push(crearDanzaEmbriagante());
+    this.habilidades.push(crearPuñoFlamigero());
+    this.habilidades.push(crearAlmaBambu());
   }
 }
 
 class Thunder extends Personaje {
   constructor(nombre, ataque, defensa, velocidad) {
     super(nombre, ataque, defensa, velocidad);
-    this.habilidades.push(crearGolpeBorracho());
-    this.habilidades.push(crearDanzaEmbriagante());
+    this.habilidades.push(crear1000Volvios());
+    this.habilidades.push(crearCarga());
     // this.habilidades.push(crearTormentaElectrica());
     // this.habilidades.push(crearCargaRelampago());
   }
@@ -133,8 +123,8 @@ class Thunder extends Personaje {
 class Monje extends Personaje {
   constructor(nombre, ataque, defensa, velocidad) {
     super(nombre, ataque, defensa, velocidad);
-    this.habilidades.push(crearGolpeBorracho());
-    this.habilidades.push(crearDanzaEmbriagante());
+    this.habilidades.push(crearPalmaFuerza());
+    this.habilidades.push(crearMeditacion());
     // this.habilidades.push(crearMeditacion());
     // this.habilidades.push(crearPalmaFuerza());
   }
