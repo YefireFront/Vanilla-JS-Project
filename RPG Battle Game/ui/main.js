@@ -61,6 +61,33 @@ esenario.appendChild(Escenario_Equipo_2);
 
     seccion_poder.appendChild(poder1);
     seccion_poder.appendChild(poder2);
+
+    // crear seccion condicion
+    const seccion_condicion = document.createElement("div");
+    seccion_condicion.classList.add("seccion_condicion");
+    barra_vida.appendChild(seccion_condicion);
+
+    const condicion1 = document.createElement("div");
+    condicion1.classList.add("condicion", "condicion1");
+    const imagen_condicion = document.createElement("img");
+    imagen_condicion.src = `./players/${personaje.id}/condicion/condicion1.png`;
+    condicion1.appendChild(imagen_condicion);
+
+    const condicion2 = document.createElement("div");
+    condicion2.classList.add("condicion", "condicion2");
+    const imagen_condicion2 = document.createElement("img");
+    imagen_condicion2.src = `./players/${personaje.id}/condicion/condicion2.gif`;
+    condicion2.appendChild(imagen_condicion2);
+
+    const condicion3 = document.createElement("div");
+    condicion3.classList.add("condicion", "condicion3");
+    const imagen_condicion3 = document.createElement("img");
+    imagen_condicion3.src = `./players/${personaje.id}/condicion/condicion3.gif`;
+    condicion3.appendChild(imagen_condicion3);
+
+    seccion_condicion.appendChild(condicion1);
+    seccion_condicion.appendChild(condicion2);  
+    seccion_condicion.appendChild(condicion3);
     
     
 

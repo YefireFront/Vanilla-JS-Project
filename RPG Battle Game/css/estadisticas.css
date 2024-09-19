@@ -76,13 +76,11 @@
 
 /* Seccion de poderes */
 
-
-
 .esenario__left{
     .seccion_poder{
         width: 70%;
         height: 50px;
-        border: 3px solid black;
+        /* border: 3px solid black; */
         position: absolute;
         top: 10px;
         left:0px ;
@@ -100,5 +98,32 @@
             overflow: hidden;
 
         }
+    }
+}
+
+
+
+
+/* Seccion condicion */
+.esenario__left{
+    .seccion_condicion{
+        width: 70%;
+        height: 30px;
+        /* border: 1px solid black; */
+        position: absolute;
+        top: -30px;
+        left:60px ;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+    }
+
+
+    .condicion{
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        /* background: rgb(219, 98, 215); */
     }
 }
