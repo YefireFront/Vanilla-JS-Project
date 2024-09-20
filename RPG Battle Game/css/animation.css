@@ -93,8 +93,6 @@
   }
 }
 
-
-
 @keyframes parpadeo{
   0%{
     opacity: 1;
@@ -145,29 +143,6 @@
   }
 }
 
-
-
-.daño{
-  animation: daño 0.5s linear  1.2s  infinite, temblor 0.1s linear  1.2s  infinite;
-}
-
-.poisonEffect{
-  animation: poisonEffect 1s linear  1.2s  infinite;
-}
-
-.parpadeo{
-  animation: parpadeo .3s linear  1s  forwards;
-}
-
-
-.distortion{
-  animation: distortion .5s linear  1.2s  ;
-}
-
-.temblor{
-  animation: temblor 0.1s linear  1.2s  infinite;
-}
-
 @keyframes fireEffect {
   0% {
     filter: brightness(100%) saturate(100%) hue-rotate(0deg) /*blur(0px);
@@ -196,6 +171,30 @@
 }
 
 
+
+
+.daño{
+  animation: daño 0.5s linear  1.2s  infinite, temblor 0.1s linear  1.2s  infinite;
+}
+
+.poisonEffect{
+  animation: poisonEffect 1s linear  1.2s  infinite;
+}
+
+.parpadeo{
+  animation: parpadeo .3s linear  1s  forwards;
+}
+
+
+.distortion{
+  animation: distortion .5s linear  1.2s  ;
+}
+
+.temblor{
+  animation: temblor 0.1s linear  1.2s  infinite;
+}
+
+
 .burnEffect{
   animation: fireEffect 1s linear  1.2s  infinite;
 }
@@ -203,3 +202,4 @@
 .fantasma{
   animation: ghostEffect 1s linear  1.2s  infinite;
 }
+
