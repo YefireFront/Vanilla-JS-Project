@@ -393,7 +393,6 @@ habilidad2.addEventListener("mouseleave", (e) => {
 });
 
 
-
 habilidad1.addEventListener("click", () =>
   seleccionarHabilidad(habilidad1, habilidad2, habilidadAtacar)
 );

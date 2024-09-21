@@ -71,7 +71,7 @@ function crearMordidaToxica() {
     "Daño",
     "Inflige 15 de Daño y aplica veneno que causa 10 de Daño por turno durante 3 turnos.",
     (lanzador, objetivo) => {
-      objetivo.vida -= 910;
+      objetivo.vida -= 98;
       objetivo.debilitamiento.push(crearVeneno());
       console.log(`${lanzador.nombre} ha usado Mordida Tóxica en ${objetivo.nombre}. El objetivo está envenenado.`);
     },
