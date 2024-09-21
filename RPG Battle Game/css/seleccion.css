@@ -1,92 +1,93 @@
-.informacion{
-    width: 25%;
-    position: absolute;
-    bottom:0px;
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: column;
-    align-items: center;
+.informacion {
+  width: 25%;
+  position: absolute;
+  bottom: 0px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0.8;
+  z-index: 10;
+
+  .imagenPersonaje {
+    width: 100px;
+    height: 100px;
     opacity: 0.8;
-    z-index: 10;
-  
-    .imagen_personaje{
-      width: 100px;
-      height: 100px;
-      opacity: 0.8;
-      /* border: 1px solid black; */
-  
-      img{
-        width: 100%;
-      }
+    /* border: 1px solid black; */
+
+    img {
+      width: 100%;
     }
-  
-    .habilidades{
-      display: flex;
-      margin: 10px;
-      /* border: 1px solid black; */
+  }
+
+  .habilidades {
+    display: flex;
+    margin: 10px;
+    /* border: 1px solid black; */
+  }
+
+  .stats {
+    width: 80%;
+    /* border: 1px solid rgb(49, 134, 213); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    margin-top: 15px;
+  }
+
+  button {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border: 2px solid black;
+    border-image: linear-gradient(
+        45deg,
+        rgb(0, 0, 0),
+        rgb(255, 255, 255),
+        rgb(0, 0, 0),
+        rgb(255, 255, 255)
+      )
+      1;
+    background: #043247;
+    color: white;
+    font-size: 15px;
+    margin: 8px;
+    animation: rotate-border 1s linear infinite; /* Aplica la animación */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* overflow: hidden; */
+
+    img {
+      width: 95%;
     }
-    
-    .stats{
-      width: 80%;
-      /* border: 1px solid rgb(49, 134, 213); */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 12px;
-      margin-top: 15px;
-    }
-  
-    button{
-      position: relative;
-      width: 80px;
-      height: 80px;
-      border: 2px solid black;
-      border-image: linear-gradient(45deg, rgb(0, 0, 0), rgb(255, 255, 255), rgb(0, 0, 0), rgb(255, 255, 255)) 1;
-      background:#043247;
-      color: white;
-      font-size: 15px;
-      margin: 8px;
-      animation: rotate-border 1s linear infinite; /* Aplica la animación */
-      display: flex;
-      justify-content: center;align-items: center;
-      /* overflow: hidden; */
-  
-      img{
-        width: 95%;
-      }
-  
-      &:hover{
-        background: #09586b;
-        cursor: pointer;
-        transform: scale(1.03);
-      }
-      
-      
-    }
-    
-    .boton_activo{
+
+    &:hover {
       background: #09586b;
-      /* overflow: hidden; */
       cursor: pointer;
-      box-shadow: 1px 1px 4px 8px rgba(245,255,110,0.79);
-      border: none;
+      transform: scale(1.03);
     }
-  
-  
-  }
-  
-  .informacion_equipo1{
-    left: 0px;
-
   }
 
-  .informacion_equipo2{
-    right: 0px;
+  .boton_activo {
+    background: #09586b;
+    /* overflow: hidden; */
+    cursor: pointer;
+    box-shadow: 1px 1px 4px 8px rgba(245, 255, 110, 0.79);
+    border: none;
   }
+}
 
+.informacion_equipo1 {
+  left: 0px;
+}
 
+.informacion_equipo2 {
+  right: 0px;
+}
 
-.imagen_cooldown{
+.imagen_cooldown {
   width: 100%;
   position: absolute;
   z-index: 10;
@@ -95,7 +96,7 @@
   filter: blur(1.2px);
 }
 
-.cooldown{
+.cooldown {
   position: absolute;
   top: 0;
   left: 0;
@@ -108,20 +109,19 @@
   align-items: center;
   font-size: 36px;
   font-weight: bold;
-  
+
   background: transparent;
   backdrop-filter: blur(30px);
   background-image: linear-gradient(
     120deg,
     rgba(255, 255, 255, 0.348) 0%,
     rgba(0, 0, 0, 0.2) 100%
-  ) ;
+  );
 }
 
-
-.detalle_poder{
+.detalle_poder {
   width: 60%;
-  height:120px;
+  height: 120px;
   border: 1px solid black;
   position: absolute;
   top: -110px;
@@ -135,27 +135,25 @@
   border-radius: 12px;
 }
 
-.descripcion_poder_equipo1{
+.descripcion_poder_equipo1 {
   left: 60px;
-
 }
-.descripcion_poder_equipo2{
+.descripcion_poder_equipo2 {
   left: 90px;
 }
 
-.nombre_poder{
-  font-size: 16px;  
+.nombre_poder {
+  font-size: 16px;
   color: white;
 }
 
-.descripcion_poder{
-
+.descripcion_poder {
   font-size: 12px;
   color: rgb(218, 227, 150);
   text-align: center;
 }
 
-.descripcion_tiempo{
+.descripcion_tiempo {
   font-size: 12px;
   color: rgb(28, 198, 20);
 }

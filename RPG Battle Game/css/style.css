@@ -27,79 +27,67 @@ body {
   align-items: center;
   overflow: hidden;
 
-  .backGround{
+  .backGround {
     width: 900px;
-    height:325px;
+    height: 325px;
     position: absolute;
     /* border: 2px solid black ; */
     top: 0;
     overflow: hidden;
     display: flex;
-  
-  
-    .poderes{
+
+    .poderes {
       width: 55%;
       height: 100%;
       /* border: 2px solid red; */
       display: flex;
       justify-content: center;
       align-items: start;
-  
-      div{
+
+      div {
         width: 150px;
         height: 200px;
         /* border: 2px solid blue; */
-        margin: 10px 5px 0 10px ;
+        margin: 10px 5px 0 10px;
         z-index: 1;
         cursor: pointer;
-  
-        img{
+
+        img {
           width: 100%;
           height: 100%;
           opacity: 0.8;
         }
       }
-      
     }
-    
-    
-    .imagen{
+
+    .imagen {
       width: 45%;
       height: 100%;
       /* border: 2px solid rgb(31, 207, 60); */
-  
-      img{
+
+      img {
         width: 100%;
         height: 100%;
         opacity: 0.5;
         animation: slideAnimation 50s linear infinite;
       }
-  
     }
   }
-  
-
- 
 }
 
-
-
-.snow{
+.snow {
   position: absolute;
   top: 0;
   left: 0;
   mix-blend-mode: screen;
 
-  video{
+  video {
     width: 100%;
     object-fit: cover;
   }
-  
-
 }
 
-
-.thunder{
+.thunder {
   position: absolute;
   top: 0;
   left: 0;
@@ -109,20 +97,14 @@ body {
   mix-blend-mode: screen;
   /* height: 100%; */
 
-  video{
+  video {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
-  
-
 }
 
-
-
-
-
-.turno{
+.turno {
   /* border-bottom: 2px solid goldenrod; */
   position: absolute;
   width: 70px;
@@ -132,16 +114,15 @@ body {
   z-index: 100;
   /* border-radius: 20px 20px 60px 50px; */
 
-  img{
+  img {
     width: 100%;
   }
 }
 
-.turno_izquierda{
+.turnoEquipo1 {
   left: 25px;
 }
 
-.turno_derecha{
-left: 380px;
+.turnoEquipo2 {
+  left: 380px;
 }
-

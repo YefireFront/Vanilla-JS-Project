@@ -1,188 +1,166 @@
 /* Barras de vida */
 
-.esenario__left {
-    
-    .contenedor_barra_vida{
-        position: absolute;
-        top: 10px;
-        left: -100px;
-        width: 52%;
-        height: 10px;
-        background: rgb(135, 135, 135);
-        border: 0.5px solid black;
-        border-radius: 10px;
-        opacity: 0.8;
-        
-    }
-    
-    .porcentajevida{
-        position: absolute;
-        top: 0;
-        border-radius: 10px;
-        left: 0;
-        width: 50%;
-        height: 100%;
-        background: rgb(98, 219, 120);
-        transition: width  0.6s ease-in-out;
-        
-    }
-    
-    .num_porcentaje{
-        color: white;
-        font-size: 14px;
-        position: absolute;
-        top: -12px;
-    
-    }
+.esenarioEquipo1 {
+  .contenedor_barraVida {
+    position: absolute;
+    top: 10px;
+    left: -100px;
+    width: 52%;
+    height: 10px;
+    background: rgb(135, 135, 135);
+    border: 0.5px solid black;
+    border-radius: 10px;
+    opacity: 0.8;
+  }
 
+  .porcentajeVida {
+    position: absolute;
+    top: 0;
+    border-radius: 10px;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: rgb(98, 219, 120);
+    transition: width 0.6s ease-in-out;
+  }
+
+  .numeroPorcentaje {
+    color: white;
+    font-size: 14px;
+    position: absolute;
+    top: -12px;
+  }
 }
-
 
 .esenario_right {
-    .contenedor_barra_vida{
-        position: absolute;
-        top: 20px;
-        left: 320px;
-        width: 50%;
-        height: 10px;
-        background: rgb(135, 135, 135);
-        border: 0.5px solid black;
-        border-radius: 10px;
-        opacity: 0.8;
-        transform-origin: right
-        
-    }
+  .contenedor_barraVida {
+    position: absolute;
+    top: 20px;
+    left: 320px;
+    width: 50%;
+    height: 10px;
+    background: rgb(135, 135, 135);
+    border: 0.5px solid black;
+    border-radius: 10px;
+    opacity: 0.8;
+    transform-origin: right;
+  }
 
-    .porcentajevida{
-        position: absolute;
-        top: 0px;
-        right: 0;
-        width: 50%;
-        height: 100%;
-        background: rgb(98, 219, 201);
-        transition: width  0.6s ease-in-out;
-        transform-origin: right;
-        
-    }
+  .porcentajeVida {
+    position: absolute;
+    top: 0px;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: rgb(98, 219, 201);
+    transition: width 0.6s ease-in-out;
+    transform-origin: right;
+  }
 
-    .num_porcentaje{
-        color: white;
-        font-size: 14px;
-        position: absolute;
-        top: -12px;
-        left: 130px;
-    }
+  .numeroPorcentaje {
+    color: white;
+    font-size: 14px;
+    position: absolute;
+    top: -12px;
+    left: 130px;
+  }
 }
-
-
 
 /* Seccion de poderes */
 
-.esenario__left{
-    .seccion_poder{
-        width: 70%;
-        height: 50px;
-        /* border: 3px solid black; */
-        position: absolute;
-        top: 10px;
-        left:0px ;
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        
-        
-        
-        .poder{
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgb(98, 219, 120);
-            overflow: hidden;
-            opacity: 0.8;
-    
-            &:hover{
-                opacity: 1;
-            }
+.esenarioEquipo1 {
+  .seccionPoder {
+    width: 70%;
+    height: 50px;
+    /* border: 3px solid black; */
+    position: absolute;
+    top: 10px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 
-        }
+    .poder {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgb(98, 219, 120);
+      overflow: hidden;
+      opacity: 0.8;
+
+      &:hover {
+        opacity: 1;
+      }
     }
+  }
 }
 
+.esenario_right {
+  .seccionPoder {
+    width: 70%;
+    height: 50px;
+    /* border:1px solid black; */
+    position: absolute;
+    top: 10px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 
-.esenario_right{
-    .seccion_poder{
-        width: 70%;
-        height: 50px;
-        /* border:1px solid black; */
-        position: absolute;
-        top: 10px;
-        left:0px ;
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
+    .poder {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgb(98, 219, 201);
+      overflow: hidden;
+      opacity: 0.8;
 
-        .poder{
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgb(98, 219, 201);
-            overflow: hidden;
-            opacity: 0.8;
-    
-            &:hover{
-                opacity: 1;
-            }
-
-        }
+      &:hover {
+        opacity: 1;
+      }
     }
+  }
 }
-
-
 
 /* Seccion condicion */
-.esenario__left{
-    .seccion_condicion{
-        width: auto;
-        /* border: 1px solid black; */
-        position: absolute;
-        top: -50px;
-        left: 0px ;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+.esenarioEquipo1 {
+  .seccionCondicion {
+    width: auto;
+    /* border: 1px solid black; */
+    position: absolute;
+    top: -50px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-    }
-
-
-    .condicion{
-        width: 30px;
-        border-radius: 50%;
-        overflow: hidden;
-        /* background: rgb(219, 98, 215); */
-    }
+  .condicion {
+    width: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+    /* background: rgb(219, 98, 215); */
+  }
 }
 
+.esenario_right {
+  .seccionCondicion {
+    width: auto;
+    height: 30px;
+    /* border: 1px solid black; */
+    position: absolute;
+    top: -30px;
+    left: -10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-
-.esenario_right{
-    .seccion_condicion{
-        width: auto;
-        height: 30px;
-        /* border: 1px solid black; */
-        position: absolute;
-        top: -30px;
-        left: -10px ;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-    }
-
-    .condicion{
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        overflow: hidden;
-        /* background: rgb(219, 98, 215); */
-    }   
+  .condicion {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+    /* background: rgb(219, 98, 215); */
+  }
 }

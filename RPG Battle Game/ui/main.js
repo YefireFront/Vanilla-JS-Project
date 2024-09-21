@@ -4,17 +4,14 @@ const body = document.querySelector("body");
 // selecioando escenario principal
 const esenario = document.querySelector(".esenario");
 
-// creando escenario
-const Escenario_Equipo_1 = document.createElement("div");
-Escenario_Equipo_1.classList.add("esenario__left");
-esenario.appendChild(Escenario_Equipo_1);
+// creando escenario equipo 1
+const escenarioEquipo1 = document.querySelector(".esenarioEquipo1");
+
+// creando escenario equipo 2
+const escenarioEquipo2 = document.querySelector(".esenario_right");
 
 // creando escenario right  / 2
-const Escenario_Equipo_2 = document.createElement("div");
-Escenario_Equipo_2.classList.add("esenario_right");
-esenario.appendChild(Escenario_Equipo_2);
 
-let personajeatacante = null;
 let habilidadSeleccionada = null;
 
 Juego.equipo1.forEach((personaje) => {
@@ -22,114 +19,111 @@ Juego.equipo1.forEach((personaje) => {
 
   const personaje1 = document.createElement("div");
   personaje1.classList.add("personaje", `p${personaje.id}`);
-  Escenario_Equipo_1.appendChild(personaje1);
+  escenarioEquipo1.appendChild(personaje1);
 
   // crear barra de vida
-  const barra_vida = document.createElement("div");
-  barra_vida.classList.add(
-    "contenedor_barra_vida",
-    `personaje_${personaje.id}`
-  );
-  personaje1.appendChild(barra_vida);
+  const barraVida = document.createElement("div");
+  barraVida.classList.add("contenedor_barraVida", `personaje_${personaje.id}`);
+  personaje1.appendChild(barraVida);
 
-  const porcentajevida = document.createElement("span");
-  porcentajevida.classList.add("porcentajevida");
-  porcentajevida.setAttribute("style", `width: ${personaje.vida}%`);
-  barra_vida.appendChild(porcentajevida);
+  const porcentajeVida = document.createElement("span");
+  porcentajeVida.classList.add("porcentajeVida");
+  porcentajeVida.setAttribute("style", `width: ${personaje.vida}%`);
+  barraVida.appendChild(porcentajeVida);
 
-  const num_porcentaje = document.createElement("p");
-  num_porcentaje.classList.add("num_porcentaje");
-  num_porcentaje.textContent = `${personaje.vida} / 100`;
-  barra_vida.appendChild(num_porcentaje);
+  const numeroPorcentaje = document.createElement("p");
+  numeroPorcentaje.classList.add("numeroPorcentaje");
+  numeroPorcentaje.textContent = `${personaje.vida} / 100`;
+  barraVida.appendChild(numeroPorcentaje);
 
   // crear seccion poderes
-  const seccion_poder = document.createElement("div");
-  seccion_poder.classList.add("seccion_poder");
-  barra_vida.appendChild(seccion_poder);
+  const seccionPoder = document.createElement("div");
+  seccionPoder.classList.add("seccionPoder");
+  barraVida.appendChild(seccionPoder);
 
   const poder1 = document.createElement("div");
   poder1.classList.add("poder", "poder1");
-  const imagen_poder = document.createElement("img");
-  imagen_poder.src = `./players/${personaje.id}/poderes/poder1.png`;
-  poder1.appendChild(imagen_poder);
+  const imagenPoder = document.createElement("img");
+  imagenPoder.src = `./players/${personaje.id}/poderes/poder1.png`;
+  poder1.appendChild(imagenPoder);
 
   const poder2 = document.createElement("div");
   poder2.classList.add("poder", "poder2");
-  const imagen_poder2 = document.createElement("img");
-  imagen_poder2.src = `./players/${personaje.id}/poderes/poder2.png`;
-  poder2.appendChild(imagen_poder2);
+  const imagenPoder2 = document.createElement("img");
+  imagenPoder2.src = `./players/${personaje.id}/poderes/poder2.png`;
+  poder2.appendChild(imagenPoder2);
 
-  // seccion_poder.appendChild(poder1);
-  // seccion_poder.appendChild(poder2);
+  // seccionPoder.appendChild(poder1);
+  // seccionPoder.appendChild(poder2);
 
   // crear seccion condicion
-  const seccion_condicion = document.createElement("div");
-  seccion_condicion.classList.add("seccion_condicion");
-  barra_vida.appendChild(seccion_condicion);
+  const seccionCondicion = document.createElement("div");
+  seccionCondicion.classList.add("seccionCondicion");
+  barraVida.appendChild(seccionCondicion);
 
   const condicion1 = document.createElement("div");
   condicion1.classList.add("condicion", "condicion1");
-  const imagen_condicion = document.createElement("img");
-  imagen_condicion.src = `./players/condicion/condicion1.gif`;
-  condicion1.appendChild(imagen_condicion);
+  const imagenCondicion = document.createElement("img");
+  imagenCondicion.src = `./players/condicion/condicion1.gif`;
+  condicion1.appendChild(imagenCondicion);
 
   const condicion2 = document.createElement("div");
   condicion2.classList.add("condicion", "condicion2");
-  const imagen_condicion2 = document.createElement("img");
-  imagen_condicion2.src = `./players/condicion/condicion2.gif`;
-  condicion2.appendChild(imagen_condicion2);
+  const imagenCondicion2 = document.createElement("img");
+  imagenCondicion2.src = `./players/condicion/condicion2.gif`;
+  condicion2.appendChild(imagenCondicion2);
 
   const condicion3 = document.createElement("div");
   condicion3.classList.add("condicion", "condicion3");
-  const imagen_condicion3 = document.createElement("img");
-  imagen_condicion3.src = `./players/condicion/condicion3.gif`;
-  condicion3.appendChild(imagen_condicion3);
+  const imagenCondicion3 = document.createElement("img");
+  imagenCondicion3.src = `./players/condicion/condicion3.gif`;
+  condicion3.appendChild(imagenCondicion3);
 
-  // seccion_condicion.appendChild(condicion1);
-  // seccion_condicion.appendChild(condicion2);
-  // seccion_condicion.appendChild(condicion3);
+  // seccionCondicion.appendChild(condicion1);
+  // seccionCondicion.appendChild(condicion2);
+  // seccionCondicion.appendChild(condicion3);
 
   //idetifcador de turno
   const turno = document.createElement("div");
-  turno.classList.add("turno", "turno_izquierda");
+  turno.classList.add("turno", "turnoEquipo1");
   personaje1.appendChild(turno);
 
-  const imagen_turno = document.createElement("img");
-  imagen_turno.src = `./players/condicion/puño.gif`;
-  turno.appendChild(imagen_turno);
+  const imagenTurno = document.createElement("img");
+  imagenTurno.src = `./players/condicion/puño.gif`;
+  turno.appendChild(imagenTurno);
 
   // Creacion personaje principal
-  const peronaje_principal = document.createElement("div");
-  peronaje_principal.classList.add("personaje_Principal");
-  peronaje_principal.id = personaje.id;
-  personaje1.appendChild(peronaje_principal);
+  const peronajePrincipal = document.createElement("div");
+  peronajePrincipal.classList.add("personaje_Principal");
+  peronajePrincipal.id = personaje.id;
+  personaje1.appendChild(peronajePrincipal);
 
   // Creacion personaje secundario
 
-  const personaje_Secundario = document.createElement("div");
-  personaje_Secundario.classList.add("personaje_Secundario");
-  personaje1.appendChild(personaje_Secundario);
+  const personajeSecundario = document.createElement("div");
+  personajeSecundario.classList.add("personajeSecundario");
+  personaje1.appendChild(personajeSecundario);
 
   // Creacion imagen personaje principal
 
-  const imagen_personaje = document.createElement("img");
-  imagen_personaje.src = `./players/${personaje.id}/Quieto.gif`;
-  peronaje_principal.appendChild(imagen_personaje);
+  const imagenPersonaje = document.createElement("img");
+  imagenPersonaje.src = `./players/${personaje.id}/Quieto.gif`;
+  peronajePrincipal.appendChild(imagenPersonaje);
 
   // creacion sombra
   // const Shadow = document.createElement("div");
   // Shadow.classList.add("shadow_left");
-  // peronaje_principal.appendChild(Shadow);
+  // peronajePrincipal.appendChild(Shadow);
 
   // Creacion personaje secundario
-  const peronaje_secundario = document.createElement("div");
-  peronaje_secundario.classList.add("personaje_Secundario");
+  const peronajeSecundario = document.createElement("div");
+  peronajeSecundario.classList.add("personajeSecundario");
 
   //crear imagen personaje secundario
-  const imagen_personaje_secundario = document.createElement("img");
-  personaje_Secundario.appendChild(imagen_personaje_secundario);
+  const imagenPersonajeSecundario = document.createElement("img");
+  personajeSecundario.appendChild(imagenPersonajeSecundario);
 
-  imagen_personaje.addEventListener("click", (e) => {
+  imagenPersonaje.addEventListener("click", (e) => {
     const idPersonaje = e.target.parentElement.id;
     const personaje = Juego.equipo1.find(
       (personaje) => personaje.id == idPersonaje
@@ -172,112 +166,109 @@ Juego.equipo2.forEach((personaje) => {
 
   const personaje1 = document.createElement("div");
   personaje1.classList.add("personaje", `p${personaje.id}`);
-  Escenario_Equipo_2.appendChild(personaje1);
+  escenarioEquipo2.appendChild(personaje1);
 
   // crear barra de vida
-  const barra_vida = document.createElement("div");
-  barra_vida.classList.add(
-    "contenedor_barra_vida",
-    `personaje_${personaje.id}`
-  );
-  personaje1.appendChild(barra_vida);
+  const barraVida = document.createElement("div");
+  barraVida.classList.add("contenedor_barraVida", `personaje_${personaje.id}`);
+  personaje1.appendChild(barraVida);
 
-  const porcentajevida = document.createElement("span");
-  porcentajevida.classList.add("porcentajevida");
-  porcentajevida.setAttribute("style", `width: ${personaje.vida}%`);
-  barra_vida.appendChild(porcentajevida);
+  const porcentajeVida = document.createElement("span");
+  porcentajeVida.classList.add("porcentajeVida");
+  porcentajeVida.setAttribute("style", `width: ${personaje.vida}%`);
+  barraVida.appendChild(porcentajeVida);
 
-  const num_porcentaje = document.createElement("p");
-  num_porcentaje.classList.add("num_porcentaje");
-  num_porcentaje.textContent = `${personaje.vida} / 100`;
-  barra_vida.appendChild(num_porcentaje);
+  const numeroPorcentaje = document.createElement("p");
+  numeroPorcentaje.classList.add("numeroPorcentaje");
+  numeroPorcentaje.textContent = `${personaje.vida} / 100`;
+  barraVida.appendChild(numeroPorcentaje);
 
   // crear seccion poderes
-  const seccion_poder = document.createElement("div");
-  seccion_poder.classList.add("seccion_poder");
-  barra_vida.appendChild(seccion_poder);
+  const seccionPoder = document.createElement("div");
+  seccionPoder.classList.add("seccionPoder");
+  barraVida.appendChild(seccionPoder);
 
   const poder1 = document.createElement("div");
   poder1.classList.add("poder", "poder1");
-  const imagen_poder = document.createElement("img");
-  imagen_poder.src = `./players/${personaje.id}/poderes/poder1.png`;
-  poder1.appendChild(imagen_poder);
+  const imagenPoder = document.createElement("img");
+  imagenPoder.src = `./players/${personaje.id}/poderes/poder1.png`;
+  poder1.appendChild(imagenPoder);
 
   const poder2 = document.createElement("div");
   poder2.classList.add("poder", "poder2");
-  const imagen_poder2 = document.createElement("img");
-  imagen_poder2.src = `./players/${personaje.id}/poderes/poder2.png`;
-  poder2.appendChild(imagen_poder2);
+  const imagenPoder2 = document.createElement("img");
+  imagenPoder2.src = `./players/${personaje.id}/poderes/poder2.png`;
+  poder2.appendChild(imagenPoder2);
 
-  // seccion_poder.appendChild(poder1);
-  // seccion_poder.appendChild(poder2);
+  // seccionPoder.appendChild(poder1);
+  // seccionPoder.appendChild(poder2);
 
   // crear seccion condicion
-  const seccion_condicion = document.createElement("div");
-  seccion_condicion.classList.add("seccion_condicion");
-  barra_vida.appendChild(seccion_condicion);
+  const seccionCondicion = document.createElement("div");
+  seccionCondicion.classList.add("seccionCondicion");
+  barraVida.appendChild(seccionCondicion);
 
   const condicion1 = document.createElement("div");
   condicion1.classList.add("condicion", "condicion1");
-  const imagen_condicion = document.createElement("img");
-  imagen_condicion.src = `./players/condicion/condicion1.gif`;
-  condicion1.appendChild(imagen_condicion);
+  const imagenCondicion = document.createElement("img");
+  imagenCondicion.src = `./players/condicion/condicion1.gif`;
+  condicion1.appendChild(imagenCondicion);
 
   const condicion2 = document.createElement("div");
   condicion2.classList.add("condicion", "condicion2");
-  const imagen_condicion2 = document.createElement("img");
-  imagen_condicion2.src = `./players/condicion/condicion2.gif`;
-  condicion2.appendChild(imagen_condicion2);
+  const imagenCondicion2 = document.createElement("img");
+  imagenCondicion2.src = `./players/condicion/condicion2.gif`;
+  condicion2.appendChild(imagenCondicion2);
 
   const condicion3 = document.createElement("div");
   condicion3.classList.add("condicion", "condicion3");
-  const imagen_condicion3 = document.createElement("img");
-  imagen_condicion3.src = `./players/condicion/condicion3.gif`;
-  condicion3.appendChild(imagen_condicion3);
+  const imagenCondicion3 = document.createElement("img");
+  imagenCondicion3.src = `./players/condicion/condicion3.gif`;
+  condicion3.appendChild(imagenCondicion3);
 
-  // seccion_condicion.appendChild(condicion1);
-  // seccion_condicion.appendChild(condicion2);
-  // seccion_condicion.appendChild(condicion3);
+  // seccionCondicion.appendChild(condicion1);
+  // seccionCondicion.appendChild(condicion2);
+  // seccionCondicion.appendChild(condicion3);
 
   // Creacion personaje secundario
 
-  const personaje_Secundario = document.createElement("div");
-  personaje_Secundario.classList.add("personaje_Secundario");
-  personaje1.appendChild(personaje_Secundario);
+  const personajeSecundario = document.createElement("div");
+  personajeSecundario.classList.add("personajeSecundario");
+  personaje1.appendChild(personajeSecundario);
 
   // Creacion personaje principal
-  const peronaje_principal = document.createElement("div");
-  peronaje_principal.classList.add("personaje_Principal");
-  peronaje_principal.id = personaje.id;
-  personaje1.appendChild(peronaje_principal);
+  const peronajePrincipal = document.createElement("div");
+  peronajePrincipal.classList.add("personaje_Principal");
+  peronajePrincipal.id = personaje.id;
+  personaje1.appendChild(peronajePrincipal);
 
   //idetifcador de turno
   const turno = document.createElement("div");
-  turno.classList.add("turno", "turno_derecha");
+  turno.classList.add("turno", "turnoEquipo2");
   personaje1.appendChild(turno);
 
-  const imagen_turno = document.createElement("img");
-  imagen_turno.src = `./players/condicion/puño.gif`;
-  turno.appendChild(imagen_turno);
+  const imagenTurno = document.createElement("img");
+  imagenTurno.src = `./players/condicion/puño.gif`;
+  turno.appendChild(imagenTurno);
 
   //crear imagen personaje secundario
-  const imagen_personaje_secundario = document.createElement("img");
-  personaje_Secundario.appendChild(imagen_personaje_secundario);
+  const imagenPersonajeSecundario = document.createElement("img");
+  personajeSecundario.appendChild(imagenPersonajeSecundario);
 
   //crear imagen personaje principal
-  const imagen_personaje = document.createElement("img");
-  imagen_personaje.src = `./players/${personaje.id}/Quieto.gif`;
-  peronaje_principal.appendChild(imagen_personaje);
+  const imagenPersonaje = document.createElement("img");
+  imagenPersonaje.src = `./players/${personaje.id}/Quieto.gif`;
+  peronajePrincipal.appendChild(imagenPersonaje);
 
   // const Shadow = document.createElement("div");
   // Shadow.classList.add("shadow_right");
-  // peronaje_principal.appendChild(Shadow);
+  // peronajePrincipal.appendChild(Shadow);
 
   // Creacion personaje secundario
-  const peronaje_secundario = document.createElement("div");
-  peronaje_secundario.classList.add("personaje_Secundario");
+  const peronajeSecundario = document.createElement("div");
+  peronajeSecundario.classList.add("personajeSecundario");
 
-  imagen_personaje.addEventListener("click", (e) => {
+  imagenPersonaje.addEventListener("click", (e) => {
     const idPersonaje = e.target.parentElement.id;
     const personaje = Juego.equipo2.find(
       (personaje) => personaje.id == idPersonaje
@@ -320,48 +311,59 @@ Juego.equipo2.forEach((personaje) => {
   });
 });
 
-
-
+//Seleccionanasdo contenedor de habilidades
 const informacion = document.querySelector(".informacion");
 const habilidades = document.querySelector(".habilidades");
-
+//Seleccionando botones de habilidades
 const habilidadAtacar = document.querySelector(".poder_Atacar");
 const habilidad1 = document.querySelector(".poder_1");
 const habilidad2 = document.querySelector(".poder_2");
-
-const imagen_poder1 = document.querySelector(".imagen_Poder1");
-const imagen_poder2 = document.querySelector(".imagen_Poder2");
-const imagen_atcar = document.querySelector(".imagen_atacar");
-
+//Seleccionando imagenes de habilidades
+const imagenPoder1 = document.querySelector(".imagenPoder1");
+const imagenPoder2 = document.querySelector(".imagenPoder2");
+const imagenAtacar = document.querySelector(".imagen_atacar");
+imagenAtacar.src = `./players/condicion/Atacar.png`;
+//Seleccionando imagenes de cooldown
 const imagencooldownhabilidad1 = document.querySelector(".cooldown_habilidad1");
 const imagencooldownhabilidad2 = document.querySelector(".cooldown_habilidad2");
-
+//Seleccionando texto cooldown
 const cooldownHabilidad1 = document.querySelector(".cooldown_habilidad1");
 const cooldownHabilidad2 = document.querySelector(".cooldown_habilidad2");
-
+//Seleccionando texto de detalle poder
 const detallePoder = document.querySelector(".detalle_poder");
 const nombrePoder = document.querySelector(".nombre_poder");
 const descripcionPoder = document.querySelector(".descripcion_poder");
 const descripcionTiempo = document.querySelector(".descripcion_tiempo");
-
-
-
-
+//desacticar los poderes para luego hcaer visibles cuando se seleccione
 detallePoder.style.display = "none";
 
-habilidad1.addEventListener("mouseenter", (e) => {actualizarDetallePoder(e);});
-habilidad2.addEventListener("mouseenter", (e) => {actualizarDetallePoder(e);});
+//Eventos de mouse para ver el detalle del poder cuando el mouse este encima
+habilidad1.addEventListener("mouseenter", (e) => {
+  actualizarDetallePoder(e);
+});
+habilidad2.addEventListener("mouseenter", (e) => {
+  actualizarDetallePoder(e);
+});
+//Eventos de mouse para ocultar el detalle del poder cuando el mouse se va
+habilidad1.addEventListener("mouseleave", (e) => {
+  actualizarDetallePoder(e);
+});
+habilidad2.addEventListener("mouseleave", (e) => {
+  actualizarDetallePoder(e);
+});
+// Eventos de click para seleccionar el poder
+habilidad1.addEventListener("click", () =>
+  seleccionarHabilidad(habilidad1, habilidad2, habilidadAtacar)
+);
+habilidad2.addEventListener("click", () =>
+  seleccionarHabilidad(habilidad2, habilidad1, habilidadAtacar)
+);
+habilidadAtacar.addEventListener("click", () =>
+  seleccionarHabilidad(habilidadAtacar, habilidad1, habilidad2)
+);
 
-habilidad1.addEventListener("mouseleave", (e) => {actualizarDetallePoder(e);});
-habilidad2.addEventListener("mouseleave", (e) => {actualizarDetallePoder(e);});
-
-
-habilidad1.addEventListener("click", () =>  seleccionarHabilidad(habilidad1, habilidad2, habilidadAtacar));
-habilidad2.addEventListener("click", () =>  seleccionarHabilidad(habilidad2, habilidad1, habilidadAtacar));
-habilidadAtacar.addEventListener("click", () =>  seleccionarHabilidad(habilidadAtacar, habilidad1, habilidad2));
-
-const turno_izquierda = document.querySelectorAll(".turno_izquierda");
-const turno_derecha = document.querySelectorAll(".turno_derecha");
+const turnoEquipo1 = document.querySelectorAll(".turnoEquipo1");
+const turnoEquipo2 = document.querySelectorAll(".turnoEquipo2");
 
 function seleccionarHabilidad(
   habilidad,
@@ -382,116 +384,39 @@ function seleccionarHabilidad(
   }
 }
 
-function actualizarInfomacionPersonajeActual() {
-  
-  imagen_atcar.src = `./players/condicion/Atacar.png`;
-
-  if (Juego.personajeActual.equipo == 1) {
-    informacion.classList.remove("informacion_equipo2");
-    informacion.classList.add("informacion_equipo1");
-  } else {
-    informacion.classList.remove("informacion_equipo1");
-    informacion.classList.add("informacion_equipo2");
-  }
-
-  if (Juego.personajeActual.habilidades[0].cooldownActual > 0) {
-    imagencooldownhabilidad1.src = `./players/condicion/cooldown.gif`;
-    imagencooldownhabilidad1.style.display = "flex";
-    cooldownHabilidad1.textContent = `${Juego.personajeActual.habilidades[0].cooldownActual}`;
-    cooldownHabilidad1.style.display = "flex";
-  } else {
-    cooldownHabilidad1.style.display = "none";
-    imagencooldownhabilidad1.style.display = "none";
-  }
-
-  if (Juego.personajeActual.habilidades[1].cooldownActual > 0) {
-    imagencooldownhabilidad2.src = `./players/condicion/cooldown.gif`;
-    imagencooldownhabilidad2.style.display = "flex";
-    cooldownHabilidad2.textContent = `${Juego.personajeActual.habilidades[1].cooldownActual}`;
-    cooldownHabilidad2.style.display = "flex";
-  } else {
-    cooldownHabilidad2.style.display = "none";
-    imagencooldownhabilidad2.style.display = "none";
-  }
-
-  habilidad1.setAttribute("nombrePoder", Juego.personajeActual.habilidades[0].nombre);
-  habilidad2.setAttribute("nombrePoder",Juego.personajeActual.habilidades[1].nombre);
-  habilidadAtacar.setAttribute("nombrePoder", "Atacar");
-  
-  imagen_poder1.src = `./players/${Juego.personajeActual.id}/poderes/poder1.png`;
-  imagen_poder2.src = `./players/${Juego.personajeActual.id}/poderes/poder2.png`;
-
-  //Actualizar detalle poder
-
-  if (Juego.personajeActual.equipo == 1) {
-    detallePoder.classList.remove("descripcion_poder_equipo2");
-    detallePoder.classList.add("descripcion_poder_equipo1");
-  } else {
-    detallePoder.classList.remove("descripcion_poder_equipo1");
-    detallePoder.classList.add("descripcion_poder_equipo2");
-  }
-
+function actualizar_Interfaz() {
+  // actualizar seccion poder
+  actualizarSeccionPoder();
   //Actualizar barra de vida equipo
-  const barra_vida = document.querySelectorAll(".contenedor_barra_vida");
-  barra_vida.forEach((barra_vida) => {
-    Juego.equipo1.forEach((personaje) => {
-      // Verificamos si la barra de vida contiene la clase correspondiente al personaje
-      if (barra_vida.classList.contains(`personaje_${personaje.id}`)) {
-        // Seleccionamos los elementos dentro de la barra de vida actual
-        let porcentajevida = barra_vida.querySelector(".porcentajevida");
-        let num_porcentaje = barra_vida.querySelector(".num_porcentaje");
-
-        // Actualizamos el contenido de texto con los valores del personaje
-        setTimeout(() => {
-          porcentajevida.setAttribute("style", `width: ${personaje.vida}%`);
-          num_porcentaje.textContent = `${personaje.vida} / 100`;
-        }, 1700);
-      }
-    });
-
-    Juego.equipo2.forEach((personaje) => {
-      // Verificamos si la barra de vida contiene la clase correspondiente al personaje
-      if (barra_vida.classList.contains(`personaje_${personaje.id}`)) {
-        // Seleccionamos los elementos dentro de la barra de vida actual
-        let porcentajevida = barra_vida.querySelector(".porcentajevida");
-        let num_porcentaje = barra_vida.querySelector(".num_porcentaje");
-
-        // Actualizamos el contenido de texto con los valores del personaje
-        setTimeout(() => {
-          porcentajevida.setAttribute("style", `width: ${personaje.vida}%`);
-          num_porcentaje.textContent = `${personaje.vida} / 100`;
-        }, 1700);
-      }
-    });
-  });
+  actualizarBarraVida();
 }
 
 function AsignarTurno() {
   // Cambiar a display: none de forma inmediata
-  turno_izquierda.forEach((turno, i) => {
-    if (Juego.personajeActual.id != turno_izquierda[i].nextElementSibling.id) {
+  turnoEquipo1.forEach((turno, i) => {
+    if (Juego.personajeActual.id != turnoEquipo1[i].nextElementSibling.id) {
       turno.style.display = "none";
     }
   });
 
-  turno_derecha.forEach((turno, i) => {
-    if (
-      Juego.personajeActual.id != turno_derecha[i].previousElementSibling.id
-    ) {
+  turnoEquipo2.forEach((turno, i) => {
+    if (Juego.personajeActual.id != turnoEquipo2[i].previousElementSibling.id) {
       turno.style.display = "none";
     }
   });
 
   // Usar timeout solo para el display: block después de 1 segundo
   setTimeout(() => {
-    turno_izquierda.forEach((turno, i) => {
-      if (Juego.personajeActual.id == turno_izquierda[i].nextElementSibling.id) {
+    turnoEquipo1.forEach((turno, i) => {
+      if (Juego.personajeActual.id == turnoEquipo1[i].nextElementSibling.id) {
         turno.style.display = "block";
       }
     });
 
-    turno_derecha.forEach((turno, i) => {
-      if (Juego.personajeActual.id == turno_derecha[i].previousElementSibling.id) {
+    turnoEquipo2.forEach((turno, i) => {
+      if (
+        Juego.personajeActual.id == turnoEquipo2[i].previousElementSibling.id
+      ) {
         turno.style.display = "block";
       }
     });
@@ -521,5 +446,83 @@ function actualizarDetallePoder(e) {
   }
 }
 
+function actualizarBarraVida() {
+  const barraVida = document.querySelectorAll(".contenedor_barraVida");
+  barraVida.forEach((barraVida) => {
+    Juego.equipo1.forEach((personaje) => {
+      // Verificamos si la barra de vida contiene la clase correspondiente al personaje
+      if (barraVida.classList.contains(`personaje_${personaje.id}`)) {
+        // Seleccionamos los elementos dentro de la barra de vida actual
+        let porcentajeVida = barraVida.querySelector(".porcentajeVida");
+        let numeroPorcentaje = barraVida.querySelector(".numeroPorcentaje");
+
+        // Actualizamos el contenido de texto con los valores del personaje
+        setTimeout(() => {
+          porcentajeVida.setAttribute("style", `width: ${personaje.vida}%`);
+          numeroPorcentaje.textContent = `${personaje.vida} / 100`;
+        }, 1700);
+      }
+    });
+
+    Juego.equipo2.forEach((personaje) => {
+      // Verificamos si la barra de vida contiene la clase correspondiente al personaje
+      if (barraVida.classList.contains(`personaje_${personaje.id}`)) {
+        // Seleccionamos los elementos dentro de la barra de vida actual
+        let porcentajeVida = barraVida.querySelector(".porcentajeVida");
+        let numeroPorcentaje = barraVida.querySelector(".numeroPorcentaje");
+
+        // Actualizamos el contenido de texto con los valores del personaje
+        setTimeout(() => {
+          porcentajeVida.setAttribute("style", `width: ${personaje.vida}%`);
+          numeroPorcentaje.textContent = `${personaje.vida} / 100`;
+        }, 1700);
+      }
+    });
+  });
+}
+
+function actualizarSeccionPoder() {
+  if (Juego.personajeActual.equipo == 1) {
+    informacion.classList.remove("informacion_equipo2");
+    informacion.classList.add("informacion_equipo1");
+  } else {
+    informacion.classList.remove("informacion_equipo1");
+    informacion.classList.add("informacion_equipo2");
+  }
+
+  if (Juego.personajeActual.habilidades[0].cooldownActual > 0) {
+    imagencooldownhabilidad1.src = `./players/condicion/cooldown.gif`;
+    imagencooldownhabilidad1.style.display = "flex";
+    cooldownHabilidad1.textContent = `${Juego.personajeActual.habilidades[0].cooldownActual}`;
+    cooldownHabilidad1.style.display = "flex";
+  } else {
+    cooldownHabilidad1.style.display = "none";
+    imagencooldownhabilidad1.style.display = "none";
+  }
+
+  if (Juego.personajeActual.habilidades[1].cooldownActual > 0) {
+    imagencooldownhabilidad2.src = `./players/condicion/cooldown.gif`;
+    imagencooldownhabilidad2.style.display = "flex";
+    cooldownHabilidad2.textContent = `${Juego.personajeActual.habilidades[1].cooldownActual}`;
+    cooldownHabilidad2.style.display = "flex";
+  } else {
+    cooldownHabilidad2.style.display = "none";
+    imagencooldownhabilidad2.style.display = "none";
+  }
+
+  habilidad1.setAttribute(
+    "nombrePoder",
+    Juego.personajeActual.habilidades[0].nombre
+  );
+  habilidad2.setAttribute(
+    "nombrePoder",
+    Juego.personajeActual.habilidades[1].nombre
+  );
+  habilidadAtacar.setAttribute("nombrePoder", "Atacar");
+
+  imagenPoder1.src = `./players/${Juego.personajeActual.id}/poderes/poder1.png`;
+  imagenPoder2.src = `./players/${Juego.personajeActual.id}/poderes/poder2.png`;
+}
+
 AsignarTurno();
-actualizarInfomacionPersonajeActual();
+actualizar_Interfaz();

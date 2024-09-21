@@ -1,131 +1,123 @@
-.esenario__left {
-    width: 50%;
-    /* border: 3px solid rgb(0, 67, 252); */
-    height: 100%;
-    position: relative;
-  
-    .informacion_left{
-      width: 240px;
-      height: 70%;
-      /* border: 5px solid rgb(5, 185, 59); */
-      position: absolute;
-      top: 0px;
-      left: 0px;
+.esenarioEquipo1 {
+  width: 50%;
+  /* border: 3px solid rgb(0, 67, 252); */
+  height: 100%;
+  position: relative;
+
+  .informacion_left {
+    width: 240px;
+    height: 70%;
+    /* border: 5px solid rgb(5, 185, 59); */
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .cartas_Info {
+      width: 100%;
+      border: 1px solid black;
+      height: 100px;
+      background: gray;
+      opacity: 0.8;
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-  
-      .cartas_Info{
-        width: 100%;
-        border: 1px solid black;
+      transform: translateZ();
+
+      .avatar {
+        width: 100px;
         height: 100px;
-        background: gray;
-        opacity: 0.8;
-        display: flex;
-        transform: translateZ();
-  
-  
-        .avatar{
-          width: 100px;
-          height: 100px;
-          border: 1px solid black;
-  
-          img{
-            width: 100%;
-          }
-        }
-  
-        .estadisticas{
-          padding: 10px;
-          width: 140px;
-          border: 1px solid black;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-evenly;
-          /* align-items: center; */
-        }
-      }
-    }
-  
-    
-    .personaje {
-      position: relative;
-      width: 350px;
-      display: flex;
-  
+        border: 1px solid black;
+
         img {
           width: 100%;
-          filter: blur(1.2px);
-          filter: blur(1px);
-          cursor: pointer;
-          /* border: 1px solid black; */
         }
-    }
-  
-    .personaje_Principal {
-      /* border: 1px solid #c41010; */
-      width: 150px;
-      height: 150px;
-      cursor: pointer;
-      z-index: 22;
-      
-  
-  
-      .shadow_left {
-        position: absolute;
-        bottom: 0;
-        left: 100px;
-        transform: translateX(-50%) rotateX(75deg);
-        width: 120px; /* ajusta para el tamaño de la sombra */
-        height: 75px; /* la mitad del ancho para mantener proporción */
-        background: radial-gradient(
-          ellipse at center,
-          rgba(0, 0, 0, 0.63),
-          transparent
-        );
-        background: radial-gradient(
-          ellipse at center,
-          rgba(0, 0, 0, 0.6),
-          transparent 70%
-        );
-        border-radius: 50%;
-    }
-    }
-    .personaje_Secundario {
-      /* border: 1px solid #c41010; */
-      width: 180px;
-      height: 180px;
-      position: relative;
-      right: 70px;
-      z-index: 10;
-  
-      img{
-        position: relative;
-        top: -30px;
-        width: 120%;
-        filter: blur(1.2px);
+      }
+
+      .estadisticas {
+        padding: 10px;
+        width: 140px;
+        border: 1px solid black;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        /* align-items: center; */
       }
     }
-  
-  
-    
-  
-    .p1 {
-      position: absolute;
-      top: 460px;
-      left: 390px;
-    }
-    
-    .p2 {
-      position: absolute;
-      top: 285px;
-      left: 320px;
-    }
-    
-    .p3 {
-      position: absolute;
-      top: 180px;
-      left: 430px;
+  }
+
+  .personaje {
+    position: relative;
+    width: 350px;
+    display: flex;
+
+    img {
+      width: 100%;
+      filter: blur(1.2px);
+      filter: blur(1px);
+      cursor: pointer;
+      /* border: 1px solid black; */
     }
   }
-  
+
+  .personaje_Principal {
+    /* border: 1px solid #c41010; */
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+    z-index: 22;
+
+    .shadow_left {
+      position: absolute;
+      bottom: 0;
+      left: 100px;
+      transform: translateX(-50%) rotateX(75deg);
+      width: 120px; /* ajusta para el tamaño de la sombra */
+      height: 75px; /* la mitad del ancho para mantener proporción */
+      background: radial-gradient(
+        ellipse at center,
+        rgba(0, 0, 0, 0.63),
+        transparent
+      );
+      background: radial-gradient(
+        ellipse at center,
+        rgba(0, 0, 0, 0.6),
+        transparent 70%
+      );
+      border-radius: 50%;
+    }
+  }
+  .personajeSecundario {
+    /* border: 1px solid #c41010; */
+    width: 180px;
+    height: 180px;
+    position: relative;
+    right: 70px;
+    z-index: 10;
+
+    img {
+      position: relative;
+      top: -30px;
+      width: 120%;
+      filter: blur(1.2px);
+    }
+  }
+
+  .p1 {
+    position: absolute;
+    top: 460px;
+    left: 390px;
+  }
+
+  .p2 {
+    position: absolute;
+    top: 285px;
+    left: 320px;
+  }
+
+  .p3 {
+    position: absolute;
+    top: 180px;
+    left: 430px;
+  }
+}

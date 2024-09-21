@@ -60,7 +60,7 @@ class Juego {
     setTimeout(() => {
       // Check for victory before changing turns
       if (this.verificarVictoria()) {
-        actualizarInfomacionPersonajeActual();
+        actualizar_Interfaz();
         console.log("Fin de la partida.");
         return;
       }
@@ -104,13 +104,11 @@ class Juego {
       this.personajeActual.validarVidaNegativa();
       if (this.personajeActual.estaMuero()) {
         this.cambiarTurno();
-
-        
       }
 
       console.log(`Es el turno de ${this.personajeActual.nombre}`);
 
-      actualizarInfomacionPersonajeActual();
+      actualizar_Interfaz();
       AsignarTurno();
     }, 100);
   }
