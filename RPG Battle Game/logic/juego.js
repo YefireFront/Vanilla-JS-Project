@@ -131,3 +131,13 @@ class Juego {
 
 
 
+ 
+Juego.agregarPersonaje(1, reptil);
+Juego.agregarPersonaje(1, gigant);
+Juego.agregarPersonaje(1, pandawa);
+
+Juego.agregarPersonaje(2, thunder);
+Juego.agregarPersonaje(2, monje);
+Juego.agregarPersonaje(2, antorcha);
+
+Juego.iniciarJuego();
