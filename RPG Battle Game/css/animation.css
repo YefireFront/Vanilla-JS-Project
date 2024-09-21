@@ -143,6 +143,65 @@
   }
 }
 
+
+
+
+@keyframes rotate-border {
+  0% {
+    border-image: linear-gradient(45deg, rgb(0, 0, 0), rgb(255, 255, 255), rgb(0, 0, 0), rgb(255, 255, 255)) 1;
+  }
+  25% {
+    border-image: linear-gradient(135deg, rgb(255, 255, 255), rgb(0, 0, 0), rgb(255, 255, 255), rgb(0, 0, 0)) 1;
+  }
+  50% {
+    border-image: linear-gradient(225deg, rgb(0, 0, 0), rgb(255, 255, 255), rgb(0, 0, 0), rgb(255, 255, 255)) 1;
+  }
+  75% {
+    border-image: linear-gradient(315deg, rgb(255, 255, 255), rgb(0, 0, 0), rgb(255, 255, 255), rgb(0, 0, 0)) 1;
+  }
+  100% {
+    border-image: linear-gradient(405deg, rgb(0, 0, 0), rgb(255, 255, 255), rgb(0, 0, 0), rgb(255, 255, 255)) 1;
+  }
+}
+
+
+@keyframes turno {
+  0% {
+    filter: drop-shadow(2px 2px 2px blue) blur(1.1px);
+  }
+  25% {
+    filter: drop-shadow(1px 1px 2px rgb(41, 113, 206)) blur(1px);
+  }
+  50% {
+    filter: drop-shadow(1px 1px 2px rgb(26, 131, 52)) blur(1px);
+  }
+  75% {
+    filter: drop-shadow(2px 2px 4px rgb(41, 113, 206)) blur(1px);
+  }
+  100% {
+    filter: drop-shadow(2px 2px 2px blue) blur(1.1px);
+  }
+}
+
+@keyframes fuego {
+  0% {
+    filter: drop-shadow(5px 5px 4px  rgb(255, 69, 0)) blur(1px)   saturate(100%) hue-rotate(0deg) ; /* Rojo anaranjado */
+  }
+  25% {
+    filter: drop-shadow(5px 5px 6px  rgb(255, 140, 0)) blur(1.1px)  saturate(200%) hue-rotate(-10deg); /* Naranja intenso */
+  }
+  50% {
+    filter: drop-shadow(5px 5px 10px  rgb(255, 0, 0)) blur(1.2px)  saturate(300%) hue-rotate(-15deg) ; /* Rojo puro */
+  }
+  75% {
+    filter: drop-shadow(5px 5px 6px  rgb(255, 99, 71)) blur(1.1px)  saturate(250%) hue-rotate(10deg) ; /* Tomate (rojo suave) */
+  }
+  100% {
+    filter: drop-shadow(5px 5px 4px  rgb(255, 69, 0)) blur(1px)   saturate(200%) hue-rotate(0deg); /* Rojo anaranjado */
+  }
+}
+
+
 @keyframes fireEffect {
   0% {
     filter: brightness(100%) saturate(100%) hue-rotate(0deg) /*blur(0px);
@@ -173,6 +232,11 @@
 
 
 
+
+.burnEffect{
+  animation:  fuego 1s linear  1.2s  infinite
+}
+
 .daño{
   animation: daño 0.5s linear  1.2s  infinite, temblor 0.1s linear  1.2s  infinite;
 }
@@ -194,12 +258,11 @@
   animation: temblor 0.1s linear  1.2s  infinite;
 }
 
-
-.burnEffect{
-  animation: fireEffect 1s linear  1.2s  infinite;
-}
-
 .fantasma{
   animation: ghostEffect 1s linear  1.2s  infinite;
 }
-5
+
+
+.turn {
+  animation: turno 1.5s infinite;
+}

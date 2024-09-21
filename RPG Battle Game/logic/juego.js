@@ -4,9 +4,8 @@ class Juego {
   static turnoActualEquipo1 = 0;
   static turnoActualEquipo2 = 0;
   static turnoEquipo = 0;
-  static estadoJuego = "inicial";
   static personajeActual = null;
-  static PersonajeAnterior = null
+  // static PersonajeAnterior = null
   static campoEfectos = [];
 
   static agregarPersonaje(equipo, personaje) {
@@ -33,7 +32,7 @@ class Juego {
   }
 
   static iniciarJuego() {
-    this.estadoJuego = "activo";
+
     this.turnoEquipo = Math.floor(Math.random() * 2) + 1;
     this.turnoActualEquipo1 =(this.turnoActualEquipo1 ) % this.equipo1.length
     this.turnoActualEquipo2 =(this.turnoActualEquipo2 ) % this.equipo2.length
@@ -41,49 +40,73 @@ class Juego {
     
     // jugador al iniciar el juego
     if (this.turnoEquipo === 1) {
-      this.PersonajeAnterior = this.personajeActual
+      // this.PersonajeAnterior = this.personajeActual
       this.personajeActual = this.equipo1[this.turnoActualEquipo1];
       // console.log(`Es el turno de ${this.personajeActual.nombre}`);      
     }else{
-      this.PersonajeAnterior = this.personajeActual
+      // this.PersonajeAnterior = this.personajeActual
       this.personajeActual = this.equipo2[this.turnoActualEquipo2];
       // console.log(`Es el turno de ${this.personajeActual.nombre}`);
     }
 
-    this.PersonajeAnterior = this.personajeActual
+    // this.PersonajeAnterior = this.personajeActual
 
     
   }
+
+
+  //validar personaje siguente este vivo
+  static validarPersonajeSiguente(){
+    
+    if (this.equipo2[this.turnoActualEquipo2].estaMuero()) {
+      console.log(`El personaje ${this.equipo2[this.turnoActualEquipo2].nombre} esta muerto`);
+      this.turnoActualEquipo2 =(this.turnoActualEquipo2 + 1) % this.equipo2.length
+    }
+  }
   
   static cambiarTurno() {
-    
-    if (this.turnoEquipo === 1) {
-      this.turnoEquipo = 2;
-      this.turnoActualEquipo1 =(this.turnoActualEquipo1 + 1) % this.equipo1.length
 
-      this.PersonajeAnterior = this.personajeActual
-      
-      this.personajeActual = this.equipo2[this.turnoActualEquipo2];
-      this.personajeActual.activarEfectos();
-      console.log(`Es el turno de ${this.personajeActual.nombre}`);
+    setTimeout(() => {
 
-
+      this.personajeActual.habilidades.forEach(habilidad => habilidad.reducirCooldown());
       
+      if (this.turnoEquipo === 1) {
+        this.verificarVictoria();
+        this.turnoEquipo = 2;
+        this.turnoActualEquipo1 =(this.turnoActualEquipo1 + 1) % this.equipo1.length
+        
+        // this.PersonajeAnterior = this.personajeActual
+        
+        this.personajeActual = this.equipo2[this.turnoActualEquipo2];
+        this.personajeActual.activarEfectos();
+        this.personajeActual.asignarVida();
+        if(this.personajeActual.estaMuero()){
+          console.log(`El personaje ${this.personajeActual.nombre} ha muerto`);
+          this.cambiarTurno();
+        }
+        console.log(`Es el turno de ${this.personajeActual.nombre}`);
+        
+      }
       
-      
-    } else {
+      if (this.turnoEquipo === 2) {
+        this.verificarVictoria();
         this.turnoEquipo = 1;
         this.turnoActualEquipo2 =(this.turnoActualEquipo2 + 1) % this.equipo2.length
-        this.PersonajeAnterior = this.personajeActual
+
+        // this.PersonajeAnterior = this.personajeActual
         this.personajeActual = this.equipo1[this.turnoActualEquipo1];
         console.log(`Es el turno de ${this.personajeActual.nombre}`);
         this.personajeActual.activarEfectos();
 
-    }
+      }
 
 
-    actualizarInfomacionPersonajeActual();
-    AsignarTurno()
+        actualizarInfomacionPersonajeActual();
+        AsignarTurno()
+
+    
+      
+    }, 10);
 
    
 
@@ -93,17 +116,16 @@ class Juego {
     // Lógica para verificar si un equipo ha ganado
     if (this.equipo1.every((personaje) => personaje.vida <= 0)) {
       console.log("Equipo 2 ha ganado.");
+      return true;
     } else if (this.equipo2.every((personaje) => personaje.vida <= 0)) {
       console.log("Equipo 1 ha ganado.");
+      return true;
     }
 
   }
 
 
-  static MostrarvidadeLosPersonajes(){
-    console.log(`Equipo 1: ${this.equipo1.map((personaje) => `${personaje.nombre} (${personaje.vida})`).join(", ")}`);
-    console.log(`Equipo 2: ${this.equipo2.map((personaje) => `${personaje.nombre} (${personaje.vida})`).join(", ")}`);
-  }
+
 
 }
 

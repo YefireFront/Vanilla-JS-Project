@@ -71,7 +71,7 @@ function crearMordidaToxica() {
     "Daño",
     "Inflige 15 de Daño y aplica veneno que causa 10 de Daño por turno durante 3 turnos.",
     (lanzador, objetivo) => {
-      objetivo.vida -= 15;
+      objetivo.vida -= 910;
       objetivo.debilitamiento.push(crearVeneno());
       console.log(`${lanzador.nombre} ha usado Mordida Tóxica en ${objetivo.nombre}. El objetivo está envenenado.`);
     },
@@ -81,7 +81,7 @@ function crearMordidaToxica() {
 
 function crearRegeneracionEscamosa() {
   return new Habilidad(
-    "Regeneración Escamosa",
+    "Regeneración ",
     5,
     "Soporte",
     "Recupera 30 de vida en 3 turnos, 10 de vida por turno.",
@@ -232,6 +232,8 @@ class Efecto {
       );
     }
   }
+
+
 }
 
 function crearRegeneracion() {

@@ -13,32 +13,53 @@ class Personaje {
     this.equipo = null;
   }
 
+
+  //metodo para valida pesonaje vivo
+  estaMuero(){
+    if (this.vida <= 0) {
+      console.log(` El personaje ${this.nombre} está muerto`);
+      return true;
+    }
+    return false;
+  }
+
+  //Asignar 0 si un perosnaje quesa con vida negativa
+  asignarVida(){
+    if (this.vida <= 0) {
+      this.vida = 0;
+    }
+  }
+
+
+  //Metodod para atacar a un objetivo
   Atacar(objetivo) {
 
   
     //Validar si el ataque puede hacer daño
-    if (objetivo.defensa < this.ataque) {
-      if (objetivo.vida > 0) {
-        if (this.equipo != objetivo.equipo) {
-          objetivo.vida -= (this.ataque - objetivo.defensa);
-          console.log(`${this.nombre} ha atacado a ${objetivo.nombre} por ${this.ataque - objetivo.defensa} de daño`);
-          Juego.cambiarTurno();
-          return true;
-        }else{
-          console.log("No puede atacar a un aliado")
-          return false;
-        }
-        
-      }else{
-        console.log(`No puedes atacar a un jugador muerto`)
-        return false;
-      }
-    }else{
-      console.log("No tenias suficiente fuerza para herir a este personaje");
+    if (objetivo.estaMuero()) {
+      console.log(`No puedes atacar a un jugador muerto`);
+      return false;
+    }
+    
+    if (this.equipo === objetivo.equipo) {
+      console.log("No puede atacar a un aliado");
+      return false;
+    }
+    
+    if (objetivo.defensa >= this.ataque) {
+      console.log("No tenías suficiente fuerza para herir a este personaje");
       Juego.cambiarTurno();
       return true;
     }
-  
+    
+    
+    objetivo.vida -= (this.ataque - objetivo.defensa);
+    console.log(`${this.nombre} ha atacado a ${objetivo.nombre} por ${this.ataque - objetivo.defensa} de daño`);
+    objetivo.asignarVida();
+   
+    Juego.cambiarTurno();
+    return true;
+    
 
 
     
@@ -46,12 +67,13 @@ class Personaje {
 
   }
 
+
+ // Metodo para usar una habilidad
   usarHabilidad(nombreHabilidad, objetivo) {
     //Extraer habilidad
     const habilidad = this.habilidades.find(habilidad => habilidad.nombre === nombreHabilidad);
 
     if (habilidad) {
-
       //Valoidar que si la habilidad es de daño y no se use en un aliado
       if (habilidad.tipo === "Daño" && this.equipo === objetivo.equipo) {
         console.log(`${this.nombre} no puede usar una habilidad de daño en su propio equipo.`);
@@ -64,8 +86,17 @@ class Personaje {
         return false;
       }
 
+      //Validar objetivo vivo
+      if (objetivo.estaMuero()) {
+        console.log(`El objetivo ${objetivo.nombre} está muerto`);
+        return false;
+
+      }
+
+
       //Activar la habilidad
       habilidad.activar(this, objetivo);
+      objetivo.asignarVida();
       Juego.cambiarTurno();
       return true;
 
@@ -75,6 +106,8 @@ class Personaje {
     }
   }
 
+
+  //Metodo para activar los efectos de los personajes
   activarEfectos() {
     this.debilitamiento.forEach(efecto => efecto.activar(this));
     this.fortalecimiento.forEach(efecto => efecto.activar(this));
@@ -140,7 +173,7 @@ class Antorcha extends Personaje {
 
 
 
-const reptil = new Reptil("Reptil", 40, 20, 11);
+const reptil = new Reptil("Reptil", 400, 20, 11);
 const pandawa = new Pandawa("Pandawa", 30, 30, 8);
 const gigant = new Gigant("Gigant", 50, 10, 4);
 

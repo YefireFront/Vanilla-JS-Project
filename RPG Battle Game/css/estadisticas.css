@@ -12,11 +12,13 @@
         border: 0.5px solid black;
         border-radius: 10px;
         opacity: 0.8;
+        
     }
     
     .porcentajevida{
         position: absolute;
         top: 0;
+        border-radius: 10px;
         left: 0;
         width: 50%;
         height: 100%;
@@ -141,11 +143,10 @@
 .esenario__left{
     .seccion_condicion{
         width: auto;
-        height: 30px;
         /* border: 1px solid black; */
         position: absolute;
-        top: -30px;
-        left: 120px ;
+        top: -50px;
+        left: 0px ;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -155,7 +156,6 @@
 
     .condicion{
         width: 30px;
-        height: 30px;
         border-radius: 50%;
         overflow: hidden;
         /* background: rgb(219, 98, 215); */

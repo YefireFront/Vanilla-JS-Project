@@ -1,12 +1,8 @@
-
 .informacion{
-    width: 10%;
+    width: 25%;
     position: absolute;
-    top: 10px;
-    left: 20px;
-    background: rgba(245, 245, 245, 0.646);
+    bottom:0px;
     display: flex;
-    padding: 10px;
     justify-content: space-evenly;
     flex-direction: column;
     align-items: center;
@@ -25,7 +21,6 @@
   
     .habilidades{
       display: flex;
-      flex-direction: column;
       margin: 10px;
       /* border: 1px solid black; */
     }
@@ -41,20 +36,22 @@
     }
   
     button{
+      position: relative;
       width: 80px;
       height: 80px;
-      border: 5px solid black;
+      border: 2px solid black;
       border-image: linear-gradient(45deg, rgb(0, 0, 0), rgb(255, 255, 255), rgb(0, 0, 0), rgb(255, 255, 255)) 1;
-      
       background:#043247;
-      /* border-radius: 50%; */
       color: white;
       font-size: 15px;
-      margin: 5px;
+      margin: 8px;
       animation: rotate-border 1s linear infinite; /* Aplica la animación */
+      display: flex;
+      justify-content: center;align-items: center;
+      /* overflow: hidden; */
   
       img{
-        width: 100%;
+        width: 95%;
       }
   
       &:hover{
@@ -62,38 +59,102 @@
         cursor: pointer;
         transform: scale(1.03);
       }
-  
-   
-   }
-  
+      
+      
+    }
+    
     .boton_activo{
       background: #09586b;
-      overflow: hidden;
+      /* overflow: hidden; */
       cursor: pointer;
-      transform: scale(1.03);
-      border: 7px solid goldenrod;
+      box-shadow: 1px 1px 4px 8px rgba(245,255,110,0.79);
+      border: none;
     }
   
   
   }
   
+  .informacion_equipo1{
+    left: 0px;
+
+  }
+
+  .informacion_equipo2{
+    right: 0px;
+  }
 
 
 
-@keyframes rotate-border {
-  0% {
-    border-image: linear-gradient(45deg, rgb(0, 0, 0), rgb(255, 255, 255), rgb(0, 0, 0), rgb(255, 255, 255)) 1;
-  }
-  25% {
-    border-image: linear-gradient(135deg, rgb(255, 255, 255), rgb(0, 0, 0), rgb(255, 255, 255), rgb(0, 0, 0)) 1;
-  }
-  50% {
-    border-image: linear-gradient(225deg, rgb(0, 0, 0), rgb(255, 255, 255), rgb(0, 0, 0), rgb(255, 255, 255)) 1;
-  }
-  75% {
-    border-image: linear-gradient(315deg, rgb(255, 255, 255), rgb(0, 0, 0), rgb(255, 255, 255), rgb(0, 0, 0)) 1;
-  }
-  100% {
-    border-image: linear-gradient(405deg, rgb(0, 0, 0), rgb(255, 255, 255), rgb(0, 0, 0), rgb(255, 255, 255)) 1;
-  }
+.imagen_cooldown{
+  width: 100%;
+  position: absolute;
+  z-index: 10;
+  top: -70px;
+  left: 0;
+  filter: blur(1.2px);
+}
+
+.cooldown{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+  font-weight: bold;
+  
+  background: transparent;
+  backdrop-filter: blur(30px);
+  background-image: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.348) 0%,
+    rgba(0, 0, 0, 0.2) 100%
+  ) ;
+}
+
+
+.detalle_poder{
+  width: 60%;
+  height:120px;
+  border: 1px solid black;
+  position: absolute;
+  top: -110px;
+  background: rgba(0, 0, 0, 0.514);
+  padding: 10px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 12px;
+}
+
+.descripcion_poder_equipo1{
+  left: 60px;
+
+}
+.descripcion_poder_equipo2{
+  left: 90px;
+}
+
+.nombre_poder{
+  font-size: 16px;  
+  color: white;
+}
+
+.descripcion_poder{
+
+  font-size: 12px;
+  color: rgb(218, 227, 150);
+  text-align: center;
+}
+
+.descripcion_tiempo{
+  font-size: 12px;
+  color: rgb(28, 198, 20);
 }

@@ -3,7 +3,7 @@ const personajesDeElEquipo2 = document.querySelectorAll(".esenario_right .person
 
 function animacionEquipo1(objetivo, lugarDeAtaque) {
 
-    lugarDeAtaque.children[0].src = `./players/${Juego.PersonajeAnterior.id}/Atacando.gif`;
+    lugarDeAtaque.children[0].src = `./players/${Juego.personajeActual.id}/Atacando.gif`;
 
     objetivo.classList.add("daño");
     esenario.classList.add("temblor");
@@ -18,7 +18,7 @@ function animacionEquipo1(objetivo, lugarDeAtaque) {
     }, 1500);
 
     personajesDeElEquipo2.forEach(elemento => {
-        if (elemento.classList.contains(`p${Juego.PersonajeAnterior.id}`)) {
+        if (elemento.classList.contains(`p${Juego.personajeActual.id}`)) {
             elemento.style.display = "none";
             setTimeout(() => {
                 elemento.style.display = "flex";
@@ -30,7 +30,7 @@ function animacionEquipo1(objetivo, lugarDeAtaque) {
 
 
 function animacionEquipo2( objetivo , lugarDeAtaque) {
-    lugarDeAtaque.children[0].src = `./players/${Juego.PersonajeAnterior.id}/Atacando.gif`;
+    lugarDeAtaque.children[0].src = `./players/${Juego.personajeActual.id}/Atacando.gif`;
 
     objetivo.classList.add("daño");
     esenario.classList.add("temblor");
@@ -45,7 +45,7 @@ function animacionEquipo2( objetivo , lugarDeAtaque) {
     }, 1500);
 
     personajesDeElEquipo1.forEach(elemento => {
-        if (elemento.classList.contains(`p${Juego.PersonajeAnterior.id}`)) {
+        if (elemento.classList.contains(`p${Juego.personajeActual.id}`)) {
             elemento.style.display = "none";
             setTimeout(() => {
                 elemento.style.display = "flex";
