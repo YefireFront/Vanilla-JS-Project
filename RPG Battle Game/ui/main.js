@@ -8,7 +8,7 @@ const esenario = document.querySelector(".esenario");
 const escenarioEquipo1 = document.querySelector(".esenarioEquipo1");
 
 // creando escenario equipo 2
-const escenarioEquipo2 = document.querySelector(".esenario_right");
+const escenarioEquipo2 = document.querySelector(".esenarioEquipo2");
 
 // creando escenario right  / 2
 
@@ -145,14 +145,11 @@ Juego.equipo1.forEach((personaje) => {
       }
 
       if (habilidadSeleccionada != null && habilidadSeleccionada != "Atacar") {
-        let accionCompletada = Juego.personajeActual.usarHabilidad(
-          habilidadSeleccionada,
-          personaje
-        );
-        habilidadSeleccionada = null;
+        let accionCompletada = Juego.personajeActual.usarHabilidad(habilidadSeleccionada,personaje);
+        // habilidadSeleccionada = null;
 
         if (accionCompletada) {
-          animacionEquipo1(e.target, e.target.parentElement.nextElementSibling);
+          animacionEquipo1(e.target, e.target.parentElement.nextElementSibling, habilidadSeleccionada);
           desactivarBotones();
         }
         desactivarBotones();
@@ -338,29 +335,15 @@ const descripcionTiempo = document.querySelector(".descripcion_tiempo");
 detallePoder.style.display = "none";
 
 //Eventos de mouse para ver el detalle del poder cuando el mouse este encima
-habilidad1.addEventListener("mouseenter", (e) => {
-  actualizarDetallePoder(e);
-});
-habilidad2.addEventListener("mouseenter", (e) => {
-  actualizarDetallePoder(e);
-});
+habilidad1.addEventListener("mouseenter", (e) => {actualizarDetallePoder(e);});
+habilidad2.addEventListener("mouseenter", (e) => {actualizarDetallePoder(e);});
 //Eventos de mouse para ocultar el detalle del poder cuando el mouse se va
-habilidad1.addEventListener("mouseleave", (e) => {
-  actualizarDetallePoder(e);
-});
-habilidad2.addEventListener("mouseleave", (e) => {
-  actualizarDetallePoder(e);
-});
+habilidad1.addEventListener("mouseleave", (e) => {actualizarDetallePoder(e);});
+habilidad2.addEventListener("mouseleave", (e) => {actualizarDetallePoder(e);});
 // Eventos de click para seleccionar el poder
-habilidad1.addEventListener("click", () =>
-  seleccionarHabilidad(habilidad1, habilidad2, habilidadAtacar)
-);
-habilidad2.addEventListener("click", () =>
-  seleccionarHabilidad(habilidad2, habilidad1, habilidadAtacar)
-);
-habilidadAtacar.addEventListener("click", () =>
-  seleccionarHabilidad(habilidadAtacar, habilidad1, habilidad2)
-);
+habilidad1.addEventListener("click", () =>seleccionarHabilidad(habilidad1, habilidad2, habilidadAtacar));
+habilidad2.addEventListener("click", () =>  seleccionarHabilidad(habilidad2, habilidad1, habilidadAtacar));
+habilidadAtacar.addEventListener("click", () =>seleccionarHabilidad(habilidadAtacar, habilidad1, habilidad2));
 
 const turnoEquipo1 = document.querySelectorAll(".turnoEquipo1");
 const turnoEquipo2 = document.querySelectorAll(".turnoEquipo2");
@@ -370,16 +353,16 @@ function seleccionarHabilidad(
   habilidadDesactivar1,
   habilidadDesactivar2
 ) {
-  console.log(habilidad.getAttribute("nombrePoder"));
+  // console.log(habilidad.getAttribute("nombrePoder"));
   if (habilidad.getAttribute("nombrePoder") !== habilidad.textContent) {
     habilidadSeleccionada = habilidad.getAttribute("nombrePoder");
-    console.log(`Habilidad seleccionada: ${habilidadSeleccionada}`);
+    // console.log(`Habilidad seleccionada: ${habilidadSeleccionada}`);
     habilidad.classList.add("boton_activo");
     habilidadDesactivar1.classList.remove("boton_activo");
     habilidadDesactivar2.classList.remove("boton_activo");
   } else {
     habilidadSeleccionada = null;
-    console.log(`No hay Habilidad seleccionada`);
+    // console.log(`No hay Habilidad seleccionada`);
     habilidad.classList.remove("boton_activo");
   }
 }
@@ -526,3 +509,6 @@ function actualizarSeccionPoder() {
 
 AsignarTurno();
 actualizar_Interfaz();
+
+
+

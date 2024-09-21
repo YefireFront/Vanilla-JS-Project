@@ -4,6 +4,8 @@
   height: 100%;
   position: relative;
 
+  
+
   .informacion_left {
     width: 240px;
     height: 70%;
@@ -91,7 +93,7 @@
     /* border: 1px solid #c41010; */
     width: 180px;
     height: 180px;
-    position: relative;
+    position: absolute;
     right: 70px;
     z-index: 10;
 

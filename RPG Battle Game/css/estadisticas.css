@@ -1,4 +1,4 @@
-/* Barras de vida */
+/** Barras de vida */
 
 .esenarioEquipo1 {
   .contenedor_barraVida {
@@ -32,7 +32,7 @@
   }
 }
 
-.esenario_right {
+.esenarioEquipo2 {
   .contenedor_barraVida {
     position: absolute;
     top: 20px;
@@ -66,7 +66,7 @@
   }
 }
 
-/* Seccion de poderes */
+/** Seccion de poderes */
 
 .esenarioEquipo1 {
   .seccionPoder {
@@ -95,7 +95,7 @@
   }
 }
 
-.esenario_right {
+.esenarioEquipo2 {
   .seccionPoder {
     width: 70%;
     height: 50px;
@@ -122,7 +122,9 @@
   }
 }
 
-/* Seccion condicion */
+
+
+/** Seccion condicion */
 .esenarioEquipo1 {
   .seccionCondicion {
     width: auto;
@@ -143,7 +145,7 @@
   }
 }
 
-.esenario_right {
+.esenarioEquipo2 {
   .seccionCondicion {
     width: auto;
     height: 30px;

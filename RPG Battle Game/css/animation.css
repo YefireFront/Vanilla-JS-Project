@@ -165,23 +165,29 @@
 }
 
 
-@keyframes turno {
+@keyframes soporte {
   0% {
-    filter: drop-shadow(2px 2px 2px blue) blur(1.1px);
+    filter: drop-shadow(4px 4px 6px rgba(0, 153, 255, 0.7)) blur(1.5px);
+    /* transform: scale(1); */
   }
   25% {
-    filter: drop-shadow(1px 1px 2px rgb(41, 113, 206)) blur(1px);
+    filter: drop-shadow(3px 3px 8px rgba(41, 113, 206, 0.8)) blur(1.2px);
+    /* transform: scale(1.05); */
   }
   50% {
-    filter: drop-shadow(1px 1px 2px rgb(26, 131, 52)) blur(1px);
+    filter: drop-shadow(3px 3px 10px rgba(0, 225, 255, 0.9)) blur(1.5px);
+    /* transform: scale(1.1); */
   }
   75% {
-    filter: drop-shadow(2px 2px 4px rgb(41, 113, 206)) blur(1px);
+    filter: drop-shadow(5px 5px 12px rgb(17, 108, 188)) blur(1.5px);
+    /* transform: scale(1.08); */
   }
   100% {
-    filter: drop-shadow(2px 2px 2px blue) blur(1.1px);
+    filter: drop-shadow(4px 4px 6px rgba(0, 153, 255, 0.7)) blur(1.5px);
+    /* transform: scale(1); */
   }
 }
+
 
 @keyframes fuego {
   0% {
@@ -263,6 +269,6 @@
 }
 
 
-.turn {
-  animation: turno 1.5s infinite;
+.soporte {
+  animation: soporte 0.5s infinite;
 }
