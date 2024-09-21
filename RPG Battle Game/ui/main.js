@@ -322,86 +322,43 @@ Juego.equipo2.forEach((personaje) => {
 
 
 
-const informacion = document.createElement("div");
-const habilidades = document.createElement("div");
-const habilidadAtacar = document.createElement("button");
-const habilidad1 = document.createElement("button");
-const habilidad2 = document.createElement("button");
-const imagen_poder1 = document.createElement("img");
-const imagen_poder2 = document.createElement("img");
-const imagen_atcar = document.createElement("img");
-const imagencooldownhabilidad1 = document.createElement("img");
-const imagencooldownhabilidad2 = document.createElement("img");
-const cooldownHabilidad1 = document.createElement("p");
-const cooldownHabilidad2 = document.createElement("p");
+const informacion = document.querySelector(".informacion");
+const habilidades = document.querySelector(".habilidades");
 
-const detallePoder = document.createElement("div");
-const nombrePoder = document.createElement("p");
-const descripcionPoder = document.createElement("p");
-const descripcionTiempo = document.createElement("p");
+const habilidadAtacar = document.querySelector(".poder_Atacar");
+const habilidad1 = document.querySelector(".poder_1");
+const habilidad2 = document.querySelector(".poder_2");
 
-descripcionPoder.textContent = `${Juego.personajeActual.habilidades[0].descripcion}`;
-descripcionTiempo.textContent = `(Reutilizable en  ${Juego.personajeActual.habilidades[0].tiempoDeEspera} turno(s))`;
-nombrePoder.textContent = `${Juego.personajeActual.habilidades[0].nombre}`;
+const imagen_poder1 = document.querySelector(".imagen_Poder1");
+const imagen_poder2 = document.querySelector(".imagen_Poder2");
+const imagen_atcar = document.querySelector(".imagen_atacar");
 
-habilidades.classList.add("habilidades");
-informacion.classList.add("informacion");
-imagencooldownhabilidad1.classList.add("imagen_cooldown");
-imagencooldownhabilidad2.classList.add("imagen_cooldown");
-cooldownHabilidad1.classList.add("cooldown_habilidad1", "cooldown");
-cooldownHabilidad2.classList.add("cooldown_habilidad2", "cooldown");
-detallePoder.classList.add("detalle_poder");
-nombrePoder.classList.add("nombre_poder");
-descripcionPoder.classList.add("descripcion_poder");
-descripcionTiempo.classList.add("descripcion_tiempo");
+const imagencooldownhabilidad1 = document.querySelector(".cooldown_habilidad1");
+const imagencooldownhabilidad2 = document.querySelector(".cooldown_habilidad2");
 
-esenario.appendChild(informacion);
+const cooldownHabilidad1 = document.querySelector(".cooldown_habilidad1");
+const cooldownHabilidad2 = document.querySelector(".cooldown_habilidad2");
 
-informacion.appendChild(habilidades);
-informacion.appendChild(detallePoder);
+const detallePoder = document.querySelector(".detalle_poder");
+const nombrePoder = document.querySelector(".nombre_poder");
+const descripcionPoder = document.querySelector(".descripcion_poder");
+const descripcionTiempo = document.querySelector(".descripcion_tiempo");
 
-detallePoder.appendChild(nombrePoder);
-detallePoder.appendChild(descripcionPoder);
-detallePoder.appendChild(descripcionTiempo);
 
-habilidades.appendChild(habilidadAtacar);
-habilidades.appendChild(habilidad1);
-habilidades.appendChild(habilidad2);
 
-habilidadAtacar.appendChild(imagen_atcar);
-habilidad1.appendChild(imagen_poder1);
-habilidad2.appendChild(imagen_poder2);
-habilidad1.appendChild(imagencooldownhabilidad1);
-habilidad2.appendChild(imagencooldownhabilidad2);
-habilidad1.appendChild(cooldownHabilidad1);
-habilidad2.appendChild(cooldownHabilidad2);
+
 detallePoder.style.display = "none";
 
-habilidad1.addEventListener("mouseenter", (e) => {
-  actualizarDetallePoder(e);
-});
-habilidad2.addEventListener("mouseenter", (e) => {
-  actualizarDetallePoder(e);
-});
+habilidad1.addEventListener("mouseenter", (e) => {actualizarDetallePoder(e);});
+habilidad2.addEventListener("mouseenter", (e) => {actualizarDetallePoder(e);});
 
-habilidad1.addEventListener("mouseleave", (e) => {
-  actualizarDetallePoder(e);
-});
-
-habilidad2.addEventListener("mouseleave", (e) => {
-  actualizarDetallePoder(e);
-});
+habilidad1.addEventListener("mouseleave", (e) => {actualizarDetallePoder(e);});
+habilidad2.addEventListener("mouseleave", (e) => {actualizarDetallePoder(e);});
 
 
-habilidad1.addEventListener("click", () =>
-  seleccionarHabilidad(habilidad1, habilidad2, habilidadAtacar)
-);
-habilidad2.addEventListener("click", () =>
-  seleccionarHabilidad(habilidad2, habilidad1, habilidadAtacar)
-);
-habilidadAtacar.addEventListener("click", () =>
-  seleccionarHabilidad(habilidadAtacar, habilidad1, habilidad2)
-);
+habilidad1.addEventListener("click", () =>  seleccionarHabilidad(habilidad1, habilidad2, habilidadAtacar));
+habilidad2.addEventListener("click", () =>  seleccionarHabilidad(habilidad2, habilidad1, habilidadAtacar));
+habilidadAtacar.addEventListener("click", () =>  seleccionarHabilidad(habilidadAtacar, habilidad1, habilidad2));
 
 const turno_izquierda = document.querySelectorAll(".turno_izquierda");
 const turno_derecha = document.querySelectorAll(".turno_derecha");
@@ -426,9 +383,9 @@ function seleccionarHabilidad(
 }
 
 function actualizarInfomacionPersonajeActual() {
+  
   imagen_atcar.src = `./players/condicion/Atacar.png`;
 
-  // nombreJugadorActual.textContent = Juego.personajeActual.nombre;
   if (Juego.personajeActual.equipo == 1) {
     informacion.classList.remove("informacion_equipo2");
     informacion.classList.add("informacion_equipo1");
@@ -457,15 +414,10 @@ function actualizarInfomacionPersonajeActual() {
     imagencooldownhabilidad2.style.display = "none";
   }
 
-  habilidad1.setAttribute(
-    "nombrePoder",
-    Juego.personajeActual.habilidades[0].nombre
-  );
-  habilidad2.setAttribute(
-    "nombrePoder",
-    Juego.personajeActual.habilidades[1].nombre
-  );
+  habilidad1.setAttribute("nombrePoder", Juego.personajeActual.habilidades[0].nombre);
+  habilidad2.setAttribute("nombrePoder",Juego.personajeActual.habilidades[1].nombre);
   habilidadAtacar.setAttribute("nombrePoder", "Atacar");
+  
   imagen_poder1.src = `./players/${Juego.personajeActual.id}/poderes/poder1.png`;
   imagen_poder2.src = `./players/${Juego.personajeActual.id}/poderes/poder2.png`;
 
@@ -533,21 +485,17 @@ function AsignarTurno() {
   // Usar timeout solo para el display: block después de 1 segundo
   setTimeout(() => {
     turno_izquierda.forEach((turno, i) => {
-      if (
-        Juego.personajeActual.id == turno_izquierda[i].nextElementSibling.id
-      ) {
+      if (Juego.personajeActual.id == turno_izquierda[i].nextElementSibling.id) {
         turno.style.display = "block";
       }
     });
 
     turno_derecha.forEach((turno, i) => {
-      if (
-        Juego.personajeActual.id == turno_derecha[i].previousElementSibling.id
-      ) {
+      if (Juego.personajeActual.id == turno_derecha[i].previousElementSibling.id) {
         turno.style.display = "block";
       }
     });
-  }, 1700);
+  }, 1500);
 }
 
 function desactivarBotones() {
