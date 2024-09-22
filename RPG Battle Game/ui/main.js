@@ -541,8 +541,11 @@ function actualizarSeccionPoder() {
 }
 
 function actualizarDefensaAtaque() {
-
   
+
+
+
+
 }
 
 AsignarTurno();
