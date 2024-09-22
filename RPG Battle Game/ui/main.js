@@ -37,36 +37,30 @@ Juego.equipo1.forEach((personaje) => {
   barraVida.appendChild(numeroPorcentaje);
 
   // crear seccion poderes
-  const seccionPoder = document.createElement("div");
-  const poder1 = document.createElement("div");
-  const poder2 = document.createElement("div");
-  const imagenPoder = document.createElement("i");
-  const imagenPoder2 = document.createElement("i");
-  const cantidadPoder1 = document.createElement("p");
-  const cantidadPoder2 = document.createElement("p");
-  
-  
-  seccionPoder.classList.add("seccionPoder");
-  poder1.classList.add("poder", "poder1");
-  poder2.classList.add("poder", "poder2");
-  imagenPoder.classList.add("fa-solid","fa-shield");
-  imagenPoder2.classList.add("fa-solid","fa-hand-back-fist");
-  
-  cantidadPoder1.textContent = `${personaje.ataque}`;
-  cantidadPoder2.textContent = `${personaje.defensa}`;
-  
-  barraVida.appendChild(seccionPoder);
-  poder1.appendChild(imagenPoder);
-  poder1.appendChild(cantidadPoder1);
-  poder2.appendChild(imagenPoder2);
-  poder2.appendChild(cantidadPoder2);
-  seccionPoder.appendChild(poder1);
-  seccionPoder.appendChild(poder2);
-  
-  
-  
-  
-  
+  const seccionestadisticas = document.createElement("div");
+  const defensaSeccion = document.createElement("div");
+  const ataqueSeccion = document.createElement("div");
+  const iconoDefensa = document.createElement("i");
+  const iconoAtaque = document.createElement("i");
+  const cantidadDefensa = document.createElement("p");
+  const cantidadAtaque = document.createElement("p");
+
+  seccionestadisticas.classList.add("seccionestadisticas");
+  defensaSeccion.classList.add("poder", "defensaSeccion");
+  ataqueSeccion.classList.add("poder", "ataqueSeccion");
+  iconoDefensa.classList.add("fa-solid", "fa-shield");
+  iconoAtaque.classList.add("fa-solid", "fa-hand-back-fist");
+
+  cantidadDefensa.textContent = `${personaje.ataque}`;
+  cantidadAtaque.textContent = `${personaje.defensa}`;
+
+  barraVida.appendChild(seccionestadisticas);
+  defensaSeccion.appendChild(iconoDefensa);
+  defensaSeccion.appendChild(cantidadDefensa);
+  ataqueSeccion.appendChild(iconoAtaque);
+  ataqueSeccion.appendChild(cantidadAtaque);
+  seccionestadisticas.appendChild(defensaSeccion);
+  seccionestadisticas.appendChild(ataqueSeccion);
 
   // crear seccion condicion
   const seccionCondicion = document.createElement("div");
@@ -157,11 +151,18 @@ Juego.equipo1.forEach((personaje) => {
       }
 
       if (habilidadSeleccionada != null && habilidadSeleccionada != "Atacar") {
-        let accionCompletada = Juego.personajeActual.usarHabilidad(habilidadSeleccionada,personaje);
+        let accionCompletada = Juego.personajeActual.usarHabilidad(
+          habilidadSeleccionada,
+          personaje
+        );
         // habilidadSeleccionada = null;
 
         if (accionCompletada) {
-          animacionEquipo1(e.target, e.target.parentElement.nextElementSibling, habilidadSeleccionada);
+          animacionEquipo1(
+            e.target,
+            e.target.parentElement.nextElementSibling,
+            habilidadSeleccionada
+          );
           desactivarBotones();
         }
         desactivarBotones();
@@ -193,37 +194,30 @@ Juego.equipo2.forEach((personaje) => {
   barraVida.appendChild(numeroPorcentaje);
 
   // crear seccion poderes
-  const seccionPoder = document.createElement("div");
-  const poder1 = document.createElement("div");
-  const poder2 = document.createElement("div");
-  const imagenPoder = document.createElement("i");
-  const imagenPoder2 = document.createElement("i");
-  const cantidadPoder1 = document.createElement("p");
-  const cantidadPoder2 = document.createElement("p");
+  const seccionestadisticas = document.createElement("div");
+  const defensaSeccion = document.createElement("div");
+  const ataqueSeccion = document.createElement("div");
+  const iconoDefensa = document.createElement("i");
+  const iconoAtaque = document.createElement("i");
+  const cantidadDefensa = document.createElement("p");
+  const cantidadAtaque = document.createElement("p");
 
-  seccionPoder.classList.add("seccionPoder");
-  poder1.classList.add("poder", "poder1");
-  poder2.classList.add("poder", "poder2");
-  imagenPoder.classList.add("fa-solid","fa-shield");
-  imagenPoder2.classList.add("fa-solid","fa-hand-back-fist");
+  seccionestadisticas.classList.add("seccionestadisticas");
+  defensaSeccion.classList.add("poder", "defensaSeccion");
+  ataqueSeccion.classList.add("poder", "ataqueSeccion");
+  iconoDefensa.classList.add("fa-solid", "fa-shield");
+  iconoAtaque.classList.add("fa-solid", "fa-hand-back-fist");
 
-  cantidadPoder1.textContent = `${personaje.ataque}`;
-  cantidadPoder2.textContent = `${personaje.defensa}`;
+  cantidadDefensa.textContent = `${personaje.ataque}`;
+  cantidadAtaque.textContent = `${personaje.defensa}`;
 
-  barraVida.appendChild(seccionPoder);
-  poder1.appendChild(imagenPoder);
-  poder1.appendChild(cantidadPoder1);
-  poder2.appendChild(imagenPoder2);
-  poder2.appendChild(cantidadPoder2);
-  seccionPoder.appendChild(poder1);
-  seccionPoder.appendChild(poder2);
-    
-  
-
-
-
-
-
+  barraVida.appendChild(seccionestadisticas);
+  defensaSeccion.appendChild(iconoDefensa);
+  defensaSeccion.appendChild(cantidadDefensa);
+  ataqueSeccion.appendChild(iconoAtaque);
+  ataqueSeccion.appendChild(cantidadAtaque);
+  seccionestadisticas.appendChild(defensaSeccion);
+  seccionestadisticas.appendChild(ataqueSeccion);
 
   // crear seccion condicion
   const seccionCondicion = document.createElement("div");
@@ -360,15 +354,29 @@ const descripcionTiempo = document.querySelector(".descripcion_tiempo");
 detallePoder.style.display = "none";
 
 //Eventos de mouse para ver el detalle del poder cuando el mouse este encima
-habilidad1.addEventListener("mouseenter", (e) => {actualizarDetallePoder(e);});
-habilidad2.addEventListener("mouseenter", (e) => {actualizarDetallePoder(e);});
+habilidad1.addEventListener("mouseenter", (e) => {
+  actualizarDetallePoder(e);
+});
+habilidad2.addEventListener("mouseenter", (e) => {
+  actualizarDetallePoder(e);
+});
 //Eventos de mouse para ocultar el detalle del poder cuando el mouse se va
-habilidad1.addEventListener("mouseleave", (e) => {actualizarDetallePoder(e);});
-habilidad2.addEventListener("mouseleave", (e) => {actualizarDetallePoder(e);});
+habilidad1.addEventListener("mouseleave", (e) => {
+  actualizarDetallePoder(e);
+});
+habilidad2.addEventListener("mouseleave", (e) => {
+  actualizarDetallePoder(e);
+});
 // Eventos de click para seleccionar el poder
-habilidad1.addEventListener("click", () =>seleccionarHabilidad(habilidad1, habilidad2, habilidadAtacar));
-habilidad2.addEventListener("click", () =>  seleccionarHabilidad(habilidad2, habilidad1, habilidadAtacar));
-habilidadAtacar.addEventListener("click", () =>seleccionarHabilidad(habilidadAtacar, habilidad1, habilidad2));
+habilidad1.addEventListener("click", () =>
+  seleccionarHabilidad(habilidad1, habilidad2, habilidadAtacar)
+);
+habilidad2.addEventListener("click", () =>
+  seleccionarHabilidad(habilidad2, habilidad1, habilidadAtacar)
+);
+habilidadAtacar.addEventListener("click", () =>
+  seleccionarHabilidad(habilidadAtacar, habilidad1, habilidad2)
+);
 
 const turnoEquipo1 = document.querySelectorAll(".turnoEquipo1");
 const turnoEquipo2 = document.querySelectorAll(".turnoEquipo2");
@@ -532,8 +540,10 @@ function actualizarSeccionPoder() {
   imagenPoder2.src = `./players/${Juego.personajeActual.id}/poderes/poder2.png`;
 }
 
+function actualizarDefensaAtaque() {
+
+  
+}
+
 AsignarTurno();
 actualizar_Interfaz();
-
-
-
