@@ -38,23 +38,35 @@ Juego.equipo1.forEach((personaje) => {
 
   // crear seccion poderes
   const seccionPoder = document.createElement("div");
-  seccionPoder.classList.add("seccionPoder");
-  barraVida.appendChild(seccionPoder);
-
   const poder1 = document.createElement("div");
-  poder1.classList.add("poder", "poder1");
-  const imagenPoder = document.createElement("img");
-  imagenPoder.src = `./players/${personaje.id}/poderes/poder1.png`;
-  poder1.appendChild(imagenPoder);
-
   const poder2 = document.createElement("div");
+  const imagenPoder = document.createElement("i");
+  const imagenPoder2 = document.createElement("i");
+  const cantidadPoder1 = document.createElement("p");
+  const cantidadPoder2 = document.createElement("p");
+  
+  
+  seccionPoder.classList.add("seccionPoder");
+  poder1.classList.add("poder", "poder1");
   poder2.classList.add("poder", "poder2");
-  const imagenPoder2 = document.createElement("img");
-  imagenPoder2.src = `./players/${personaje.id}/poderes/poder2.png`;
+  imagenPoder.classList.add("fa-solid","fa-shield");
+  imagenPoder2.classList.add("fa-solid","fa-hand-back-fist");
+  
+  cantidadPoder1.textContent = `${personaje.ataque}`;
+  cantidadPoder2.textContent = `${personaje.defensa}`;
+  
+  barraVida.appendChild(seccionPoder);
+  poder1.appendChild(imagenPoder);
+  poder1.appendChild(cantidadPoder1);
   poder2.appendChild(imagenPoder2);
-
-  // seccionPoder.appendChild(poder1);
-  // seccionPoder.appendChild(poder2);
+  poder2.appendChild(cantidadPoder2);
+  seccionPoder.appendChild(poder1);
+  seccionPoder.appendChild(poder2);
+  
+  
+  
+  
+  
 
   // crear seccion condicion
   const seccionCondicion = document.createElement("div");
@@ -182,23 +194,36 @@ Juego.equipo2.forEach((personaje) => {
 
   // crear seccion poderes
   const seccionPoder = document.createElement("div");
-  seccionPoder.classList.add("seccionPoder");
-  barraVida.appendChild(seccionPoder);
-
   const poder1 = document.createElement("div");
-  poder1.classList.add("poder", "poder1");
-  const imagenPoder = document.createElement("img");
-  imagenPoder.src = `./players/${personaje.id}/poderes/poder1.png`;
-  poder1.appendChild(imagenPoder);
-
   const poder2 = document.createElement("div");
-  poder2.classList.add("poder", "poder2");
-  const imagenPoder2 = document.createElement("img");
-  imagenPoder2.src = `./players/${personaje.id}/poderes/poder2.png`;
-  poder2.appendChild(imagenPoder2);
+  const imagenPoder = document.createElement("i");
+  const imagenPoder2 = document.createElement("i");
+  const cantidadPoder1 = document.createElement("p");
+  const cantidadPoder2 = document.createElement("p");
 
-  // seccionPoder.appendChild(poder1);
-  // seccionPoder.appendChild(poder2);
+  seccionPoder.classList.add("seccionPoder");
+  poder1.classList.add("poder", "poder1");
+  poder2.classList.add("poder", "poder2");
+  imagenPoder.classList.add("fa-solid","fa-shield");
+  imagenPoder2.classList.add("fa-solid","fa-hand-back-fist");
+
+  cantidadPoder1.textContent = `${personaje.ataque}`;
+  cantidadPoder2.textContent = `${personaje.defensa}`;
+
+  barraVida.appendChild(seccionPoder);
+  poder1.appendChild(imagenPoder);
+  poder1.appendChild(cantidadPoder1);
+  poder2.appendChild(imagenPoder2);
+  poder2.appendChild(cantidadPoder2);
+  seccionPoder.appendChild(poder1);
+  seccionPoder.appendChild(poder2);
+    
+  
+
+
+
+
+
 
   // crear seccion condicion
   const seccionCondicion = document.createElement("div");

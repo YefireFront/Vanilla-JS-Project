@@ -70,54 +70,81 @@
 
 .esenarioEquipo1 {
   .seccionPoder {
-    width: 70%;
-    height: 50px;
-    /* border: 3px solid black; */
+    width: 72%;
+    /* height: 50px; */
+    border: 1px solid rgba(0, 0, 0, 0.598);
     position: absolute;
-    top: 10px;
+    top: 7px;
     left: 0px;
     display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+
+  
+
+  
 
     .poder {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: rgb(98, 219, 120);
+      /* border: 1px solid red; */
+      width: 80%;
+      height: 25px;
+      /* border-radius: 50%; */
+      background: rgb(82, 117, 88);
       overflow: hidden;
-      opacity: 0.8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-      &:hover {
-        opacity: 1;
+      i{
+        color: white;
+        margin-right: 10px;
       }
+
+      p{
+        color: rgb(255, 255, 255);
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+   
     }
   }
 }
 
 .esenarioEquipo2 {
   .seccionPoder {
-    width: 70%;
-    height: 50px;
-    /* border:1px solid black; */
+    width: 72%;
+    /* height: 50px; */
+    border: 1px solid black;
     position: absolute;
-    top: 10px;
-    left: 0px;
+    top: 7px;
+    left:55px;
     display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+
+
+
 
     .poder {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: rgb(98, 219, 201);
+      /* border: 1px solid red; */
+      width: 80%;
+      height: 25px;
+      /* border-radius: 50%; */
+      background: rgba(82, 117, 88, 0.516);
       overflow: hidden;
-      opacity: 0.8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-      &:hover {
-        opacity: 1;
+      i{
+        color: white;
+        margin-right: 10px;
       }
+
+      p{
+        color: white;
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+   
     }
   }
 }
