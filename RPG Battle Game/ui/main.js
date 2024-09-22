@@ -18,7 +18,7 @@ Juego.equipo1.forEach((personaje) => {
   // creando personajes en el escenario Left / 1
 
   const personaje1 = document.createElement("div");
-  personaje1.classList.add("personaje", `p${personaje.id}`);
+  personaje1.classList.add("personaje", `p${personaje.id}`, `${personaje.nombre}`);
   escenarioEquipo1.appendChild(personaje1);
 
   // crear barra de vida
@@ -36,7 +36,7 @@ Juego.equipo1.forEach((personaje) => {
   numeroPorcentaje.textContent = `${personaje.vida} / 100`;
   barraVida.appendChild(numeroPorcentaje);
 
-  // crear seccion poderes
+  // crear seccion ataque y defensa
   const seccionestadisticas = document.createElement("div");
   const defensaSeccion = document.createElement("div");
   const ataqueSeccion = document.createElement("div");
@@ -50,6 +50,8 @@ Juego.equipo1.forEach((personaje) => {
   ataqueSeccion.classList.add("poder", "ataqueSeccion");
   iconoDefensa.classList.add("fa-solid", "fa-shield");
   iconoAtaque.classList.add("fa-solid", "fa-hand-back-fist");
+  cantidadDefensa.classList.add("cantidadDefensa");
+  cantidadAtaque.classList.add("cantidadAtaque");
 
   cantidadDefensa.textContent = `${personaje.ataque}`;
   cantidadAtaque.textContent = `${personaje.defensa}`;
@@ -138,10 +140,9 @@ Juego.equipo1.forEach((personaje) => {
     if (habilidadSeleccionada) {
       if (habilidadSeleccionada === "Atacar") {
         let accionCompletada = Juego.personajeActual.Atacar(personaje);
-        habilidadSeleccionada = null;
 
         if (accionCompletada) {
-          animacionEquipo1(e.target, e.target.parentElement.nextElementSibling);
+          animacionEquipo1(e.target, e.target.parentElement.nextElementSibling ,e.target.parentElement,habilidadSeleccionada, personaje);
           desactivarBotones();
         }
 
@@ -151,18 +152,11 @@ Juego.equipo1.forEach((personaje) => {
       }
 
       if (habilidadSeleccionada != null && habilidadSeleccionada != "Atacar") {
-        let accionCompletada = Juego.personajeActual.usarHabilidad(
-          habilidadSeleccionada,
-          personaje
-        );
-        // habilidadSeleccionada = null;
+        let accionCompletada = Juego.personajeActual.usarHabilidad(habilidadSeleccionada,personaje);
 
         if (accionCompletada) {
-          animacionEquipo1(
-            e.target,
-            e.target.parentElement.nextElementSibling,
-            habilidadSeleccionada
-          );
+          console.log(e.target.parentElement.children[0]);
+          animacionEquipo1(e.target, e.target.parentElement.nextElementSibling ,e.target.parentElement,habilidadSeleccionada, personaje);
           desactivarBotones();
         }
         desactivarBotones();
@@ -175,7 +169,7 @@ Juego.equipo2.forEach((personaje) => {
   // creando personajes en el escenario right / 1
 
   const personaje1 = document.createElement("div");
-  personaje1.classList.add("personaje", `p${personaje.id}`);
+  personaje1.classList.add("personaje", `p${personaje.id}`, `${personaje.nombre}`);
   escenarioEquipo2.appendChild(personaje1);
 
   // crear barra de vida
@@ -207,6 +201,8 @@ Juego.equipo2.forEach((personaje) => {
   ataqueSeccion.classList.add("poder", "ataqueSeccion");
   iconoDefensa.classList.add("fa-solid", "fa-shield");
   iconoAtaque.classList.add("fa-solid", "fa-hand-back-fist");
+  cantidadDefensa.classList.add("cantidadDefensa");
+  cantidadAtaque.classList.add("cantidadAtaque");
 
   cantidadDefensa.textContent = `${personaje.ataque}`;
   cantidadAtaque.textContent = `${personaje.defensa}`;
@@ -405,6 +401,8 @@ function actualizar_Interfaz() {
   actualizarSeccionPoder();
   //Actualizar barra de vida equipo
   actualizarBarraVida();
+  //actualizar defensa y ataque
+  actualizarDefensaAtaque();
 }
 
 function AsignarTurno() {
@@ -541,6 +539,19 @@ function actualizarSeccionPoder() {
 }
 
 function actualizarDefensaAtaque() {
+  //selecionar la defensa y el ataque de todos los perosnajes
+  Juego.equipo1.forEach((personaje) => {
+    document.querySelector(`.${personaje.nombre} .cantidadDefensa`).textContent = personaje.defensa;
+    document.querySelector(`.${personaje.nombre} .cantidadAtaque`).textContent = personaje.ataque;
+   
+  });
+
+   Juego.equipo2.forEach((personaje) => {
+    document.querySelector(`.${personaje.nombre} .cantidadDefensa`).textContent = personaje.defensa;
+    document.querySelector(`.${personaje.nombre} .cantidadAtaque`).textContent = personaje.ataque;
+   
+  });
+  
   
 
 

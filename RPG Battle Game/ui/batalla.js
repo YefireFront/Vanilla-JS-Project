@@ -1,11 +1,15 @@
-const personajesDeElEquipo1 = document.querySelectorAll(
-  ".esenarioEquipo1 .personaje"
-);
-const personajesDeElEquipo2 = document.querySelectorAll(
-  ".esenarioEquipo2 .personaje"
-);
+const personajesDeElEquipo1 = document.querySelectorAll(".esenarioEquipo1 .personaje");
+const personajesDeElEquipo2 = document.querySelectorAll(".esenarioEquipo2 .personaje");
 
-function animacionEquipo1(objetivo, lugarDeAtaque, habilidadSeleccionada) {
+function animacionEquipo1(objetivo, lugarDeAtaque,lugarPropio, habilidadSeleccionada, personajeSeleccionado) {
+  
+
+  console.log(objetivo);
+  console.log(lugarDeAtaque);
+  console.log(lugarPropio);
+  console.log(habilidadSeleccionada);
+  console.log(personajeSeleccionado);
+
 
   if (habilidadSeleccionada == "Atacar") {
     lugarDeAtaque.children[0].src = `./players/${Juego.personajeActual.id}/Atacando.gif`;
@@ -45,6 +49,10 @@ function animacionEquipo1(objetivo, lugarDeAtaque, habilidadSeleccionada) {
   }
   
   if (tipoHabilidad.tipo === "Soporte") {
+    lugarPropio.children[0].src = `./players/${Juego.personajeActual.id}/Soporte.gif`;
+    setTimeout(() => {
+      lugarPropio.children[0].src = `./players/${personajeSeleccionado.id}/Quieto.gif`;
+    }, 1500);
     objetivo.classList.add("soporte");
     
   }

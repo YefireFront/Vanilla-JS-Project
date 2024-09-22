@@ -163,7 +163,7 @@ class Antorcha extends Personaje {
 
 const reptil = new Reptil("Reptil", 50, 20, 11);
 const pandawa = new Pandawa("Pandawa", 30, 30, 8);
-const gigant = new Gigant("Gigant", 50, 10, 4);
+const gigant = new Gigant("Gigant", 50, 10, 14);
 
 const antorcha = new Antorcha("Antorcha", 40, 20, 11);
 const monje = new Monje("Monje", 40, 20, 8);
