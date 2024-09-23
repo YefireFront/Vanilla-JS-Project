@@ -1,0 +1,18 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cinema{
+    height: 300px; /* Altura del div */
+    width: 500px; /* Ancho del div */
+    background: rgb(255,255,255);
+    background: radial-gradient(circle, rgba(255,255,255,0.2743986593059937) 51%, rgba(5,5,5,0.5456920347003155) 200%);
+}

@@ -1,5 +1,6 @@
 const personajesDeElEquipo1 = document.querySelectorAll(".esenarioEquipo1 .personaje");
 const personajesDeElEquipo2 = document.querySelectorAll(".esenarioEquipo2 .personaje");
+const cinema = document.querySelector('.cinema');
 
 function animacionEquipo1(objetivo, lugarDeAtaque, habilidadSeleccionada, personajeSeleccionado) {
   
@@ -10,10 +11,13 @@ function animacionEquipo1(objetivo, lugarDeAtaque, habilidadSeleccionada, person
     lugarDeAtaque.children[0].src = `./players/${Juego.personajeActual.id}/Atacando.gif`;
     objetivo.classList.add("daño");
     esenario.classList.add("temblor");
+    cinema.classList.add('active');
+
 
     setTimeout(() => {
       objetivo.classList.remove("daño");
       esenario.classList.remove("temblor");
+      cinema.classList.remove('active');
     }, 2300);
 
     setTimeout(() => {
