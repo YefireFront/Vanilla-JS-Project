@@ -96,6 +96,7 @@ function animacionEquipo1(objetivo, lugarDeAtaque, habilidadSeleccionada, person
   }
 
 
+  
   //remover cinema
 
 
