@@ -342,33 +342,18 @@ const descripcionTiempo = document.querySelector(".descripcion_tiempo");
 detallePoder.style.display = "none";
 
 //Eventos de mouse para ver el detalle del poder cuando el mouse este encima
-habilidad1.addEventListener("mouseenter", (e) => {
-  actualizarDetallePoder(e);
-});
-habilidad2.addEventListener("mouseenter", (e) => {
-  actualizarDetallePoder(e);
-});
+habilidad1.addEventListener("mouseenter", (e) => actualizarDetallePoder(e));
+habilidad2.addEventListener("mouseenter", (e) => actualizarDetallePoder(e)); 
 //Eventos de mouse para ocultar el detalle del poder cuando el mouse se va
-habilidad1.addEventListener("mouseleave", (e) => {
-  actualizarDetallePoder(e);
-});
-habilidad2.addEventListener("mouseleave", (e) => {
-  actualizarDetallePoder(e);
-});
+habilidad1.addEventListener("mouseleave", (e) => actualizarDetallePoder(e)); 
+habilidad2.addEventListener("mouseleave", (e) => actualizarDetallePoder(e)); 
 // Eventos de click para seleccionar el poder
-habilidad1.addEventListener("click", () =>
-  seleccionarHabilidad(habilidad1, habilidad2, habilidadAtacar)
-);
-habilidad2.addEventListener("click", () =>
-  seleccionarHabilidad(habilidad2, habilidad1, habilidadAtacar)
-);
-habilidadAtacar.addEventListener("click", () =>
-  seleccionarHabilidad(habilidadAtacar, habilidad1, habilidad2)
-);
+habilidad1.addEventListener("click", () =>seleccionarHabilidad(habilidad1, habilidad2, habilidadAtacar));
+habilidad2.addEventListener("click", () =>seleccionarHabilidad(habilidad2, habilidad1, habilidadAtacar));
+habilidadAtacar.addEventListener("click", () =>seleccionarHabilidad(habilidadAtacar, habilidad1, habilidad2));
 
 const turnoEquipo1 = document.querySelectorAll(".turnoEquipo1");
 const turnoEquipo2 = document.querySelectorAll(".turnoEquipo2");
-
 
 
 function seleccionarHabilidad(
@@ -597,10 +582,6 @@ function gestionarDebilitamiento() {
 
 function gestionarPersonajesMuertos() {
 }
-
-
-
-
 
 
 AsignarTurno();
