@@ -11,13 +11,11 @@ function animacionEquipo1(objetivo, lugarDeAtaque, habilidadSeleccionada, person
     lugarDeAtaque.children[0].src = `./players/${Juego.personajeActual.id}/Atacando.gif`;
     objetivo.classList.add("daño");
     esenario.classList.add("temblor");
-    cinema.classList.add('active');
 
 
     setTimeout(() => {
       objetivo.classList.remove("daño");
       esenario.classList.remove("temblor");
-      cinema.classList.remove('active');
     }, 2300);
 
     setTimeout(() => {
@@ -43,8 +41,12 @@ function animacionEquipo1(objetivo, lugarDeAtaque, habilidadSeleccionada, person
   if (tipoHabilidad.tipo === "Daño") {
     console.log(` Tipo de habilidad: ${tipoHabilidad.tipo}`);
     lugarDeAtaque.children[0].src = `./players/${Juego.personajeActual.id}/Atacando.gif`;
+
     objetivo.classList.add("daño");
     esenario.classList.add("temblor");
+    cinema.classList.add('active');
+
+
    }
   
   
@@ -70,17 +72,20 @@ function animacionEquipo1(objetivo, lugarDeAtaque, habilidadSeleccionada, person
   }
 
   if (tipoHabilidad.tipo === "DañoMasivo") {
-    console.log('tipo de habilidad daño masivo');
     lugarDeAtaque.children[0].src = `./players/${Juego.personajeActual.id}/Atacando.gif`;
+    cinema.classList.add('active');
+
 
     personajesDeElEquipo1.forEach((elemento) => {
       console.log(elemento)
       elemento.children[2].classList.add("daño");
       esenario.classList.add("temblor");
+      cinema.classList.add('active');
 
       setTimeout(() => {
         elemento.children[2].classList.remove("daño");
         esenario.classList.remove("temblor");
+        cinema.classList.remove('active');
       }, 2300);
 
     });
@@ -90,22 +95,31 @@ function animacionEquipo1(objetivo, lugarDeAtaque, habilidadSeleccionada, person
 
   }
 
-  
+
+  //remover cinema
 
 
+
+  setTimeout(() => {
+    cinema.classList.remove('active');    
+  }, 1500);
+
+  //Remover efecto de daño
   setTimeout(() => {
     objetivo.classList.remove("daño");
     esenario.classList.remove("temblor");
   }, 2300);
-
+  //Remover efecto de soporte
   setTimeout(() => {
     objetivo.classList.remove("soporte");
   }, 1500);
-
+  //Remover efecto de desaparicion
   setTimeout(() => {
     lugarDeAtaque.children[0].src = "";
   }, 1500);
 
+
+  //Bucar y remover a el personaje que ataco
   personajesDeElEquipo2.forEach((elemento) => {
     if (elemento.classList.contains(`p${Juego.personajeActual.id}`)) {
       elemento.style.display = "none";
@@ -157,6 +171,7 @@ function animacionEquipo2(objetivo, lugarDeAtaque) {
     lugarDeAtaque.children[0].src = `./players/${Juego.personajeActual.id}/Atacando.gif`;
     objetivo.classList.add("daño");
     esenario.classList.add("temblor");
+    cinema.classList.add('active');
    }
    
    if (tipoHabilidad.tipo === "Soporte") {
@@ -190,10 +205,12 @@ function animacionEquipo2(objetivo, lugarDeAtaque) {
       console.log(elemento)
       elemento.children[2].classList.add("daño");
       esenario.classList.add("temblor");
+      cinema.classList.add('active');
 
       setTimeout(() => {
         elemento.children[2].classList.remove("daño");
         esenario.classList.remove("temblor");
+        cinema.classList.remove('active');
       }, 2300);
 
     });
@@ -213,7 +230,8 @@ function animacionEquipo2(objetivo, lugarDeAtaque) {
   setTimeout(() => {
     objetivo.classList.remove("daño");
     esenario.classList.remove("temblor");
-  }, 2300);
+    cinema.classList.remove('active');
+  }, 2000);
 
   setTimeout(() => {
     objetivo.classList.remove("soporte");

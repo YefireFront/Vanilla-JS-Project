@@ -141,7 +141,7 @@ body {
 }
 
 .cinema.active{
-  transition: opacity 1s ease-in;
+  transition: opacity 0.8s ease-in;
   display: flex;
   opacity: 1;
   pointer-events: none;
