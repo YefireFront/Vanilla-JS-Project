@@ -112,7 +112,7 @@ class Reptil extends Personaje {
   constructor(nombre, ataque, defensa, velocidad) {
     super(nombre, ataque, defensa, velocidad);
     this.habilidades.push(crearMordidaToxica());
-    this.habilidades.push(crearRegeneracionEscamosa());
+    this.habilidades.push(pandemia());
   }
 }
 
@@ -161,10 +161,12 @@ class Antorcha extends Personaje {
   }
 }
 
-const reptil = new Reptil("Reptil", 50, 20, 11);
-const pandawa = new Pandawa("Pandawa", 30, 30, 8);
+const reptil = new Reptil("Reptil", 50, 20, 110);
+const pandawa = new Pandawa("Pandawa", 30, 30, 48);
 const gigant = new Gigant("Gigant", 50, 10, 14);
 
 const antorcha = new Antorcha("Antorcha", 40, 20, 11);
-const monje = new Monje("Monje", 40, 20, 8);
-const thunder = new Thunder("Thunder", 60, 20, 10);
+const monje = new Monje("Monje", 40, 20, 81);
+const thunder = new Thunder("Thunder", 60, 20, 100);
+
+

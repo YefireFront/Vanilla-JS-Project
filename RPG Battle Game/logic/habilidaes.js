@@ -31,7 +31,7 @@ function crear1000Volvios() {
   return new Habilidad(
     "1000 Voltios",
     3,
-    "Daño",
+    "DañoMasivo",
     "Inflige 15 de Daño y paraliza al objetivo durante 1 turno.",
     (lanzador, objetivo) => {
        if (Juego.equipo1.find(personaje => objetivo === personaje)) {
@@ -49,6 +49,36 @@ function crear1000Volvios() {
     }
   );
 }
+
+function pandemia() {
+  return new Habilidad(
+    "Pandemia",
+    3,
+    "DañoMasivo",
+    "Inflige 5 de Daño y envenena a todos los enemigos",
+    (lanzador, objetivo) => {
+       if (Juego.equipo1.find(personaje => objetivo === personaje)) {
+         Juego.equipo1.forEach((personaje) => {
+          personaje.vida -= 5;
+          personaje.debilitamiento.push(crearVeneno());
+          console.log(`${lanzador.nombre} ha usado pandemia en ${personaje.nombre}. El objetivo ha sido envenenado.`);
+
+        })
+       }else{
+         Juego.equipo2.forEach((personaje) => {
+          personaje.vida -= 5;
+          personaje.debilitamiento.push(crearVeneno());
+          console.log(`${lanzador.nombre} ha usado pandemia en ${personaje.nombre}. El objetivo ha sido envenenado.`);
+        });
+          
+       }
+    }
+  );
+  
+}
+
+
+
 
 function crearCarga() {
   return new Habilidad( 

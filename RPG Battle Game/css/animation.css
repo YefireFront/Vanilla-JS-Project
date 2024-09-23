@@ -33,27 +33,27 @@
 
 @keyframes healingEffect {
   0% {
-    transform: scale(1);
+    /* transform: scale(1); */
     filter: brightness(100%) blur(1px) drop-shadow(0 0 0 rgba(0, 255, 0, 0))  ;
     opacity: 1;
   }
   25% {
-    transform: scale(1.05);
-    filter: brightness(130%) blur(1px) drop-shadow(0 10px 20px rgba(0, 255, 0, 0.5));
+    /* transform: scale(1.05); */
+    filter: brightness(130%) blur(1px) drop-shadow(0 10px 10px rgba(0, 255, 0, 0.5));
     opacity: 0.9;
   }
   50% {
-    transform: scale(1.1);
-    filter: brightness(160%) blur(1px) drop-shadow(0 20px 30px rgba(0, 255, 0, 0.7));
+    /* transform: scale(1.1); */
+    filter: brightness(160%) blur(1px) drop-shadow(0 20px 20px rgba(0, 255, 0, 0.7));
     opacity: 0.7;
   }
   75% {
-    transform: scale(1.05);
-    filter: brightness(130%) blur(1px) drop-shadow(0 10px 20px rgba(0, 255, 0, 0.5));
+    /* transform: scale(1.05); */
+    filter: brightness(130%) blur(1px) drop-shadow(0 10px 10px rgba(0, 255, 0, 0.5));
     opacity: 0.9;
   }
   100% {
-    transform: scale(1);
+    /* transform: scale(1); */
     filter: brightness(100%) blur(1px) drop-shadow(0 0 0 rgba(0, 255, 0, 0));
     opacity: 1;
   }
@@ -271,4 +271,8 @@
 
 .soporte {
   animation: soporte 0.5s infinite;
+}
+
+.healingEffect{
+  animation: healingEffect 1s linear  1.2s  infinite;
 }

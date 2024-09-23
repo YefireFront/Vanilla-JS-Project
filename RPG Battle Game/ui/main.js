@@ -142,7 +142,7 @@ Juego.equipo1.forEach((personaje) => {
         let accionCompletada = Juego.personajeActual.Atacar(personaje);
 
         if (accionCompletada) {
-          animacionEquipo1(e.target, e.target.parentElement.nextElementSibling ,e.target.parentElement,habilidadSeleccionada, personaje);
+          animacionEquipo1(e.target, e.target.parentElement.nextElementSibling ,habilidadSeleccionada, personaje);
           desactivarBotones();
         }
 
@@ -156,7 +156,7 @@ Juego.equipo1.forEach((personaje) => {
 
         if (accionCompletada) {
           console.log(e.target.parentElement.children[0]);
-          animacionEquipo1(e.target, e.target.parentElement.nextElementSibling ,e.target.parentElement,habilidadSeleccionada, personaje);
+          animacionEquipo1(e.target, e.target.parentElement.nextElementSibling ,habilidadSeleccionada, personaje);
           desactivarBotones();
         }
         desactivarBotones();
@@ -282,20 +282,14 @@ Juego.equipo2.forEach((personaje) => {
 
   imagenPersonaje.addEventListener("click", (e) => {
     const idPersonaje = e.target.parentElement.id;
-    const personaje = Juego.equipo2.find(
-      (personaje) => personaje.id == idPersonaje
-    );
+    const personaje = Juego.equipo2.find((personaje) => personaje.id == idPersonaje);
 
     if (habilidadSeleccionada) {
       if (habilidadSeleccionada === "Atacar") {
         let accionCompletada = Juego.personajeActual.Atacar(personaje);
-        habilidadSeleccionada = null;
 
         if (accionCompletada) {
-          animacionEquipo2(
-            e.target,
-            e.target.parentElement.previousElementSibling
-          );
+          animacionEquipo2(e.target, e.target.parentElement.parentElement.children[1] ,habilidadSeleccionada, personaje);
           desactivarBotones();
         }
 
@@ -305,21 +299,19 @@ Juego.equipo2.forEach((personaje) => {
       }
 
       if (habilidadSeleccionada != null && habilidadSeleccionada != "Atacar") {
-        let accionCompletada = Juego.personajeActual.usarHabilidad(
-          habilidadSeleccionada,
-          personaje
-        );
-        habilidadSeleccionada = null;
+        let accionCompletada = Juego.personajeActual.usarHabilidad(habilidadSeleccionada,personaje);
 
         if (accionCompletada) {
-          animacionEquipo2(
-            e.target,
-            e.target.parentElement.previousElementSibling
-          );
+          console.log(e.target.parentElement.children[0]);
+          animacionEquipo2(e.target, e.target.parentElement.parentElement.children[1]  ,e.target.parentElement,habilidadSeleccionada, personaje);
           desactivarBotones();
         }
+        desactivarBotones();
       }
     }
+
+
+  
   });
 });
 
@@ -377,6 +369,8 @@ habilidadAtacar.addEventListener("click", () =>
 const turnoEquipo1 = document.querySelectorAll(".turnoEquipo1");
 const turnoEquipo2 = document.querySelectorAll(".turnoEquipo2");
 
+
+
 function seleccionarHabilidad(
   habilidad,
   habilidadDesactivar1,
@@ -403,6 +397,8 @@ function actualizar_Interfaz() {
   actualizarBarraVida();
   //actualizar defensa y ataque
   actualizarDefensaAtaque();
+  //gestionar debilitamiento
+  gestionarDebilitamiento();
 }
 
 function AsignarTurno() {
@@ -559,5 +555,54 @@ function actualizarDefensaAtaque() {
 
 }
 
+function gestionarDebilitamiento() {
+  const personajesHTML = document.querySelectorAll(".personaje_Principal");
+  const personajesJS = [...Juego.equipo1, ...Juego.equipo2];
+
+  const efectosCSS = {
+    "Regeneración": "healingEffect",
+    "Quemadura": "burnEffect",
+    "Veneno": "poisonEffect"
+  };
+
+  personajesHTML.forEach((personajeHTML) => {
+    const personajeJS = personajesJS.find(p => p.id == personajeHTML.id);
+
+    if (personajeJS) {
+
+      if (personajeJS.estaMuero()) {
+        personajeHTML.classList.add('fantasma');
+      } else {
+        personajeHTML.classList.remove('fantasma');
+      }
+
+      // Recorrer cada efecto definido en efectosCSS
+      for (const efectoNombre in efectosCSS) {
+        const claseCSS = efectosCSS[efectoNombre];
+
+        // Verificar si el personaje tiene el efecto en el array de debilitamiento
+        const tieneEfecto = personajeJS.debilitamiento.some(efecto => efecto.nombre === efectoNombre);
+
+        if (tieneEfecto) {
+          // Si el efecto está presente, añadir la clase CSS
+          personajeHTML.classList.add(claseCSS);
+        } else {
+          // Si el efecto no está presente, remover la clase CSS
+          personajeHTML.classList.remove(claseCSS);
+        }
+      }
+    }
+  });
+}
+
+function gestionarPersonajesMuertos() {
+}
+
+
+
+
+
+
 AsignarTurno();
 actualizar_Interfaz();
+gestionarDebilitamiento()
