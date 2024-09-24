@@ -3,16 +3,11 @@ const personajesDeElEquipo2 = document.querySelectorAll(".esenarioEquipo2 .perso
 const cinema = document.querySelector('.cinema');
 
 function animacionEquipo1(objetivo, lugarDeAtaque, habilidadSeleccionada) {
-  console.log(lugarDeAtaque)
-  
-
-
 
   if (habilidadSeleccionada == "Atacar") {
     lugarDeAtaque.children[0].src = `./players/${Juego.personajeActual.id}/Atacando.gif`;
     objetivo.classList.add("daño");
     esenario.classList.add("temblor");
-
 
     setTimeout(() => {
       objetivo.classList.remove("daño");
@@ -33,7 +28,6 @@ function animacionEquipo1(objetivo, lugarDeAtaque, habilidadSeleccionada) {
     });
 
     return true
-  
     
   }
   
@@ -50,7 +44,6 @@ function animacionEquipo1(objetivo, lugarDeAtaque, habilidadSeleccionada) {
 
    }
   
-  
   if (tipoHabilidad.tipo === "Soporte") {
     //Animar a el personaje que usa la habilidad
     personajesDeElEquipo1.forEach((elemento) => {
@@ -65,11 +58,7 @@ function animacionEquipo1(objetivo, lugarDeAtaque, habilidadSeleccionada) {
         }, 1500);
       }
     });
-    
-
-    
-
-    
+     
   }
 
   if (tipoHabilidad.tipo === "DañoMasivo") {
@@ -91,15 +80,9 @@ function animacionEquipo1(objetivo, lugarDeAtaque, habilidadSeleccionada) {
     });
 
 
-
-
   }
 
-
-  
   //remover cinema
-
-
 
   setTimeout(() => {
     cinema.classList.remove('active');    
@@ -130,12 +113,10 @@ function animacionEquipo1(objetivo, lugarDeAtaque, habilidadSeleccionada) {
     }
   });
 
-
 }
 
 function animacionEquipo2(objetivo, lugarDeAtaque, habilidadSeleccionada) {
  
-  
   if (habilidadSeleccionada == "Atacar") {
     lugarDeAtaque.children[0].src = `./players/${Juego.personajeActual.id}/Atacando.gif`;
     objetivo.classList.add("daño");
@@ -161,9 +142,7 @@ function animacionEquipo2(objetivo, lugarDeAtaque, habilidadSeleccionada) {
 
     return true
   
-    
   }
-
 
   const tipoHabilidad = Juego.personajeActual.habilidades.find((habilidad) => habilidad.nombre === habilidadSeleccionada);
  
@@ -192,10 +171,7 @@ function animacionEquipo2(objetivo, lugarDeAtaque, habilidadSeleccionada) {
        }
      });
      
- 
-     
- 
-     
+    
    }
 
    if (tipoHabilidad.tipo === "DañoMasivo") {
@@ -215,16 +191,7 @@ function animacionEquipo2(objetivo, lugarDeAtaque, habilidadSeleccionada) {
 
     });
 
-
-
-
   }
-
-
-   
-   
-  
-
 
 
   setTimeout(() => {
@@ -250,7 +217,6 @@ function animacionEquipo2(objetivo, lugarDeAtaque, habilidadSeleccionada) {
     }
   });
 }
-
 
 function validaTipoHabilidad(nombreHabilidad, personaje) {
   const tipoHabilidad = personaje.habilidades[0].find((habilidad) => habilidad.nombre === nombreHabilidad);

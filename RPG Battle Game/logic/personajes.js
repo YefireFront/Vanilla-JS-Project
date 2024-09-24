@@ -16,16 +16,47 @@ class Personaje {
   //metodo para valida pesonaje vivo
   estaMuero() {
     if (this.vida <= 0) {
-      console.log(` El personaje ${this.nombre} está muerto`);
+      // console.log(` El personaje ${this.nombre} está muerto`);
       return true;
     }
     return false;
   }
 
   //Asignar 0 si un perosnaje quesa con vida negativa
-  validarVidaNegativa() {
+  validarNegativos() {
     if (this.vida <= 0) {
       this.vida = 0;
+    }
+
+    if (this.defensa <= 0) {
+      this.defensa = 0;
+    }
+
+    if (this.ataque <= 0) {
+      this.ataque = 0;
+    }
+  }
+
+  //validar positivos de vida y defensa
+  validarPositivos() {
+    if (this.vida >= 100) {
+      this.vida = 100;
+    }
+
+    if (this.defensa >= 60) {
+      this.defensa = 60;
+    }
+  }
+
+  static validarExcesos(personaje1, personaje2) {
+    if (personaje1) {
+      personaje1.validarPositivos();
+      personaje1.validarNegativos();
+    }
+
+    if (personaje2) {
+      personaje2.validarPositivos();
+      personaje2.validarNegativos();
     }
   }
 
@@ -54,7 +85,7 @@ class Personaje {
         this.ataque - objetivo.defensa
       } de daño`
     );
-    objetivo.validarVidaNegativa();
+    objetivo.validarNegativos();
 
     Juego.cambiarTurno();
     return true;
@@ -84,6 +115,14 @@ class Personaje {
         return false;
       }
 
+      if (habilidad.nombre === "Revivir") {
+        //Activar la habilidad
+        habilidad.activar(this, objetivo);
+        objetivo.validarNegativos();
+        Juego.cambiarTurno();
+        return true;
+      }
+
       //Validar objetivo vivo
       if (objetivo.estaMuero()) {
         console.log(`El objetivo ${objetivo.nombre} está muerto`);
@@ -92,7 +131,7 @@ class Personaje {
 
       //Activar la habilidad
       habilidad.activar(this, objetivo);
-      objetivo.validarVidaNegativa();
+      objetivo.validarNegativos();
       Juego.cambiarTurno();
       return true;
     } else {
@@ -121,7 +160,7 @@ class Gigant extends Personaje {
     super(nombre, ataque, defensa, velocidad);
     // this.habilidades.push(crearGolpeGigante());
     this.habilidades.push(crearLlamadoCeleste());
-    this.habilidades.push(crearArmadurarota());
+    this.habilidades.push(crearRevivir());
   }
 }
 
@@ -161,12 +200,10 @@ class Antorcha extends Personaje {
   }
 }
 
-const reptil = new Reptil("Reptil", 50, 20, 110);
-const pandawa = new Pandawa("Pandawa", 30, 30, 48);
+const reptil = new Reptil("Reptil", 50, 20, 10);
+const pandawa = new Pandawa("Pandawa", 30, 30, 8);
 const gigant = new Gigant("Gigant", 50, 10, 14);
 
-const antorcha = new Antorcha("Antorcha", 40, 20, 11);
+const antorcha = new Antorcha("Antorcha", 40, 20, 111);
 const monje = new Monje("Monje", 40, 20, 81);
-const thunder = new Thunder("Thunder", 60, 20, 100);
-
-
+const thunder = new Thunder("Thunder", 600, 20, 100);

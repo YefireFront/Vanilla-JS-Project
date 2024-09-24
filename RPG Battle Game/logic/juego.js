@@ -101,7 +101,7 @@ class Juego {
       }
 
       this.personajeActual.activarEfectos();
-      this.personajeActual.validarVidaNegativa();
+      this.personajeActual.validarNegativos();
       if (this.personajeActual.estaMuero()) {
         this.cambiarTurno();
       }
