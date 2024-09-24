@@ -37,13 +37,11 @@ function crear1000Volvios() {
        if (Juego.equipo1.find(personaje => objetivo === personaje)) {
          Juego.equipo1.forEach((personaje) => {
           personaje.vida -= 15;
-          personaje.debilitamiento.push(crearQuemadura());
           console.log(`${lanzador.nombre} ha usado 1000 con un daño de 15 en ${personaje.nombre}. Queda con la vida en ${personaje.vida}`);
         })
        }else{
          Juego.equipo2.forEach((personaje) => {
           personaje.vida -= 15;
-          personaje.debilitamiento.push(crearQuemadura());
           console.log(`${lanzador.nombre} ha usado 1000 Voltios en ${personaje.nombre}. El objetivo ha sido paralizado.`);
         });
           

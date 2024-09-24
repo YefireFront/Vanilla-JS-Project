@@ -134,7 +134,6 @@ function animacionEquipo1(objetivo, lugarDeAtaque, habilidadSeleccionada) {
 }
 
 function animacionEquipo2(objetivo, lugarDeAtaque, habilidadSeleccionada) {
-  console.log(lugarDeAtaque)
  
   
   if (habilidadSeleccionada == "Atacar") {
