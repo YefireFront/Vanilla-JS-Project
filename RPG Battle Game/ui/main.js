@@ -68,28 +68,22 @@ Juego.equipo1.forEach((personaje) => {
   const seccionCondicion = document.createElement("div");
   seccionCondicion.classList.add("seccionCondicion");
   barraVida.appendChild(seccionCondicion);
+  
 
-  const condicion1 = document.createElement("div");
-  condicion1.classList.add("condicion", "condicion1");
-  const imagenCondicion = document.createElement("img");
-  imagenCondicion.src = `./players/condicion/condicion1.gif`;
-  condicion1.appendChild(imagenCondicion);
+  const condicion1 = document.createElement("i");
+  condicion1.classList.add("condicion", "condicion1","fa-solid" ,"fa-user-injured");
 
-  const condicion2 = document.createElement("div");
-  condicion2.classList.add("condicion", "condicion2");
-  const imagenCondicion2 = document.createElement("img");
-  imagenCondicion2.src = `./players/condicion/condicion2.gif`;
-  condicion2.appendChild(imagenCondicion2);
 
-  const condicion3 = document.createElement("div");
-  condicion3.classList.add("condicion", "condicion3");
-  const imagenCondicion3 = document.createElement("img");
-  imagenCondicion3.src = `./players/condicion/condicion3.gif`;
-  condicion3.appendChild(imagenCondicion3);
+  const condicion2 = document.createElement("i");
+  condicion2.classList.add("condicion", "condicion2","fa-solid", "fa-fire");
 
-  // seccionCondicion.appendChild(condicion1);
-  // seccionCondicion.appendChild(condicion2);
-  // seccionCondicion.appendChild(condicion3);
+
+  const condicion3 = document.createElement("i");
+  condicion3.classList.add("condicion", "condicion3", "fa-solid", "fa-skull");
+
+  seccionCondicion.appendChild(condicion1);
+  seccionCondicion.appendChild(condicion2);
+  seccionCondicion.appendChild(condicion3);
 
   //idetifcador de turno
   const turno = document.createElement("div");
@@ -151,7 +145,6 @@ Juego.equipo1.forEach((personaje) => {
         let accionCompletada = Juego.personajeActual.usarHabilidad(habilidadSeleccionada,personaje);
 
         if (accionCompletada) {
-          console.log(e.target.parentElement.children[0]);
           animacionEquipo1(e.target, personajeSecundario ,habilidadSeleccionada, personaje);
           desactivarBotones();
         }
@@ -298,7 +291,6 @@ Juego.equipo2.forEach((personaje) => {
         let accionCompletada = Juego.personajeActual.usarHabilidad(habilidadSeleccionada,personaje);
 
         if (accionCompletada) {
-          console.log(e.target.parentElement.children[0]);
           animacionEquipo2(e.target, personajeSecundario ,habilidadSeleccionada, personaje);
           desactivarBotones();
         }
@@ -352,6 +344,17 @@ const turnoEquipo1 = document.querySelectorAll(".turnoEquipo1");
 const turnoEquipo2 = document.querySelectorAll(".turnoEquipo2");
 
 
+function actualizar_Interfaz() {
+  // actualizar seccion poder
+  actualizarSeccionPoder();
+  //Actualizar barra de vida equipo
+  actualizarBarraVida();
+  //actualizar defensa y ataque
+  actualizarDefensaAtaque();
+  //gestionar debilitamiento
+  gestionarDebilitamiento();
+}
+
 function seleccionarHabilidad(
   habilidad,
   habilidadDesactivar1,
@@ -369,17 +372,6 @@ function seleccionarHabilidad(
     // console.log(`No hay Habilidad seleccionada`);
     habilidad.classList.remove("boton_activo");
   }
-}
-
-function actualizar_Interfaz() {
-  // actualizar seccion poder
-  actualizarSeccionPoder();
-  //Actualizar barra de vida equipo
-  actualizarBarraVida();
-  //actualizar defensa y ataque
-  actualizarDefensaAtaque();
-  //gestionar debilitamiento
-  gestionarDebilitamiento();
 }
 
 function AsignarTurno() {

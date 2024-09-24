@@ -80,11 +80,7 @@ class Personaje {
     }
 
     objetivo.vida -= this.ataque - objetivo.defensa;
-    console.log(
-      `${this.nombre} ha atacado a ${objetivo.nombre} por ${
-        this.ataque - objetivo.defensa
-      } de daño`
-    );
+    // console.log(`${this.nombre} ha atacado a ${objetivo.nombre} por ${this.ataque - objetivo.defensa} de daño`);
     objetivo.validarNegativos();
 
     Juego.cambiarTurno();
@@ -206,4 +202,4 @@ const gigant = new Gigant("Gigant", 50, 10, 14);
 
 const antorcha = new Antorcha("Antorcha", 40, 20, 111);
 const monje = new Monje("Monje", 40, 20, 81);
-const thunder = new Thunder("Thunder", 600, 20, 100);
+const thunder = new Thunder("Thunder", 50, 20, 100);

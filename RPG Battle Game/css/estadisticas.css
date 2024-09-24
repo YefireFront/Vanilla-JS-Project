@@ -141,8 +141,10 @@
 /** Seccion condicion */
 .esenarioEquipo1 {
   .seccionCondicion {
+    background: rgba(242, 0, 0, 0.502);
     width: auto;
-    /* border: 1px solid black; */
+    height: 28px;
+    border: 1px solid rgb(123, 19, 19);
     position: absolute;
     top: -50px;
     left: 0px;
@@ -152,10 +154,9 @@
   }
 
   .condicion {
-    width: 30px;
-    border-radius: 50%;
-    overflow: hidden;
-    /* background: rgb(219, 98, 215); */
+    margin: 5px 10px;
+    color: white;
+    /* border: 1px solid whitesmoke; */
   }
 }
 

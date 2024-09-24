@@ -34,7 +34,6 @@ function animacionEquipo1(objetivo, lugarDeAtaque, habilidadSeleccionada) {
   const tipoHabilidad = Juego.personajeActual.habilidades.find((habilidad) => habilidad.nombre === habilidadSeleccionada);
 
   if (tipoHabilidad.tipo === "Daño") {
-    console.log(` Tipo de habilidad: ${tipoHabilidad.tipo}`);
     lugarDeAtaque.children[0].src = `./players/${Juego.personajeActual.id}/Atacando.gif`;
 
     objetivo.classList.add("daño");
@@ -147,7 +146,6 @@ function animacionEquipo2(objetivo, lugarDeAtaque, habilidadSeleccionada) {
   const tipoHabilidad = Juego.personajeActual.habilidades.find((habilidad) => habilidad.nombre === habilidadSeleccionada);
  
   if (tipoHabilidad.tipo === "Daño") {
-    console.log(` Tipo de habilidad: ${tipoHabilidad.tipo}`);
     lugarDeAtaque.children[0].src = `./players/${Juego.personajeActual.id}/Atacando.gif`;
     objetivo.classList.add("daño");
     esenario.classList.add("temblor");
@@ -155,7 +153,6 @@ function animacionEquipo2(objetivo, lugarDeAtaque, habilidadSeleccionada) {
    }
    
    if (tipoHabilidad.tipo === "Soporte") {
-    console.log('tipo de habilidad soporte');
      //Animar a el personaje que usa la habilidad
      personajesDeElEquipo2.forEach((elemento) => {
        if (elemento.classList.contains(`p${Juego.personajeActual.id}`)) {
@@ -175,7 +172,6 @@ function animacionEquipo2(objetivo, lugarDeAtaque, habilidadSeleccionada) {
    }
 
    if (tipoHabilidad.tipo === "DañoMasivo") {
-    console.log('tipo de habilidad daño masivo');
     lugarDeAtaque.children[0].src = `./players/${Juego.personajeActual.id}/Atacando.gif`;
 
     personajesDeElEquipo2.forEach((elemento) => {
