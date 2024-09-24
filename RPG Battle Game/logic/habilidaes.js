@@ -37,11 +37,13 @@ function crear1000Volvios() {
        if (Juego.equipo1.find(personaje => objetivo === personaje)) {
          Juego.equipo1.forEach((personaje) => {
           personaje.vida -= 15;
+          personaje.debilitamiento.push(crearQuemadura());
           console.log(`${lanzador.nombre} ha usado 1000 con un daño de 15 en ${personaje.nombre}. Queda con la vida en ${personaje.vida}`);
         })
        }else{
          Juego.equipo2.forEach((personaje) => {
           personaje.vida -= 15;
+          personaje.debilitamiento.push(crearQuemadura());
           console.log(`${lanzador.nombre} ha usado 1000 Voltios en ${personaje.nombre}. El objetivo ha sido paralizado.`);
         });
           
@@ -218,24 +220,37 @@ function crearLlamarada() {
   return new Habilidad(
     "Llamarada",
     3,
-    "Daño",
-    "Inflige 20 de Daño al objetivo y lo deja quemado.",
+    "DañoMasivo",
+    "Inflige 5 de Daño a todos los enemigos y lo deja quemado.",
     (lanzador, objetivo) => {
-      objetivo.vida -= 20;
-      objetivo.debilitamiento.push(crearQuemadura());
-      console.log(`${lanzador.nombre} ha usado Llamarada en ${objetivo.nombre} y lo ha dejado quemado.`);
+      if (Juego.equipo1.find(personaje => objetivo === personaje)) {
+        Juego.equipo1.forEach((personaje) => {
+          personaje.vida -= 5;
+          personaje.debilitamiento.push(crearQuemadura());
+          console.log(`${lanzador.nombre} ha usado Llamarada en ${personaje.nombre} y lo ha dejado quemado.`);
+        })
+        
+      } else {
+        Juego.equipo2.forEach((personaje) => {
+          personaje.vida -= 20;
+          personaje.debilitamiento.push(crearQuemadura());
+          console.log(`${lanzador.nombre} ha usado Llamarada en ${personaje.nombre} y lo ha dejado quemado.`);
+        });
+        
+      }
+     
     }
   );
 }
 
-function crearExplosionSolar() {
+function crearIraInfernal() {
   return new Habilidad(
     "Ira Infernal",
     5,
     "Daño",
-    "Inflige 30 de Daño al objetivo y lo deja quemado.",
+    "Deja al objetivo quemado y aumenta su ataque en 15.",
     (lanzador, objetivo) => {
-      objetivo.vida -= 30;
+      lanzador.ataque += 15;
       objetivo.debilitamiento.push(crearQuemadura());
       console.log(`${lanzador.nombre} ha usado Ira Infernal en ${objetivo.nombre} y lo ha dejado quemado.`);
     }

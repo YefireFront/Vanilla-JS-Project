@@ -2,7 +2,8 @@ const personajesDeElEquipo1 = document.querySelectorAll(".esenarioEquipo1 .perso
 const personajesDeElEquipo2 = document.querySelectorAll(".esenarioEquipo2 .personaje");
 const cinema = document.querySelector('.cinema');
 
-function animacionEquipo1(objetivo, lugarDeAtaque, habilidadSeleccionada, personajeSeleccionado) {
+function animacionEquipo1(objetivo, lugarDeAtaque, habilidadSeleccionada) {
+  console.log(lugarDeAtaque)
   
 
 
@@ -77,7 +78,6 @@ function animacionEquipo1(objetivo, lugarDeAtaque, habilidadSeleccionada, person
 
 
     personajesDeElEquipo1.forEach((elemento) => {
-      console.log(elemento)
       elemento.children[2].classList.add("daño");
       esenario.classList.add("temblor");
       cinema.classList.add('active');
@@ -133,7 +133,8 @@ function animacionEquipo1(objetivo, lugarDeAtaque, habilidadSeleccionada, person
 
 }
 
-function animacionEquipo2(objetivo, lugarDeAtaque) {
+function animacionEquipo2(objetivo, lugarDeAtaque, habilidadSeleccionada) {
+  console.log(lugarDeAtaque)
  
   
   if (habilidadSeleccionada == "Atacar") {
@@ -203,7 +204,6 @@ function animacionEquipo2(objetivo, lugarDeAtaque) {
     lugarDeAtaque.children[0].src = `./players/${Juego.personajeActual.id}/Atacando.gif`;
 
     personajesDeElEquipo2.forEach((elemento) => {
-      console.log(elemento)
       elemento.children[2].classList.add("daño");
       esenario.classList.add("temblor");
       cinema.classList.add('active');

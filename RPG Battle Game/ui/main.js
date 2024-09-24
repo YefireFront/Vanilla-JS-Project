@@ -118,10 +118,6 @@ Juego.equipo1.forEach((personaje) => {
   imagenPersonaje.src = `./players/${personaje.id}/Quieto.gif`;
   peronajePrincipal.appendChild(imagenPersonaje);
 
-  // creacion sombra
-  // const Shadow = document.createElement("div");
-  // Shadow.classList.add("shadow_left");
-  // peronajePrincipal.appendChild(Shadow);
 
   // Creacion personaje secundario
   const peronajeSecundario = document.createElement("div");
@@ -142,7 +138,7 @@ Juego.equipo1.forEach((personaje) => {
         let accionCompletada = Juego.personajeActual.Atacar(personaje);
 
         if (accionCompletada) {
-          animacionEquipo1(e.target, e.target.parentElement.nextElementSibling ,habilidadSeleccionada, personaje);
+          animacionEquipo1(e.target, personajeSecundario ,habilidadSeleccionada, personaje);
           desactivarBotones();
         }
 
@@ -156,7 +152,7 @@ Juego.equipo1.forEach((personaje) => {
 
         if (accionCompletada) {
           console.log(e.target.parentElement.children[0]);
-          animacionEquipo1(e.target, e.target.parentElement.nextElementSibling ,habilidadSeleccionada, personaje);
+          animacionEquipo1(e.target, personajeSecundario ,habilidadSeleccionada, personaje);
           desactivarBotones();
         }
         desactivarBotones();
@@ -289,7 +285,7 @@ Juego.equipo2.forEach((personaje) => {
         let accionCompletada = Juego.personajeActual.Atacar(personaje);
 
         if (accionCompletada) {
-          animacionEquipo2(e.target, e.target.parentElement.parentElement.children[1] ,habilidadSeleccionada, personaje);
+          animacionEquipo2(e.target,personajeSecundario,habilidadSeleccionada, personaje);
           desactivarBotones();
         }
 
@@ -303,7 +299,7 @@ Juego.equipo2.forEach((personaje) => {
 
         if (accionCompletada) {
           console.log(e.target.parentElement.children[0]);
-          animacionEquipo2(e.target, e.target.parentElement.parentElement.children[1]  ,e.target.parentElement,habilidadSeleccionada, personaje);
+          animacionEquipo2(e.target, personajeSecundario ,habilidadSeleccionada, personaje);
           desactivarBotones();
         }
         desactivarBotones();

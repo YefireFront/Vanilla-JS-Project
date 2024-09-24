@@ -157,7 +157,7 @@ class Antorcha extends Personaje {
   constructor(nombre, ataque, defensa, velocidad) {
     super(nombre, ataque, defensa, velocidad);
     this.habilidades.push(crearLlamarada());
-    this.habilidades.push(crearExplosionSolar());
+    this.habilidades.push(crearIraInfernal());
   }
 }
 
