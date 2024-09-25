@@ -13,7 +13,9 @@ class Habilidad {
       this.efecto(lanzador, objetivo);
       this.cooldownActual = this.tiempoDeEspera;
     } else {
-      console.log(`${this.nombre} está en cooldown. Espera ${this.cooldownActual} turnos más.`);
+      console.log(
+        `${this.nombre} está en cooldown. Espera ${this.cooldownActual} turnos más.`
+      );
     }
   }
 
@@ -22,8 +24,19 @@ class Habilidad {
       this.cooldownActual--;
     }
   }
-}
 
+  validarExcesos(personaje1, personaje2) {
+    if (personaje1) {
+      personaje1.validarPositivos();
+      personaje1.validarNegativos();
+    }
+
+    if (personaje2) {
+      personaje2.validarPositivos();
+      personaje2.validarNegativos();
+    }
+  }
+}
 
 // Habilidades de thunder
 
@@ -34,18 +47,47 @@ function crear1000Volvios() {
     "DañoMasivo",
     "Inflige 15 de Daño y paraliza al objetivo durante 1 turno.",
     (lanzador, objetivo) => {
-       if (Juego.equipo1.find(personaje => objetivo === personaje)) {
-         Juego.equipo1.forEach((personaje) => {
+      if (Juego.equipo1.find((personaje) => objetivo === personaje)) {
+        Juego.equipo1.forEach((personaje) => {
           personaje.vida -= 15;
-          console.log(`${lanzador.nombre} ha usado 1000 con un daño de 15 en ${personaje.nombre}. Queda con la vida en ${personaje.vida}`);
-        })
-       }else{
-         Juego.equipo2.forEach((personaje) => {
-          personaje.vida -= 15;
-          console.log(`${lanzador.nombre} ha usado 1000 Voltios en ${personaje.nombre}. El objetivo ha sido paralizado.`);
+          Personaje.validarExcesos(lanzador, personaje);
         });
-          
-       }
+      } else {
+        Juego.equipo2.forEach((personaje) => {
+          personaje.vida -= 15;
+          Personaje.validarExcesos(lanzador, personaje);
+        });
+      }
+    }
+  );
+}
+
+
+
+function crearCarga() {
+  return new Habilidad(
+    "Carga",
+    3,
+    "Soporte",
+    "Aumenta el ataque de Thunder en 10 durante 2 turnos.",
+    (lanzador) => {
+      lanzador.ataque += 10;
+      Personaje.validarExcesos(lanzador);
+    }
+  );
+}
+
+// Habilidades de reptil
+function crearMordidaToxica() {
+  return new Habilidad(
+    "Mordida Tóxica",
+    3,
+    "Daño",
+    "Inflige 15 de Daño y aplica veneno que causa 10 de Daño por turno durante 3 turnos.",
+    (lanzador, objetivo) => {
+      objetivo.vida -= 30;
+      Personaje.validarExcesos(lanzador, objetivo);
+      objetivo.debilitamiento.push(crearVeneno());
     }
   );
 }
@@ -57,71 +99,22 @@ function pandemia() {
     "DañoMasivo",
     "Inflige 5 de Daño y envenena a todos los enemigos",
     (lanzador, objetivo) => {
-       if (Juego.equipo1.find(personaje => objetivo === personaje)) {
-         Juego.equipo1.forEach((personaje) => {
+      if (Juego.equipo1.find((personaje) => objetivo === personaje)) {
+        Juego.equipo1.forEach((personaje) => {
           personaje.vida -= 5;
+          Personaje.validarExcesos(lanzador, personaje);
           personaje.debilitamiento.push(crearVeneno());
-          console.log(`${lanzador.nombre} ha usado pandemia en ${personaje.nombre}. El objetivo ha sido envenenado.`);
-
-        })
-       }else{
-         Juego.equipo2.forEach((personaje) => {
-          personaje.vida -= 5;
-          personaje.debilitamiento.push(crearVeneno());
-          console.log(`${lanzador.nombre} ha usado pandemia en ${personaje.nombre}. El objetivo ha sido envenenado.`);
         });
-          
-       }
-    }
-  );
-  
-}
-
-
-
-
-function crearCarga() {
-  return new Habilidad( 
-    "Carga",
-    3,
-    "Soporte",
-    "Aumenta el ataque de Thunder en 10 durante 2 turnos.",
-    (lanzador) => {
-      lanzador.ataque += 10;
-      console.log(`${lanzador.nombre} ha usado Carga y ha aumentado su ataque en 10.`);
-    }
-  )
-}
-
-// Habilidades de reptil
-function crearMordidaToxica() {
-  return new Habilidad(
-    "Mordida Tóxica",
-    3,
-    "Daño",
-    "Inflige 15 de Daño y aplica veneno que causa 10 de Daño por turno durante 3 turnos.",
-    (lanzador, objetivo) => {
-      objetivo.vida -= 98;
-      objetivo.debilitamiento.push(crearVeneno());
-      console.log(`${lanzador.nombre} ha usado Mordida Tóxica en ${objetivo.nombre}. El objetivo está envenenado.`);
-    },
-    'Azul' // También aseguramos que el color sea pasado correctamente
-  );
-}
-
-function crearRegeneracionEscamosa() {
-  return new Habilidad(
-    "Regeneración ",
-    5,
-    "Soporte",
-    "Recupera 30 de vida en 3 turnos, 10 de vida por turno.",
-    (lanzador) => {
-      lanzador.fortalecimiento.push(crearRegeneracion());
-      console.log(`${lanzador.nombre} ha activado Regeneración Escamosa.`);
+      } else {
+        Juego.equipo2.forEach((personaje) => {
+          personaje.vida -= 5;
+          Personaje.validarExcesos(lanzador, personaje);
+          personaje.debilitamiento.push(crearVeneno());
+        });
+      }
     }
   );
 }
-
 
 //Habilidades de pandawa
 
@@ -133,7 +126,7 @@ function crearPuñoFlamigero() {
     "Inflige 20 de Daño al objetivo.",
     (lanzador, objetivo) => {
       objetivo.vida -= 20;
-      console.log(`${lanzador.nombre} ha usado Puño Flamígero en ${objetivo.nombre}.`);
+      Personaje.validarExcesos(lanzador, objetivo);
     }
   );
 }
@@ -144,9 +137,11 @@ function crearAlmaBambu() {
     5,
     "Soporte",
     "Aumenta la defensa de Pandawa en 10 .",
-    (lanzador) => {
-      lanzador.defensa += 10;
-      console.log(`${lanzador.nombre} ha usado Alma de Bambú y ha aumentado su defensa en 10.`);
+    (lanzador, objetivo) => {
+      const defensa = crearDefensa(10);
+      lanzador.fortalecimiento.push(defensa);
+      defensa.aplicar(lanzador);
+      Personaje.validarExcesos(lanzador, objetivo);
     }
   );
 }
@@ -160,26 +155,50 @@ function crearLlamadoCeleste() {
     "Soporte",
     "Aumenta la defensa de Gigant en 10 por cada aliado muerto.",
     (lanzador) => {
-      lanzador.defensa += 10;
-      console.log(`${lanzador.nombre} ha usado Llamado Celeste y ha aumentado su defensa en 10.`);
+      if (lanzador.equipo === 1) {
+        Juego.equipo1.forEach((personaje) => {
+          if (personaje.estaMuero()) {
+            const defensa = crearDefensa(10);
+            lanzador.fortalecimiento.push(defensa);
+            defensa.aplicar(lanzador);
+          }
+        });
+        
+      }
+
+      if (lanzador.equipo === 2) {
+        Juego.equipo2.forEach((personaje) => {
+          if (personaje.estaMuero()) {
+            const defensa = crearDefensa(10);
+            lanzador.fortalecimiento.push(defensa);
+            defensa.aplicar(lanzador);
+          }
+        });
+      }
+      Personaje.validarExcesos(lanzador);
     }
   );
 }
 
-function crearArmadurarota() {
+function crearRevivir() {
   return new Habilidad(
-    "Armadura Rota",
+    "Revivir",
     3,
-    "Daño",
-    "Inflige 20 de Daño al objetivo y reduce su defensa en 5.",
+    "Soporte",
+    "Revive a un objetivo con 30 de vida y aumenta su defensa en 5.",
     (lanzador, objetivo) => {
-      objetivo.vida -= 20;
-      objetivo.defensa -= 5;
-      console.log(`${lanzador.nombre} ha usado Armadura Rota en ${objetivo.nombre}.`);
+      if (objetivo.estaMuero()) {
+        objetivo.vida += 30;
+        objetivo.defensa += 5;
+        Personaje.validarExcesos(lanzador, objetivo);
+      } else {
+        console.log(
+          `${lanzador.nombre} no puede usar Revivir en ${objetivo.nombre}.`
+        );
+      }
     }
   );
 }
-
 
 // Habilidades de Monje
 function crearPalmaFuerza() {
@@ -189,11 +208,10 @@ function crearPalmaFuerza() {
     "Daño",
     "Inflige 25 de Daño al objetivo y empuja al enemigo, reduciendo su defensa en 15.",
     (lanzador, objetivo) => {
-      objetivo.vida -= 25;
-      objetivo.defensa -= 15;
-      console.log(
-        `${lanzador.nombre} ha usado Palma de Fuerza en ${objetivo.nombre}. La defensa del enemigo ha sido reducida.`
-      );
+      const defensa = crearDefensa(10);
+      lanzador.fortalecimiento.push(defensa);
+      defensa.aplicar(lanzador);
+      Personaje.validarExcesos(lanzador, objetivo);
     }
   );
 }
@@ -206,50 +224,84 @@ function crearMeditacion() {
     "Aumenta la defensa de Monje en 10 durante 3 turnos y queda en estado regeneracion",
     (lanzador) => {
       lanzador.defensa += 15;
+      Personaje.validarExcesos(lanzador);
       lanzador.fortalecimiento.push(crearRegeneracion());
-      console.log(`${lanzador.nombre} ha usado Meditación y ha aumentado su defensa en 15.`);
     }
   );
 }
 
-
+// Habilidades de Antorcha
 
 function crearLlamarada() {
   return new Habilidad(
     "Llamarada",
     3,
-    "Daño",
-    "Inflige 20 de Daño al objetivo y lo deja quemado.",
+    "DañoMasivo",
+    "Inflige 5 de Daño a todos los enemigos y lo deja quemado.",
     (lanzador, objetivo) => {
-      objetivo.vida -= 20;
-      objetivo.debilitamiento.push(crearQuemadura());
-      console.log(`${lanzador.nombre} ha usado Llamarada en ${objetivo.nombre} y lo ha dejado quemado.`);
+      if (Juego.equipo1.find((personaje) => objetivo === personaje)) {
+        Juego.equipo1.forEach((personaje) => {
+          personaje.vida -= 5;
+          Personaje.validarExcesos(lanzador, personaje);
+          personaje.debilitamiento.push(crearQuemadura());
+        });
+      } else {
+        Juego.equipo2.forEach((personaje) => {
+          personaje.vida -= 20;
+          Personaje.validarExcesos(lanzador, personaje);
+          personaje.debilitamiento.push(crearQuemadura());
+        });
+      }
     }
   );
 }
 
-function crearExplosionSolar() {
+function crearIraInfernal() {
   return new Habilidad(
     "Ira Infernal",
     5,
     "Daño",
-    "Inflige 30 de Daño al objetivo y lo deja quemado.",
+    "Deja al objetivo quemado y aumenta su ataque en 15.",
     (lanzador, objetivo) => {
-      objetivo.vida -= 30;
+      const ataque = crearAtaque(15);
+      lanzador.fortalecimiento.push(ataque)
+      ataque.aplicar(lanzador); // Activar el efecto de crearAtaque instantáneamente
       objetivo.debilitamiento.push(crearQuemadura());
-      console.log(`${lanzador.nombre} ha usado Ira Infernal en ${objetivo.nombre} y lo ha dejado quemado.`);
+      Personaje.validarExcesos(lanzador, objetivo);
     }
   );
 }
 
 
 
+//* Efectos
+
+
+
+
+
+
+
+
+
 class Efecto {
-  constructor(nombre, descripcion, duracion, efecto) {
+  constructor(nombre, descripcion, duracion, efecto, tipo ) {
     this.nombre = nombre;
     this.descripcion = descripcion;
     this.duracion = duracion;
     this.efecto = efecto;
+    this.tipo = tipo;
+  }
+
+  limpiarEfectos() {
+    objetivo.debilitamiento = objetivo.debilitamiento.filter((efecto) => efecto !== this);
+    objetivo.fortalecimiento = objetivo.fortalecimiento.filter((efecto) => efecto !== this);
+  }
+}
+
+class EfectoContinuo extends Efecto{
+  constructor(nombre, descripcion, duracion, efecto) {
+    super(nombre, descripcion, duracion, efecto);
   }
 
   activar(objetivo) {
@@ -257,50 +309,119 @@ class Efecto {
     this.duracion--;
     if (this.duracion === 0) {
       console.log(`${this.nombre} ha terminado.`);
-      objetivo.debilitamiento = objetivo.debilitamiento.filter(
-        (efecto) => efecto !== this
-      );
+      objetivo.debilitamiento = objetivo.debilitamiento.filter((efecto) => efecto !== this);
+    }
+  }
+  
+}
+
+class EfectoFijo extends Efecto {
+  constructor(nombre, descripcion, duracion, efecto, efectoOff, tipo) {
+    super(nombre, descripcion, duracion, efecto, tipo);
+    this.efectoOff = efectoOff;
+    this.aplicado = false;
+    this.Objetivo = null;
+  }
+
+  aplicar(objetivo) {
+    this.efecto(objetivo);
+    this.aplicado = true;
+    this.Objetivo = objetivo;
+  }
+
+  desAplicar(){
+    this.efectoOff(this.Objetivo);
+  }
+
+  reducirCooldown() {
+    this.duracion--;
+    if (this.duracion === 0) {
+      console.log(`${this.nombre} ha terminado.`);
+      this.desAplicar();
+      this.aplicado = false;
+      this.Objetivo.fortalecimiento = this.Objetivo.fortalecimiento.filter((efecto) => efecto !== this);
     }
   }
 
-
+  activar(objetivo) {
+    this.aplicado ? this.reducirCooldown() : this.aplicar(objetivo);
+  }
 }
-
-function crearRegeneracion() {
-  return new Efecto(
-    "Regeneración",
-    "Recupera 10 de vida por turno durante 3 turnos.",
-    3,
-    (objetivo) => {
-      objetivo.vida += 10;
-      console.log(`${objetivo.nombre} ha recuperado 10 de vida.`);
-    }
-  );
-}
-
-
 
 function crearQuemadura() {
-  return new Efecto(
+  return new EfectoContinuo(
     "Quemadura",
     "Recibe 10 de Daño por turno durante 2 turnos.",
     2,
     (objetivo) => {
       objetivo.vida -= 10;
+      Personaje.validarExcesos(objetivo);
       console.log(`${objetivo.nombre} recibe Daño por quemadura.`);
     }
   );
 }
 
 function crearVeneno() {
-  return new Efecto(
+  return new EfectoContinuo(
     "Veneno",
     "Recibe 5 de Daño por turno durante 5 turnos.",
     5,
     (objetivo) => {
       objetivo.vida -= 5;
+      Personaje.validarExcesos(objetivo);
       console.log(`${objetivo.nombre} recibe Daño por veneno.`);
     }
   );
 }
 
+
+function crearAtaque(Aumento) {
+  return new EfectoFijo(
+    "Ataque",
+    "Aumenta el ataque del personaje 2 turnos",
+    5,
+    (objetivo) => {
+      objetivo.ataque += Aumento;
+      Personaje.validarExcesos(objetivo);
+      console.log(`aumenta el ataque de ${objetivo.nombre} por 15`);
+    },
+    (objetivo) => {
+      objetivo.ataque -= Aumento;
+      Personaje.validarExcesos(objetivo);
+      console.log(`reduce el ataque de ${objetivo.nombre} por 15`); 
+    }
+  );
+}
+
+function crearDefensa(aumenta) {
+  return new EfectoFijo(
+    "Defensa",
+    "Aumenta la defensa de un personaje durante 2 turnos.",
+    3,
+    (objetivo) => {
+      objetivo.defensa += aumenta;
+      Personaje.validarExcesos(objetivo);
+      console.log(`aumenta la defensa de ${objetivo.nombre} por 15`);
+    },
+    (objetivo) => {
+      console.log(`activando poder off`)
+      console.log(objetivo)
+      objetivo.defensa -= aumenta;
+      Personaje.validarExcesos(objetivo);
+      console.log(`reduce la defensa de ${objetivo.nombre} por 15`); 
+    }
+  );
+}
+
+function crearRegeneracion() {
+  return new EfectoContinuo(
+    "Regeneración",
+    "Recupera 10 de vida por turno durante 3 turnos.",
+    3,
+    (objetivo) => {
+      objetivo.vida += 10;
+      Personaje.validarExcesos(objetivo);
+      console.log(`${objetivo.nombre} ha recuperado 10 de vida.`);
+    }
+  );
+}

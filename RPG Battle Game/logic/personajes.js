@@ -16,16 +16,47 @@ class Personaje {
   //metodo para valida pesonaje vivo
   estaMuero() {
     if (this.vida <= 0) {
-      console.log(` El personaje ${this.nombre} está muerto`);
+      // console.log(` El personaje ${this.nombre} está muerto`);
       return true;
     }
     return false;
   }
 
   //Asignar 0 si un perosnaje quesa con vida negativa
-  validarVidaNegativa() {
+  validarNegativos() {
     if (this.vida <= 0) {
       this.vida = 0;
+    }
+
+    if (this.defensa <= 0) {
+      this.defensa = 0;
+    }
+
+    if (this.ataque <= 0) {
+      this.ataque = 0;
+    }
+  }
+
+  //validar positivos de vida y defensa
+  validarPositivos() {
+    if (this.vida >= 100) {
+      this.vida = 100;
+    }
+
+    if (this.defensa >= 60) {
+      this.defensa = 60;
+    }
+  }
+
+  static validarExcesos(personaje1, personaje2) {
+    if (personaje1) {
+      personaje1.validarPositivos();
+      personaje1.validarNegativos();
+    }
+
+    if (personaje2) {
+      personaje2.validarPositivos();
+      personaje2.validarNegativos();
     }
   }
 
@@ -49,12 +80,8 @@ class Personaje {
     }
 
     objetivo.vida -= this.ataque - objetivo.defensa;
-    console.log(
-      `${this.nombre} ha atacado a ${objetivo.nombre} por ${
-        this.ataque - objetivo.defensa
-      } de daño`
-    );
-    objetivo.validarVidaNegativa();
+    // console.log(`${this.nombre} ha atacado a ${objetivo.nombre} por ${this.ataque - objetivo.defensa} de daño`);
+    objetivo.validarNegativos();
 
     Juego.cambiarTurno();
     return true;
@@ -84,6 +111,14 @@ class Personaje {
         return false;
       }
 
+      if (habilidad.nombre === "Revivir") {
+        //Activar la habilidad
+        habilidad.activar(this, objetivo);
+        objetivo.validarNegativos();
+        Juego.cambiarTurno();
+        return true;
+      }
+
       //Validar objetivo vivo
       if (objetivo.estaMuero()) {
         console.log(`El objetivo ${objetivo.nombre} está muerto`);
@@ -92,7 +127,7 @@ class Personaje {
 
       //Activar la habilidad
       habilidad.activar(this, objetivo);
-      objetivo.validarVidaNegativa();
+      objetivo.validarNegativos();
       Juego.cambiarTurno();
       return true;
     } else {
@@ -121,15 +156,15 @@ class Gigant extends Personaje {
     super(nombre, ataque, defensa, velocidad);
     // this.habilidades.push(crearGolpeGigante());
     this.habilidades.push(crearLlamadoCeleste());
-    this.habilidades.push(crearArmadurarota());
+    this.habilidades.push(crearRevivir());
   }
 }
 
 class Pandawa extends Personaje {
   constructor(nombre, ataque, defensa, velocidad) {
     super(nombre, ataque, defensa, velocidad);
-    this.habilidades.push(crearPuñoFlamigero());
     this.habilidades.push(crearAlmaBambu());
+    this.habilidades.push(crearPuñoFlamigero());
   }
 }
 
@@ -157,16 +192,85 @@ class Antorcha extends Personaje {
   constructor(nombre, ataque, defensa, velocidad) {
     super(nombre, ataque, defensa, velocidad);
     this.habilidades.push(crearLlamarada());
-    this.habilidades.push(crearExplosionSolar());
+    this.habilidades.push(crearIraInfernal());
   }
 }
 
-const reptil = new Reptil("Reptil", 50, 20, 110);
-const pandawa = new Pandawa("Pandawa", 30, 30, 48);
-const gigant = new Gigant("Gigant", 50, 10, 14);
-
-const antorcha = new Antorcha("Antorcha", 40, 20, 11);
-const monje = new Monje("Monje", 40, 20, 81);
-const thunder = new Thunder("Thunder", 60, 20, 100);
 
 
+class IceDragon extends Personaje {
+  constructor(nombre, ataque, defensa, velocidad) {
+    super(nombre, ataque, defensa, velocidad);
+    this.habilidades.push(crearLlamarada());
+    this.habilidades.push(crearIraInfernal());
+  }
+}
+class personaje8 extends Personaje {
+  constructor(nombre, ataque, defensa, velocidad) {
+    super(nombre, ataque, defensa, velocidad);
+    this.habilidades.push(crearLlamarada());
+    this.habilidades.push(crearIraInfernal());
+  }
+}
+class perosnaje9 extends Personaje {
+  constructor(nombre, ataque, defensa, velocidad) {
+    super(nombre, ataque, defensa, velocidad);
+    this.habilidades.push(crearLlamarada());
+    this.habilidades.push(crearIraInfernal());
+  }
+}
+class perosnaje10 extends Personaje {
+  constructor(nombre, ataque, defensa, velocidad) {
+    super(nombre, ataque, defensa, velocidad);
+    this.habilidades.push(crearLlamarada());
+    this.habilidades.push(crearIraInfernal());
+  }
+}
+class perosnaje11 extends Personaje {
+  constructor(nombre, ataque, defensa, velocidad) {
+    super(nombre, ataque, defensa, velocidad);
+    this.habilidades.push(crearLlamarada());
+    this.habilidades.push(crearIraInfernal());
+  }
+}
+class perosnaje12 extends Personaje {
+  constructor(nombre, ataque, defensa, velocidad) {
+    super(nombre, ataque, defensa, velocidad);
+    this.habilidades.push(crearLlamarada());
+    this.habilidades.push(crearIraInfernal());
+  }
+}
+
+
+// Reptil
+const reptil_1 = new Reptil("Reptil", 50, 20, 10);
+const reptil_2 = new Reptil("Reptil", 50, 20, 10);
+
+//Pandawa
+const pandawa_1 = new Pandawa("Pandawa", 30, 30,18);
+const pandawa_2 = new Pandawa("Pandawa", 30, 30,18);
+
+//Gigant
+const gigant_1 = new Gigant("Gigant", 40, 30, 14);
+const gigant_2 = new Gigant("Gigant", 40, 30, 14);
+
+//Antorcha
+const antorcha_1 = new Antorcha("Antorcha", 140, 20, 111);
+const antorcha_2 = new Antorcha("Antorcha", 140, 20, 111);
+
+//Monje
+const monje_1 = new Monje("Monje", 40, 20, 81);
+const monje_2 = new Monje("Monje", 40, 20, 81);
+
+//thunder
+const thunder_1 = new Thunder("Thunder", 50, 20, 100);
+const thunder_2 = new Thunder("Thunder", 50, 20, 100);
+
+//Ice Dragon
+const iceDragon_1 = new IceDragon("IceDragon", 50, 20, 200);
+const iceDragon_2 = new IceDragon("IceDragon", 50, 20, 100);
+
+
+
+
+ 

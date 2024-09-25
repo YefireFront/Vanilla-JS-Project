@@ -101,7 +101,7 @@ class Juego {
       }
 
       this.personajeActual.activarEfectos();
-      this.personajeActual.validarVidaNegativa();
+      this.personajeActual.validarNegativos();
       if (this.personajeActual.estaMuero()) {
         this.cambiarTurno();
       }
@@ -125,12 +125,12 @@ class Juego {
   }
 }
 
-Juego.agregarPersonaje(1, reptil);
-Juego.agregarPersonaje(1, gigant);
-Juego.agregarPersonaje(1, pandawa);
+Juego.agregarPersonaje(1, iceDragon_1);
+Juego.agregarPersonaje(1, reptil_1);
+Juego.agregarPersonaje(1, pandawa_1);
 
-Juego.agregarPersonaje(2, thunder);
-Juego.agregarPersonaje(2, monje);
-Juego.agregarPersonaje(2, antorcha);
+Juego.agregarPersonaje(2, thunder_2);
+Juego.agregarPersonaje(2, gigant_2);
+Juego.agregarPersonaje(2, reptil_2);
 
 Juego.iniciarJuego();

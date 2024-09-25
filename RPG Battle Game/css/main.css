@@ -76,10 +76,12 @@ body {
 }
 
 .snow {
+  width: 100%;
   position: absolute;
   top: 0;
   left: 0;
   mix-blend-mode: screen;
+  opacity: 0.8;
 
   video {
     width: 100%;

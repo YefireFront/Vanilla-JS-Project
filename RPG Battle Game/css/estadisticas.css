@@ -68,6 +68,8 @@
 
 /** Seccion de poderes */
 
+
+
 .esenarioEquipo1 {
   .seccionestadisticas {
     width: 72%;
@@ -75,7 +77,7 @@
     border: 1px solid rgba(0, 0, 0, 0.598);
     position: absolute;
     top: 7px;
-    left: 0px;
+    left: -5px;
     display: flex;
 
     .poder {
@@ -110,7 +112,7 @@
     border: 1px solid black;
     position: absolute;
     top: 7px;
-    left: 55px;
+    left: 58px;
     display: flex;
 
     .poder {
@@ -140,43 +142,130 @@
 
 /** Seccion condicion */
 .esenarioEquipo1 {
+
   .seccionCondicion {
-    width: auto;
-    /* border: 1px solid black; */
     position: absolute;
-    top: -50px;
+    width: auto;
+    height: 30px;
+    padding: 2px;
+    top: 5px;
+    display: flex;
+    justify-content: flex-end; /* Asegurar que los elementos se alineen al final */
+    transform-origin: right;
+    right: 180px;
+    align-items: flex-end;
+  }
+
+  .condicionNegativas {
+    background: rgba(242, 0, 0, 0.502);
+    width: auto;
+    height: 30px;
+    border: 1px solid rgb(123, 19, 19);
+    position: relative;
     left: 0px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
+  .condicionPositivas {
+    background: rgba(0, 141, 242, 0.604);
+    width: auto;
+    height: 30px;
+    border: 1px solid rgba(4, 77, 129, 0.502);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-origin: right;
+  }
+
   .condicion {
-    width: 30px;
-    border-radius: 50%;
-    overflow: hidden;
-    /* background: rgb(219, 98, 215); */
+    margin: 5px 10px;
+    color: white;
+
+
+    p{
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: -28px;
+      font-size: 12px;
+      color: rgb(199, 226, 78);
+      /* border: 1px solid rgb(255, 255, 255); */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+      /* background: rgba(0, 0, 0, 0.443); */
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.544);
+      border-radius: 50%;
+   
+    }
   }
 }
 
 .esenarioEquipo2 {
   .seccionCondicion {
+    position: absolute;
     width: auto;
     height: 30px;
-    /* border: 1px solid black; */
-    position: absolute;
-    top: -30px;
-    left: -10px;
+    padding: 2px;
+    top: 3px;
+    left: 198px;
+    display: flex;
+    justify-content: flex-end; /* Asegurar que los elementos se alineen al final */
+    align-items: flex-start;
+  }
+
+  .condicionNegativas {
+    background: rgba(242, 0, 0, 0.502);
+    width: auto;
+    height: 30px;
+    border: 1px solid rgb(123, 19, 19);
+    position: relative;
+    left: 0px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  .condicion {
-    width: 30px;
+  .condicionPositivas {
+    background: rgba(0, 141, 242, 0.604);
+    width: auto;
     height: 30px;
-    border-radius: 50%;
-    overflow: hidden;
-    /* background: rgb(219, 98, 215); */
+    border: 1px solid rgba(4, 77, 129, 0.502);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .condicion {
+    margin: 5px 10px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+
+    p{
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: -28px;
+      font-size: 12px;
+      color: rgb(199, 226, 78);
+      /* border: 1px solid rgb(255, 255, 255); */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+      /* background: rgba(0, 0, 0, 0.443); */
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.544);
+      border-radius: 50%;
+   
+    }
   }
 }
