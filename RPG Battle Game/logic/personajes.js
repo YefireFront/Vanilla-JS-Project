@@ -163,8 +163,8 @@ class Gigant extends Personaje {
 class Pandawa extends Personaje {
   constructor(nombre, ataque, defensa, velocidad) {
     super(nombre, ataque, defensa, velocidad);
-    this.habilidades.push(crearPuñoFlamigero());
     this.habilidades.push(crearAlmaBambu());
+    this.habilidades.push(crearPuñoFlamigero());
   }
 }
 
@@ -196,10 +196,78 @@ class Antorcha extends Personaje {
   }
 }
 
-const reptil = new Reptil("Reptil", 50, 20, 10);
-const pandawa = new Pandawa("Pandawa", 30, 30, 8);
-const gigant = new Gigant("Gigant", 50, 10, 14);
 
-const antorcha = new Antorcha("Antorcha", 40, 20, 111);
-const monje = new Monje("Monje", 40, 20, 81);
-const thunder = new Thunder("Thunder", 50, 20, 100);
+
+class personaje7 extends Personaje {
+  constructor(nombre, ataque, defensa, velocidad) {
+    super(nombre, ataque, defensa, velocidad);
+    this.habilidades.push(crearLlamarada());
+    this.habilidades.push(crearIraInfernal());
+  }
+}
+class personaje8 extends Personaje {
+  constructor(nombre, ataque, defensa, velocidad) {
+    super(nombre, ataque, defensa, velocidad);
+    this.habilidades.push(crearLlamarada());
+    this.habilidades.push(crearIraInfernal());
+  }
+}
+class perosnaje9 extends Personaje {
+  constructor(nombre, ataque, defensa, velocidad) {
+    super(nombre, ataque, defensa, velocidad);
+    this.habilidades.push(crearLlamarada());
+    this.habilidades.push(crearIraInfernal());
+  }
+}
+class perosnaje10 extends Personaje {
+  constructor(nombre, ataque, defensa, velocidad) {
+    super(nombre, ataque, defensa, velocidad);
+    this.habilidades.push(crearLlamarada());
+    this.habilidades.push(crearIraInfernal());
+  }
+}
+class perosnaje11 extends Personaje {
+  constructor(nombre, ataque, defensa, velocidad) {
+    super(nombre, ataque, defensa, velocidad);
+    this.habilidades.push(crearLlamarada());
+    this.habilidades.push(crearIraInfernal());
+  }
+}
+class perosnaje12 extends Personaje {
+  constructor(nombre, ataque, defensa, velocidad) {
+    super(nombre, ataque, defensa, velocidad);
+    this.habilidades.push(crearLlamarada());
+    this.habilidades.push(crearIraInfernal());
+  }
+}
+
+
+// Reptil
+const reptil_1 = new Reptil("Reptil", 50, 20, 10);
+const reptil_2 = new Reptil("Reptil", 50, 20, 10);
+
+//Pandawa
+const pandawa_1 = new Pandawa("Pandawa", 30, 30,18);
+const pandawa_2 = new Pandawa("Pandawa", 30, 30,18);
+
+//Gigant
+const gigant_1 = new Gigant("Gigant", 40, 30, 14);
+const gigant_2 = new Gigant("Gigant", 40, 30, 14);
+
+//Antorcha
+const antorcha_1 = new Antorcha("Antorcha", 140, 20, 111);
+const antorcha_2 = new Antorcha("Antorcha", 140, 20, 111);
+
+//Monje
+const monje_1 = new Monje("Monje", 40, 20, 81);
+const monje_2 = new Monje("Monje", 40, 20, 81);
+
+//thunder
+const thunder_1 = new Thunder("Thunder", 50, 20, 100);
+const thunder_2 = new Thunder("Thunder", 50, 20, 100);
+
+
+
+
+
+ 

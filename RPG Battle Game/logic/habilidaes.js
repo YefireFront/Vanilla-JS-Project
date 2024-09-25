@@ -62,6 +62,8 @@ function crear1000Volvios() {
   );
 }
 
+
+
 function crearCarga() {
   return new Habilidad(
     "Carga",
@@ -136,7 +138,9 @@ function crearAlmaBambu() {
     "Soporte",
     "Aumenta la defensa de Pandawa en 10 .",
     (lanzador, objetivo) => {
-      lanzador.defensa += 10;
+      const defensa = crearDefensa(10);
+      lanzador.fortalecimiento.push(defensa);
+      defensa.aplicar(lanzador);
       Personaje.validarExcesos(lanzador, objetivo);
     }
   );
@@ -151,7 +155,26 @@ function crearLlamadoCeleste() {
     "Soporte",
     "Aumenta la defensa de Gigant en 10 por cada aliado muerto.",
     (lanzador) => {
-      lanzador.defensa += 10;
+      if (lanzador.equipo === 1) {
+        Juego.equipo1.forEach((personaje) => {
+          if (personaje.estaMuero()) {
+            const defensa = crearDefensa(10);
+            lanzador.fortalecimiento.push(defensa);
+            defensa.aplicar(lanzador);
+          }
+        });
+        
+      }
+
+      if (lanzador.equipo === 2) {
+        Juego.equipo2.forEach((personaje) => {
+          if (personaje.estaMuero()) {
+            const defensa = crearDefensa(10);
+            lanzador.fortalecimiento.push(defensa);
+            defensa.aplicar(lanzador);
+          }
+        });
+      }
       Personaje.validarExcesos(lanzador);
     }
   );
@@ -185,8 +208,9 @@ function crearPalmaFuerza() {
     "Daño",
     "Inflige 25 de Daño al objetivo y empuja al enemigo, reduciendo su defensa en 15.",
     (lanzador, objetivo) => {
-      objetivo.vida -= 25;
-      objetivo.defensa -= 15;
+      const defensa = crearDefensa(10);
+      lanzador.fortalecimiento.push(defensa);
+      defensa.aplicar(lanzador);
       Personaje.validarExcesos(lanzador, objetivo);
     }
   );
@@ -268,6 +292,11 @@ class Efecto {
     this.efecto = efecto;
     this.tipo = tipo;
   }
+
+  limpiarEfectos() {
+    objetivo.debilitamiento = objetivo.debilitamiento.filter((efecto) => efecto !== this);
+    objetivo.fortalecimiento = objetivo.fortalecimiento.filter((efecto) => efecto !== this);
+  }
 }
 
 class EfectoContinuo extends Efecto{
@@ -287,47 +316,36 @@ class EfectoContinuo extends Efecto{
 }
 
 class EfectoFijo extends Efecto {
-  constructor(nombre, descripcion, duracion, efecto, efectoOff) {
-    super(nombre, descripcion, duracion, efecto,);
+  constructor(nombre, descripcion, duracion, efecto, efectoOff, tipo) {
+    super(nombre, descripcion, duracion, efecto, tipo);
     this.efectoOff = efectoOff;
     this.aplicado = false;
+    this.Objetivo = null;
   }
 
   aplicar(objetivo) {
     this.efecto(objetivo);
     this.aplicado = true;
+    this.Objetivo = objetivo;
   }
 
-  desAplicar(objetivo){
-    this.efectoOff(objetivo);
+  desAplicar(){
+    this.efectoOff(this.Objetivo);
   }
 
-  reducirCooldown(objetivo) {
+  reducirCooldown() {
     this.duracion--;
     if (this.duracion === 0) {
       console.log(`${this.nombre} ha terminado.`);
-      this.desAplicar(objetivo);
+      this.desAplicar();
       this.aplicado = false;
-      objetivo.debilitamiento = objetivo.debilitamiento.filter((efecto) => efecto !== this);
+      this.Objetivo.fortalecimiento = this.Objetivo.fortalecimiento.filter((efecto) => efecto !== this);
     }
   }
 
   activar(objetivo) {
     this.aplicado ? this.reducirCooldown() : this.aplicar(objetivo);
   }
-}
-
-function crearRegeneracion() {
-  return new EfectoContinuo(
-    "Regeneración",
-    "Recupera 10 de vida por turno durante 3 turnos.",
-    3,
-    (objetivo) => {
-      objetivo.vida += 10;
-      Personaje.validarExcesos(objetivo);
-      console.log(`${objetivo.nombre} ha recuperado 10 de vida.`);
-    }
-  );
 }
 
 function crearQuemadura() {
@@ -356,6 +374,7 @@ function crearVeneno() {
   );
 }
 
+
 function crearAtaque(Aumento) {
   return new EfectoFijo(
     "Ataque",
@@ -370,6 +389,39 @@ function crearAtaque(Aumento) {
       objetivo.ataque -= Aumento;
       Personaje.validarExcesos(objetivo);
       console.log(`reduce el ataque de ${objetivo.nombre} por 15`); 
+    }
+  );
+}
+
+function crearDefensa(aumenta) {
+  return new EfectoFijo(
+    "Defensa",
+    "Aumenta la defensa de un personaje durante 2 turnos.",
+    3,
+    (objetivo) => {
+      objetivo.defensa += aumenta;
+      Personaje.validarExcesos(objetivo);
+      console.log(`aumenta la defensa de ${objetivo.nombre} por 15`);
+    },
+    (objetivo) => {
+      console.log(`activando poder off`)
+      console.log(objetivo)
+      objetivo.defensa -= aumenta;
+      Personaje.validarExcesos(objetivo);
+      console.log(`reduce la defensa de ${objetivo.nombre} por 15`); 
+    }
+  );
+}
+
+function crearRegeneracion() {
+  return new EfectoContinuo(
+    "Regeneración",
+    "Recupera 10 de vida por turno durante 3 turnos.",
+    3,
+    (objetivo) => {
+      objetivo.vida += 10;
+      Personaje.validarExcesos(objetivo);
+      console.log(`${objetivo.nombre} ha recuperado 10 de vida.`);
     }
   );
 }
