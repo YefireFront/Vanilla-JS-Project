@@ -198,7 +198,7 @@ class Antorcha extends Personaje {
 
 
 
-class personaje7 extends Personaje {
+class IceDragon extends Personaje {
   constructor(nombre, ataque, defensa, velocidad) {
     super(nombre, ataque, defensa, velocidad);
     this.habilidades.push(crearLlamarada());
@@ -266,6 +266,9 @@ const monje_2 = new Monje("Monje", 40, 20, 81);
 const thunder_1 = new Thunder("Thunder", 50, 20, 100);
 const thunder_2 = new Thunder("Thunder", 50, 20, 100);
 
+//Ice Dragon
+const iceDragon_1 = new IceDragon("IceDragon", 50, 20, 200);
+const iceDragon_2 = new IceDragon("IceDragon", 50, 20, 100);
 
 
 

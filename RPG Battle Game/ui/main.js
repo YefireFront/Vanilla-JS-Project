@@ -10,9 +10,11 @@ const escenarioEquipo1 = document.querySelector(".esenarioEquipo1");
 // creando escenario equipo 2
 const escenarioEquipo2 = document.querySelector(".esenarioEquipo2");
 
-// creando escenario right  / 2
 
 let habilidadSeleccionada = null;
+
+
+
 
 Juego.equipo1.forEach((personaje , i) => {
   // creando personajes en el escenario Left / 1
@@ -769,63 +771,132 @@ function gestionarDebilitamiento2() {
   });
 }
 
+
 function gestionarDebilitamiento() {
   const personajesHTML = document.querySelectorAll(".personaje_Principal");
   const personajesJS = [...Juego.equipo1, ...Juego.equipo2];
+
   const efectosCSS = {
     "Regeneración": "healingEffect",
     "Quemadura": "burnEffect",
     "Veneno": "poisonEffect"
   };
 
-  const mostrarEfecto = (efectoNombre, personajeHTML, claseIcono, claseTurno, duracion) => {
-    const icono = personajeHTML.parentElement.querySelector(claseIcono);
-    const turnos = personajeHTML.parentElement.querySelector(claseTurno);
-    if (duracion > 0) {
-      icono.style.display = "flex";
-      turnos.textContent = duracion;
-    } else {
-      icono.style.display = "none";
-    }
-  };
 
   personajesHTML.forEach((personajeHTML) => {
-    const personajeJS = personajesJS.find(p => p.id == personajeHTML.id);
     const seccionCondicion = personajeHTML.parentElement.querySelector(".seccionCondicion");
     const condicionesNegativas = personajeHTML.parentElement.querySelector(".condicionNegativas");
     const condicionesPositivas = personajeHTML.parentElement.querySelector(".condicionPositivas");
 
+    const personajeJS = personajesJS.find(p => p.id == personajeHTML.id);
+
     if (personajeJS) {
-      // Debilitamientos
-      condicionesNegativas.style.display = personajeJS.debilitamiento.length ? "flex" : "none";
-      personajeJS.debilitamiento.forEach((efecto) => {
-        mostrarEfecto(efecto.nombre, personajeHTML, ".condicionEnvenenado", ".turnosEnvenenados", efecto.nombre === "Veneno" ? efecto.duracion : 0);
-        mostrarEfecto(efecto.nombre, personajeHTML, ".condicionQuemado", ".turnosQuemados", efecto.nombre === "Quemadura" ? efecto.duracion : 0);
-        mostrarEfecto(efecto.nombre, personajeHTML, ".condicionHerido", ".turnosHeridos", efecto.nombre === "Herido" ? efecto.duracion : 0);
-      });
 
-      // Fortalecimientos
-      condicionesPositivas.style.display = personajeJS.fortalecimiento.length ? "flex" : "none";
-      personajeJS.fortalecimiento.forEach((efecto) => {
-        mostrarEfecto(efecto.nombre, personajeHTML, ".condicionCurar", ".turnosCurar", efecto.nombre === "Regeneración" ? efecto.duracion : 0);
-        mostrarEfecto(efecto.nombre, personajeHTML, ".condicionAtaque", ".turnosAtaque", efecto.nombre === "Ataque" ? efecto.duracion : 0);
-        mostrarEfecto(efecto.nombre, personajeHTML, ".condicionDefensa", ".turnosDefensa", efecto.nombre === "Defensa" ? efecto.duracion : 0);
-      });
+      if (personajeJS.debilitamiento.length === 0) {
+        condicionesNegativas.style.display = "none";
+      }
 
-      // Control de la clase fantasma
+      if (personajeJS.debilitamiento.length > 0) {
+        condicionesNegativas.style.display = "flex";
+
+          // Primero, oculta todos los iconos
+        const iconoVeneno = personajeHTML.parentElement.querySelector(".condicionEnvenenado");
+        const iconoQuemadura = personajeHTML.parentElement.querySelector(".condicionQuemado");
+        const iconoHerido = personajeHTML.parentElement.querySelector(".condicionHerido");
+
+        iconoVeneno.style.display = "none";
+        iconoQuemadura.style.display = "none";
+        iconoHerido.style.display = "none";
+
+        // Luego, recorre los efectos y muestra los iconos correspondientes
+        personajeJS.debilitamiento.forEach((efecto) => {
+          if (efecto.nombre === "Veneno") {
+            iconoVeneno.style.display = "flex";
+            const turnosVeneno = personajeHTML.parentElement.querySelector(".turnosEnvenenados");
+            turnosVeneno.textContent = efecto.duracion;
+          }
+          
+          if (efecto.nombre === "Quemadura") {
+            iconoQuemadura.style.display = "flex";
+            const turnosQuemadura = personajeHTML.parentElement.querySelector(".turnosQuemados");
+            turnosQuemadura.textContent = efecto.duracion;
+          }
+          
+          if (efecto.nombre === "Herido") {
+            iconoHerido.style.display = "flex";
+            const turnosHeridos = personajeHTML.parentElement.querySelector(".turnosHeridos");
+            turnosHeridos.textContent = efecto.duracion;
+          }
+        });
+
+      }
+
+      if (personajeJS.fortalecimiento.length === 0) {
+        condicionesPositivas.style.display = "none";
+      }
+
+      if (personajeJS.fortalecimiento.length > 0) {
+        condicionesPositivas.style.display = "flex";
+
+        personajeJS.fortalecimiento.forEach((efecto) => {
+          const iconoRegeneracion = personajeHTML.parentElement.querySelector(".condicionCurar");
+          const iconoAtaque = personajeHTML.parentElement.querySelector(".condicionAtaque");
+          const iconoDefensa = personajeHTML.parentElement.querySelector(".condicionDefensa");
+          
+          iconoRegeneracion.style.display = "none";
+          iconoAtaque.style.display = "none";
+          iconoDefensa.style.display = "none";
+          if (efecto) {
+
+            if (efecto.nombre === "Regeneración") {
+              iconoRegeneracion.style.display = "flex";
+              const turnosRegeneracion = personajeHTML.parentElement.querySelector(".turnosCurar");
+              turnosRegeneracion.textContent = efecto.duracion;         
+            }
+            
+            if (efecto.nombre === "Ataque") {
+              iconoAtaque.style.display = "flex";
+              const turnosAtaque = personajeHTML.parentElement.querySelector(".turnosAtaque");
+              turnosAtaque.textContent = efecto.duracion;         
+            } 
+            
+            if (efecto.nombre === "Defensa") {
+              iconoDefensa.style.display = "flex";
+              const turnosDefensa = personajeHTML.parentElement.querySelector(".turnosDefensa");
+              turnosDefensa.textContent = efecto.duracion;         
+            } 
+            
+          }
+          
+        });
+        
+      }
+
+     
+
       if (personajeJS.estaMuero()) {
         personajeHTML.classList.add('fantasma');
         seccionCondicion.style.display = "none";
+
       } else {
         personajeHTML.classList.remove('fantasma');
         seccionCondicion.style.display = "flex";
       }
 
-      // Aplicar o quitar efectos CSS
+      // Recorrer cada efecto definido en efectosCSS
       for (const efectoNombre in efectosCSS) {
         const claseCSS = efectosCSS[efectoNombre];
+
+        // Verificar si el personaje tiene el efecto en el array de debilitamiento
         const tieneEfecto = personajeJS.debilitamiento.some(efecto => efecto.nombre === efectoNombre);
-        personajeHTML.classList.toggle(claseCSS, tieneEfecto);
+
+        if (tieneEfecto) {
+          // Si el efecto está presente, añadir la clase CSS
+          personajeHTML.classList.add(claseCSS);
+        } else {
+          // Si el efecto no está presente, remover la clase CSS
+          personajeHTML.classList.remove(claseCSS);
+        }
       }
     }
   });
