@@ -344,7 +344,6 @@ class EfectoFijo extends Efecto {
   }
 
   activar(objetivo) {
-    this.aplicado ? this.reducirCooldown() : this.aplicar(objetivo);
   }
 }
 
