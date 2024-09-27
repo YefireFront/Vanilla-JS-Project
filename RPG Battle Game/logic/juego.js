@@ -125,7 +125,7 @@ class Juego {
   }
 }
 
-Juego.agregarPersonaje(1, iceDragon_1);
+Juego.agregarPersonaje(1, antorcha_1);
 Juego.agregarPersonaje(1, reptil_1);
 Juego.agregarPersonaje(1, pandawa_1);
 

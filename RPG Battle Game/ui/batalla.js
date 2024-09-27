@@ -130,7 +130,7 @@ function animacionEquipo2(objetivo, lugarDeAtaque, habilidadSeleccionada) {
       lugarDeAtaque.children[0].src = "";
     }, 1500);
 
-    personajesDeElEquipo2.forEach((elemento) => {
+    personajesDeElEquipo1.forEach((elemento) => {
       if (elemento.classList.contains(`p${Juego.personajeActual.id}`)) {
         elemento.style.display = "none";
         setTimeout(() => {
@@ -214,18 +214,3 @@ function animacionEquipo2(objetivo, lugarDeAtaque, habilidadSeleccionada) {
   });
 }
 
-function validaTipoHabilidad(nombreHabilidad, personaje) {
-  const tipoHabilidad = personaje.habilidades[0].find((habilidad) => habilidad.nombre === nombreHabilidad);
-  if (juego.personajeActual) {
-    
-  }
-  if (tipo === "Daño") {
-    return true;
-  }
-  if (tipo === "Defensa") {
-    return true;
-  }
-  if (tipo === "Velocidad") {
-    return true;
-  }
-}
