@@ -1,0 +1,6 @@
+.escenario__equipo1{
+    width: 50%;
+    height: 100%;
+    border: 1px solid blue;
+    position: relative;
+}
