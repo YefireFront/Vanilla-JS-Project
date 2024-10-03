@@ -131,6 +131,6 @@ Juego.agregarPersonaje(1, pandawa_1);
 
 Juego.agregarPersonaje(2, thunder_2);
 Juego.agregarPersonaje(2, gigant_2);
-Juego.agregarPersonaje(2, reptil_2);
+Juego.agregarPersonaje(2, monje_2);
 
 Juego.iniciarJuego();

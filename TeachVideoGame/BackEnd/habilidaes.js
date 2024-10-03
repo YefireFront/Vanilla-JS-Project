@@ -2,7 +2,7 @@ class Habilidad {
   constructor(nombre, tiempoDeEspera, tipo, descripcion, efecto) {
     this.nombre = nombre;
     this.tiempoDeEspera = tiempoDeEspera;
-    this.tipo = tipo; // 'Daño' o 'NoDaño'
+    this.tipo = tipo; 
     this.descripcion = descripcion;
     this.efecto = efecto;
     this.cooldownActual = 0;
