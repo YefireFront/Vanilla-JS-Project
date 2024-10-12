@@ -22,7 +22,7 @@ class Personaje {
     return false;
   }
 
-  //Asignar 0 si un perosnaje quesa con vida negativa
+  //Asignar 0 si un perosnaje queda con vida negativa
   validarNegativos() {
     if (this.vida <= 0) {
       this.vida = 0;
