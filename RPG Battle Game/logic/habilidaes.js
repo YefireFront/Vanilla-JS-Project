@@ -62,8 +62,6 @@ function crear1000Volvios() {
   );
 }
 
-
-
 function crearCarga() {
   return new Habilidad(
     "Carga",
@@ -272,17 +270,7 @@ function crearIraInfernal() {
   );
 }
 
-
-
 //* Efectos
-
-
-
-
-
-
-
-
 
 class Efecto {
   constructor(nombre, descripcion, duracion, efecto, tipo ) {
