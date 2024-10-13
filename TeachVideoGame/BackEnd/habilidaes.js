@@ -126,7 +126,34 @@ function crearPuñoFlamigero() {
     "Soporte",
     "Aumenta la defensa de Gigant en 10 por cada aliado muerto.",
     (lanzador) => {
+      if (lanzador.equipo === 1) {
+        Juego.equipo1.forEach((personaje) => {
+          if (personaje.estaMuero()) {
+            const defensa = crearDefensa(10);
+            lanzador.fortalecimiento.push(defensa);
+            defensa.aplicar(lanzador);
+          }
+        });
+        
+      }
 
+      if (lanzador.equipo === 2) {
+        Juego.equipo2.forEach((personaje) => {
+          if (personaje.estaMuero()) {
+            const defensa = crearDefensa(10);
+            lanzador.fortalecimiento.push(defensa);
+            defensa.aplicar(lanzador);
+          }
+        });
+      }
+      Personaje.validarExcesos(lanzador);
+    }
+  );
+}
+
+function crearRevivir() {
+  return new Habilidad(
+    "Revivir",
     3,
     "Soporte",
     "Revive a un objetivo con 30 de vida y aumenta su defensa en 5.",
