@@ -112,53 +112,7 @@ function pandemia() {
           personaje.debilitamiento.push(crearVeneno());
         });
       }
-    }
-  );
-}
 
-//Habilidades de pandawa
-
-function crearPuñoFlamigero() {
-  return new Habilidad(
-    "Puño Flamígero",
-    3,
-    "Daño",
-    "Inflige 20 de Daño al objetivo.",
-    (lanzador, objetivo) => {
-      objetivo.vida -= 20;
-      Personaje.validarExcesos(lanzador, objetivo);
-    }
-  );
-}
-
-function crearAlmaBambu() {
-  return new Habilidad(
-    "Alma de Bambú",
-    5,
-    "Soporte",
-    "Aumenta la defensa de Pandawa en 10 .",
-    (lanzador, objetivo) => {
-      const defensa = crearDefensa(10);
-      lanzador.fortalecimiento.push(defensa);
-      defensa.aplicar(lanzador);
-      Personaje.validarExcesos(lanzador, objetivo);
-    }
-  );
-}
-
-// Habilidades de gigant
-
-function crearLlamadoCeleste() {
-  return new Habilidad(
-    "Llamado Celeste",
-    5,
-    "Soporte",
-    "Aumenta la defensa de Gigant en 10 por cada aliado muerto.",
-    (lanzador) => {
-      if (lanzador.equipo === 1) {
-        Juego.equipo1.forEach((personaje) => {
-          if (personaje.estaMuero()) {
-            const defensa = crearDefensa(10);
             lanzador.fortalecimiento.push(defensa);
             defensa.aplicar(lanzador);
           }
