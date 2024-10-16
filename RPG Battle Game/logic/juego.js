@@ -71,14 +71,12 @@ class Juego {
 
       if (this.turnoEquipo === 1) {
         this.turnoEquipo = 2;
-        const { personaje: personajeSiguiente, siguienteTurno } =
-          this.obtenerSiguientePersonaje(this.equipo1, this.turnoActualEquipo1);
+        const { personaje: personajeSiguiente, siguienteTurno } =this.obtenerSiguientePersonaje(this.equipo1, this.turnoActualEquipo1);
         this.turnoActualEquipo1 = siguienteTurno;
         this.personajeActual = this.equipo2[this.turnoActualEquipo2];
       } else {
         this.turnoEquipo = 1;
-        const { personaje: personajeSiguiente, siguienteTurno } =
-          this.obtenerSiguientePersonaje(this.equipo2, this.turnoActualEquipo2);
+        const { personaje: personajeSiguiente, siguienteTurno } = this.obtenerSiguientePersonaje(this.equipo2, this.turnoActualEquipo2);
         this.turnoActualEquipo2 = siguienteTurno;
         this.personajeActual = this.equipo1[this.turnoActualEquipo1];
       }
@@ -88,6 +86,7 @@ class Juego {
         const equipo = this.turnoEquipo === 1 ? this.equipo1 : this.equipo2;
         const turnoActual =  this.turnoEquipo === 1? this.turnoActualEquipo1: this.turnoActualEquipo2;
         const { personaje: personajeSiguiente, siguienteTurno } = this.obtenerSiguientePersonaje(equipo, turnoActual);
+
         if (this.turnoEquipo === 1) {
           this.turnoActualEquipo1 = siguienteTurno;
         } else {
