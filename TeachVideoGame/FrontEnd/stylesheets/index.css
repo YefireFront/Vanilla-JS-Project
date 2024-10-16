@@ -12,9 +12,9 @@
 
 
 body{
+    margin: 0px auto;
     width: 1400px;
-    height: 610px;
-    margin: 10px auto;
+    height: 700px;
 }
 
 
@@ -22,8 +22,15 @@ body{
     width: 100%;
     height: 100%;
     position: relative;
-    /* border: 1px solid red; */
+    border: 5px solid red;
     display: flex;
+    overflow: hidden;
+
+    img{
+        width: 100%;
+        position: absolute;
+        top: -100px;
+    }
 }
 
 
@@ -32,4 +39,4 @@ body{
     height: 100%;
     position: absolute;
     background: #a7a7a7;
-}
+} 
