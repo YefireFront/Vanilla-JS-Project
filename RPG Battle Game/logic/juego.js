@@ -86,12 +86,8 @@ class Juego {
       // Check if the current character is dead right before their turn
       if (this.personajeActual.estaMuero()) {
         const equipo = this.turnoEquipo === 1 ? this.equipo1 : this.equipo2;
-        const turnoActual =
-          this.turnoEquipo === 1
-            ? this.turnoActualEquipo1
-            : this.turnoActualEquipo2;
-        const { personaje: personajeSiguiente, siguienteTurno } =
-          this.obtenerSiguientePersonaje(equipo, turnoActual);
+        const turnoActual =  this.turnoEquipo === 1? this.turnoActualEquipo1: this.turnoActualEquipo2;
+        const { personaje: personajeSiguiente, siguienteTurno } = this.obtenerSiguientePersonaje(equipo, turnoActual);
         if (this.turnoEquipo === 1) {
           this.turnoActualEquipo1 = siguienteTurno;
         } else {
