@@ -8,9 +8,9 @@ class Personaje {
     this.velocidad = velocidad;
     this.vida = 100;
     this.debilitamiento = [];
-    this.fortalecimiento = [];
-    this.habilidades = [];
-    this.equipo = null;
+    this.fortalecades = [];
+    this.equiimiento = [];
+    this.habilidpo = null;
   }
 
   //metodo para valida pesonaje vivo
