@@ -155,18 +155,17 @@ function crearLlamadoCeleste() {
     (lanzador) => {
       if (lanzador.equipo === 1) {
         Juego.equipo1.forEach((personaje) => {
-          if (personaje.estaMuero()) {
+          if (personaje.estaMuerto()) {
             const defensa = crearDefensa(10);
             lanzador.fortalecimiento.push(defensa);
             defensa.aplicar(lanzador);
           }
         });
-        
       }
 
       if (lanzador.equipo === 2) {
         Juego.equipo2.forEach((personaje) => {
-          if (personaje.estaMuero()) {
+          if (personaje.estaMuerto()) {
             const defensa = crearDefensa(10);
             lanzador.fortalecimiento.push(defensa);
             defensa.aplicar(lanzador);
@@ -185,7 +184,7 @@ function crearRevivir() {
     "Soporte",
     "Revive a un objetivo con 30 de vida y aumenta su defensa en 5.",
     (lanzador, objetivo) => {
-      if (objetivo.estaMuero()) {
+      if (objetivo.estaMuerto()) {
         objetivo.vida += 30;
         objetivo.defensa += 5;
         Personaje.validarExcesos(lanzador, objetivo);
@@ -262,7 +261,7 @@ function crearIraInfernal() {
     "Deja al objetivo quemado y aumenta su ataque en 15.",
     (lanzador, objetivo) => {
       const ataque = crearAtaque(15);
-      lanzador.fortalecimiento.push(ataque)
+      lanzador.fortalecimiento.push(ataque);
       ataque.aplicar(lanzador); // Activar el efecto de crearAtaque instantáneamente
       objetivo.debilitamiento.push(crearQuemadura());
       Personaje.validarExcesos(lanzador, objetivo);
@@ -273,21 +272,16 @@ function crearIraInfernal() {
 //* Efectos
 
 class Efecto {
-  constructor(nombre, descripcion, duracion, efecto, tipo ) {
+  constructor(nombre, descripcion, duracion, efecto, tipo) {
     this.nombre = nombre;
     this.descripcion = descripcion;
     this.duracion = duracion;
     this.efecto = efecto;
     this.tipo = tipo;
   }
-
-  limpiarEfectos() {
-    objetivo.debilitamiento = objetivo.debilitamiento.filter((efecto) => efecto !== this);
-    objetivo.fortalecimiento = objetivo.fortalecimiento.filter((efecto) => efecto !== this);
-  }
 }
 
-class EfectoContinuo extends Efecto{
+class EfectoContinuo extends Efecto {
   constructor(nombre, descripcion, duracion, efecto) {
     super(nombre, descripcion, duracion, efecto);
   }
@@ -297,10 +291,11 @@ class EfectoContinuo extends Efecto{
     this.duracion--;
     if (this.duracion === 0) {
       console.log(`${this.nombre} ha terminado.`);
-      objetivo.debilitamiento = objetivo.debilitamiento.filter((efecto) => efecto !== this);
+      objetivo.debilitamiento = objetivo.debilitamiento.filter(
+        (efecto) => efecto !== this
+      );
     }
   }
-  
 }
 
 class EfectoFijo extends Efecto {
@@ -317,7 +312,7 @@ class EfectoFijo extends Efecto {
     this.Objetivo = objetivo;
   }
 
-  desAplicar(){
+  desAplicar() {
     this.efectoOff(this.Objetivo);
   }
 
@@ -327,7 +322,9 @@ class EfectoFijo extends Efecto {
       console.log(`${this.nombre} ha terminado.`);
       this.desAplicar();
       this.aplicado = false;
-      this.Objetivo.fortalecimiento = this.Objetivo.fortalecimiento.filter((efecto) => efecto !== this);
+      this.Objetivo.fortalecimiento = this.Objetivo.fortalecimiento.filter(
+        (efecto) => efecto !== this
+      );
     }
   }
 
@@ -362,7 +359,6 @@ function crearVeneno() {
   );
 }
 
-
 function crearAtaque(Aumento) {
   return new EfectoFijo(
     "Ataque",
@@ -376,7 +372,7 @@ function crearAtaque(Aumento) {
     (objetivo) => {
       objetivo.ataque -= Aumento;
       Personaje.validarExcesos(objetivo);
-      console.log(`reduce el ataque de ${objetivo.nombre} por 15`); 
+      console.log(`reduce el ataque de ${objetivo.nombre} por 15`);
     }
   );
 }
@@ -392,11 +388,11 @@ function crearDefensa(aumenta) {
       console.log(`aumenta la defensa de ${objetivo.nombre} por 15`);
     },
     (objetivo) => {
-      console.log(`activando poder off`)
-      console.log(objetivo)
+      console.log(`activando poder off`);
+      console.log(objetivo);
       objetivo.defensa -= aumenta;
       Personaje.validarExcesos(objetivo);
-      console.log(`reduce la defensa de ${objetivo.nombre} por 15`); 
+      console.log(`reduce la defensa de ${objetivo.nombre} por 15`);
     }
   );
 }

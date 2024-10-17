@@ -10,17 +10,14 @@ const escenarioEquipo1 = document.querySelector(".esenarioEquipo1");
 // creando escenario equipo 2
 const escenarioEquipo2 = document.querySelector(".esenarioEquipo2");
 
-
 let habilidadSeleccionada = null;
 
-
-
-
-Juego.equipo1.forEach((personaje , i) => {
+Juego.equipo1.forEach((personaje, i) => {
   // creando personajes en el escenario Left / 1
 
   const personaje1 = document.createElement("div");
-  personaje1.classList.add("personaje", `p${personaje.id}`, `${personaje.nombre}`, `lugar${i + 1}`);
+  personaje1.classList.add( "personaje", `p${personaje.id}`, `${personaje.nombre}`,   `lugar${i + 1}`
+  );
   escenarioEquipo1.appendChild(personaje1);
 
   // crear barra de vida
@@ -70,65 +67,91 @@ Juego.equipo1.forEach((personaje , i) => {
   const seccionCondicion = document.createElement("div");
   seccionCondicion.classList.add("seccionCondicion");
   barraVida.appendChild(seccionCondicion);
-  
-  
+
   const condicionesNegativas = document.createElement("div");
   condicionesNegativas.classList.add("condicionNegativas");
 
   const condicionHerido = document.createElement("i");
-  condicionHerido.classList.add("condicion", "condicionHerido","fa-solid" ,"fa-user-injured");
+  condicionHerido.classList.add(
+    "condicion",
+    "condicionHerido",
+    "fa-solid",
+    "fa-user-injured"
+  );
   const turnosHeridos = document.createElement("p");
   turnosHeridos.classList.add("turnosHeridos");
-  turnosHeridos.textContent = 5
+  turnosHeridos.textContent = 5;
   condicionHerido.appendChild(turnosHeridos);
 
   const condicionQuemado = document.createElement("i");
-  condicionQuemado.classList.add("condicion", "condicionQuemado","fa-solid", "fa-fire");
+  condicionQuemado.classList.add(
+    "condicion",
+    "condicionQuemado",
+    "fa-solid",
+    "fa-fire"
+  );
   const turnosQuemados = document.createElement("p");
   turnosQuemados.classList.add("turnosQuemados");
-  turnosQuemados.textContent = 5
+  turnosQuemados.textContent = 5;
   condicionQuemado.appendChild(turnosQuemados);
 
   const condicionEnvenenado = document.createElement("i");
-  condicionEnvenenado.classList.add("condicion", "condicionEnvenenado", "fa-solid", "fa-skull");
+  condicionEnvenenado.classList.add(
+    "condicion",
+    "condicionEnvenenado",
+    "fa-solid",
+    "fa-skull"
+  );
   const turnosEnvenenados = document.createElement("p");
   turnosEnvenenados.classList.add("turnosEnvenenados");
-  turnosEnvenenados.textContent = 5
+  turnosEnvenenados.textContent = 5;
   condicionEnvenenado.appendChild(turnosEnvenenados);
 
   const condiionesPositivas = document.createElement("div");
   condiionesPositivas.classList.add("condicionPositivas");
 
   const condicionAtaque = document.createElement("i");
-  condicionAtaque.classList.add("condicion", "condicionAtaque","fa-solid", "fa-hand-back-fist");
+  condicionAtaque.classList.add(
+    "condicion",
+    "condicionAtaque",
+    "fa-solid",
+    "fa-hand-back-fist"
+  );
   const turnosAtaque = document.createElement("p");
   turnosAtaque.classList.add("turnosAtaque");
-  turnosAtaque.textContent = 5
+  turnosAtaque.textContent = 5;
   condicionAtaque.appendChild(turnosAtaque);
 
   const condicionDefensa = document.createElement("i");
-  condicionDefensa.classList.add("condicion", "condicionDefensa","fa-solid", "fa-shield");
+  condicionDefensa.classList.add(
+    "condicion",
+    "condicionDefensa",
+    "fa-solid",
+    "fa-shield"
+  );
   const turnosDefensa = document.createElement("p");
   turnosDefensa.classList.add("turnosDefensa");
-  turnosDefensa.textContent = 5
+  turnosDefensa.textContent = 5;
   condicionDefensa.appendChild(turnosDefensa);
 
   const condicionCurar = document.createElement("i");
-  condicionCurar.classList.add("condicion", "condicionCurar","fa-solid", "fa-heart");
+  condicionCurar.classList.add(
+    "condicion",
+    "condicionCurar",
+    "fa-solid",
+    "fa-heart"
+  );
   const turnosCurar = document.createElement("p");
   turnosCurar.classList.add("turnosCurar");
-  turnosCurar.textContent = 5
+  turnosCurar.textContent = 5;
   condicionCurar.appendChild(turnosCurar);
 
-  
-  
   condicionesNegativas.appendChild(condicionHerido);
   condicionesNegativas.appendChild(condicionQuemado);
   condicionesNegativas.appendChild(condicionEnvenenado);
   condiionesPositivas.appendChild(condicionAtaque);
   condiionesPositivas.appendChild(condicionDefensa);
   condiionesPositivas.appendChild(condicionCurar);
-
 
   seccionCondicion.appendChild(condicionesNegativas);
   seccionCondicion.appendChild(condiionesPositivas);
@@ -160,7 +183,6 @@ Juego.equipo1.forEach((personaje , i) => {
   imagenPersonaje.src = `./players/${personaje.id}/Quieto.gif`;
   peronajePrincipal.appendChild(imagenPersonaje);
 
-
   // Creacion personaje secundario
   const peronajeSecundario = document.createElement("div");
   peronajeSecundario.classList.add("personajeSecundario");
@@ -180,7 +202,12 @@ Juego.equipo1.forEach((personaje , i) => {
         let accionCompletada = Juego.personajeActual.Atacar(personaje);
 
         if (accionCompletada) {
-          animacionEquipo1(e.target, personajeSecundario ,habilidadSeleccionada, personaje);
+          animacionEquipo1(
+            e.target,
+            personajeSecundario,
+            habilidadSeleccionada,
+            personaje
+          );
           desactivarBotones();
         }
 
@@ -190,10 +217,18 @@ Juego.equipo1.forEach((personaje , i) => {
       }
 
       if (habilidadSeleccionada != null && habilidadSeleccionada != "Atacar") {
-        let accionCompletada = Juego.personajeActual.usarHabilidad(habilidadSeleccionada,personaje);
+        let accionCompletada = Juego.personajeActual.usarHabilidad(
+          habilidadSeleccionada,
+          personaje
+        );
 
         if (accionCompletada) {
-          animacionEquipo1(e.target, personajeSecundario ,habilidadSeleccionada, personaje);
+          animacionEquipo1(
+            e.target,
+            personajeSecundario,
+            habilidadSeleccionada,
+            personaje
+          );
           desactivarBotones();
         }
         desactivarBotones();
@@ -206,7 +241,12 @@ Juego.equipo2.forEach((personaje, i) => {
   // creando personajes en el escenario right / 1
 
   const personaje1 = document.createElement("div");
-  personaje1.classList.add("personaje", `p${personaje.id}`, `${personaje.nombre}`, `lugar${i + 4}`);
+  personaje1.classList.add(
+    "personaje",
+    `p${personaje.id}`,
+    `${personaje.nombre}`,
+    `lugar${i + 4}`
+  );
   escenarioEquipo2.appendChild(personaje1);
 
   // crear barra de vida
@@ -256,66 +296,91 @@ Juego.equipo2.forEach((personaje, i) => {
   const seccionCondicion = document.createElement("div");
   seccionCondicion.classList.add("seccionCondicion");
   barraVida.appendChild(seccionCondicion);
-  
+
   const condicionesNegativas = document.createElement("div");
   condicionesNegativas.classList.add("condicionNegativas");
 
   const condicionHerido = document.createElement("i");
-  condicionHerido.classList.add("condicion", "condicionHerido","fa-solid" ,"fa-user-injured");
+  condicionHerido.classList.add(
+    "condicion",
+    "condicionHerido",
+    "fa-solid",
+    "fa-user-injured"
+  );
   const turnosHeridos = document.createElement("p");
   turnosHeridos.classList.add("turnosHeridos");
-  turnosHeridos.textContent = 5
+  turnosHeridos.textContent = 5;
   condicionHerido.appendChild(turnosHeridos);
 
-
   const condicionQuemado = document.createElement("i");
-  condicionQuemado.classList.add("condicion", "condicionQuemado","fa-solid", "fa-fire");
+  condicionQuemado.classList.add(
+    "condicion",
+    "condicionQuemado",
+    "fa-solid",
+    "fa-fire"
+  );
   const turnosQuemados = document.createElement("p");
   turnosQuemados.classList.add("turnosQuemados");
-  turnosQuemados.textContent = 5
+  turnosQuemados.textContent = 5;
   condicionQuemado.appendChild(turnosQuemados);
 
   const condicionEnvenenado = document.createElement("i");
-  condicionEnvenenado.classList.add("condicion", "condicionEnvenenado", "fa-solid", "fa-skull");
+  condicionEnvenenado.classList.add(
+    "condicion",
+    "condicionEnvenenado",
+    "fa-solid",
+    "fa-skull"
+  );
   const turnosEnvenenados = document.createElement("p");
   turnosEnvenenados.classList.add("turnosEnvenenados");
-  turnosEnvenenados.textContent = 5
+  turnosEnvenenados.textContent = 5;
   condicionEnvenenado.appendChild(turnosEnvenenados);
-
 
   const condiionesPositivas = document.createElement("div");
   condiionesPositivas.classList.add("condicionPositivas");
 
   const condicionAtaque = document.createElement("i");
-  condicionAtaque.classList.add("condicion", "condicionAtaque","fa-solid", "fa-hand-back-fist");
+  condicionAtaque.classList.add(
+    "condicion",
+    "condicionAtaque",
+    "fa-solid",
+    "fa-hand-back-fist"
+  );
   const turnosAtaque = document.createElement("p");
   turnosAtaque.classList.add("turnosAtaque");
-  turnosAtaque.textContent = 5
+  turnosAtaque.textContent = 5;
   condicionAtaque.appendChild(turnosAtaque);
 
   const condicionDefensa = document.createElement("i");
-  condicionDefensa.classList.add("condicion", "condicionDefensa","fa-solid", "fa-shield");
+  condicionDefensa.classList.add(
+    "condicion",
+    "condicionDefensa",
+    "fa-solid",
+    "fa-shield"
+  );
   const turnosDefensa = document.createElement("p");
   turnosDefensa.classList.add("turnosDefensa");
-  turnosDefensa.textContent = 5
+  turnosDefensa.textContent = 5;
   condicionDefensa.appendChild(turnosDefensa);
 
   const condicionCurar = document.createElement("i");
-  condicionCurar.classList.add("condicion", "condicionCurar","fa-solid", "fa-heart");
+  condicionCurar.classList.add(
+    "condicion",
+    "condicionCurar",
+    "fa-solid",
+    "fa-heart"
+  );
   const turnosCurar = document.createElement("p");
   turnosCurar.classList.add("turnosCurar");
-  turnosCurar.textContent = 5
+  turnosCurar.textContent = 5;
   condicionCurar.appendChild(turnosCurar);
 
-  
-  
   condicionesNegativas.appendChild(condicionHerido);
   condicionesNegativas.appendChild(condicionQuemado);
   condicionesNegativas.appendChild(condicionEnvenenado);
   condiionesPositivas.appendChild(condicionAtaque);
   condiionesPositivas.appendChild(condicionDefensa);
   condiionesPositivas.appendChild(condicionCurar);
-
 
   seccionCondicion.appendChild(condicionesNegativas);
   seccionCondicion.appendChild(condiionesPositivas);
@@ -370,14 +435,21 @@ Juego.equipo2.forEach((personaje, i) => {
 
   imagenPersonaje.addEventListener("click", (e) => {
     const idPersonaje = e.target.parentElement.id;
-    const personaje = Juego.equipo2.find((personaje) => personaje.id == idPersonaje);
+    const personaje = Juego.equipo2.find(
+      (personaje) => personaje.id == idPersonaje
+    );
 
     if (habilidadSeleccionada) {
       if (habilidadSeleccionada === "Atacar") {
         let accionCompletada = Juego.personajeActual.Atacar(personaje);
 
         if (accionCompletada) {
-          animacionEquipo2(e.target,personajeSecundario,habilidadSeleccionada, personaje);
+          animacionEquipo2(
+            e.target,
+            personajeSecundario,
+            habilidadSeleccionada,
+            personaje
+          );
           desactivarBotones();
         }
 
@@ -387,18 +459,23 @@ Juego.equipo2.forEach((personaje, i) => {
       }
 
       if (habilidadSeleccionada != null && habilidadSeleccionada != "Atacar") {
-        let accionCompletada = Juego.personajeActual.usarHabilidad(habilidadSeleccionada,personaje);
+        let accionCompletada = Juego.personajeActual.usarHabilidad(
+          habilidadSeleccionada,
+          personaje
+        );
 
         if (accionCompletada) {
-          animacionEquipo2(e.target, personajeSecundario ,habilidadSeleccionada, personaje);
+          animacionEquipo2(
+            e.target,
+            personajeSecundario,
+            habilidadSeleccionada,
+            personaje
+          );
           desactivarBotones();
         }
         desactivarBotones();
       }
     }
-
-
-  
   });
 });
 
@@ -430,18 +507,23 @@ detallePoder.style.display = "none";
 
 //Eventos de mouse para ver el detalle del poder cuando el mouse este encima
 habilidad1.addEventListener("mouseenter", (e) => actualizarDetallePoder(e));
-habilidad2.addEventListener("mouseenter", (e) => actualizarDetallePoder(e)); 
+habilidad2.addEventListener("mouseenter", (e) => actualizarDetallePoder(e));
 //Eventos de mouse para ocultar el detalle del poder cuando el mouse se va
-habilidad1.addEventListener("mouseleave", (e) => actualizarDetallePoder(e)); 
-habilidad2.addEventListener("mouseleave", (e) => actualizarDetallePoder(e)); 
+habilidad1.addEventListener("mouseleave", (e) => actualizarDetallePoder(e));
+habilidad2.addEventListener("mouseleave", (e) => actualizarDetallePoder(e));
 // Eventos de click para seleccionar el poder
-habilidad1.addEventListener("click", () =>seleccionarHabilidad(habilidad1, habilidad2, habilidadAtacar));
-habilidad2.addEventListener("click", () =>seleccionarHabilidad(habilidad2, habilidad1, habilidadAtacar));
-habilidadAtacar.addEventListener("click", () =>seleccionarHabilidad(habilidadAtacar, habilidad1, habilidad2));
+habilidad1.addEventListener("click", () =>
+  seleccionarHabilidad(habilidad1, habilidad2, habilidadAtacar)
+);
+habilidad2.addEventListener("click", () =>
+  seleccionarHabilidad(habilidad2, habilidad1, habilidadAtacar)
+);
+habilidadAtacar.addEventListener("click", () =>
+  seleccionarHabilidad(habilidadAtacar, habilidad1, habilidad2)
+);
 
 const turnoEquipo1 = document.querySelectorAll(".turnoEquipo1");
 const turnoEquipo2 = document.querySelectorAll(".turnoEquipo2");
-
 
 function actualizar_Interfaz() {
   // actualizar seccion poder
@@ -609,22 +691,20 @@ function actualizarSeccionPoder() {
 function actualizarDefensaAtaque() {
   //selecionar la defensa y el ataque de todos los perosnajes
   Juego.equipo1.forEach((personaje) => {
-    document.querySelector(`.${personaje.nombre} .cantidadDefensa`).textContent = personaje.defensa;
-    document.querySelector(`.${personaje.nombre} .cantidadAtaque`).textContent = personaje.ataque;
-   
+    document.querySelector(
+      `.${personaje.nombre} .cantidadDefensa`
+    ).textContent = personaje.defensa;
+    document.querySelector(`.${personaje.nombre} .cantidadAtaque`).textContent =
+      personaje.ataque;
   });
 
-   Juego.equipo2.forEach((personaje) => {
-    document.querySelector(`.${personaje.nombre} .cantidadDefensa`).textContent = personaje.defensa;
-    document.querySelector(`.${personaje.nombre} .cantidadAtaque`).textContent = personaje.ataque;
-   
+  Juego.equipo2.forEach((personaje) => {
+    document.querySelector(
+      `.${personaje.nombre} .cantidadDefensa`
+    ).textContent = personaje.defensa;
+    document.querySelector(`.${personaje.nombre} .cantidadAtaque`).textContent =
+      personaje.ataque;
   });
-  
-  
-
-
-
-
 }
 
 function gestionarDebilitamiento2() {
@@ -633,22 +713,24 @@ function gestionarDebilitamiento2() {
   const condicionesNegativas = document.querySelectorAll(".condicionNegativas");
   const condicionesPositivas = document.querySelectorAll(".condicionPositivas");
 
-
   const efectosCSS = {
-    "Regeneración": "healingEffect",
-    "Quemadura": "burnEffect",
-    "Veneno": "poisonEffect"
+    Regeneración: "healingEffect",
+    Quemadura: "burnEffect",
+    Veneno: "poisonEffect",
   };
 
-
   personajesHTML.forEach((personajeHTML) => {
-    const seccionCondicion = personajeHTML.parentElement.querySelector(".seccionCondicion");
-    const condicionesNegativas = personajeHTML.parentElement.querySelector(".condicionNegativas");
-    const condicionesPositivas = personajeHTML.parentElement.querySelector(".condicionPositivas");
-    const personajeJS = personajesJS.find(p => p.id == personajeHTML.id);
+    const seccionCondicion =
+      personajeHTML.parentElement.querySelector(".seccionCondicion");
+    const condicionesNegativas = personajeHTML.parentElement.querySelector(
+      ".condicionNegativas"
+    );
+    const condicionesPositivas = personajeHTML.parentElement.querySelector(
+      ".condicionPositivas"
+    );
+    const personajeJS = personajesJS.find((p) => p.id == personajeHTML.id);
 
     if (personajeJS) {
-
       if (personajeJS.debilitamiento.length === 0) {
         condicionesNegativas.style.display = "none";
       }
@@ -658,39 +740,46 @@ function gestionarDebilitamiento2() {
 
         personajeJS.debilitamiento.forEach((efecto) => {
           if (efecto) {
-           if (efecto.nombre === "Veneno") {
-            const iconoVeneno = personajeHTML.parentElement.querySelector(".condicionEnvenenado");
-            iconoVeneno.style.display = "flex";
-            const turnosVeneno = personajeHTML.parentElement.querySelector(".turnosEnvenenados");
-            turnosVeneno.textContent = efecto.duracion;         
-           }else{
-            const iconoVeneno = personajeHTML.parentElement.querySelector(".condicionEnvenenado");
-            iconoVeneno.style.display = "none";
-           }
+            if (efecto.nombre === "Veneno") {
+              const iconoVeneno = personajeHTML.parentElement.querySelector(
+                ".condicionEnvenenado"
+              );
+              iconoVeneno.style.display = "flex";
+              const turnosVeneno =
+                personajeHTML.parentElement.querySelector(".turnosEnvenenados");
+              turnosVeneno.textContent = efecto.duracion;
+            } else {
+              const iconoVeneno = personajeHTML.parentElement.querySelector(
+                ".condicionEnvenenado"
+              );
+              iconoVeneno.style.display = "none";
+            }
 
-           if (efecto.nombre === "Quemadura") {
-            const iconoQuemadura = personajeHTML.parentElement.querySelector(".condicionQuemado");
-            iconoQuemadura.style.display = "flex";
-            const turnosQuemadura = personajeHTML.parentElement.querySelector(".turnosQuemados");
-            turnosQuemadura.textContent = efecto.duracion;         
-           }else{
-            const iconoQuemadura = personajeHTML.parentElement.querySelector(".condicionQuemado");
-            iconoQuemadura.style.display = "none";
-           }
+            if (efecto.nombre === "Quemadura") {
+              const iconoQuemadura =
+                personajeHTML.parentElement.querySelector(".condicionQuemado");
+              iconoQuemadura.style.display = "flex";
+              const turnosQuemadura =
+                personajeHTML.parentElement.querySelector(".turnosQuemados");
+              turnosQuemadura.textContent = efecto.duracion;
+            } else {
+              const iconoQuemadura =
+                personajeHTML.parentElement.querySelector(".condicionQuemado");
+              iconoQuemadura.style.display = "none";
+            }
 
-           if (efecto.nombre === "Herido") {
-             const iconoHerido = personajeHTML.parentElement.querySelector(".condicionHerido");
-             iconoHerido.style.display = "flex";
-            const turnosHeridos = personajeHTML.parentElement.querySelector(".turnosHeridos");
-            turnosHeridos.textContent = efecto.duracion;         
-           }else{
-            const iconoHerido = personajeHTML.parentElement.querySelector(".condicionHerido");
-            iconoHerido.style.display = "none";
-           }
-
-
-  
-            
+            if (efecto.nombre === "Herido") {
+              const iconoHerido =
+                personajeHTML.parentElement.querySelector(".condicionHerido");
+              iconoHerido.style.display = "flex";
+              const turnosHeridos =
+                personajeHTML.parentElement.querySelector(".turnosHeridos");
+              turnosHeridos.textContent = efecto.duracion;
+            } else {
+              const iconoHerido =
+                personajeHTML.parentElement.querySelector(".condicionHerido");
+              iconoHerido.style.display = "none";
+            }
           }
         });
       }
@@ -705,50 +794,52 @@ function gestionarDebilitamiento2() {
         personajeJS.fortalecimiento.forEach((efecto) => {
           if (efecto) {
             if (efecto.nombre === "Regeneración") {
-              const iconoRegeneracion = personajeHTML.parentElement.querySelector(".condicionCurar");
+              const iconoRegeneracion =
+                personajeHTML.parentElement.querySelector(".condicionCurar");
               iconoRegeneracion.style.display = "flex";
-              const turnosRegeneracion = personajeHTML.parentElement.querySelector(".turnosCurar");
-              turnosRegeneracion.textContent = efecto.duracion;         
-            }else{
-              const iconoRegeneracion = personajeHTML.parentElement.querySelector(".condicionCurar");
+              const turnosRegeneracion =
+                personajeHTML.parentElement.querySelector(".turnosCurar");
+              turnosRegeneracion.textContent = efecto.duracion;
+            } else {
+              const iconoRegeneracion =
+                personajeHTML.parentElement.querySelector(".condicionCurar");
               iconoRegeneracion.style.display = "none";
             }
-          
           }
 
           if (efecto.nombre === "Ataque") {
-            const iconoAtaque = personajeHTML.parentElement.querySelector(".condicionAtaque");
+            const iconoAtaque =
+              personajeHTML.parentElement.querySelector(".condicionAtaque");
             iconoAtaque.style.display = "flex";
-            const turnosAtaque = personajeHTML.parentElement.querySelector(".turnosAtaque");
-            turnosAtaque.textContent = efecto.duracion;         
-          }else{
-            const iconoAtaque = personajeHTML.parentElement.querySelector(".condicionAtaque");
+            const turnosAtaque =
+              personajeHTML.parentElement.querySelector(".turnosAtaque");
+            turnosAtaque.textContent = efecto.duracion;
+          } else {
+            const iconoAtaque =
+              personajeHTML.parentElement.querySelector(".condicionAtaque");
             iconoAtaque.style.display = "none";
-          } 
+          }
 
           if (efecto.nombre === "Defensa") {
-            const iconoDefensa = personajeHTML.parentElement.querySelector(".condicionDefensa");
+            const iconoDefensa =
+              personajeHTML.parentElement.querySelector(".condicionDefensa");
             iconoDefensa.style.display = "flex";
-            const turnosDefensa = personajeHTML.parentElement.querySelector(".turnosDefensa");
-            turnosDefensa.textContent = efecto.duracion;         
-          }else{
-            const iconoDefensa = personajeHTML.parentElement.querySelector(".condicionDefensa");
+            const turnosDefensa =
+              personajeHTML.parentElement.querySelector(".turnosDefensa");
+            turnosDefensa.textContent = efecto.duracion;
+          } else {
+            const iconoDefensa =
+              personajeHTML.parentElement.querySelector(".condicionDefensa");
             iconoDefensa.style.display = "none";
           }
-            
-          
         });
-        
       }
 
-     
-
-      if (personajeJS.estaMuero()) {
-        personajeHTML.classList.add('fantasma');
+      if (personajeJS.estaMuerto()) {
+        personajeHTML.classList.add("fantasma");
         seccionCondicion.style.display = "none";
-
       } else {
-        personajeHTML.classList.remove('fantasma');
+        personajeHTML.classList.remove("fantasma");
         seccionCondicion.style.display = "flex";
       }
 
@@ -757,7 +848,9 @@ function gestionarDebilitamiento2() {
         const claseCSS = efectosCSS[efectoNombre];
 
         // Verificar si el personaje tiene el efecto en el array de debilitamiento
-        const tieneEfecto = personajeJS.debilitamiento.some(efecto => efecto.nombre === efectoNombre);
+        const tieneEfecto = personajeJS.debilitamiento.some(
+          (efecto) => efecto.nombre === efectoNombre
+        );
 
         if (tieneEfecto) {
           // Si el efecto está presente, añadir la clase CSS
@@ -771,27 +864,29 @@ function gestionarDebilitamiento2() {
   });
 }
 
-
 function gestionarDebilitamiento() {
   const personajesHTML = document.querySelectorAll(".personaje_Principal");
   const personajesJS = [...Juego.equipo1, ...Juego.equipo2];
 
   const efectosCSS = {
-    "Regeneración": "healingEffect",
-    "Quemadura": "burnEffect",
-    "Veneno": "poisonEffect"
+    Regeneración: "healingEffect",
+    Quemadura: "burnEffect",
+    Veneno: "poisonEffect",
   };
 
-
   personajesHTML.forEach((personajeHTML) => {
-    const seccionCondicion = personajeHTML.parentElement.querySelector(".seccionCondicion");
-    const condicionesNegativas = personajeHTML.parentElement.querySelector(".condicionNegativas");
-    const condicionesPositivas = personajeHTML.parentElement.querySelector(".condicionPositivas");
+    const seccionCondicion =
+      personajeHTML.parentElement.querySelector(".seccionCondicion");
+    const condicionesNegativas = personajeHTML.parentElement.querySelector(
+      ".condicionNegativas"
+    );
+    const condicionesPositivas = personajeHTML.parentElement.querySelector(
+      ".condicionPositivas"
+    );
 
-    const personajeJS = personajesJS.find(p => p.id == personajeHTML.id);
+    const personajeJS = personajesJS.find((p) => p.id == personajeHTML.id);
 
     if (personajeJS) {
-
       if (personajeJS.debilitamiento.length === 0) {
         condicionesNegativas.style.display = "none";
       }
@@ -799,10 +894,14 @@ function gestionarDebilitamiento() {
       if (personajeJS.debilitamiento.length > 0) {
         condicionesNegativas.style.display = "flex";
 
-          // Primero, oculta todos los iconos
-        const iconoVeneno = personajeHTML.parentElement.querySelector(".condicionEnvenenado");
-        const iconoQuemadura = personajeHTML.parentElement.querySelector(".condicionQuemado");
-        const iconoHerido = personajeHTML.parentElement.querySelector(".condicionHerido");
+        // Primero, oculta todos los iconos
+        const iconoVeneno = personajeHTML.parentElement.querySelector(
+          ".condicionEnvenenado"
+        );
+        const iconoQuemadura =
+          personajeHTML.parentElement.querySelector(".condicionQuemado");
+        const iconoHerido =
+          personajeHTML.parentElement.querySelector(".condicionHerido");
 
         iconoVeneno.style.display = "none";
         iconoQuemadura.style.display = "none";
@@ -812,26 +911,28 @@ function gestionarDebilitamiento() {
         personajeJS.debilitamiento.forEach((efecto) => {
           if (efecto.nombre === "Veneno") {
             iconoVeneno.style.display = "flex";
-            const turnosVeneno = personajeHTML.parentElement.querySelector(".turnosEnvenenados");
+            const turnosVeneno =
+              personajeHTML.parentElement.querySelector(".turnosEnvenenados");
             turnosVeneno.textContent = efecto.duracion;
           }
-          
+
           if (efecto.nombre === "Quemadura") {
             iconoQuemadura.style.display = "flex";
-            const turnosQuemadura = personajeHTML.parentElement.querySelector(".turnosQuemados");
+            const turnosQuemadura =
+              personajeHTML.parentElement.querySelector(".turnosQuemados");
             turnosQuemadura.textContent = efecto.duracion;
           }
-          
+
           if (efecto.nombre === "Herido") {
             iconoHerido.style.display = "flex";
-            const turnosHeridos = personajeHTML.parentElement.querySelector(".turnosHeridos");
+            const turnosHeridos =
+              personajeHTML.parentElement.querySelector(".turnosHeridos");
             turnosHeridos.textContent = efecto.duracion;
           }
         });
-
       }
 
-      if (personajeJS.fortalecimiento.length === 0) {
+      if (personajeJS.fortalecimiento.length == 0) {
         condicionesPositivas.style.display = "none";
       }
 
@@ -839,47 +940,46 @@ function gestionarDebilitamiento() {
         condicionesPositivas.style.display = "flex";
 
         personajeJS.fortalecimiento.forEach((efecto) => {
-          const iconoRegeneracion = personajeHTML.parentElement.querySelector(".condicionCurar");
-          const iconoAtaque = personajeHTML.parentElement.querySelector(".condicionAtaque");
-          const iconoDefensa = personajeHTML.parentElement.querySelector(".condicionDefensa");
-          
+          const iconoRegeneracion =
+            personajeHTML.parentElement.querySelector(".condicionCurar");
+          const iconoAtaque =
+            personajeHTML.parentElement.querySelector(".condicionAtaque");
+          const iconoDefensa =
+            personajeHTML.parentElement.querySelector(".condicionDefensa");
+
           iconoRegeneracion.style.display = "none";
           iconoAtaque.style.display = "none";
           iconoDefensa.style.display = "none";
           if (efecto) {
-
             if (efecto.nombre === "Regeneración") {
               iconoRegeneracion.style.display = "flex";
-              const turnosRegeneracion = personajeHTML.parentElement.querySelector(".turnosCurar");
-              turnosRegeneracion.textContent = efecto.duracion;         
+              const turnosRegeneracion =
+                personajeHTML.parentElement.querySelector(".turnosCurar");
+              turnosRegeneracion.textContent = efecto.duracion;
             }
-            
+
             if (efecto.nombre === "Ataque") {
               iconoAtaque.style.display = "flex";
-              const turnosAtaque = personajeHTML.parentElement.querySelector(".turnosAtaque");
-              turnosAtaque.textContent = efecto.duracion;         
-            } 
-            
+              const turnosAtaque =
+                personajeHTML.parentElement.querySelector(".turnosAtaque");
+              turnosAtaque.textContent = efecto.duracion;
+            }
+
             if (efecto.nombre === "Defensa") {
               iconoDefensa.style.display = "flex";
-              const turnosDefensa = personajeHTML.parentElement.querySelector(".turnosDefensa");
-              turnosDefensa.textContent = efecto.duracion;         
-            } 
-            
+              const turnosDefensa =
+                personajeHTML.parentElement.querySelector(".turnosDefensa");
+              turnosDefensa.textContent = efecto.duracion;
+            }
           }
-          
         });
-        
       }
 
-     
-
-      if (personajeJS.estaMuero()) {
-        personajeHTML.classList.add('fantasma');
+      if (personajeJS.estaMuerto()) {
+        personajeHTML.classList.add("fantasma");
         seccionCondicion.style.display = "none";
-
       } else {
-        personajeHTML.classList.remove('fantasma');
+        personajeHTML.classList.remove("fantasma");
         seccionCondicion.style.display = "flex";
       }
 
@@ -888,7 +988,9 @@ function gestionarDebilitamiento() {
         const claseCSS = efectosCSS[efectoNombre];
 
         // Verificar si el personaje tiene el efecto en el array de debilitamiento
-        const tieneEfecto = personajeJS.debilitamiento.some(efecto => efecto.nombre === efectoNombre);
+        const tieneEfecto = personajeJS.debilitamiento.some(
+          (efecto) => efecto.nombre === efectoNombre
+        );
 
         if (tieneEfecto) {
           // Si el efecto está presente, añadir la clase CSS
@@ -902,19 +1004,6 @@ function gestionarDebilitamiento() {
   });
 }
 
-
-
-function verificarEstados() {
-  Juego.equipo1.forEach((personaje) => {
-
-    if (!personaje.estaMuero()) {
-
-    } 
-  });
-}
-
-
 AsignarTurno();
 actualizar_Interfaz();
-gestionarDebilitamiento()
-verificarEstados()
+gestionarDebilitamiento();
