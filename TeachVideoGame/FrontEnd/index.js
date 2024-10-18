@@ -16,47 +16,56 @@ function crearPersonaje(personaje, escenario, posicion) {
     personajeDiv.appendChild(barraVida);
   
     const porcentajeVida = document.createElement("span");
-    porcentajeVida.classList.add("porcentajeVida");
-    porcentajeVida.setAttribute("style", `width: ${personaje.vida}%`);
-    barraVida.appendChild(porcentajeVida);
-  
     const numeroPorcentaje = document.createElement("p");
+    
+    porcentajeVida.classList.add("porcentajeVida");
     numeroPorcentaje.classList.add("numeroPorcentaje");
+    porcentajeVida.setAttribute("style", `width: ${personaje.vida}%`);
     numeroPorcentaje.textContent = `${personaje.vida} / 100`;
+    
+    barraVida.appendChild(porcentajeVida);
     barraVida.appendChild(numeroPorcentaje);
   
     // Crear sección de ataque y defensa
-    const seccionEstadisticas = document.createElement("div");
-    const defensaSeccion = document.createElement("div");
-    const ataqueSeccion = document.createElement("div");
-    const iconoDefensa = document.createElement("i");
-    const iconoAtaque = document.createElement("i");
-    const cantidadDefensa = document.createElement("p");
-    const cantidadAtaque = document.createElement("p");
-  
-    seccionEstadisticas.classList.add("seccionestadisticas");
-    defensaSeccion.classList.add("poder", "defensaSeccion");
-    ataqueSeccion.classList.add("poder", "ataqueSeccion");
-    iconoDefensa.classList.add("fa-solid", "fa-shield");
+    const seccionEstadisticas = document.createElement("div"); //creando
+    const defensaSeccion = document.createElement("div"); //Creando
+    const ataqueSeccion = document.createElement("div");//Creando
+    const iconoDefensa = document.createElement("i");//Creando
+    const iconoAtaque = document.createElement("i");//Creando
+    const cantidadDefensa = document.createElement("p");//Creando
+    const cantidadAtaque = document.createElement("p");//Creando
+    
+    seccionEstadisticas.classList.add("seccionestadisticas");//Clases
+    defensaSeccion.classList.add("poder", "defensaSeccion");//Clases
+    ataqueSeccion.classList.add("poder", "ataqueSeccion");//Clases
+    iconoDefensa.classList.add("fa-solid", "fa-shield");//Clases
     iconoAtaque.classList.add("fa-solid", "fa-hand-back-fist");
-    cantidadDefensa.classList.add("cantidadDefensa");
-    cantidadAtaque.classList.add("cantidadAtaque");
-  
+    cantidadDefensa.classList.add("cantidadDefensa");//Clases
+    cantidadAtaque.classList.add("cantidadAtaque");//Clases
+    
     cantidadDefensa.textContent = `${personaje.ataque}`;
     cantidadAtaque.textContent = `${personaje.defensa}`;
   
-    barraVida.appendChild(seccionEstadisticas);
+    personajeDiv.appendChild(seccionEstadisticas);
+    seccionEstadisticas.appendChild(defensaSeccion);
+    seccionEstadisticas.appendChild(ataqueSeccion);
     defensaSeccion.appendChild(iconoDefensa);
     defensaSeccion.appendChild(cantidadDefensa);
     ataqueSeccion.appendChild(iconoAtaque);
     ataqueSeccion.appendChild(cantidadAtaque);
-    seccionEstadisticas.appendChild(defensaSeccion);
-    seccionEstadisticas.appendChild(ataqueSeccion);
   
     // Crear sección de condiciones
     const seccionCondicion = document.createElement("div");
+    const condicionNegativas = document.createElement("div");
+    const condicionPositivas = document.createElement("div");
+    const iconoCondicionNegativas = document.createElement("i");
+    const iconoCondicionPositivas = document.createElement("i");
+    const cantidadCondicionNegativasTurnos = document.createElement("p");
+    const cantidadCondicionPositivasTurnos = document.createElement("p");
     seccionCondicion.classList.add("seccionCondicion");
-    barraVida.appendChild(seccionCondicion);
+    personajeDiv.appendChild(seccionCondicion);
+
+
   
     // Aquí podrías agregar la lógica para añadir condiciones positivas y negativas
   }

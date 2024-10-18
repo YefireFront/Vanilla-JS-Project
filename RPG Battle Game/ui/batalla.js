@@ -33,6 +33,8 @@ function animacionEquipo1(objetivo, lugarDeAtaque, habilidadSeleccionada) {
   
   const tipoHabilidad = Juego.personajeActual.habilidades.find((habilidad) => habilidad.nombre === habilidadSeleccionada);
 
+  console.log(tipoHabilidad)
+
   if (tipoHabilidad.tipo === "Daño") {
     lugarDeAtaque.children[0].src = `./players/${Juego.personajeActual.id}/Atacando.gif`;
 
@@ -62,7 +64,8 @@ function animacionEquipo1(objetivo, lugarDeAtaque, habilidadSeleccionada) {
 
   if (tipoHabilidad.tipo === "DañoMasivo") {
     lugarDeAtaque.children[0].src = `./players/${Juego.personajeActual.id}/Atacando.gif`;
-    cinema.classList.add('active');
+    // console.log(cinema)
+    // cinema.classList.add('active');
 
 
     personajesDeElEquipo1.forEach((elemento) => {
