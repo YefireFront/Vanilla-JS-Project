@@ -691,11 +691,8 @@ function actualizarSeccionPoder() {
 function actualizarDefensaAtaque() {
   //selecionar la defensa y el ataque de todos los perosnajes
   Juego.equipo1.forEach((personaje) => {
-    document.querySelector(
-      `.${personaje.nombre} .cantidadDefensa`
-    ).textContent = personaje.defensa;
-    document.querySelector(`.${personaje.nombre} .cantidadAtaque`).textContent =
-      personaje.ataque;
+    document.querySelector( `.${personaje.nombre} .cantidadDefensa`).textContent = personaje.defensa;
+    document.querySelector(`.${personaje.nombre} .cantidadAtaque`).textContent =   personaje.ataque;
   });
 
   Juego.equipo2.forEach((personaje) => {
