@@ -359,18 +359,18 @@ function crearVeneno() {
   );
 }
 
-function crearAtaque(Aumento) {
+function crearAtaque(aumento) {
   return new EfectoFijo(
     "Ataque",
     "Aumenta el ataque del personaje 2 turnos",
     5,
     (objetivo) => {
-      objetivo.ataque += Aumento;
+      objetivo.ataque += aumento;
       Personaje.validarExcesos(objetivo);
       console.log(`aumenta el ataque de ${objetivo.nombre} por 15`);
     },
     (objetivo) => {
-      objetivo.ataque -= Aumento;
+      objetivo.ataque -= aumento;
       Personaje.validarExcesos(objetivo);
       console.log(`reduce el ataque de ${objetivo.nombre} por 15`);
     }

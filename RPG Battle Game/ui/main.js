@@ -595,9 +595,7 @@ function desactivarBotones() {
 function actualizarDetallePoder(e) {
   if (e.type === "mouseenter") {
     detallePoder.style.display = "flex";
-    let poder = Juego.personajeActual.habilidades.find(
-      (poder) => poder.nombre === e.target.getAttribute("nombrePoder")
-    );
+    let poder = Juego.personajeActual.habilidades.find((poder) => poder.nombre === e.target.getAttribute("nombrePoder")    );
     if (poder) {
       descripcionPoder.textContent = `${poder.descripcion}`;
       descripcionTiempo.textContent = `(Reutilizable en  ${poder.tiempoDeEspera} turno(s))`;
