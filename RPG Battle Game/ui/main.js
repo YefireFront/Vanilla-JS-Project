@@ -100,22 +100,7 @@ Juego.equipo1.forEach((personaje, i) => {
     "condicion",
     "condicionEnvenenado",
     "fa-solid",
-    "fa-skull"
-  );
-  const turnosEnvenenados = document.createElement("p");
-  turnosEnvenenados.classList.add("turnosEnvenenados");
-  turnosEnvenenados.textContent = 5;
-  condicionEnvenenado.appendChild(turnosEnvenenados);
 
-  const condiionesPositivas = document.createElement("div");
-  condiionesPositivas.classList.add("condicionPositivas");
-
-  const condicionAtaque = document.createElement("i");
-  condicionAtaque.classList.add(
-    "condicion",
-    "condicionAtaque",
-    "fa-solid",
-    "fa-hand-back-fist"
   );
   const turnosAtaque = document.createElement("p");
   turnosAtaque.classList.add("turnosAtaque");
@@ -595,7 +580,9 @@ function desactivarBotones() {
 function actualizarDetallePoder(e) {
   if (e.type === "mouseenter") {
     detallePoder.style.display = "flex";
-    let poder = Juego.personajeActual.habilidades.find((poder) => poder.nombre === e.target.getAttribute("nombrePoder")    );
+    let poder = Juego.personajeActual.habilidades.find(
+      (poder) => poder.nombre === e.target.getAttribute("nombrePoder")
+    );
     if (poder) {
       descripcionPoder.textContent = `${poder.descripcion}`;
       descripcionTiempo.textContent = `(Reutilizable en  ${poder.tiempoDeEspera} turno(s))`;
@@ -689,8 +676,11 @@ function actualizarSeccionPoder() {
 function actualizarDefensaAtaque() {
   //selecionar la defensa y el ataque de todos los perosnajes
   Juego.equipo1.forEach((personaje) => {
-    document.querySelector( `.${personaje.nombre} .cantidadDefensa`).textContent = personaje.defensa;
-    document.querySelector(`.${personaje.nombre} .cantidadAtaque`).textContent =   personaje.ataque;
+    document.querySelector(
+      `.${personaje.nombre} .cantidadDefensa`
+    ).textContent = personaje.defensa;
+    document.querySelector(`.${personaje.nombre} .cantidadAtaque`).textContent =
+      personaje.ataque;
   });
 
   Juego.equipo2.forEach((personaje) => {
