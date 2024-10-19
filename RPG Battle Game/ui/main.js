@@ -100,7 +100,22 @@ Juego.equipo1.forEach((personaje, i) => {
     "condicion",
     "condicionEnvenenado",
     "fa-solid",
+    "fa-skull"
+  );
+  const turnosEnvenenados = document.createElement("p");
+  turnosEnvenenados.classList.add("turnosEnvenenados");
+  turnosEnvenenados.textContent = 5;
+  condicionEnvenenado.appendChild(turnosEnvenenados);
 
+  const condiionesPositivas = document.createElement("div");
+  condiionesPositivas.classList.add("condicionPositivas");
+
+  const condicionAtaque = document.createElement("i");
+  condicionAtaque.classList.add(
+    "condicion",
+    "condicionAtaque",
+    "fa-solid",
+    "fa-hand-back-fist"
   );
   const turnosAtaque = document.createElement("p");
   turnosAtaque.classList.add("turnosAtaque");
