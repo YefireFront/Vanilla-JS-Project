@@ -15,13 +15,13 @@ body {
 
 .esenario {
   width: 1400px;
-  height: 610px;
+  height: 710px;
   border: 1px solid red;
   margin: 0 auto;
-  background-image: url("../img/BG.png");
+  background-image: url("../img/BG4.jpg");
   background-size: cover;
+  /* background-size: 1300px; */
   background-repeat: no-repeat;
-  background-position: 0px -170px;
   position: relative;
   display: flex;
   justify-content: center;
