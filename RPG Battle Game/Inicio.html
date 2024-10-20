@@ -1,11 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selección de Personajes RPG</title>
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    
+  <div id="app">
+    <h1>Selección de Personajes RPG</h1>
+    <div id="characters-list"></div>
+    <div id="teams">
+      <div id="team1" class="team">
+        <h2>Equipo 1</h2>
+        <div class="team-members"></div>
+      </div>
+      <div id="team2" class="team">
+        <h2>Equipo 2</h2>
+        <div class="team-members"></div>
+      </div>
+    </div>
+    <div id="start-game" style="display: none;">
+      <button id="start-button">¡Comenzar Partida!</button>
+    </div>
+  </div>
+  <script type="module" src="/main.js"></script>
 </body>
 </html>
