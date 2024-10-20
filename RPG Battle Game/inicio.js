@@ -1,74 +1,70 @@
-const characters = [
-    { id: 1, name: "Guerrero", pokemonId: 6 },   // Charizard
-    { id: 2, name: "Mago", pokemonId: 151 },     // Mew
-    { id: 3, name: "Arquero", pokemonId: 25 },   // Pikachu
-    { id: 4, name: "Clérigo", pokemonId: 143 },  // Snorlax
-    { id: 5, name: "Ladrón", pokemonId: 150 },   // Mewtwo
-    { id: 6, name: "Paladín", pokemonId: 149 },  // Dragonite
-    { id: 7, name: "Druida", pokemonId: 3 },     // Venusaur
-    { id: 8, name: "Bárbaro", pokemonId: 68 },   // Machamp
-    { id: 9, name: "Monje", pokemonId: 65 },     // Alakazam
-    { id: 10, name: "Hechicero", pokemonId: 94 } // Gengar
-  ];
-  
-  function getPokemonImageUrl(pokemonId) {
-    return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`;
-  }
-  
-  function renderCharacters() {
-    const charactersList = document.getElementById('characters-list');
-    charactersList.innerHTML = characters.map(character => `
-      <div class="character" draggable="true" data-id="${character.id}">
-        <img src="${getPokemonImageUrl(character.pokemonId)}" alt="${character.name}">
-        <h3>${character.name}</h3>
-      </div>
-    `).join('');
-  
-    charactersList.querySelectorAll('.character').forEach(char => {
-      char.addEventListener('dragstart', dragStart);
+// Arrays de jugadores y equipos
+let jugadores = ['Jugador 1', 'Jugador 2', 'Jugador 3', 'Jugador 4', 'Jugador 5'];
+let equipo1 = [];
+let equipo2 = [];
+
+// Función para renderizar jugadores en la parte superior
+function renderJugadores() {
+    const container = document.getElementById('jugadores-container');
+    container.innerHTML = '';  // Limpiar contenedor
+
+    jugadores.forEach((jugador, index) => {
+        const jugadorDiv = document.createElement('div');
+        jugadorDiv.classList.add('jugador');
+        jugadorDiv.textContent = jugador;
+        jugadorDiv.draggable = true;
+        jugadorDiv.id = `jugador-${index}`;
+        jugadorDiv.ondragstart = drag;  // Asignar función drag
+        container.appendChild(jugadorDiv);
     });
-  }
-  
-  function dragStart(e) {
-    e.dataTransfer.setData('text/plain', e.target.dataset.id);
-  }
-  
-  function dragOver(e) {
-    e.preventDefault();
-  }
-  
-  function drop(e) {
-    e.preventDefault();
-    const characterId = e.dataTransfer.getData('text');
-    const character = characters.find(c => c.id == characterId);
+}
+
+// Habilitar el drop en las áreas
+function allowDrop(event) {
+    event.preventDefault();
+}
+
+// Iniciar el drag del jugador
+function drag(event) {
+    event.dataTransfer.setData("text", event.target.id);
+}
+
+// Soltar el jugador en el equipo
+function drop(event) {
+    event.preventDefault();
+    const jugadorId = event.dataTransfer.getData("text");
+    const jugador = document.getElementById(jugadorId);
     
-    if (character && e.target.classList.contains('team-members')) {
-      const teamMember = document.createElement('div');
-      teamMember.classList.add('team-member');
-      teamMember.innerHTML = `
-        <img src="${getPokemonImageUrl(character.pokemonId)}" alt="${character.name}">
-        <h3>${character.name}</h3>
-      `;
-      e.target.appendChild(teamMember);
-      updateTeams();
+    // Solo permite el drop si el jugador no está ya en el equipo
+    if (!event.target.contains(jugador)) {
+        event.target.appendChild(jugador);
     }
-  }
-  
-  function updateTeams() {
-    const team1Members = document.querySelector('#team1 .team-members').children.length;
-    const team2Members = document.querySelector('#team2 .team-members').children.length;
-    
-    if (team1Members === 5 && team2Members === 5) {
-      document.getElementById('start-game').style.display = 'block';
+}
+
+// Función para asignar jugadores a los equipos
+function asignarEquipos() {
+    equipo1 = [];
+    equipo2 = [];
+
+    // Obtener jugadores en equipo 1
+    const equipo1Div = document.getElementById('equipo1').children;
+    for (let i = 1; i < equipo1Div.length; i++) { // Empezamos en 1 para evitar el h2
+        equipo1.push(equipo1Div[i].textContent);
     }
-  }
-  
-  document.addEventListener('DOMContentLoaded', () => {
-    renderCharacters();
-    
-    const teamMembers = document.querySelectorAll('.team-members');
-    teamMembers.forEach(team => {
-      team.addEventListener('dragover', dragOver);
-      team.addEventListener('drop', drop);
-    });
-  });
+
+    // Obtener jugadores en equipo 2
+    const equipo2Div = document.getElementById('equipo2').children;
+    for (let i = 1; i < equipo2Div.length; i++) { // Empezamos en 1 para evitar el h2
+        equipo2.push(equipo2Div[i].textContent);
+    }
+
+    // Mostrar equipos en consola
+    console.log('Equipo 1:', equipo1);
+    console.log('Equipo 2:', equipo2);
+}
+
+// Evento de click en el botón iniciar
+document.getElementById('iniciar-btn').addEventListener('click', asignarEquipos);
+
+// Renderizar los jugadores al cargar la página
+window.onload = renderJugadores;

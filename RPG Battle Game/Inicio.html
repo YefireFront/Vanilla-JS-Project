@@ -1,30 +1,30 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Selección de Personajes RPG</title>
-  <link rel="stylesheet" href="./inicio.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop Equipos</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="app">
-    <h1>Selección de Personajes RPG</h1>
-    <div id="characters-list"></div>
-    <div id="teams">
-      <div id="team1" class="team">
-        <h2>Equipo 1</h2>
-        <div class="team-members"></div>
-      </div>
-      <div id="team2" class="team">
-        <h2>Equipo 2</h2>
-        <div class="team-members"></div>
-      </div>
+    <h1>Drag and Drop - Equipos</h1>
+
+    <div id="jugadores-container">
+        <!-- Jugadores renderizados aquí -->
     </div>
-    <div id="start-game" style="display: none;">
-      <button id="start-button">¡Comenzar Partida!</button>
+
+    <div id="equipos-container">
+        <div id="equipo1" class="equipo" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h2>Equipo 1</h2>
+        </div>
+
+        <div id="equipo2" class="equipo" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h2>Equipo 2</h2>
+        </div>
     </div>
-  </div>
-  <script type="module" src="./inicio.js"></script>
+
+    <button id="iniciar-btn">Iniciar</button>
+
+    <script src="script.js"></script>
 </body>
 </html>
