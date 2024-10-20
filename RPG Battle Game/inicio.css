@@ -1,0 +1,165 @@
+:root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    color-scheme: light dark;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #242424;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    margin: 0;
+    display: flex;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
+  }
+  
+  #app {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 3.2em;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+  
+  #characters-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .character {
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    padding: 1rem;
+    width: 150px;
+    cursor: move;
+    transition: transform 0.3s ease;
+  }
+  
+  .character:hover {
+    transform: scale(1.05);
+  }
+  
+  .character img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .character h3 {
+    margin: 0;
+    font-size: 1em;
+    color: #f7d354;
+  }
+  
+  #teams {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+  }
+  
+  .team {
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    padding: 1rem;
+    width: 45%;
+    min-width: 300px;
+  }
+  
+  .team h2 {
+    color: #f7d354;
+    margin-top: 0;
+  }
+  
+  .team-members {
+    min-height: 300px;
+    border: 2px dashed #444;
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    align-content: flex-start;
+  }
+  
+  .team-member {
+    background-color: #2a2a2a;
+    border-radius: 4px;
+    padding: 0.5rem;
+    width: calc(50% - 0.5rem);
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+  }
+  
+  .team-member:hover {
+    transform: scale(1.05);
+  }
+  
+  .team-member img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .team-member h3 {
+    margin: 0;
+    font-size: 0.9em;
+    color: #f7d354;
+  }
+  
+  #start-game {
+    margin-top: 2rem;
+  }
+  
+  button {
+    background-color: #f7d354;
+    color: #1a1a1a;
+    border: none;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.25s;
+  }
+  
+  button:hover {
+    background-color: #f0c000;
+  }
+  
+  button:focus,
+  button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+  }
+  
+  @media (max-width: 768px) {
+    #teams {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .team {
+      width: 90%;
+      margin-bottom: 1rem;
+    }
+  
+    .team-member {
+      width: 100%;
+    }
+  }
