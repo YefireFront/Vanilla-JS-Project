@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #1e272e;
+    background-color: #6f6f6f;
     color: #ffffff;
     text-align: center;
     margin: 20px;
@@ -20,13 +20,14 @@ h1 {
 }
 
 .jugador {
-    width: 120px;
+    width: 180px;
     margin: 10px;
     background-color: #f1c40f;
     border-radius: 8px;
     cursor: grab;
     padding: 10px;
     text-align: center;
+    color: black;
 }
 
 .jugador img {
@@ -48,6 +49,7 @@ h1 {
     vertical-align: top;
     color: #ffffff;
     font-size: 1.2rem;
+    display: flex;
 }
 
 #equipos-container {

@@ -22,6 +22,7 @@ body {
   background-size: cover;
   /* background-size: 1300px; */
   background-repeat: no-repeat;
+  background-position: 0px -80px;
   position: relative;
   display: flex;
   justify-content: center;

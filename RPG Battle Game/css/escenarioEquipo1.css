@@ -107,19 +107,19 @@
 
   .lugar1 {
     position: absolute;
-    top: 460px;
+    top: 540px;
     left: 390px;
   }
 
   .lugar2 {
     position: absolute;
-    top: 285px;
+    top: 380px;
     left: 320px;
   }
 
   .lugar3 {
     position: absolute;
-    top: 180px;
+    top: 300px;
     left: 430px;
   }
 }
