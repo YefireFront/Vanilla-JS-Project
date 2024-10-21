@@ -13,7 +13,7 @@
 
 body{
     margin: 0px auto;
-    width: 1400px;
+    width: 1500px;
     height: 700px;
 }
 
@@ -29,7 +29,7 @@ body{
     img{
         width: 100%;
         position: absolute;
-        top: -100px;
+        bottom:  0;
     }
 }
 
@@ -40,3 +40,59 @@ body{
     position: absolute;
     background: #a7a7a7;
 } 
+
+
+.personaje{
+    position: absolute;
+    border: 1px solid black;
+    width: 400px;;
+    height: 150px;
+}
+
+
+
+.ubicacionPersonajePrincipal{
+    height: 100%;
+    width: 150px;
+    border: 1px solid #028f49;
+    background: #03945c9a;
+    position: absolute;
+    right: 0;
+    top: 0;
+    
+}
+
+.ubicacionPersonajeEnemigo{
+    height: 100%;
+    width: 150px;
+    border: 1px solid #8f0202;
+    background: #9403039a;
+    position: absolute;
+    
+}
+    
+.contenedor_barraVida {
+    width: 250px;
+    height: 20px;
+    border: 1px solid #2c2c2c;
+    position: relative;
+    border-radius: 16px;
+    background: #6d6d6dc5;
+    
+    
+    
+}
+
+.porcentajeVida{
+    display: block  ;
+    width: 70%;
+    height: 100%;
+    background: #1ab422c5;
+    border-radius: 16px;
+    
+}
+.numeroPorcentaje{
+    color: white;
+    position: absolute;
+    top: -20px;
+}

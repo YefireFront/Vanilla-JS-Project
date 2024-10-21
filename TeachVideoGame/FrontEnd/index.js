@@ -20,11 +20,10 @@ function crearPersonaje(personaje, escenario, posicion) {
     
     porcentajeVida.classList.add("porcentajeVida");
     numeroPorcentaje.classList.add("numeroPorcentaje");
-    porcentajeVida.setAttribute("style", `width: ${personaje.vida}%`);
     numeroPorcentaje.textContent = `${personaje.vida} / 100`;
     
     barraVida.appendChild(porcentajeVida);
-    barraVida.appendChild(numeroPorcentaje);
+    porcentajeVida.appendChild(numeroPorcentaje);
   
     // Crear sección de ataque y defensa
     const seccionEstadisticas = document.createElement("div"); //creando
@@ -65,9 +64,16 @@ function crearPersonaje(personaje, escenario, posicion) {
     seccionCondicion.classList.add("seccionCondicion");
     personajeDiv.appendChild(seccionCondicion);
 
+    //contendor de personajes 
+    const ubicacionPersonajePrincipal = document.createElement("div");
+    ubicacionPersonajePrincipal.classList.add("ubicacionPersonajePrincipal");
+    personajeDiv.appendChild(ubicacionPersonajePrincipal);
+
+    const ubicacionPersonajeEnemigo = document.createElement("div");
+    ubicacionPersonajeEnemigo.classList.add("ubicacionPersonajeEnemigo");
+    personajeDiv.appendChild(ubicacionPersonajeEnemigo);
 
   
-    // Aquí podrías agregar la lógica para añadir condiciones positivas y negativas
   }
   
 

@@ -4,3 +4,64 @@
     border: 1px solid red;
     position: relative;
 }
+
+
+.lugar4{
+    border: 1px solid #000000;
+    left: 140px;
+    bottom: 0;
+}
+
+.lugar5{
+    border: 1px solid #11ac03b4;
+    left: 200px;
+    bottom: 150px;
+    
+}
+
+.lugar6{
+    border: 1px solid #120fbeb4;
+    left: 120px;
+    bottom: 300px;
+    
+}
+
+
+.escenario__equipo2 .ubicacionPersonajePrincipal{
+    left: 0;
+    bottom: 0;
+}
+.escenario__equipo2 .ubicacionPersonajeEnemigo{
+    left: -120px;
+    bottom: 0;
+}
+
+
+.escenario__equipo2{
+    position: relative;
+    
+    .contenedor_barraVida {
+        width: 250px;
+        height: 20px;
+        border: 1px solid #2c2c2c;
+        position: relative;
+        left: 100px;
+        
+        
+        
+    }
+    
+    .porcentajeVida{
+        display: block  ;
+        width: 70%;
+        height: 100%;
+        background: #1ab422c5;
+        border-radius: 16px;
+        
+    }
+    .numeroPorcentaje{
+        color: white;
+        position: absolute;
+        top: -20px;
+    }
+}
