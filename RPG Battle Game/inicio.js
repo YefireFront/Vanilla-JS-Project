@@ -49,23 +49,3 @@ const jugadores = [
       equipo: 'Manchester City',
       foto: 'https://example.com/haaland.jpg'
   }
-];
-
-let equipo1 = [];
-let equipo2 = [];
-
-// Función para renderizar jugadores en la parte superior
-function renderJugadores() {
-  const container = document.getElementById('jugadores-container');
-  container.innerHTML = '';  // Limpiar contenedor
-
-  jugadores.forEach((jugador, index) => {
-      const jugadorDiv = document.createElement('div');
-      jugadorDiv.classList.add('jugador');
-      jugadorDiv.draggable = true;
-      jugadorDiv.id = `jugador-${index}`;
-      jugadorDiv.ondragstart = drag;  // Asignar función drag
-
-      jugadorDiv.innerHTML = `
-          <img src="${jugador.foto}" alt="${jugador.nombre}">
-          <h3>${jugador.nombre}</h3>
