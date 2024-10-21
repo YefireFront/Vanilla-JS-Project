@@ -98,3 +98,43 @@ function drop(event) {
   const jugador = document.getElementById(jugadorId);
   
   // Solo permite el drop si el jugador no está ya en el equipo
+  if (!event.target.contains(jugador)) {
+      event.target.appendChild(jugador);
+  }
+}
+
+// Función para asignar jugadores a los equipos
+function asignarEquipos() {
+  equipo1 = [];
+  equipo2 = [];
+
+  // Obtener jugadores en equipo 1
+  const equipo1Div = document.getElementById('equipo1').children;
+  for (let i = 1; i < equipo1Div.length; i++) { // Empezamos en 1 para evitar el h2
+      const jugadorNombre = equipo1Div[i].querySelector('h3').textContent;
+      const jugadorObj = jugadores.find(jugador => jugador.nombre === jugadorNombre);
+      if (jugadorObj) {
+          equipo1.push(jugadorObj);
+      }
+  }
+
+  // Obtener jugadores en equipo 2
+  const equipo2Div = document.getElementById('equipo2').children;
+  for (let i = 1; i < equipo2Div.length; i++) { // Empezamos en 1 para evitar el h2
+      const jugadorNombre = equipo2Div[i].querySelector('h3').textContent;
+      const jugadorObj = jugadores.find(jugador => jugador.nombre === jugadorNombre);
+      if (jugadorObj) {
+          equipo2.push(jugadorObj);
+      }
+  }
+
+  // Mostrar equipos en consola
+  console.log('Equipo 1:', equipo1);
+  console.log('Equipo 2:', equipo2);
+}
+
+// Evento de click en el botón iniciar
+document.getElementById('iniciar-btn').addEventListener('click', asignarEquipos);
+
+// Renderizar los jugadores al cargar la página
+window.onload = renderJugadores;
