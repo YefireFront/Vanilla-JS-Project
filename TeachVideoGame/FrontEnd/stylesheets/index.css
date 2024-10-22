@@ -215,3 +215,15 @@ body {
     }
 }
 
+
+.seccionDebufCaravela{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    opacity: 0.8;
+    
+
+    img{
+        width: 100%;
+    }
+}
