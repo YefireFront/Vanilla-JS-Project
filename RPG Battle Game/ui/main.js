@@ -525,6 +525,10 @@ habilidadAtacar.addEventListener("click", () =>
 const turnoEquipo1 = document.querySelectorAll(".turnoEquipo1");
 const turnoEquipo2 = document.querySelectorAll(".turnoEquipo2");
 
+
+
+
+
 function actualizar_Interfaz() {
   // actualizar seccion poder
   actualizarSeccionPoder();

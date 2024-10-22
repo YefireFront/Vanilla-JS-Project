@@ -6,7 +6,7 @@ class Personaje {
     this.ataque = ataque;
     this.defensa = defensa;
     this.velocidad = velocidad;
-    this.vida = 100;
+    this.vida = 40;
     this.debilitamiento = [];
     this.fortalecimiento = [];
     this.habilidades = [];

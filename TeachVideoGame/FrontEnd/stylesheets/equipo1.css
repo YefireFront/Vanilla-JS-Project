@@ -1,7 +1,6 @@
 .escenario__equipo1 {
   width: 50%;
   height: 100%;
-  border: 1px solid blue;
   position: relative;
 
   /* ubicaciones de personajes */
@@ -23,8 +22,35 @@
     top: 8px;
   }
 
-  .contenedorVida {
+  .seccionVida {
     left: 100px;
+  }
+
+
+
+
+  /* Seccion Fuego */
+
+  .seccionDebufFuego{
+    top: -75px;
+    right: 110px;
+
+  }
+
+  /* Seccion veneno */
+
+  .seccionDebufVeneno{
+    top: -120px;
+    right: 220px;
+
+  }
+
+  /* Seccion caravela */
+
+  .seccionDebufCaravela{
+    top: -50px;
+    right: 10px;
+
   }
 }
 

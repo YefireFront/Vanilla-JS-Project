@@ -17,7 +17,6 @@ body {
   width: 100%;
   height: 100%;
   position: relative;
-  border: 5px solid red;
   display: flex;
   overflow: hidden;
 }
@@ -41,28 +40,8 @@ body {
   height: 150px;
 }
 
-.ubicacionPersonajePrincipal {
-  height: 100%;
-  width: 150px;
-  /* border: 1px solid #028f49; */
-  position: absolute;
-  right: 0;
-  top: 0;
-
-  img {
-    width: 100%;
-  }
-}
-
-.ubicacionPersonajeEnemigo {
-  height: 100%;
-  width: 150px;
-  /* border: 1px solid #8f0202; */
-  /* background: #9403039a; */
-  position: absolute;
-}
-
-.contenedorVida {
+/* SEccionVida */
+.seccionVida {
   position: relative;
   width: 52%;
   height: 10px;
@@ -88,13 +67,16 @@ body {
   color: white;
   position: absolute;
   top: -20px;
+  width: 100px;
 }
 
+/* Seccion Estadisticas de Ataque y Defensa */
 .seccionestadisticas {
   width: 40%;
   border: 1px solid rgba(0, 0, 0, 0.598);
   position: absolute;
   display: flex;
+  left: 140px;
 
   .poder {
     width: 80%;
@@ -118,6 +100,7 @@ body {
   }
 }
 
+/* Seccion condiciones  */
 .seccionCondicion {
   position: absolute;
   width: auto;
@@ -128,29 +111,6 @@ body {
   justify-content: flex-end; /* Asegurar que los elementos se alineen al final */
   align-items: flex-end;
   /* transform-origin: right; */
-}
-
-.condicionNegativas {
-  background: rgba(242, 0, 0, 0.502);
-  width: auto;
-  height: 30px;
-  border: 1px solid rgb(123, 19, 19);
-  position: relative;
-  left: 0px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.condicionPositivas {
-  background: rgba(0, 141, 242, 0.604);
-  width: auto;
-  height: 30px;
-  border: 1px solid rgba(4, 77, 129, 0.502);
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .condicion {
@@ -177,4 +137,93 @@ body {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.544);
     border-radius: 50%;
   }
+}
+
+.condicionNegativas {
+  background: rgba(242, 0, 0, 0.502);
+  width: auto;
+  height: 30px;
+  border: 1px solid rgb(123, 19, 19);
+  position: relative;
+  left: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.condicionPositivas {
+  background: rgba(0, 141, 242, 0.604);
+  width: auto;
+  height: 30px;
+  border: 1px solid rgba(4, 77, 129, 0.502);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Ubicacion Personbajesa */
+.ubicacionPersonajePrincipal {
+  height: 100%;
+  width: 150px;
+  /* border: 1px solid #028f49; */
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  img {
+    width: 100%;
+    cursor: pointer;
+  }
+}
+
+.ubicacionPersonajeEnemigo {
+  height: 100%;
+  width: 150px;
+  /* border: 1px solid #8f0202; */
+  /* background: #9403039a; */
+  position: absolute;
+}
+
+
+
+.seccionDebufFuego{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+
+    opacity: 0.8;
+    
+
+    img{
+        width: 100%;
+    }
+
+
+}
+
+
+.seccionDebufVeneno{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    opacity: 0.8;
+    
+
+    img{
+        width: 100%;
+    }
+}
+
+
+.seccionDebufCaravela{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    opacity: 0.8;
+    
+
+    img{
+        width: 100%;
+    }
 }

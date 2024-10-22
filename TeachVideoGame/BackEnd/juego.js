@@ -108,8 +108,7 @@ class Juego {
 
       // console.log(`Es el turno de ${this.personajeActual.nombre}`);
 
-      actualizar_Interfaz();
-      AsignarTurno();
+      actualizarInterfaz();
     }, 100);
   }
 

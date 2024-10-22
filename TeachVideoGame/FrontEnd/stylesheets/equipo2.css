@@ -1,7 +1,6 @@
 .escenario__equipo2 {
   width: 50%;
   height: 100%;
-  border: 1px solid red;
   position: relative;
 
   .ubicacionPersonajePrincipal {
@@ -14,8 +13,18 @@
     bottom: 0;
   }
 
-  .contenedorVida {
+  .seccionVida {
     position: relative;
+    left: 150px;
+  }
+
+  .porcentajeVida {
+
+    background: #1ab4b1c5;
+
+  }
+
+  .numeroPorcentaje{
     left: 150px;
   }
 
@@ -27,7 +36,37 @@
   }
 
   .seccionestadisticas {
-    left: 240px;
+    left: 150px;
+
+    .poder {
+        background: rgb(82, 117, 116);
+   
+      }
+  }
+
+
+  /* Seccion Fuego */
+
+  .seccionDebufFuego{
+    top: -75px;
+    right: 110px;
+
+  }
+
+  /* Seccion veneno */
+
+  .seccionDebufVeneno{
+    top: -120px;
+    right: 20px;
+
+  }
+
+  /* Seccion caravela */
+
+  .seccionDebufCaravela{
+    top: -50px;
+    right: 280px;
+
   }
 }
 
