@@ -8,13 +8,13 @@
     left: 0;
     bottom: 0;
   }
-  
+
   .ubicacionPersonajeEnemigo {
     left: -120px;
     bottom: 0;
   }
 
-  .contenedor_barraVida { 
+  .contenedorVida {
     position: relative;
     left: 150px;
   }
@@ -26,11 +26,9 @@
     left: 400px;
   }
 
-  .seccionestadisticas{
+  .seccionestadisticas {
     left: 240px;
   }
-
-
 }
 
 .lugar4 {

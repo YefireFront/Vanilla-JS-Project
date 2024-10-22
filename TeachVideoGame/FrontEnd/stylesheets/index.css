@@ -62,7 +62,7 @@ body {
   position: absolute;
 }
 
-.contenedor_barraVida {
+.contenedorVida {
   position: relative;
   width: 52%;
   height: 10px;

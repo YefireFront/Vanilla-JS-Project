@@ -1,59 +1,44 @@
-.escenario__equipo1{
-    width: 50%;
-    height: 100%;
-    border: 1px solid blue;
-    position: relative;
+.escenario__equipo1 {
+  width: 50%;
+  height: 100%;
+  border: 1px solid blue;
+  position: relative;
 
+  /* ubicaciones de personajes */
 
-    /* ubicaciones de personajes */
-    
-    .ubicacionPersonajePrincipal{
-        right: 0;
-        top: 0;
-    }
+  .ubicacionPersonajePrincipal {
+    right: 0;
+    top: 0;
+  }
 
-    .ubicacionPersonajeEnemigo{
-        right: -110px;
-        top: 0;
-    }
+  .ubicacionPersonajeEnemigo {
+    right: -110px;
+    top: 0;
+  }
 
-    
-    /* Condiciones */
+  /* Condiciones */
 
-    .seccionCondicion{
-        left: -80px;
-        top: 8px;
-    }
+  .seccionCondicion {
+    left: -80px;
+    top: 8px;
+  }
 
-
-    .contenedor_barraVida{
-        left: 100px;
-    }
-
-
-
-
-
+  .contenedorVida {
+    left: 100px;
+  }
 }
 
-
-.lugar1{
-    right: 240px;
-    bottom: 15px;
+.lugar1 {
+  right: 240px;
+  bottom: 15px;
 }
 
-.lugar2{
-    right: 300px;
-    bottom: 180px;
-    
+.lugar2 {
+  right: 300px;
+  bottom: 180px;
 }
 
-.lugar3{
-    right: 220px;
-    bottom: 300px;
-    
+.lugar3 {
+  right: 220px;
+  bottom: 300px;
 }
-
-
-
-
