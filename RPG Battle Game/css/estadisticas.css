@@ -16,8 +16,8 @@
   .porcentajeVida {
     position: absolute;
     top: 0;
-    border-radius: 10px;
     left: 0;
+    border-radius: 10px;
     width: 50%;
     height: 100%;
     background: rgb(98, 219, 120);

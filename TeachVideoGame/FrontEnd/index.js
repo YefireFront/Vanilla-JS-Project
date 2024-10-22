@@ -62,7 +62,19 @@ function crearPersonaje(personaje, escenario, posicion) {
     const cantidadCondicionNegativasTurnos = document.createElement("p");
     const cantidadCondicionPositivasTurnos = document.createElement("p");
     seccionCondicion.classList.add("seccionCondicion");
+    iconoCondicionNegativas.classList.add("condicion","fa-solid", "fa-hand-back-fist")
+    iconoCondicionPositivas.classList.add("condicion","fa-solid", "fa-fire")
+    condicionNegativas.classList.add("condicionNegativas")
+    condicionPositivas.classList.add("condicionPositivas")
+
+
     personajeDiv.appendChild(seccionCondicion);
+    seccionCondicion.appendChild(condicionNegativas)
+    seccionCondicion.appendChild(condicionPositivas)
+    condicionNegativas.appendChild(iconoCondicionNegativas)
+    condicionPositivas.appendChild(iconoCondicionPositivas)
+    iconoCondicionNegativas.appendChild(cantidadCondicionNegativasTurnos)
+    iconoCondicionPositivas.appendChild(cantidadCondicionPositivasTurnos)
 
     //contendor de personajes 
     const ubicacionPersonajePrincipal = document.createElement("div");
@@ -73,10 +85,14 @@ function crearPersonaje(personaje, escenario, posicion) {
     ubicacionPersonajeEnemigo.classList.add("ubicacionPersonajeEnemigo");
     personajeDiv.appendChild(ubicacionPersonajeEnemigo);
 
+
+    const imagenPersonajeEnemigo = document.createElement("img");
+    imagenPersonajeEnemigo.src = `./FrontEnd/assets/img/${personaje.id}/Quieto.gif`;
+    ubicacionPersonajePrincipal.appendChild(imagenPersonajeEnemigo);
+
   
   }
   
-
 
   Juego.equipo1.forEach((personaje, i) => {
     crearPersonaje(personaje, escenarioEquipo1, i + 1);

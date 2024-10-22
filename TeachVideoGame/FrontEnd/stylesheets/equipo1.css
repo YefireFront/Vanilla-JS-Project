@@ -3,43 +3,57 @@
     height: 100%;
     border: 1px solid blue;
     position: relative;
-}
 
 
-.escenario__equipo1 .personaje{
-    border: 1px solid rgb(30, 221, 30);
+    /* ubicaciones de personajes */
+    
+    .ubicacionPersonajePrincipal{
+        right: 0;
+        top: 0;
+    }
+
+    .ubicacionPersonajeEnemigo{
+        right: -110px;
+        top: 0;
+    }
+
+    
+    /* Condiciones */
+
+    .seccionCondicion{
+        left: -80px;
+        top: 8px;
+    }
+
+
+    .contenedor_barraVida{
+        left: 100px;
+    }
+
+
+
+
+
 }
 
 
 .lugar1{
-    border: 1px solid #000;
-    right: 120px;
-    bottom: 0;
+    right: 240px;
+    bottom: 15px;
 }
 
 .lugar2{
-    border: 1px solid #11ac03b4;
-    right: 200px;
-    bottom: 150px;
+    right: 300px;
+    bottom: 180px;
     
 }
 
 .lugar3{
-    border: 1px solid #120fbeb4;
-    right: 120px;
+    right: 220px;
     bottom: 300px;
     
 }
 
-
-.escenario__equipo1 .ubicacionPersonajePrincipal{
-    right: 0;
-    top: 0;
-}
-.escenario__equipo1 .ubicacionPersonajeEnemigo{
-    right: -110px;
-    top: 0;
-}
 
 
 
