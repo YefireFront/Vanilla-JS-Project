@@ -2,6 +2,8 @@ const body = document.querySelector("body");
 const escenario = document.querySelector(".escenario");
 const escenarioEquipo1 = document.querySelector(".escenario__equipo1");
 const escenarioEquipo2 = document.querySelector(".escenario__equipo2");
+let habilidadSeleccionada = null;
+
 
 function crearPersonaje(personaje, escenario, posicion) {
   // Crear contenedor del personaje
@@ -134,12 +136,89 @@ Juego.equipo2.forEach((personaje, i) => {
 });
 
 
+//Seleccionanasdo contenedor de habilidades
+const informacion = document.querySelector(".seccionHabilidades");
+const habilidades = document.querySelector(".habilidades");
+//Seleccionando botones de habilidades
+const habilidadAtacar = document.querySelector(".poder_Atacar");
+const habilidad1 = document.querySelector(".poder_1");
+const habilidad2 = document.querySelector(".poder_2");
+//Seleccionando imagenes de habilidades
+const imagenPoder1 = document.querySelector(".imagenPoder1");
+const imagenPoder2 = document.querySelector(".imagenPoder2");
+const imagenAtacar = document.querySelector(".imagen_atacar");
+// imagenAtacar.src = `./players/condicion/Atacar.png`;
+//Seleccionando imagenes de cooldown
+const imagencooldownhabilidad1 = document.querySelector(".cooldown_habilidad1");
+const imagencooldownhabilidad2 = document.querySelector(".cooldown_habilidad2");
+//Seleccionando texto cooldown
+const cooldownHabilidad1 = document.querySelector(".cooldown_habilidad1");
+const cooldownHabilidad2 = document.querySelector(".cooldown_habilidad2");
+//Seleccionando texto de detalle poder
+const descripcionHabilidades = document.querySelector(".descripcionHabilidades");
+const nombrePoder = document.querySelector(".nombre_poder");
+const descripcionPoder = document.querySelector(".descripcion_poder");
+const descripcionTiempo = document.querySelector(".descripcion_tiempo");
+//desacticar los poderes para luego hcaer visibles cuando se seleccione
+descripcionHabilidades.style.display = "none";
+
+
+//Eventos de mouse para ver el detalle del poder cuando el mouse este encima
+habilidad1.addEventListener("mouseenter", (e) => actualizarDetallePoder(e));
+habilidad2.addEventListener("mouseenter", (e) => actualizarDetallePoder(e));
+//Eventos de mouse para ocultar el detalle del poder cuando el mouse se va
+habilidad1.addEventListener("mouseleave", (e) => actualizarDetallePoder(e));
+habilidad2.addEventListener("mouseleave", (e) => actualizarDetallePoder(e));
+// Eventos de click para seleccionar el poder
+habilidad1.addEventListener("click", () => seleccionarHabilidad(habilidad1, habilidad2, habilidadAtacar));
+habilidad2.addEventListener("click", () =>  seleccionarHabilidad(habilidad2, habilidad1, habilidadAtacar));
+habilidadAtacar.addEventListener("click", () =>  seleccionarHabilidad(habilidadAtacar, habilidad1, habilidad2));
+
+
+function seleccionarHabilidad(habilidad,habilidadDesactivar1,habilidadDesactivar2) {
+  // console.log(habilidad.getAttribute("nombrePoder"));
+  if (habilidad.getAttribute("nombrePoder") !== habilidad.textContent) {
+    habilidadSeleccionada = habilidad.getAttribute("nombrePoder");
+    console.log(`Habilidad seleccionada: ${habilidadSeleccionada}`);
+    // console.log(`Habilidad seleccionada: ${habilidadSeleccionada}`);
+    habilidad.classList.add("boton_activo");
+    habilidadDesactivar1.classList.remove("boton_activo");
+    habilidadDesactivar2.classList.remove("boton_activo");
+  } else {
+    habilidadSeleccionada = null;
+    console.log(`No hay Habilidad seleccionada`);
+    habilidad.classList.remove("boton_activo");
+  }
+}
+
+function actualizarDetallePoder(e) {
+  if (e.type === "mouseenter") {
+    descripcionHabilidades.style.display = "flex";
+    let poder = Juego.personajeActual.habilidades.find((poder) => poder.nombre === e.target.getAttribute("nombrePoder") );
+    if (poder) {
+      descripcionPoder.textContent = `${poder.descripcion}`;
+      descripcionTiempo.textContent = `(Reutilizable en  ${poder.tiempoDeEspera} turno(s))`;
+      nombrePoder.textContent = `${poder.nombre}`;
+    }
+  }
+
+  if (e.type === "mouseleave") {
+    descripcionHabilidades.style.display = "none";
+  }
+}
+
+
+
+
+
+
+
+
+
 
 function actualizarInterfaz() {
-
   actualizarVida();
-
-
+  actualizarSeccionPoder() 
 }
 
 function actualizarVida() {
@@ -159,6 +238,58 @@ function actualizarVida() {
   })
 
 }
+function actualizarSeccionPoder() {
+  if (Juego.personajeActual.equipo == 1) {
+    informacion.classList.remove("informacion_equipo2");
+    informacion.classList.add("informacion_equipo1");
+  } else {
+    informacion.classList.remove("informacion_equipo1");
+    informacion.classList.add("informacion_equipo2");
+  }
+
+  if (Juego.personajeActual.habilidades[0].cooldownActual > 0) {
+    imagencooldownhabilidad1.style.display = "flex";
+    cooldownHabilidad1.textContent = `${Juego.personajeActual.habilidades[0].cooldownActual}`;
+    cooldownHabilidad1.style.display = "flex";
+  } else {
+    cooldownHabilidad1.style.display = "none";
+    imagencooldownhabilidad1.style.display = "none";
+  }
+
+  if (Juego.personajeActual.habilidades[1].cooldownActual > 0) {
+    imagencooldownhabilidad2.style.display = "flex";
+    cooldownHabilidad2.textContent = `${Juego.personajeActual.habilidades[1].cooldownActual}`;
+    cooldownHabilidad2.style.display = "flex";
+  } else {
+    cooldownHabilidad2.style.display = "none";
+    imagencooldownhabilidad2.style.display = "none";
+  }
+
+  habilidad1.setAttribute(
+    "nombrePoder",
+    Juego.personajeActual.habilidades[0].nombre
+  );
+  habilidad2.setAttribute(
+    "nombrePoder",
+    Juego.personajeActual.habilidades[1].nombre
+  );
+  habilidadAtacar.setAttribute("nombrePoder", "Atacar");
+
+  imagenPoder1.src = `./FrontEnd/assets/img/${Juego.personajeActual.id}/poderes/poder1.png`;
+  imagenPoder2.src = `./FrontEnd/assets/img/${Juego.personajeActual.id}/poderes/poder2.png`;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 actualizarInterfaz()
