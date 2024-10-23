@@ -63,7 +63,21 @@ function crearPersonaje(personaje, escenario, posicion) {
   seccionEstadisticas.classList.add("seccionestadisticas"); //Clases
   defensaSeccion.classList.add("poder", "defensaSeccion"); //Clases
   ataqueSeccion.classList.add("poder", "ataqueSeccion"); //Clases
+  iconoDefensa.classList.add("fa-solid", "fa-shield"); //Clases
+  iconoAtaque.classList.add("fa-solid", "fa-hand-back-fist");
+  cantidadDefensa.classList.add("cantidadDefensa"); //Clases
+  cantidadAtaque.classList.add("cantidadAtaque"); //Clases
 
+  cantidadDefensa.textContent = `${personaje.ataque}`;
+  cantidadAtaque.textContent = `${personaje.defensa}`;
+
+  personajeDiv.appendChild(seccionEstadisticas);
+  seccionEstadisticas.appendChild(defensaSeccion);
+  seccionEstadisticas.appendChild(ataqueSeccion);
+  defensaSeccion.appendChild(iconoDefensa);
+  defensaSeccion.appendChild(cantidadDefensa);
+  ataqueSeccion.appendChild(iconoAtaque);
+  ataqueSeccion.appendChild(cantidadAtaque);
 
   // Crear sección de condiciones
   // const seccionCondicion = document.createElement("div");
