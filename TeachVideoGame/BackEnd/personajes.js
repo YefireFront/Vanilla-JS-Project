@@ -6,7 +6,7 @@ class Personaje {
     this.ataque = ataque;
     this.defensa = defensa;
     this.velocidad = velocidad;
-    this.vida = 40;
+    this.vida = 100;
     this.debilitamiento = [];
     this.fortalecimiento = [];
     this.habilidades = [];
@@ -83,6 +83,7 @@ class Personaje {
     // console.log(`${this.nombre} ha atacado a ${objetivo.nombre} por ${this.ataque - objetivo.defensa} de daño`);
     objetivo.validarNegativos();
 
+    actualizarInterfaz()
     Juego.cambiarTurno();
     return true;
   }
@@ -128,12 +129,14 @@ class Personaje {
       //Activar la habilidad
       habilidad.activar(this, objetivo);
       objetivo.validarNegativos();
+      actualizarInterfaz();
       Juego.cambiarTurno();
       return true;
     } else {
       console.log("Habilidad no encontrada.");
       return false;
     }
+
   }
 
   //Metodo para activar los efectos de los personajes
