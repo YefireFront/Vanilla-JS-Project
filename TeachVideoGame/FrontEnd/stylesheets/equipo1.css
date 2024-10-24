@@ -26,31 +26,25 @@
     left: 100px;
   }
 
-
-
-
   /* Seccion Fuego */
 
-  .seccionDebufFuego{
+  .seccionDebufQuemadura {
     top: -75px;
     right: 110px;
-
   }
 
   /* Seccion veneno */
 
-  .seccionDebufVeneno{
+  .seccionDebufVeneno {
     top: -120px;
     right: 220px;
-
   }
 
   /* Seccion caravela */
 
-  .seccionDebufCaravela{
+  .seccionTurno {
     top: -50px;
     right: 10px;
-
   }
 }
 

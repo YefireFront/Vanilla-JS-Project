@@ -4,21 +4,20 @@ const escenarioEquipo1 = document.querySelector(".escenario__equipo1");
 const escenarioEquipo2 = document.querySelector(".escenario__equipo2");
 let habilidadSeleccionada = null;
 
-
 function crearPersonaje(personaje, escenario, posicion) {
   // Crear contenedor del personaje
   const personajeDiv = document.createElement("div");
-  personajeDiv.classList.add("personaje",`lugar${posicion}`);
+  personajeDiv.classList.add("personaje", `lugar${posicion}`);
   personajeDiv.setAttribute("id", `${personaje.id}`);
   escenario.appendChild(personajeDiv);
 
   //seccion debuf fuego
-  const seccionDebufFuego = document.createElement("div");
+  const seccionDebufQuemadura = document.createElement("div");
   const imagenfuego = document.createElement("img");
   imagenfuego.src = `./FrontEnd/assets/img/condicion/fuego.gif`;
-  seccionDebufFuego.classList.add("seccionDebufFuego");
-  personajeDiv.appendChild(seccionDebufFuego);
-  seccionDebufFuego.appendChild(imagenfuego);
+  seccionDebufQuemadura.classList.add("seccionDebufQuemadura");
+  personajeDiv.appendChild(seccionDebufQuemadura);
+  seccionDebufQuemadura.appendChild(imagenfuego);
 
   //seccion debuf veneno
   const seccionDebufVeneno = document.createElement("div");
@@ -28,15 +27,13 @@ function crearPersonaje(personaje, escenario, posicion) {
   personajeDiv.appendChild(seccionDebufVeneno);
   seccionDebufVeneno.appendChild(imagenveneno);
 
-  //seccion debuf caravela
-  const seccionDebufCaravela = document.createElement("div");
-  const imagencaravela = document.createElement("img");
-  imagencaravela.src = `./FrontEnd/assets/img/condicion/skull.gif`;
-  seccionDebufCaravela.classList.add("seccionDebufCaravela");
-  personajeDiv.appendChild(seccionDebufCaravela);
-  seccionDebufCaravela.appendChild(imagencaravela);
-
-
+  //seccion turno
+  const seccionTurno = document.createElement("div");
+  const imagencaravelaTurno = document.createElement("img");
+  imagencaravelaTurno.src = `./FrontEnd/assets/img/condicion/skull.gif`;
+  seccionTurno.classList.add("seccionTurno");
+  personajeDiv.appendChild(seccionTurno);
+  seccionTurno.appendChild(imagencaravelaTurno);
 
   // Crear barra de vida
   const seccionVida = document.createElement("div");
@@ -117,26 +114,20 @@ function crearPersonaje(personaje, escenario, posicion) {
   personajeDiv.appendChild(ubicacionPersonajeEnemigo);
 
   const imagenPersonajeEnemigo = document.createElement("img");
-  imagenPersonajeEnemigo.src = `./FrontEnd/assets/img/${personaje.id}/Quieto.gif`;
+  imagenPersonajeEnemigo.src = `./FrontEnd/assets/img/Personajes/${personaje.id}/Quieto.gif`;
   ubicacionPersonajePrincipal.appendChild(imagenPersonajeEnemigo);
 
-
-
-  imagenPersonajeEnemigo.addEventListener( "click", (e) => {
-
+  imagenPersonajeEnemigo.addEventListener("click", (e) => {
     if (habilidadSeleccionada) {
       if (habilidadSeleccionada === "Atacar") {
         Juego.personajeActual.Atacar(personaje);
         habilidadSeleccionada = null;
-      }else{
+      } else {
         Juego.personajeActual.usarHabilidad(habilidadSeleccionada, personaje);
         habilidadSeleccionada = null;
       }
-
-      
     }
-
-  })
+  });
 }
 
 Juego.equipo1.forEach((personaje, i) => {
@@ -146,7 +137,6 @@ Juego.equipo1.forEach((personaje, i) => {
 Juego.equipo2.forEach((personaje, i) => {
   crearPersonaje(personaje, escenarioEquipo2, i + 4); // Posiciones diferentes para el equipo 2
 });
-
 
 //Seleccionanasdo contenedor de habilidades
 const informacion = document.querySelector(".seccionHabilidades");
@@ -159,7 +149,7 @@ const habilidad2 = document.querySelector(".poder_2");
 const imagenPoder1 = document.querySelector(".imagenPoder1");
 const imagenPoder2 = document.querySelector(".imagenPoder2");
 const imagenAtacar = document.querySelector(".imagen_atacar");
-// imagenAtacar.src = `./players/condicion/Atacar.png`;
+imagenAtacar.src = `./FrontEnd/assets/img/personajes/Atacar.png`;
 //Seleccionando imagenes de cooldown
 const imagencooldownhabilidad1 = document.querySelector(".cooldown_habilidad1");
 const imagencooldownhabilidad2 = document.querySelector(".cooldown_habilidad2");
@@ -167,13 +157,12 @@ const imagencooldownhabilidad2 = document.querySelector(".cooldown_habilidad2");
 const cooldownHabilidad1 = document.querySelector(".cooldown_habilidad1");
 const cooldownHabilidad2 = document.querySelector(".cooldown_habilidad2");
 //Seleccionando texto de detalle poder
-const descripcionHabilidades = document.querySelector(".descripcionHabilidades");
+const descripcionHabilidades = document.querySelector(  ".descripcionHabilidades");
 const nombrePoder = document.querySelector(".nombre_poder");
 const descripcionPoder = document.querySelector(".descripcion_poder");
 const descripcionTiempo = document.querySelector(".descripcion_tiempo");
 //desacticar los poderes para luego hcaer visibles cuando se seleccione
 descripcionHabilidades.style.display = "none";
-
 
 //Eventos de mouse para ver el detalle del poder cuando el mouse este encima
 
@@ -186,7 +175,9 @@ habilidad2.addEventListener("mouseleave", (e) => actualizarDetallePoder(e));
 function actualizarDetallePoder(e) {
   if (e.type === "mouseenter") {
     descripcionHabilidades.style.display = "flex";
-    let poder = Juego.personajeActual.habilidades.find((poder) => poder.nombre === e.target.getAttribute("nombrePoder") );
+    let poder = Juego.personajeActual.habilidades.find(
+      (poder) => poder.nombre === e.target.getAttribute("nombrePoder")
+    );
     if (poder) {
       descripcionPoder.textContent = `${poder.descripcion}`;
       descripcionTiempo.textContent = `(Reutilizable en  ${poder.tiempoDeEspera} turno(s))`;
@@ -199,14 +190,22 @@ function actualizarDetallePoder(e) {
   }
 }
 
-
 // Eventos de click para seleccionar el poder
-habilidad1.addEventListener("click", () => seleccionarHabilidad(habilidad1, habilidad2, habilidadAtacar));
-habilidad2.addEventListener("click", () =>  seleccionarHabilidad(habilidad2, habilidad1, habilidadAtacar));
-habilidadAtacar.addEventListener("click", () =>  seleccionarHabilidad(habilidadAtacar, habilidad1, habilidad2));
+habilidad1.addEventListener("click", () =>
+  seleccionarHabilidad(habilidad1, habilidad2, habilidadAtacar)
+);
+habilidad2.addEventListener("click", () =>
+  seleccionarHabilidad(habilidad2, habilidad1, habilidadAtacar)
+);
+habilidadAtacar.addEventListener("click", () =>
+  seleccionarHabilidad(habilidadAtacar, habilidad1, habilidad2)
+);
 
-
-function seleccionarHabilidad(habilidad, habilidadDesactivar1, habilidadDesactivar2) {
+function seleccionarHabilidad(
+  habilidad,
+  habilidadDesactivar1,
+  habilidadDesactivar2
+) {
   if (habilidadSeleccionada === habilidad.getAttribute("nombrePoder")) {
     habilidadSeleccionada = null;
     habilidad.classList.remove("boton_activo");
@@ -219,45 +218,34 @@ function seleccionarHabilidad(habilidad, habilidadDesactivar1, habilidadDesactiv
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+//$ Actualizacion de la interfaz
 
 function actualizarInterfaz() {
   actualizarVida();
-  actualizarSeccionPoder() 
-  actualizarSeccionEstadisticas()
+  actualizarSeccionHabilidades();
+  actualizarSeccionEstadisticas();
+  actualizarseccionTurno();
+  actualizarDebuff();
 }
 
 function actualizarVida() {
-
-  const allPersonajesHMTL = document.querySelectorAll('.personaje');
+  const allPersonajesHMTL = document.querySelectorAll(".personaje");
   const allPersonajesObjetos = Juego.equipo1.concat(Juego.equipo2);
 
   allPersonajesHMTL.forEach((personaje) => {
-    const personajeObjeto = allPersonajesObjetos.find((personajeObjeto) => personajeObjeto.id == personaje.id);
+    const personajeObjeto = allPersonajesObjetos.find(
+      (personajeObjeto) => personajeObjeto.id == personaje.id
+    );
     if (personajeObjeto) {
-      let porcentajeVida = personaje.querySelector('.porcentajeVida');
-      let numeroPorcentaje = personaje.querySelector('.numeroPorcentaje');
-      porcentajeVida.setAttribute('style', `width: ${personajeObjeto.vida}%`);
+      let porcentajeVida = personaje.querySelector(".porcentajeVida");
+      let numeroPorcentaje = personaje.querySelector(".numeroPorcentaje");
+      porcentajeVida.setAttribute("style", `width: ${personajeObjeto.vida}%`);
       numeroPorcentaje.textContent = `${personajeObjeto.vida} / 100`;
     }
- 
-  })
-
+  });
 }
 
-function actualizarSeccionPoder() {
+function actualizarSeccionHabilidades() {
   if (Juego.personajeActual.equipo == 1) {
     informacion.classList.remove("seccionHabilidades_equipo2");
     informacion.classList.add("seccionHabilidades_equipo1");
@@ -284,45 +272,75 @@ function actualizarSeccionPoder() {
     imagencooldownhabilidad2.style.display = "none";
   }
 
-  habilidad1.setAttribute("nombrePoder",Juego.personajeActual.habilidades[0].nombre );
-  habilidad2.setAttribute("nombrePoder",Juego.personajeActual.habilidades[1].nombre);
+  habilidad1.setAttribute(
+    "nombrePoder",
+    Juego.personajeActual.habilidades[0].nombre
+  );
+  habilidad2.setAttribute(
+    "nombrePoder",
+    Juego.personajeActual.habilidades[1].nombre
+  );
   habilidadAtacar.setAttribute("nombrePoder", "Atacar");
 
-  imagenPoder1.src = `./FrontEnd/assets/img/${Juego.personajeActual.id}/poderes/poder1.png`;
-  imagenPoder2.src = `./FrontEnd/assets/img/${Juego.personajeActual.id}/poderes/poder2.png`;
-
+  imagenPoder1.src = `./FrontEnd/assets/img/Personajes/${Juego.personajeActual.id}/poderes/poder1.png`;
+  imagenPoder2.src = `./FrontEnd/assets/img/Personajes/${Juego.personajeActual.id}/poderes/poder2.png`;
 
   const botones = document.querySelectorAll(".habilidades button");
   botones.forEach((boton) => boton.classList.remove("boton_activo"));
-
-
-  
 }
 
 function actualizarSeccionEstadisticas() {
-
-  const allPersonajesHMTL = document.querySelectorAll('.personaje');
+  const allPersonajesHMTL = document.querySelectorAll(".personaje");
   const allPersonajesObjetos = Juego.equipo1.concat(Juego.equipo2);
-  
+
   allPersonajesHMTL.forEach((personaje) => {
-    const personajeObjeto = allPersonajesObjetos.find((personajeObjeto) => personajeObjeto.id == personaje.id);
+    const personajeObjeto = allPersonajesObjetos.find(
+      (personajeObjeto) => personajeObjeto.id == personaje.id
+    );
     if (personajeObjeto) {
-      personaje.querySelector('.cantidadDefensa').textContent = personajeObjeto.defensa;
-      personaje.querySelector('.cantidadAtaque').textContent = personajeObjeto.ataque;
+      personaje.querySelector(".cantidadDefensa").textContent =
+        personajeObjeto.defensa;
+      personaje.querySelector(".cantidadAtaque").textContent =
+        personajeObjeto.ataque;
     }
-  })
+  });
 }
 
+function actualizarseccionTurno() {
+  const allPersonajesHMTL = document.querySelectorAll(".personaje");
+  const allPersonajesObjetos = Juego.equipo1.concat(Juego.equipo2);
 
+  allPersonajesHMTL.forEach((personaje) => {
+    const personajeObjeto = allPersonajesObjetos.find(
+      (personajeObjeto) => personajeObjeto.id == personaje.id
+    );
+    if (personajeObjeto) {
+      if (Juego.personajeActual.id === personajeObjeto.id) {
+        personaje.querySelector(".seccionTurno").style.display = "flex";
+      } else {
+        personaje.querySelector(".seccionTurno").style.display = "none";
+      }
+    }
+  });
+}
 
+function actualizarDebuff() {
+  const allPersonajesHMTL = document.querySelectorAll(".personaje");
+  const allPersonajesObjetos = Juego.equipo1.concat(Juego.equipo2);
 
+  allPersonajesHMTL.forEach((personaje) => {
+    const personajeObjeto = allPersonajesObjetos.find((personajeObjeto) => personajeObjeto.id == personaje.id );
+    if (personajeObjeto) {
+      if (personajeObjeto.debilitamiento.length > 0) {
+        personajeObjeto.debilitamiento.forEach((efecto) => {
+          personaje.querySelector(`.seccionDebuf${efecto.nombre}`).style.display = "block";
+        });
+      } else {
+        personaje.querySelector(".seccionDebufQuemadura").style.display ="none";
+        personaje.querySelector(".seccionDebufVeneno").style.display = "none";
+      }
+    }
+  });
+}
 
-
-
-
-
-
-
-
-
-actualizarInterfaz()
+actualizarInterfaz();

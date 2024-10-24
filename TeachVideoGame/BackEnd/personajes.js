@@ -247,7 +247,7 @@ class perosnaje12 extends Personaje {
 
 // Reptil
 const reptil_1 = new Reptil("Reptil", 50, 20, 10);
-const reptil_2 = new Reptil("Reptil", 50, 20, 10);
+const reptil_2 = new Reptil("Reptil", 50, 20, 150);
 
 //Pandawa
 const pandawa_1 = new Pandawa("Pandawa", 30, 30,18);

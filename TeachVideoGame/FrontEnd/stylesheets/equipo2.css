@@ -19,12 +19,10 @@
   }
 
   .porcentajeVida {
-
     background: #1ab4b1c5;
-
   }
 
-  .numeroPorcentaje{
+  .numeroPorcentaje {
     left: 150px;
   }
 
@@ -39,34 +37,29 @@
     left: 150px;
 
     .poder {
-        background: rgb(82, 117, 116);
-   
-      }
+      background: rgb(82, 117, 116);
+    }
   }
-
 
   /* Seccion Fuego */
 
-  .seccionDebufFuego{
+  .seccionDebufQuemadura {
     top: -75px;
     right: 110px;
-
   }
 
   /* Seccion veneno */
 
-  .seccionDebufVeneno{
+  .seccionDebufVeneno {
     top: -120px;
     right: 20px;
-
   }
 
   /* Seccion caravela */
 
-  .seccionDebufCaravela{
+  .seccionTurno {
     top: -50px;
     right: 280px;
-
   }
 }
 
