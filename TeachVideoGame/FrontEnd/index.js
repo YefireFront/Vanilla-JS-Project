@@ -125,12 +125,17 @@ function crearPersonaje(personaje, escenario, posicion) {
   imagenPersonajeEnemigo.addEventListener( "click", (e) => {
 
     if (habilidadSeleccionada) {
-      Juego.personajeActual.usarHabilidad(habilidadSeleccionada, personaje);
-      habilidadSeleccionada = null;
+      if (habilidadSeleccionada === "Atacar") {
+        Juego.personajeActual.Atacar(personaje);
+        habilidadSeleccionada = null;
+      }else{
+        Juego.personajeActual.usarHabilidad(habilidadSeleccionada, personaje);
+        habilidadSeleccionada = null;
+      }
+
       
     }
 
-    console.log(personaje)
   })
 }
 
@@ -171,31 +176,12 @@ descripcionHabilidades.style.display = "none";
 
 
 //Eventos de mouse para ver el detalle del poder cuando el mouse este encima
+
 habilidad1.addEventListener("mouseenter", (e) => actualizarDetallePoder(e));
 habilidad2.addEventListener("mouseenter", (e) => actualizarDetallePoder(e));
 //Eventos de mouse para ocultar el detalle del poder cuando el mouse se va
 habilidad1.addEventListener("mouseleave", (e) => actualizarDetallePoder(e));
 habilidad2.addEventListener("mouseleave", (e) => actualizarDetallePoder(e));
-// Eventos de click para seleccionar el poder
-habilidad1.addEventListener("click", () => seleccionarHabilidad(habilidad1, habilidad2, habilidadAtacar));
-habilidad2.addEventListener("click", () =>  seleccionarHabilidad(habilidad2, habilidad1, habilidadAtacar));
-habilidadAtacar.addEventListener("click", () =>  seleccionarHabilidad(habilidadAtacar, habilidad1, habilidad2));
-
-
-function seleccionarHabilidad(habilidad, habilidadDesactivar1, habilidadDesactivar2) {
-  console.log(habilidad.getAttribute("nombrePoder"));
-  console.log(habilidadSeleccionada);
-  if (habilidadSeleccionada === habilidad.getAttribute("nombrePoder")) {
-    habilidadSeleccionada = null;
-    habilidad.classList.remove("boton_activo");
-    console.log(`No hay Habilidad seleccionada`);
-  } else {
-    habilidadSeleccionada = habilidad.getAttribute("nombrePoder");
-    habilidad.classList.add("boton_activo");
-    habilidadDesactivar1.classList.remove("boton_activo");
-    habilidadDesactivar2.classList.remove("boton_activo");
-  }
-}
 
 function actualizarDetallePoder(e) {
   if (e.type === "mouseenter") {
@@ -214,6 +200,28 @@ function actualizarDetallePoder(e) {
 }
 
 
+// Eventos de click para seleccionar el poder
+habilidad1.addEventListener("click", () => seleccionarHabilidad(habilidad1, habilidad2, habilidadAtacar));
+habilidad2.addEventListener("click", () =>  seleccionarHabilidad(habilidad2, habilidad1, habilidadAtacar));
+habilidadAtacar.addEventListener("click", () =>  seleccionarHabilidad(habilidadAtacar, habilidad1, habilidad2));
+
+
+function seleccionarHabilidad(habilidad, habilidadDesactivar1, habilidadDesactivar2) {
+  if (habilidadSeleccionada === habilidad.getAttribute("nombrePoder")) {
+    habilidadSeleccionada = null;
+    habilidad.classList.remove("boton_activo");
+    console.log(`No hay Habilidad seleccionada`);
+  } else {
+    habilidadSeleccionada = habilidad.getAttribute("nombrePoder");
+    habilidad.classList.add("boton_activo");
+    habilidadDesactivar1.classList.remove("boton_activo");
+    habilidadDesactivar2.classList.remove("boton_activo");
+  }
+}
+
+
+
+
 
 
 
@@ -228,6 +236,7 @@ function actualizarDetallePoder(e) {
 function actualizarInterfaz() {
   actualizarVida();
   actualizarSeccionPoder() 
+  actualizarSeccionEstadisticas()
 }
 
 function actualizarVida() {
@@ -250,11 +259,11 @@ function actualizarVida() {
 
 function actualizarSeccionPoder() {
   if (Juego.personajeActual.equipo == 1) {
-    informacion.classList.remove("informacion_equipo2");
-    informacion.classList.add("informacion_equipo1");
+    informacion.classList.remove("seccionHabilidades_equipo2");
+    informacion.classList.add("seccionHabilidades_equipo1");
   } else {
-    informacion.classList.remove("informacion_equipo1");
-    informacion.classList.add("informacion_equipo2");
+    informacion.classList.remove("seccionHabilidades_equipo1");
+    informacion.classList.add("seccionHabilidades_equipo2");
   }
 
   if (Juego.personajeActual.habilidades[0].cooldownActual > 0) {
@@ -290,6 +299,19 @@ function actualizarSeccionPoder() {
   
 }
 
+function actualizarSeccionEstadisticas() {
+
+  const allPersonajesHMTL = document.querySelectorAll('.personaje');
+  const allPersonajesObjetos = Juego.equipo1.concat(Juego.equipo2);
+  
+  allPersonajesHMTL.forEach((personaje) => {
+    const personajeObjeto = allPersonajesObjetos.find((personajeObjeto) => personajeObjeto.id == personaje.id);
+    if (personajeObjeto) {
+      personaje.querySelector('.cantidadDefensa').textContent = personajeObjeto.defensa;
+      personaje.querySelector('.cantidadAtaque').textContent = personajeObjeto.ataque;
+    }
+  })
+}
 
 
 
