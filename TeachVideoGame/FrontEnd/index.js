@@ -232,3 +232,97 @@ function seleccionarHabilidad(habilidad, habilidadDesactivar1, habilidadDesactiv
 
 
 
+
+function actualizarInterfaz() {
+  actualizarVida();
+  actualizarSeccionPoder() 
+  actualizarSeccionEstadisticas()
+}
+
+function actualizarVida() {
+
+  const allPersonajesHMTL = document.querySelectorAll('.personaje');
+  const allPersonajesObjetos = Juego.equipo1.concat(Juego.equipo2);
+
+  allPersonajesHMTL.forEach((personaje) => {
+    const personajeObjeto = allPersonajesObjetos.find((personajeObjeto) => personajeObjeto.id == personaje.id);
+    if (personajeObjeto) {
+      let porcentajeVida = personaje.querySelector('.porcentajeVida');
+      let numeroPorcentaje = personaje.querySelector('.numeroPorcentaje');
+      porcentajeVida.setAttribute('style', `width: ${personajeObjeto.vida}%`);
+      numeroPorcentaje.textContent = `${personajeObjeto.vida} / 100`;
+    }
+ 
+  })
+
+}
+
+function actualizarSeccionPoder() {
+  if (Juego.personajeActual.equipo == 1) {
+    informacion.classList.remove("seccionHabilidades_equipo2");
+    informacion.classList.add("seccionHabilidades_equipo1");
+  } else {
+    informacion.classList.remove("seccionHabilidades_equipo1");
+    informacion.classList.add("seccionHabilidades_equipo2");
+  }
+
+  if (Juego.personajeActual.habilidades[0].cooldownActual > 0) {
+    imagencooldownhabilidad1.style.display = "flex";
+    cooldownHabilidad1.textContent = `${Juego.personajeActual.habilidades[0].cooldownActual}`;
+    cooldownHabilidad1.style.display = "flex";
+  } else {
+    cooldownHabilidad1.style.display = "none";
+    imagencooldownhabilidad1.style.display = "none";
+  }
+
+  if (Juego.personajeActual.habilidades[1].cooldownActual > 0) {
+    imagencooldownhabilidad2.style.display = "flex";
+    cooldownHabilidad2.textContent = `${Juego.personajeActual.habilidades[1].cooldownActual}`;
+    cooldownHabilidad2.style.display = "flex";
+  } else {
+    cooldownHabilidad2.style.display = "none";
+    imagencooldownhabilidad2.style.display = "none";
+  }
+
+  habilidad1.setAttribute("nombrePoder",Juego.personajeActual.habilidades[0].nombre );
+  habilidad2.setAttribute("nombrePoder",Juego.personajeActual.habilidades[1].nombre);
+  habilidadAtacar.setAttribute("nombrePoder", "Atacar");
+
+  imagenPoder1.src = `./FrontEnd/assets/img/${Juego.personajeActual.id}/poderes/poder1.png`;
+  imagenPoder2.src = `./FrontEnd/assets/img/${Juego.personajeActual.id}/poderes/poder2.png`;
+
+
+  const botones = document.querySelectorAll(".habilidades button");
+  botones.forEach((boton) => boton.classList.remove("boton_activo"));
+
+
+  
+}
+
+function actualizarSeccionEstadisticas() {
+
+  const allPersonajesHMTL = document.querySelectorAll('.personaje');
+  const allPersonajesObjetos = Juego.equipo1.concat(Juego.equipo2);
+  
+  allPersonajesHMTL.forEach((personaje) => {
+    const personajeObjeto = allPersonajesObjetos.find((personajeObjeto) => personajeObjeto.id == personaje.id);
+    if (personajeObjeto) {
+      personaje.querySelector('.cantidadDefensa').textContent = personajeObjeto.defensa;
+      personaje.querySelector('.cantidadAtaque').textContent = personajeObjeto.ataque;
+    }
+  })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+actualizarInterfaz()
