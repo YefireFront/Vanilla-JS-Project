@@ -157,7 +157,7 @@ const imagencooldownhabilidad2 = document.querySelector(".cooldown_habilidad2");
 const cooldownHabilidad1 = document.querySelector(".cooldown_habilidad1");
 const cooldownHabilidad2 = document.querySelector(".cooldown_habilidad2");
 //Seleccionando texto de detalle poder
-const descripcionHabilidades = document.querySelector(  ".descripcionHabilidades");
+const descripcionHabilidades = document.querySelector(".descripcionHabilidades");
 const nombrePoder = document.querySelector(".nombre_poder");
 const descripcionPoder = document.querySelector(".descripcion_poder");
 const descripcionTiempo = document.querySelector(".descripcion_tiempo");
@@ -226,6 +226,7 @@ function actualizarInterfaz() {
   actualizarSeccionEstadisticas();
   actualizarseccionTurno();
   actualizarDebuff();
+  actualizarMuerte();
 }
 
 function actualizarVida() {
@@ -329,18 +330,40 @@ function actualizarDebuff() {
   const allPersonajesObjetos = Juego.equipo1.concat(Juego.equipo2);
 
   allPersonajesHMTL.forEach((personaje) => {
-    const personajeObjeto = allPersonajesObjetos.find((personajeObjeto) => personajeObjeto.id == personaje.id );
+    const personajeObjeto = allPersonajesObjetos.find(
+      (personajeObjeto) => personajeObjeto.id == personaje.id
+    );
     if (personajeObjeto) {
-      if (personajeObjeto.debilitamiento.length > 0) {
-        personajeObjeto.debilitamiento.forEach((efecto) => {
-          personaje.querySelector(`.seccionDebuf${efecto.nombre}`).style.display = "block";
+      if (personajeObjeto.debilitamiento.length > 0 && !personajeObjeto.estaMuerto()) {
+        personajeObjeto.debilitamiento.forEach((efecto) => {personaje.querySelector(`.seccionDebuf${efecto.nombre}` ).style.display = "block";
         });
       } else {
-        personaje.querySelector(".seccionDebufQuemadura").style.display ="none";
+        personaje.querySelector(".seccionDebufQuemadura").style.display = "none";
         personaje.querySelector(".seccionDebufVeneno").style.display = "none";
       }
     }
   });
 }
 
+function actualizarMuerte() {
+  const allPersonajesHMTL = document.querySelectorAll(".personaje");
+  const allPersonajesObjetos = Juego.equipo1.concat(Juego.equipo2);
+
+  allPersonajesHMTL.forEach((personaje) => {
+    const personajeObjeto = allPersonajesObjetos.find(
+      (personajeObjeto) => personajeObjeto.id == personaje.id
+    );
+    if (personajeObjeto) {
+      if (personajeObjeto.estaMuerto()) {
+        personaje
+          .querySelector(".ubicacionPersonajePrincipal")
+          .classList.add("fantasma");
+      } else {
+        personaje
+          .querySelector(".ubicacionPersonajePrincipal")
+          .classList.remove("fantasma");
+      }
+    }
+  });
+}
 actualizarInterfaz();

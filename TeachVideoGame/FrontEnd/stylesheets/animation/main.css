@@ -62,12 +62,12 @@
   @keyframes ghostEffect {
     0% {
       filter: brightness(80%) saturate(60%) grayscale(20%) blur(2px);
-      opacity: 0.8;
+      opacity: 0.6;
     }
   
     50% {
       filter: brightness(70%) saturate(40%) grayscale(30%) blur(2px);
-      opacity: 0.7;
+      opacity: 0.5;
     }
     100% {
       filter: brightness(60%) saturate(20%) grayscale(40%) blur(1px);

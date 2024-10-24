@@ -14,7 +14,7 @@ class Personaje {
   }
 
   //metodo para valida pesonaje vivo
-  estaMuero() {
+  estaMuerto() {
     if (this.vida <= 0) {
       // console.log(` El personaje ${this.nombre} está muerto`);
       return true;
@@ -63,7 +63,7 @@ class Personaje {
   //Metodod para atacar a un objetivo
   Atacar(objetivo) {
     //Validar si el ataque puede hacer daño
-    if (objetivo.estaMuero()) {
+    if (objetivo.estaMuerto()) {
       console.log(`No puedes atacar a un jugador muerto`);
       return false;
     }
@@ -83,7 +83,7 @@ class Personaje {
     // console.log(`${this.nombre} ha atacado a ${objetivo.nombre} por ${this.ataque - objetivo.defensa} de daño`);
     objetivo.validarNegativos();
 
-    actualizarInterfaz()
+    actualizarInterfaz();
     Juego.cambiarTurno();
     return true;
   }
@@ -121,7 +121,7 @@ class Personaje {
       }
 
       //Validar objetivo vivo
-      if (objetivo.estaMuero()) {
+      if (objetivo.estaMuerto()) {
         console.log(`El objetivo ${objetivo.nombre} está muerto`);
         return false;
       }
@@ -136,7 +136,6 @@ class Personaje {
       console.log("Habilidad no encontrada.");
       return false;
     }
-
   }
 
   //Metodo para activar los efectos de los personajes
@@ -199,8 +198,6 @@ class Antorcha extends Personaje {
   }
 }
 
-
-
 class IceDragon extends Personaje {
   constructor(nombre, ataque, defensa, velocidad) {
     super(nombre, ataque, defensa, velocidad);
@@ -244,14 +241,13 @@ class perosnaje12 extends Personaje {
   }
 }
 
-
 // Reptil
 const reptil_1 = new Reptil("Reptil", 50, 20, 10);
 const reptil_2 = new Reptil("Reptil", 50, 20, 150);
 
 //Pandawa
-const pandawa_1 = new Pandawa("Pandawa", 30, 30,18);
-const pandawa_2 = new Pandawa("Pandawa", 30, 30,18);
+const pandawa_1 = new Pandawa("Pandawa", 30, 30, 18);
+const pandawa_2 = new Pandawa("Pandawa", 30, 30, 18);
 
 //Gigant
 const gigant_1 = new Gigant("Gigant", 40, 30, 14);
@@ -272,8 +268,3 @@ const thunder_2 = new Thunder("Thunder", 50, 20, 100);
 //Ice Dragon
 const iceDragon_1 = new IceDragon("IceDragon", 50, 20, 200);
 const iceDragon_2 = new IceDragon("IceDragon", 50, 20, 100);
-
-
-
-
- 
