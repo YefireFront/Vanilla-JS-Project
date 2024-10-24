@@ -175,53 +175,6 @@ const descripcionTiempo = document.querySelector(".descripcion_tiempo");
 descripcionHabilidades.style.display = "none";
 
 
-//Eventos de mouse para ver el detalle del poder cuando el mouse este encima
-
-habilidad1.addEventListener("mouseenter", (e) => actualizarDetallePoder(e));
-habilidad2.addEventListener("mouseenter", (e) => actualizarDetallePoder(e));
-//Eventos de mouse para ocultar el detalle del poder cuando el mouse se va
-habilidad1.addEventListener("mouseleave", (e) => actualizarDetallePoder(e));
-habilidad2.addEventListener("mouseleave", (e) => actualizarDetallePoder(e));
-
-function actualizarDetallePoder(e) {
-  if (e.type === "mouseenter") {
-    descripcionHabilidades.style.display = "flex";
-    let poder = Juego.personajeActual.habilidades.find((poder) => poder.nombre === e.target.getAttribute("nombrePoder") );
-    if (poder) {
-      descripcionPoder.textContent = `${poder.descripcion}`;
-      descripcionTiempo.textContent = `(Reutilizable en  ${poder.tiempoDeEspera} turno(s))`;
-      nombrePoder.textContent = `${poder.nombre}`;
-    }
-  }
-
-  if (e.type === "mouseleave") {
-    descripcionHabilidades.style.display = "none";
-  }
-}
-
-
-// Eventos de click para seleccionar el poder
-habilidad1.addEventListener("click", () => seleccionarHabilidad(habilidad1, habilidad2, habilidadAtacar));
-habilidad2.addEventListener("click", () =>  seleccionarHabilidad(habilidad2, habilidad1, habilidadAtacar));
-habilidadAtacar.addEventListener("click", () =>  seleccionarHabilidad(habilidadAtacar, habilidad1, habilidad2));
-
-
-function seleccionarHabilidad(habilidad, habilidadDesactivar1, habilidadDesactivar2) {
-  if (habilidadSeleccionada === habilidad.getAttribute("nombrePoder")) {
-    habilidadSeleccionada = null;
-    habilidad.classList.remove("boton_activo");
-    console.log(`No hay Habilidad seleccionada`);
-  } else {
-    habilidadSeleccionada = habilidad.getAttribute("nombrePoder");
-    habilidad.classList.add("boton_activo");
-    habilidadDesactivar1.classList.remove("boton_activo");
-    habilidadDesactivar2.classList.remove("boton_activo");
-  }
-}
-
-
-
-
 
 
 
