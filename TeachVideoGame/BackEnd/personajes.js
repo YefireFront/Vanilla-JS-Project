@@ -226,49 +226,6 @@ class Antorcha extends Personaje {
   }
 }
 
-class IceDragon extends Personaje {
-  constructor(nombre, ataque, defensa, velocidad) {
-    super(nombre, ataque, defensa, velocidad);
-    this.habilidades.push(crearLlamarada());
-    this.habilidades.push(crearIraInfernal());
-  }
-}
-class personaje8 extends Personaje {
-  constructor(nombre, ataque, defensa, velocidad) {
-    super(nombre, ataque, defensa, velocidad);
-    this.habilidades.push(crearLlamarada());
-    this.habilidades.push(crearIraInfernal());
-  }
-}
-class perosnaje9 extends Personaje {
-  constructor(nombre, ataque, defensa, velocidad) {
-    super(nombre, ataque, defensa, velocidad);
-    this.habilidades.push(crearLlamarada());
-    this.habilidades.push(crearIraInfernal());
-  }
-}
-class perosnaje10 extends Personaje {
-  constructor(nombre, ataque, defensa, velocidad) {
-    super(nombre, ataque, defensa, velocidad);
-    this.habilidades.push(crearLlamarada());
-    this.habilidades.push(crearIraInfernal());
-  }
-}
-class perosnaje11 extends Personaje {
-  constructor(nombre, ataque, defensa, velocidad) {
-    super(nombre, ataque, defensa, velocidad);
-    this.habilidades.push(crearLlamarada());
-    this.habilidades.push(crearIraInfernal());
-  }
-}
-class perosnaje12 extends Personaje {
-  constructor(nombre, ataque, defensa, velocidad) {
-    super(nombre, ataque, defensa, velocidad);
-    this.habilidades.push(crearLlamarada());
-    this.habilidades.push(crearIraInfernal());
-  }
-}
-
 class Dragon  extends Personaje {
   constructor(nombre, ataque, defensa, velocidad) {
     super(nombre, ataque, defensa, velocidad);
@@ -276,6 +233,32 @@ class Dragon  extends Personaje {
     this.habilidades.push(crearTormentaHelada());
   }
 }
+
+class Hoz extends Personaje {
+  constructor(nombre, ataque, defensa, velocidad) {
+    super(nombre, ataque, defensa, velocidad);
+    this.habilidades.push(crearLlamadoCeleste());
+    this.habilidades.push(crearRevivir());
+  }
+}
+
+class Samurai extends Personaje {
+  constructor(nombre, ataque, defensa, velocidad) {
+    super(nombre, ataque, defensa, velocidad);
+    this.habilidades.push(crearLlamadoCeleste());
+    this.habilidades.push(crearRevivir());
+  }
+}
+
+class Calaverson extends Personaje {
+  constructor(nombre, ataque, defensa, velocidad) {
+    super(nombre, ataque, defensa, velocidad);
+    this.habilidades.push(crearLlamadoCeleste());
+    this.habilidades.push(crearRevivir());
+  }
+}
+
+
 
 // Reptil
 const reptil_1 = new Reptil("Reptil", 50, 20, 10);
@@ -304,3 +287,15 @@ const thunder_2 = new Thunder("Thunder", 50, 20, 100);
 //Ice Dragon
 const dragon_1 = new Dragon ("Dragon ", 50, 20, 200);
 const dragon_2 = new Dragon ("Dragon ", 50, 20, 100);
+
+//Hoz
+const hoz_1 = new Hoz ("Hoz ", 50, 20, 200);
+const hoz_2 = new Hoz ("Hoz ", 50, 20, 200);
+
+//Samurai
+const samurai_1 = new Samurai ("Samurai ", 50, 20, 200);
+const samurai_2 = new Samurai ("Samurai ", 50, 20, 200);
+
+//Calaverson
+const calaverson_1 = new Calaverson ("Calaverson ", 50, 20, 200);
+const calaverson_2 = new Calaverson ("Calaverson ", 50, 20, 200);

@@ -165,7 +165,7 @@ const habilidad2 = document.querySelector(".poder_2");
 const imagenPoder1 = document.querySelector(".imagenPoder1");
 const imagenPoder2 = document.querySelector(".imagenPoder2");
 const imagenAtacar = document.querySelector(".imagen_atacar");
-imagenAtacar.src = `./FrontEnd/assets/img/personajes/Atacar.png`;
+imagenAtacar.src = `./FrontEnd/assets/img/condicion/Atacar.png`;
 //Seleccionando imagenes de cooldown
 const imagencooldownhabilidad1 = document.querySelector(".cooldown_habilidad1");
 const imagencooldownhabilidad2 = document.querySelector(".cooldown_habilidad2");
@@ -380,7 +380,7 @@ function actualizarMuerte() {
 }
 
 
-function mostrarDaño(daño, personajeObjetivo, color = 'default') {
+function mostrarDaño(daño, personajeObjetivo, colorArgument = 'default') {
   const personajeHTML = document.getElementById(personajeObjetivo.id);
   if (personajeHTML) {
     const seccionDaño = personajeHTML.querySelector(".seccionDaño");
@@ -388,9 +388,10 @@ function mostrarDaño(daño, personajeObjetivo, color = 'default') {
 
     seccionDaño.style.display = "flex"; // Triggers CSS animation
     
-    if (color !== 'default') {
-      seccionDaño.style.color = color;
-    }
+    let color = (colorArgument === 'default') ? '#ff9900' : colorArgument;
+    seccionDaño.style.color = color;
+
+
 
     cantidadDaño.textContent = daño > 0 ? `${daño}` : `MISS`;
 

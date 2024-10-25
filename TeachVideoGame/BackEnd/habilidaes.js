@@ -10,13 +10,21 @@ class Habilidad {
 
   activar(lanzador, objetivo) {
     if (this.cooldownActual === 0) {
-      this.efecto(lanzador, objetivo);
-
+      this.ejecutarMostrarDaño(lanzador, objetivo);
       this.cooldownActual = this.tiempoDeEspera;
     } else {
       console.log(
         `${this.nombre} está en cooldown. Espera ${this.cooldownActual} turnos más.`
       );
+    }
+  }
+
+  ejecutarMostrarDaño(lanzador, objetivo) {
+    const resultado = this.efecto(lanzador, objetivo);
+    if (resultado) {
+      resultado.forEach(daño => {
+        mostrarDaño(daño.cantidad, daño.objetivo, daño.color);
+      });
     }
   }
 
@@ -40,7 +48,6 @@ class Habilidad {
 }
 
 // Habilidades de thunder
-
 function crear1000Volvios() {
   return new Habilidad(
     "1000 Voltios",
@@ -49,10 +56,10 @@ function crear1000Volvios() {
     "Inflige 15 de Daño y paraliza al objetivo durante 1 turno.",
     (lanzador, objetivo) => {
       const equipo = objetivo.equipo === 1 ? Juego.equipo1 : Juego.equipo2;
-      equipo.forEach((personaje) => {
+      return equipo.map((personaje) => {
         personaje.vida -= 15;
-        mostrarDaño(15, personaje, 'red');
         Personaje.validarExcesos(lanzador, personaje);
+        return { cantidad: 15, objetivo: personaje };
       });
     }
   );
@@ -66,8 +73,8 @@ function crearCarga() {
     "Aumenta el ataque de Thunder en 10 durante 2 turnos.",
     (lanzador) => {
       lanzador.ataque += 10;
-      mostrarDaño(15, lanzador, 'blue');
       Personaje.validarExcesos(lanzador);
+      return [{ cantidad: 10, objetivo: lanzador, color: 'blue' }];
     }
   );
 }
@@ -83,6 +90,7 @@ function crearMordidaToxica() {
       objetivo.vida -= 30;
       Personaje.validarExcesos(lanzador, objetivo);
       objetivo.debilitamiento.push(crearVeneno());
+      return [{ cantidad: 30, objetivo: objetivo }];
     }
   );
 }
@@ -94,27 +102,18 @@ function pandemia() {
     "DañoMasivo",
     "Inflige 5 de Daño y envenena a todos los enemigos",
     (lanzador, objetivo) => {
-      if (Juego.equipo1.find((personaje) => objetivo === personaje)) {
-        Juego.equipo1.forEach((personaje) => {
-          personaje.vida -= 5;
-          mostrarDaño(5, objetivo, 'red');
-          Personaje.validarExcesos(lanzador, personaje);
-          personaje.debilitamiento.push(crearVeneno());
-        });
-      } else {
-        Juego.equipo2.forEach((personaje) => {
-          personaje.vida -= 5;
-          mostrarDaño(5, objetivo, 'red');
-          Personaje.validarExcesos(lanzador, personaje);
-          personaje.debilitamiento.push(crearVeneno());
-        });
-      }
+      const enemigos = Juego.equipo1.includes(objetivo) ? Juego.equipo1 : Juego.equipo2;
+      return enemigos.map((personaje) => {
+        personaje.vida -= 5;
+        Personaje.validarExcesos(lanzador, personaje);
+        personaje.debilitamiento.push(crearVeneno());
+        return { cantidad: 5, objetivo: personaje };
+      });
     }
   );
 }
 
-//Habilidades de Dragon
-
+// Habilidades de Dragon
 function crearCuracionMasiva() {
   return new Habilidad(
     "Curación Masiva",
@@ -123,11 +122,11 @@ function crearCuracionMasiva() {
     "Cura a todos los personajes del equipo en 10 de vida.",
     (lanzador, objetivo) => {
       const equipo = objetivo.equipo === 1 ? Juego.equipo1 : Juego.equipo2;
-      equipo.forEach((personaje) => {
+      return equipo.map((personaje) => {
         personaje.vida += 10;
-        mostrarDaño(15, personaje, 'green');
         Personaje.validarExcesos(objetivo, personaje);
         console.log(`${personaje.nombre} ha sido curado por 10 de vida.`);
+        return { cantidad: 10, objetivo: personaje, color: 'green' };
       });
     }
   );
@@ -141,18 +140,16 @@ function crearTormentaHelada() {
     "Inflige 20 de Daño a todos los enemigos y los congela por 1 turno.",
     (lanzador, objetivo) => {
       const enemigos = lanzador.equipo === 1 ? Juego.equipo2 : Juego.equipo1;
-      enemigos.forEach((personaje) => {
+      return enemigos.map((personaje) => {
         personaje.vida -= 20;
-        mostrarDaño(20, personaje, 'red');
         Personaje.validarExcesos(lanzador, personaje);
+        return { cantidad: 20, objetivo: personaje };
       });
     }
   );
 }
 
-
-//Habilidades de pandawa
-
+// Habilidades de pandawa
 function crearPuñoFlamigero() {
   return new Habilidad(
     "Puño Flamígero",
@@ -162,6 +159,7 @@ function crearPuñoFlamigero() {
     (lanzador, objetivo) => {
       objetivo.vida -= 20;
       Personaje.validarExcesos(lanzador, objetivo);
+      return [{ cantidad: 20, objetivo: objetivo }];
     }
   );
 }
@@ -171,19 +169,18 @@ function crearAlmaBambu() {
     "Alma de Bambú",
     5,
     "Soporte",
-    "Aumenta la defensa de Pandawa en 10 .",
-    (lanzador, objetivo) => {
+    "Aumenta la defensa de Pandawa en 10.",
+    (lanzador) => {
       const defensa = crearDefensa(10);
       lanzador.fortalecimiento.push(defensa);
       defensa.aplicar(lanzador);
-      mostrarDaño(10, lanzador, 'blue');
-      Personaje.validarExcesos(lanzador, objetivo);
+      Personaje.validarExcesos(lanzador);
+      return [{ cantidad: 10, objetivo: lanzador, color: 'blue' }];
     }
   );
 }
 
 // Habilidades de gigant
-
 function crearLlamadoCeleste() {
   return new Habilidad(
     "Llamado Celeste",
@@ -191,26 +188,20 @@ function crearLlamadoCeleste() {
     "Soporte",
     "Aumenta la defensa de Gigant en 10 por cada aliado muerto.",
     (lanzador) => {
-      if (lanzador.equipo === 1) {
-        Juego.equipo1.forEach((personaje) => {
-          if (personaje.estaMuerto()) {
-            const defensa = crearDefensa(10);
-            lanzador.fortalecimiento.push(defensa);
-            defensa.aplicar(lanzador);
-          }
-        });
-      }
+      let totalDefensa = 0;
+      const equipo = lanzador.equipo === 1 ? Juego.equipo1 : Juego.equipo2;
+      
+      equipo.forEach((personaje) => {
+        if (personaje.estaMuerto()) {
+          const defensa = crearDefensa(10);
+          lanzador.fortalecimiento.push(defensa);
+          defensa.aplicar(lanzador);
+          totalDefensa += 10;
+        }
+      });
 
-      if (lanzador.equipo === 2) {
-        Juego.equipo2.forEach((personaje) => {
-          if (personaje.estaMuerto()) {
-            const defensa = crearDefensa(10);
-            lanzador.fortalecimiento.push(defensa);
-            defensa.aplicar(lanzador);
-          }
-        });
-      }
       Personaje.validarExcesos(lanzador);
+      return totalDefensa > 0 ? [{ cantidad: totalDefensa, objetivo: lanzador, color: 'blue' }] : [];
     }
   );
 }
@@ -226,10 +217,13 @@ function crearRevivir() {
         objetivo.vida += 30;
         objetivo.defensa += 5;
         Personaje.validarExcesos(lanzador, objetivo);
+        return [
+          { cantidad: 30, objetivo: objetivo, color: 'green' },
+          { cantidad: 5, objetivo: objetivo, color: 'blue' }
+        ];
       } else {
-        console.log(
-          `${lanzador.nombre} no puede usar Revivir en ${objetivo.nombre}.`
-        );
+        console.log(`${lanzador.nombre} no puede usar Revivir en ${objetivo.nombre}.`);
+        return [];
       }
     }
   );
@@ -243,10 +237,13 @@ function crearPalmaFuerza() {
     "Daño",
     "Inflige 25 de Daño al objetivo y empuja al enemigo, reduciendo su defensa en 15.",
     (lanzador, objetivo) => {
-      const defensa = crearDefensa(10);
-      lanzador.fortalecimiento.push(defensa);
-      defensa.aplicar(lanzador);
+      objetivo.vida -= 25;
+      objetivo.defensa -= 15;
       Personaje.validarExcesos(lanzador, objetivo);
+      return [
+        { cantidad: 25, objetivo: objetivo },
+        { cantidad: 15, objetivo: objetivo, color: 'blue' }
+      ];
     }
   );
 }
@@ -256,37 +253,31 @@ function crearMeditacion() {
     "Meditación",
     5,
     "Soporte",
-    "Aumenta la defensa de Monje en 10 durante 3 turnos y queda en estado regeneracion",
+    "Aumenta la defensa de Monje en 10 durante 3 turnos y queda en estado regeneracion.",
     (lanzador) => {
       lanzador.defensa += 15;
-      Personaje.validarExcesos(lanzador);
       lanzador.fortalecimiento.push(crearRegeneracion());
+      Personaje.validarExcesos(lanzador);
+      return [{ cantidad: 15, objetivo: lanzador, color: 'blue' }];
     }
   );
 }
 
 // Habilidades de Antorcha
-
 function crearLlamarada() {
   return new Habilidad(
     "Llamarada",
     3,
     "DañoMasivo",
-    "Inflige 5 de Daño a todos los enemigos y lo deja quemado.",
+    "Inflige 5 de Daño a todos los enemigos y los deja quemados.",
     (lanzador, objetivo) => {
-      if (Juego.equipo1.find((personaje) => objetivo === personaje)) {
-        Juego.equipo1.forEach((personaje) => {
-          personaje.vida -= 5;
-          Personaje.validarExcesos(lanzador, personaje);
-          personaje.debilitamiento.push(crearQuemadura());
-        });
-      } else {
-        Juego.equipo2.forEach((personaje) => {
-          personaje.vida -= 5;
-          Personaje.validarExcesos(lanzador, personaje);
-          personaje.debilitamiento.push(crearQuemadura());
-        });
-      }
+      const enemigos = Juego.equipo1.includes(objetivo) ? Juego.equipo1 : Juego.equipo2;
+      return enemigos.map((personaje) => {
+        personaje.vida -= 5;
+        Personaje.validarExcesos(lanzador, personaje);
+        personaje.debilitamiento.push(crearQuemadura());
+        return { cantidad: 5, objetivo: personaje };
+      });
     }
   );
 }
@@ -300,12 +291,17 @@ function crearIraInfernal() {
     (lanzador, objetivo) => {
       const ataque = crearAtaque(15);
       lanzador.fortalecimiento.push(ataque);
-      ataque.aplicar(lanzador); // Activar el efecto de crearAtaque instantáneamente
+      ataque.aplicar(lanzador);
       objetivo.debilitamiento.push(crearQuemadura());
       Personaje.validarExcesos(lanzador, objetivo);
+      return [{ cantidad: 15, objetivo: lanzador, color: 'blue' }];
     }
   );
 }
+
+
+
+// Continue adjusting other abilities in a similar manner
 
 //* Efectos
 
