@@ -145,8 +145,31 @@ class Personaje {
 
   //Metodo para activar los efectos de los personajes
   activarEfectos() {
-    this.debilitamiento.forEach((efecto) => efecto.activar(this));
-    this.fortalecimiento.forEach((efecto) => efecto.activar(this));
+    // Construct an array with effects and their respective details
+    const efectos = this.debilitamiento.map((efecto) => {
+      let damage, color;
+      if (efecto.nombre === "Quemadura") {
+        damage = 10;
+        color = 'red';
+      } else if (efecto.nombre === "Veneno") {
+        damage = 5;
+        color = 'purple';
+      }
+      return { efecto, damage, color };
+    });
+    
+    // Ensure each effect is processed after the previous one is finished
+    efectos.forEach(({ efecto, damage, color }, index) => {
+      setTimeout(() => {
+        efecto.activar(this);
+        mostrarDaño(damage, this, color);
+      }, index * 1500); // Longer delay to allow animation to complete
+    });
+    
+    // Process fortification effects after all debuffs
+    setTimeout(() => {
+      this.fortalecimiento.forEach((efecto) => efecto.activar(this));
+    }, efectos.length * 1500);
   }
 }
 

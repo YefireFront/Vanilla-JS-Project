@@ -207,14 +207,11 @@ function actualizarDetallePoder(e) {
 }
 
 // Eventos de click para seleccionar el poder
-habilidad1.addEventListener("click", () =>
-  seleccionarHabilidad(habilidad1, habilidad2, habilidadAtacar)
+habilidad1.addEventListener("click", () => seleccionarHabilidad(habilidad1, habilidad2, habilidadAtacar)
 );
-habilidad2.addEventListener("click", () =>
-  seleccionarHabilidad(habilidad2, habilidad1, habilidadAtacar)
+habilidad2.addEventListener("click", () => seleccionarHabilidad(habilidad2, habilidad1, habilidadAtacar)
 );
-habilidadAtacar.addEventListener("click", () =>
-  seleccionarHabilidad(habilidadAtacar, habilidad1, habilidad2)
+habilidadAtacar.addEventListener("click", () =>  seleccionarHabilidad(habilidadAtacar, habilidad1, habilidad2)
 );
 
 function seleccionarHabilidad(
@@ -383,45 +380,28 @@ function actualizarMuerte() {
 }
 
 
-function mostrarDaño(daño, personajeObjetivo, color) {
-  const allPersonajesHMTL = document.querySelectorAll(".personaje");
+function mostrarDaño(daño, personajeObjetivo, color = 'default') {
+  const personajeHTML = document.getElementById(personajeObjetivo.id);
+  if (personajeHTML) {
+    const seccionDaño = personajeHTML.querySelector(".seccionDaño");
+    const cantidadDaño = seccionDaño.querySelector(".cantidadDaño");
 
-
-
-    const personajeObjeto = Array.from(allPersonajesHMTL).find((personajeHTML) => personajeHTML.id == personajeObjetivo.id );
-    console.log(personajeObjeto)
-    if (personajeObjeto) {
-      if (daño > 0) {
-        personajeObjeto.querySelector(".seccionDaño").style.display = "flex";
-        personajeObjeto.querySelector(".seccionDaño").style.color = color;
-        personajeObjeto.querySelector(".cantidadDaño").textContent = `${daño}`;
-      }else{
-        personajeObjeto.querySelector(".seccionDaño").style.display = "flex";
-        personajeObjeto.querySelector(".cantidadDaño").textContent = `MISS`;
-
-      }
-      
-      
+    seccionDaño.style.display = "flex"; // Triggers CSS animation
+    
+    if (color !== 'default') {
+      seccionDaño.style.color = color;
     }
 
-  
-}
+    cantidadDaño.textContent = daño > 0 ? `${daño}` : `MISS`;
 
-function mostrarDañoVeneno(personajeObjetivo) {
-  const allPersonajesHMTL = document.querySelectorAll(".personaje");
-
-  const personajeObjeto = Array.from(allPersonajesHMTL).find((personajeHTML) => personajeHTML.id == personajeObjetivo.id );
-  console.log(personajeObjeto)
-  if (personajeObjeto) {
-    
-  
-      personajeObjeto.querySelector(".seccionDañoVeneno").style.display = "flex";
-
-
-
-    
-    
+    // Optional: Automatically hide after the animation duration
+    setTimeout(() => {
+      seccionDaño.style.display = "none";
+    }, 1000); // Matches the 1s duration in CSS
   }
 }
+
+
+
 
 actualizarInterfaz();
