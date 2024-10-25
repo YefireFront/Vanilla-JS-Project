@@ -75,12 +75,15 @@ class Personaje {
 
     if (objetivo.defensa >= this.ataque) {
       console.log("No tenías suficiente fuerza para herir a este personaje");
+      let daño = this.ataque - objetivo.defensa;
+      mostrarDaño(daño, objetivo);
       Juego.cambiarTurno();
       return true;
     }
 
-    objetivo.vida -= this.ataque - objetivo.defensa;
-    // console.log(`${this.nombre} ha atacado a ${objetivo.nombre} por ${this.ataque - objetivo.defensa} de daño`);
+    let daño = this.ataque - objetivo.defensa;
+    objetivo.vida -= daño;
+    mostrarDaño(daño, objetivo, 'orange');
     objetivo.validarNegativos();
 
     actualizarInterfaz();
@@ -128,6 +131,8 @@ class Personaje {
 
       //Activar la habilidad
       habilidad.activar(this, objetivo);
+   
+
       objetivo.validarNegativos();
       actualizarInterfaz();
       Juego.cambiarTurno();
@@ -241,6 +246,14 @@ class perosnaje12 extends Personaje {
   }
 }
 
+class Dragon  extends Personaje {
+  constructor(nombre, ataque, defensa, velocidad) {
+    super(nombre, ataque, defensa, velocidad);
+    this.habilidades.push(crearCuracionMasiva());
+    this.habilidades.push(crearTormentaHelada());
+  }
+}
+
 // Reptil
 const reptil_1 = new Reptil("Reptil", 50, 20, 10);
 const reptil_2 = new Reptil("Reptil", 50, 20, 150);
@@ -266,5 +279,5 @@ const thunder_1 = new Thunder("Thunder", 50, 20, 100);
 const thunder_2 = new Thunder("Thunder", 50, 20, 100);
 
 //Ice Dragon
-const iceDragon_1 = new IceDragon("IceDragon", 50, 20, 200);
-const iceDragon_2 = new IceDragon("IceDragon", 50, 20, 100);
+const dragon_1 = new Dragon ("Dragon ", 50, 20, 200);
+const dragon_2 = new Dragon ("Dragon ", 50, 20, 100);

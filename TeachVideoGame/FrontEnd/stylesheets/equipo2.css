@@ -61,7 +61,24 @@
     top: -50px;
     right: 280px;
   }
+
+  .seccionDaño{
+    left:-31px;
+    top: -20px;
+    
+  }
+
+  .seccionDañoQuemadura{
+    left: 220px;
+    top: -60px;
+  }
+
+  .seccionDañoVeneno{
+    left: 305px;
+    top: -110px;    
+  }
 }
+
 
 .lugar4 {
   left: 200px;

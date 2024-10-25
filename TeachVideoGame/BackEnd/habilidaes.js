@@ -11,6 +11,7 @@ class Habilidad {
   activar(lanzador, objetivo) {
     if (this.cooldownActual === 0) {
       this.efecto(lanzador, objetivo);
+
       this.cooldownActual = this.tiempoDeEspera;
     } else {
       console.log(
@@ -47,17 +48,12 @@ function crear1000Volvios() {
     "DañoMasivo",
     "Inflige 15 de Daño y paraliza al objetivo durante 1 turno.",
     (lanzador, objetivo) => {
-      if (Juego.equipo1.find((personaje) => objetivo === personaje)) {
-        Juego.equipo1.forEach((personaje) => {
-          personaje.vida -= 15;
-          Personaje.validarExcesos(lanzador, personaje);
-        });
-      } else {
-        Juego.equipo2.forEach((personaje) => {
-          personaje.vida -= 15;
-          Personaje.validarExcesos(lanzador, personaje);
-        });
-      }
+      const equipo = objetivo.equipo === 1 ? Juego.equipo1 : Juego.equipo2;
+      equipo.forEach((personaje) => {
+        personaje.vida -= 15;
+        mostrarDaño(15, personaje, 'red');
+        Personaje.validarExcesos(lanzador, personaje);
+      });
     }
   );
 }
@@ -70,6 +66,7 @@ function crearCarga() {
     "Aumenta el ataque de Thunder en 10 durante 2 turnos.",
     (lanzador) => {
       lanzador.ataque += 10;
+      mostrarDaño(15, lanzador, 'blue');
       Personaje.validarExcesos(lanzador);
     }
   );
@@ -100,12 +97,14 @@ function pandemia() {
       if (Juego.equipo1.find((personaje) => objetivo === personaje)) {
         Juego.equipo1.forEach((personaje) => {
           personaje.vida -= 5;
+          mostrarDaño(5, objetivo, 'red');
           Personaje.validarExcesos(lanzador, personaje);
           personaje.debilitamiento.push(crearVeneno());
         });
       } else {
         Juego.equipo2.forEach((personaje) => {
           personaje.vida -= 5;
+          mostrarDaño(5, objetivo, 'red');
           Personaje.validarExcesos(lanzador, personaje);
           personaje.debilitamiento.push(crearVeneno());
         });
@@ -113,6 +112,44 @@ function pandemia() {
     }
   );
 }
+
+//Habilidades de Dragon
+
+function crearCuracionMasiva() {
+  return new Habilidad(
+    "Curación Masiva",
+    4,
+    "SoporteMasivo",
+    "Cura a todos los personajes del equipo en 10 de vida.",
+    (lanzador, objetivo) => {
+      const equipo = objetivo.equipo === 1 ? Juego.equipo1 : Juego.equipo2;
+      equipo.forEach((personaje) => {
+        personaje.vida += 10;
+        mostrarDaño(15, personaje, 'green');
+        Personaje.validarExcesos(objetivo, personaje);
+        console.log(`${personaje.nombre} ha sido curado por 10 de vida.`);
+      });
+    }
+  );
+}
+
+function crearTormentaHelada() {
+  return new Habilidad(
+    "Tormenta Helada",
+    4,
+    "DañoMasivo",
+    "Inflige 20 de Daño a todos los enemigos y los congela por 1 turno.",
+    (lanzador, objetivo) => {
+      const enemigos = lanzador.equipo === 1 ? Juego.equipo2 : Juego.equipo1;
+      enemigos.forEach((personaje) => {
+        personaje.vida -= 20;
+        mostrarDaño(20, personaje, 'red');
+        Personaje.validarExcesos(lanzador, personaje);
+      });
+    }
+  );
+}
+
 
 //Habilidades de pandawa
 
@@ -139,6 +176,7 @@ function crearAlmaBambu() {
       const defensa = crearDefensa(10);
       lanzador.fortalecimiento.push(defensa);
       defensa.aplicar(lanzador);
+      mostrarDaño(10, lanzador, 'blue');
       Personaje.validarExcesos(lanzador, objetivo);
     }
   );
@@ -244,7 +282,7 @@ function crearLlamarada() {
         });
       } else {
         Juego.equipo2.forEach((personaje) => {
-          personaje.vida -= 20;
+          personaje.vida -= 5;
           Personaje.validarExcesos(lanzador, personaje);
           personaje.debilitamiento.push(crearQuemadura());
         });
@@ -281,12 +319,8 @@ class Efecto {
   }
 
   limpiarEfectos() {
-    objetivo.debilitamiento = objetivo.debilitamiento.filter(
-      (efecto) => efecto !== this
-    );
-    objetivo.fortalecimiento = objetivo.fortalecimiento.filter(
-      (efecto) => efecto !== this
-    );
+    objetivo.debilitamiento = objetivo.debilitamiento.filter( (efecto) => efecto !== this  );
+    objetivo.fortalecimiento = objetivo.fortalecimiento.filter( (efecto) => efecto !== this );
   }
 }
 

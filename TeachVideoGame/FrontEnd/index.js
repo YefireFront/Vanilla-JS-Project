@@ -11,13 +11,28 @@ function crearPersonaje(personaje, escenario, posicion) {
   personajeDiv.setAttribute("id", `${personaje.id}`);
   escenario.appendChild(personajeDiv);
 
-  //seccion debuf fuego
+  //seccion buff
+
+
+  //seccion info daño
+  const seccionInfoDaño = document.createElement("div");
+  const cantidadDaño = document.createElement("p");
+  seccionInfoDaño.classList.add("seccionDaño");
+  cantidadDaño.classList.add("cantidadDaño");
+  cantidadDaño.textContent = `${personaje.vida}`;
+  seccionInfoDaño.appendChild(cantidadDaño);
+  personajeDiv.appendChild(seccionInfoDaño);
+  seccionInfoDaño.style.display = "none";
+
+  //seccion debuf Quemadura
   const seccionDebufQuemadura = document.createElement("div");
   const imagenfuego = document.createElement("img");
   imagenfuego.src = `./FrontEnd/assets/img/condicion/fuego.gif`;
   seccionDebufQuemadura.classList.add("seccionDebufQuemadura");
   personajeDiv.appendChild(seccionDebufQuemadura);
   seccionDebufQuemadura.appendChild(imagenfuego);
+
+
 
   //seccion debuf veneno
   const seccionDebufVeneno = document.createElement("div");
@@ -26,6 +41,7 @@ function crearPersonaje(personaje, escenario, posicion) {
   seccionDebufVeneno.classList.add("seccionDebufVeneno");
   personajeDiv.appendChild(seccionDebufVeneno);
   seccionDebufVeneno.appendChild(imagenveneno);
+
 
   //seccion turno
   const seccionTurno = document.createElement("div");
@@ -330,12 +346,11 @@ function actualizarDebuff() {
   const allPersonajesObjetos = Juego.equipo1.concat(Juego.equipo2);
 
   allPersonajesHMTL.forEach((personaje) => {
-    const personajeObjeto = allPersonajesObjetos.find(
-      (personajeObjeto) => personajeObjeto.id == personaje.id
-    );
+    const personajeObjeto = allPersonajesObjetos.find((personajeObjeto) => personajeObjeto.id == personaje.id);
     if (personajeObjeto) {
       if (personajeObjeto.debilitamiento.length > 0 && !personajeObjeto.estaMuerto()) {
-        personajeObjeto.debilitamiento.forEach((efecto) => {personaje.querySelector(`.seccionDebuf${efecto.nombre}` ).style.display = "block";
+        personajeObjeto.debilitamiento.forEach((efecto) => {
+          personaje.querySelector(`.seccionDebuf${efecto.nombre}` ).style.display = "block";
         });
       } else {
         personaje.querySelector(".seccionDebufQuemadura").style.display = "none";
@@ -366,4 +381,47 @@ function actualizarMuerte() {
     }
   });
 }
+
+
+function mostrarDaño(daño, personajeObjetivo, color) {
+  const allPersonajesHMTL = document.querySelectorAll(".personaje");
+
+
+
+    const personajeObjeto = Array.from(allPersonajesHMTL).find((personajeHTML) => personajeHTML.id == personajeObjetivo.id );
+    console.log(personajeObjeto)
+    if (personajeObjeto) {
+      if (daño > 0) {
+        personajeObjeto.querySelector(".seccionDaño").style.display = "flex";
+        personajeObjeto.querySelector(".seccionDaño").style.color = color;
+        personajeObjeto.querySelector(".cantidadDaño").textContent = `${daño}`;
+      }else{
+        personajeObjeto.querySelector(".seccionDaño").style.display = "flex";
+        personajeObjeto.querySelector(".cantidadDaño").textContent = `MISS`;
+
+      }
+      
+      
+    }
+
+  
+}
+
+function mostrarDañoVeneno(personajeObjetivo) {
+  const allPersonajesHMTL = document.querySelectorAll(".personaje");
+
+  const personajeObjeto = Array.from(allPersonajesHMTL).find((personajeHTML) => personajeHTML.id == personajeObjetivo.id );
+  console.log(personajeObjeto)
+  if (personajeObjeto) {
+    
+  
+      personajeObjeto.querySelector(".seccionDañoVeneno").style.display = "flex";
+
+
+
+    
+    
+  }
+}
+
 actualizarInterfaz();

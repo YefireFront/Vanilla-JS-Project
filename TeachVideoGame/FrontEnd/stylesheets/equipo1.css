@@ -30,7 +30,7 @@
 
   .seccionDebufQuemadura {
     top: -75px;
-    right: 110px;
+    right: 130px;
   }
 
   /* Seccion veneno */
@@ -46,6 +46,24 @@
     top: -50px;
     right: 10px;
   }
+
+
+  .seccionDaño{
+    right:-31px;
+    top: -20px;
+  }
+
+  .seccionDañoQuemadura{
+    left: 200px;
+    top: -60px;
+  }
+
+  .seccionDañoVeneno{
+    left: 105px;
+    top: -110px;
+  }
+
+
 }
 
 .lugar1 {
@@ -54,7 +72,7 @@
 }
 
 .lugar2 {
-  right: 300px;
+  right: 270px;
   bottom: 180px;
 }
 

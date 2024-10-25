@@ -44,64 +44,57 @@ class Juego {
     }
   }
 
-  static obtenerSiguientePersonaje(equipo, turnoActual) {
-    let siguienteTurno = (turnoActual + 1) % equipo.length;
-    let personaje = equipo[siguienteTurno];
-
-    while (personaje.estaMuerto()) {
-      siguienteTurno = (siguienteTurno + 1) % equipo.length;
-      personaje = equipo[siguienteTurno];
-    }
-
-    return { personaje, siguienteTurno };
-  }
-
   static cambiarTurno() {
-  
-      if (this.verificarVictoria()) {
+    // Verificar si hay un equipo que ha ganado
+    if (this.verificarVictoria()) {
         actualizarInterfaz();
         console.log("Fin de la partida.");
-        return ;
-      }
-      this.personajeActual.habilidades.forEach((habilidad) =>
+        return;
+    }
+
+    // Reducir cooldown de habilidades del personaje actual
+    this.personajeActual.habilidades.forEach((habilidad) =>
         habilidad.reducirCooldown()
-      );
+    );
 
-      if (this.turnoEquipo === 1) {
-        this.turnoEquipo = 2;
-        const { personaje: personajeSiguiente, siguienteTurno } =  this.obtenerSiguientePersonaje(this.equipo1, this.turnoActualEquipo1);
+    // Cambiar turno de equipo (1 a 2 o 2 a 1)
+    this.turnoEquipo = this.turnoEquipo === 1 ? 2 : 1;
+
+    // Seleccionar el equipo y el turno correspondiente
+    const equipoActual = this.turnoEquipo === 1 ? this.equipo1 : this.equipo2;
+    const turnoActual = this.turnoEquipo === 1 ? this.turnoActualEquipo1 : this.turnoActualEquipo2;
+
+    // Obtener el siguiente personaje no muerto del equipo
+    let siguienteTurno = (turnoActual + 1) % equipoActual.length;
+    let personajeSiguiente = equipoActual[siguienteTurno];
+
+    // Si el personaje está muerto, buscar el siguiente
+    while (personajeSiguiente.estaMuerto()) {
+        siguienteTurno = (siguienteTurno + 1) % equipoActual.length;
+        personajeSiguiente = equipoActual[siguienteTurno];
+    }
+
+    // Actualizar el turno actual y el personaje actual según el equipo
+    if (this.turnoEquipo === 1) {
         this.turnoActualEquipo1 = siguienteTurno;
-        this.personajeActual = this.equipo2[this.turnoActualEquipo2];
-      } else {
-        this.turnoEquipo = 1;
-        const { personaje: personajeSiguiente, siguienteTurno } =  this.obtenerSiguientePersonaje(this.equipo2, this.turnoActualEquipo2);
+    } else {
         this.turnoActualEquipo2 = siguienteTurno;
-        this.personajeActual = this.equipo1[this.turnoActualEquipo1];
-      }
+    }
+    this.personajeActual = personajeSiguiente;
 
-      if (this.personajeActual.estaMuerto()) {
-        const equipo = this.turnoEquipo === 1 ? this.equipo1 : this.equipo2;
-        const turnoActual = this.turnoEquipo === 1 ? this.turnoActualEquipo1 : this.turnoActualEquipo2;
-        const { personaje: personajeSiguiente, siguienteTurno } =  this.obtenerSiguientePersonaje(equipo, turnoActual);
-        if (this.turnoEquipo === 1) {
-          this.turnoActualEquipo1 = siguienteTurno;
-        } else {
-          this.turnoActualEquipo2 = siguienteTurno;
-        }
-        this.personajeActual = personajeSiguiente;
-      }
+    // Activar efectos y validar estados negativos
+    this.personajeActual.activarEfectos();
+    Personaje.validarExcesos(this.personajeActual);
 
-      this.personajeActual.activarEfectos();
-      this.personajeActual.validarNegativos();
-      if (this.personajeActual.estaMuerto()) {
+    // Si el personaje muere después de los efectos, cambiar turno nuevamente
+    if (this.personajeActual.estaMuerto()) {
         this.cambiarTurno();
-      }
+    }
 
-      // console.log(`Es el turno de ${this.personajeActual.nombre}`);
+    // Actualizar la interfaz de usuario
+    actualizarInterfaz();
+}
 
-      actualizarInterfaz();
-   
-  }
 
   static verificarVictoria() {
     // Lógica para verificar si un equipo ha ganado
@@ -121,6 +114,6 @@ Juego.agregarPersonaje(1, pandawa_1);
 
 Juego.agregarPersonaje(2, thunder_2);
 Juego.agregarPersonaje(2, gigant_2);
-Juego.agregarPersonaje(2, reptil_2);
+Juego.agregarPersonaje(2, dragon_2);
 
 Juego.iniciarJuego();
