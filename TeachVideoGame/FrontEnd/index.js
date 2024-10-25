@@ -11,6 +11,7 @@ function crearPersonaje(personaje, escenario, posicion) {
   personajeDiv.setAttribute("id", `${personaje.id}`);
   escenario.appendChild(personajeDiv);
 
+
   //seccion buff
 
 
@@ -41,6 +42,15 @@ function crearPersonaje(personaje, escenario, posicion) {
   seccionDebufVeneno.classList.add("seccionDebufVeneno");
   personajeDiv.appendChild(seccionDebufVeneno);
   seccionDebufVeneno.appendChild(imagenveneno);
+
+
+  //seccion debuf turno
+  const seccionDebufTurno = document.createElement("div");
+  const imagenTurno = document.createElement("img");
+  imagenTurno.src = `./FrontEnd/assets/img/condicion/turnoOff.gif`;
+  seccionDebufTurno.classList.add("seccionDebufTurno");
+  personajeDiv.appendChild(seccionDebufTurno);
+  seccionDebufTurno.appendChild(imagenTurno);
 
 
   //seccion turno
@@ -131,6 +141,7 @@ function crearPersonaje(personaje, escenario, posicion) {
 
   const imagenPersonajeEnemigo = document.createElement("img");
   imagenPersonajeEnemigo.src = `./FrontEnd/assets/img/Personajes/${personaje.id}/Quieto.gif`;
+  imagenPersonajeEnemigo.setAttribute("draggable",false)
   ubicacionPersonajePrincipal.appendChild(imagenPersonajeEnemigo);
 
   imagenPersonajeEnemigo.addEventListener("click", (e) => {
@@ -352,6 +363,7 @@ function actualizarDebuff() {
       } else {
         personaje.querySelector(".seccionDebufQuemadura").style.display = "none";
         personaje.querySelector(".seccionDebufVeneno").style.display = "none";
+        personaje.querySelector(".seccionDebufTurno").style.display = "none";
       }
     }
   });

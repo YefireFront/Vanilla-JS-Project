@@ -237,7 +237,7 @@ class Dragon  extends Personaje {
 class Hoz extends Personaje {
   constructor(nombre, ataque, defensa, velocidad) {
     super(nombre, ataque, defensa, velocidad);
-    this.habilidades.push(crearLlamadoCeleste());
+    this.habilidades.push(lluviaMaldita());
     this.habilidades.push(crearRevivir());
   }
 }
@@ -245,24 +245,25 @@ class Hoz extends Personaje {
 class Samurai extends Personaje {
   constructor(nombre, ataque, defensa, velocidad) {
     super(nombre, ataque, defensa, velocidad);
-    this.habilidades.push(crearLlamadoCeleste());
-    this.habilidades.push(crearRevivir());
+    this.habilidades.push(crearBushido());
+    this.habilidades.push(crearEspadaVeneno());
   }
 }
 
 class Calaverson extends Personaje {
   constructor(nombre, ataque, defensa, velocidad) {
     super(nombre, ataque, defensa, velocidad);
-    this.habilidades.push(crearLlamadoCeleste());
-    this.habilidades.push(crearRevivir());
+    this.habilidades.push(crearCraneoMaldito());
+    this.habilidades.push(crearIlusionMortal());
   }
 }
 
 class Paladin extends Personaje {
   constructor(nombre, ataque, defensa, velocidad) {
     super(nombre, ataque, defensa, velocidad);
-    this.habilidades.push(crearLlamadoCeleste());
-    this.habilidades.push(crearRevivir());
+
+    this.habilidades.push(crearGuardiaDivina());
+    this.habilidades.push(crearLuzSanadora());
   }
 }
 
@@ -302,7 +303,7 @@ const hoz_2 = new Hoz ("Hoz ", 50, 20, 200);
 
 //Samurai
 const samurai_1 = new Samurai ("Samurai ", 50, 20, 200);
-const samurai_2 = new Samurai ("Samurai ", 50, 20, 200);
+const samurai_2 = new Samurai ("Samurai ", 50, 20, 202);
 
 //Paladin
 const paladin_1 = new Paladin ("Paladin ", 50, 20, 200);
@@ -310,4 +311,4 @@ const paladin_2 = new Paladin ("Paladin ", 50, 20, 200);
 
 //Calaverson
 const calaverson_1 = new Calaverson ("Calaverson ", 50, 20, 200);
-const calaverson_2 = new Calaverson ("Calaverson ", 50, 20, 200);
+const calaverson_2 = new Calaverson ("Calaverson ", 50, 20, 201);

@@ -159,6 +159,17 @@ body {
   }
 }
 
+.seccionDebufTurno{
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  opacity: 0.8;
+  z-index: 200;
+  
+  img {
+    width: 100%;
+  }
+}
 
 
 

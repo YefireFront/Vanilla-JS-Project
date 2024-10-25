@@ -299,8 +299,145 @@ function crearIraInfernal() {
   );
 }
 
+// Habilidades de Paladin
+function crearGuardiaDivina() {
+  return new Habilidad(
+    "Guardia Divina",
+    4,
+    "Soporte",
+    "Aumenta en 15 la defensa del Paladín durante 3 turnos.",
+    (lanzador) => {
+      const defensa = crearDefensa(15);
+      lanzador.fortalecimiento.push(defensa);
+      defensa.aplicar(lanzador);
+      Personaje.validarExcesos(lanzador);
+      return [{ cantidad: 15, objetivo: lanzador, color: 'blue' }];
+    }
+  );
+}
 
 
+function crearLuzSanadora() {
+  return new Habilidad(
+    "Luz Sanadora",
+    3,
+    "Soporte",
+    "Restaura 20 de vida a un aliado.",
+    (lanzador, objetivo) => {
+      objetivo.vida += 20;
+      Personaje.validarExcesos(lanzador, objetivo);
+      return [{ cantidad: 20, objetivo: objetivo, color: 'green' }];
+    }
+  );
+}
+
+
+
+// Habilidades de Calaverson
+function crearCraneoMaldito() {
+  return new Habilidad(
+    "Cráneo Maldito",
+    4,
+    "Daño",
+    "Inflige 30 de Daño y envenena a un enemigo.",
+    (lanzador, objetivo) => {
+      objetivo.vida -= 30;
+      // Assuming crearMaldicion is defined to apply an attack debuff
+      objetivo.debilitamiento.push(crearVeneno());
+      Personaje.validarExcesos(lanzador, objetivo);
+      return [{ cantidad: 30, objetivo: objetivo }];
+    }
+  );
+}
+
+function crearIlusionMortal() {
+  return new Habilidad(
+    "Ilusión Mortal",
+    5,
+    "Control",
+    "Hace que el enemigo pierda el próximo turno.",
+    (lanzador, objetivo) => {
+      // Assuming crearPerdidaTurno is defined to skip a turn
+      objetivo.debilitamiento.push(crearPerdidaTurno());
+      return [{ cantidad: 0, objetivo: objetivo }];
+    }
+  );
+}
+
+
+// Habilidades de Samurai
+
+function crearBushido() {
+  return new Habilidad(
+    "Bushido",
+    5,
+    "Soporte",
+    "Aumenta el ataque y defensa en 15 durante 3 turnos.",
+    (lanzador) => {
+      const ataque = crearAtaque(15);
+      const defensa = crearDefensa(15);
+      lanzador.fortalecimiento.push(ataque, defensa);
+      ataque.aplicar(lanzador);
+      defensa.aplicar(lanzador);
+      Personaje.validarExcesos(lanzador);
+      return [{ cantidad: 15, objetivo: lanzador, color: 'blue' }];
+    }
+  );
+}
+
+function crearEspadaVeneno() {
+  return new Habilidad(
+    "Espada Veneno",
+    3,
+    "Daño",
+    "Inflige 20 de Daño y aplica veneno a un enemigo.",
+    (lanzador, objetivo) => {
+      objetivo.vida -= 20;
+      // Assuming crearVeneno is defined to apply a poison effect
+      objetivo.debilitamiento.push(crearVeneno());
+      Personaje.validarExcesos(lanzador, objetivo);
+      return [{ cantidad: 20, objetivo: objetivo }];
+    }
+  );
+}
+
+
+// Habilidades de hoz
+
+function lluviaMaldita() {
+  return new Habilidad(
+    "Lluvia Maldita",
+    4,
+    "DañoMasivo",
+    "Inflige 10 de daños a los aliados y 30 a los enemigos.",
+    (lanzador, objetivo) => {
+      const equipoAliado = lanzador.equipo === 1 ? Juego.equipo1 : Juego.equipo2;
+      const equipoEnemigo = lanzador.equipo === 1 ? Juego.equipo2 : Juego.equipo1;
+      
+      const resultado = [];
+
+      // Apply damage to allies
+      equipoAliado.forEach((personaje) => {
+        if (!personaje.estaMuerto()) {
+          personaje.vida -= 10;
+          Personaje.validarExcesos(lanzador, personaje);
+          resultado.push({ cantidad: 10, objetivo: personaje, color: 'red' });
+        }
+      });
+
+      // Apply damage to enemies
+      equipoEnemigo.forEach((personaje) => {
+        if (!personaje.estaMuerto()) {
+          personaje.vida -= 30;
+          Personaje.validarExcesos(lanzador, personaje);
+          resultado.push({ cantidad: 30, objetivo: personaje, color: 'orange' });
+        }
+      });
+
+      return resultado;
+    }
+  );
+}
 
 // Continue adjusting other abilities in a similar manner
 
@@ -373,6 +510,9 @@ class EfectoFijo extends Efecto {
   }
 }
 
+
+
+// Effectos continuos
 function crearQuemadura() {
   return new EfectoContinuo(
     "Quemadura",
@@ -399,6 +539,35 @@ function crearVeneno() {
   );
 }
 
+function crearRegeneracion() {
+  return new EfectoContinuo(
+    "Regeneración",
+    "Recupera 10 de vida por turno durante 3 turnos.",
+    3,
+    (objetivo) => {
+      objetivo.vida += 10;
+      Personaje.validarExcesos(objetivo);
+      console.log(`${objetivo.nombre} ha recuperado 10 de vida.`);
+    }
+  );
+}
+function crearPerdidaTurno() {
+  return new EfectoContinuo(
+    "Turno",
+    "Perde el turno.",
+    1,
+    () => {
+      Juego.cambiarTurno();
+    }
+  );
+}
+
+//
+
+
+
+
+// Effectos fijos
 function crearAtaque(Aumento) {
   return new EfectoFijo(
     "Ataque",
@@ -433,19 +602,6 @@ function crearDefensa(aumenta) {
       objetivo.defensa -= aumenta;
       Personaje.validarExcesos(objetivo);
       console.log(`reduce la defensa de ${objetivo.nombre} por 15`);
-    }
-  );
-}
-
-function crearRegeneracion() {
-  return new EfectoContinuo(
-    "Regeneración",
-    "Recupera 10 de vida por turno durante 3 turnos.",
-    3,
-    (objetivo) => {
-      objetivo.vida += 10;
-      Personaje.validarExcesos(objetivo);
-      console.log(`${objetivo.nombre} ha recuperado 10 de vida.`);
     }
   );
 }
