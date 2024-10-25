@@ -258,6 +258,14 @@ class Calaverson extends Personaje {
   }
 }
 
+class Paladin extends Personaje {
+  constructor(nombre, ataque, defensa, velocidad) {
+    super(nombre, ataque, defensa, velocidad);
+    this.habilidades.push(crearLlamadoCeleste());
+    this.habilidades.push(crearRevivir());
+  }
+}
+
 
 
 // Reptil
@@ -295,6 +303,10 @@ const hoz_2 = new Hoz ("Hoz ", 50, 20, 200);
 //Samurai
 const samurai_1 = new Samurai ("Samurai ", 50, 20, 200);
 const samurai_2 = new Samurai ("Samurai ", 50, 20, 200);
+
+//Paladin
+const paladin_1 = new Paladin ("Paladin ", 50, 20, 200);
+const paladin_2 = new Paladin ("Paladin ", 50, 20, 200);
 
 //Calaverson
 const calaverson_1 = new Calaverson ("Calaverson ", 50, 20, 200);
