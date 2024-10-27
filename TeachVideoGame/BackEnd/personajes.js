@@ -86,8 +86,6 @@ class Personaje {
     mostrarDaño(daño, objetivo, 'orange');
     objetivo.validarNegativos();
 
-    console.warn('actualizar turno de  atacar')
-    actualizarInterfaz();
     Juego.cambiarTurno();
     return true;
   }
@@ -135,8 +133,6 @@ class Personaje {
    
 
       objetivo.validarNegativos();
-      console.warn('actualizar interfaz llamado de usar habilidad')
-      actualizarInterfaz();
       Juego.cambiarTurno();
       return true;
     } else {
@@ -146,7 +142,7 @@ class Personaje {
   }
 
   //Metodo para activar los efectos de los personajes
-  activarEfectos() {
+  activarEfectos(callback) {
     // Construct an array with effects and their respective details
     const efectos = this.debilitamiento.map((efecto) => {
       let damage, color;
@@ -167,12 +163,17 @@ class Personaje {
         mostrarDaño(damage, this, color);
         console.warn('actualizar interfaz llamado de efectos')
         actualizarInterfaz();
-      }, index * 1500); // Longer delay to allow animation to complete
+      }, (index + 1) * 1000); // Longer delay to allow animation to complete
     });
     
     // Process fortification effects after all debuffs
     setTimeout(() => {
       this.fortalecimiento.forEach((efecto) => efecto.activar(this));
+      if (callback){
+        // Call the callback function after all effects have been processed
+        console.warn(' callback llamado de efectos validar')
+        callback();
+      } 
     }, efectos.length * 1500);
   }
 }

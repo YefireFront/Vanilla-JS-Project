@@ -45,7 +45,9 @@
     font-size: 36px;
     color: #ff4d4d; /* Bright color for visibility */
     font-weight: bold;
-    animation: aparicionDaño 1s ease-out;
+
+    /*$ tiewmpo importante de match  */
+    animation: aparicionDaño 0.5s ease-out forwards;
 }
 
 .cantidadDaño {

@@ -468,9 +468,7 @@ class EfectoContinuo extends Efecto {
     this.duracion--;
     if (this.duracion === 0) {
       console.log(`${this.nombre} ha terminado.`);
-      objetivo.debilitamiento = objetivo.debilitamiento.filter(
-        (efecto) => efecto !== this
-      );
+      objetivo.debilitamiento = objetivo.debilitamiento.filter( (efecto) => efecto !== this   );
     }
   }
 }

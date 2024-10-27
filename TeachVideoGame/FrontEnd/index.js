@@ -382,7 +382,7 @@ function actualizarDebuff() {
         personaje.querySelector(".seccionDebufVeneno").style.display = "none";
         personaje.querySelector(".seccionDebufTurno").style.display = "none";
         personaje.querySelector(".porcentajeVida").classList.remove("efectoVeneno");
-        personaje.querySelector(".porcentajeVida").classList.remove("efectoQuemadura");
+        personaje.querySelector(".seccionVida").classList.remove("efectoQuemadura");
       }
     }
   });
@@ -424,10 +424,9 @@ function mostrarDaño(daño, personajeObjetivo, colorArgument = 'default') {
 
     cantidadDaño.textContent = daño > 0 ? `${daño}` : `MISS`;
 
-    // Optional: Automatically hide after the animation duration
     setTimeout(() => {
       seccionDaño.style.display = "none";
-    }, 1000); // Matches the 1s duration in CSS
+    }, 500); // Matches the 1s duration in CSS
   }
 }
 

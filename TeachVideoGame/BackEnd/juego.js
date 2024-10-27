@@ -83,14 +83,33 @@ class Juego {
     }
     this.personajeActual = personajeSiguiente;
 
-    // Activar efectos y validar estados negativos
-    this.personajeActual.activarEfectos();
-    Personaje.validarExcesos(this.personajeActual);
 
-    // Si el personaje muere después de los efectos, cambiar turno nuevamente
-    if (this.personajeActual.estaMuerto()) {
-        this.cambiarTurno();
-    }
+
+
+
+
+    // // Activar efectos y validar estados negativos
+    // this.personajeActual.activarEfectos();
+    // Personaje.validarExcesos(this.personajeActual);
+    
+    // // Si el personaje muere después de los efectos, cambiar turno nuevamente
+    // if (this.personajeActual.estaMuerto()) {
+    //     this.cambiarTurno();
+    // }
+
+
+
+
+
+        // Wait for the activarEfectos method to fully complete its effects, then proceed
+        this.personajeActual.activarEfectos(() => {
+          Personaje.validarExcesos(this.personajeActual);
+          // Use a ternary operator to check death and decide action
+          this.personajeActual.estaMuerto() ? this.cambiarTurno() : actualizarInterfaz();
+      });
+
+
+    
 
     // Actualizar la interfaz de usuario
     console.warn('actualizar interfaz llamado de cambiar turno')
@@ -112,7 +131,7 @@ class Juego {
 
 Juego.agregarPersonaje(1, antorcha_1);
 Juego.agregarPersonaje(1, reptil_1);
-Juego.agregarPersonaje(1, pandawa_1);
+Juego.agregarPersonaje(1, hoz_1);
 
 Juego.agregarPersonaje(2, hoz_2);
 Juego.agregarPersonaje(2, samurai_2);
