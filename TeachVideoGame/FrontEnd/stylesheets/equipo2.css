@@ -11,6 +11,12 @@
   .ubicacionPersonajeEnemigo {
     left: -120px;
     bottom: 0;
+
+    img{
+      position: relative;
+      left: 20px;
+      top: -30px;
+    }
   }
 
   .seccionVida {

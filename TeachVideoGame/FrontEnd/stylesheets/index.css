@@ -122,6 +122,14 @@ body {
   /* border: 1px solid #8f0202; */
   /* background: #9403039a; */
   position: absolute;
+  pointer-events: none;
+  
+  img{
+    width: 130%;
+    /* border: 1px solid #ffffff; */
+  }
+
+
 }
 
 .seccionDebufQuemadura {

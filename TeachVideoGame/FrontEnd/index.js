@@ -139,15 +139,30 @@ function crearPersonaje(personaje, escenario, posicion) {
   ubicacionPersonajeEnemigo.classList.add("ubicacionPersonajeEnemigo");
   personajeDiv.appendChild(ubicacionPersonajeEnemigo);
 
-  const imagenPersonajeEnemigo = document.createElement("img");
-  imagenPersonajeEnemigo.src = `./FrontEnd/assets/img/Personajes/${personaje.id}/Quieto.gif`;
-  imagenPersonajeEnemigo.setAttribute("draggable",false)
-  ubicacionPersonajePrincipal.appendChild(imagenPersonajeEnemigo);
+  const imagenPersonajePrincipal = document.createElement("img");
+  imagenPersonajePrincipal.src = `./FrontEnd/assets/img/Personajes/${personaje.id}/Quieto.gif`;
+  imagenPersonajePrincipal.classList.add("imagenPersonajePrincipal");
+  imagenPersonajePrincipal.setAttribute("draggable",false)
+  ubicacionPersonajePrincipal.appendChild(imagenPersonajePrincipal);
 
-  imagenPersonajeEnemigo.addEventListener("click", (e) => {
+  const imagenPersonajeEnemigo = document.createElement("img");
+  imagenPersonajeEnemigo.src = ``;
+  imagenPersonajeEnemigo.classList.add("imagenPersonajeEnemigo");
+  imagenPersonajeEnemigo.setAttribute("draggable",false);
+  ubicacionPersonajeEnemigo.appendChild(imagenPersonajeEnemigo);
+
+  imagenPersonajePrincipal.addEventListener("click", (e) => {
     if (habilidadSeleccionada) {
       if (habilidadSeleccionada === "Atacar") {
+       let idAtacante = Juego.personajeActual.id;  
+       let idObjetibo = personaje.id;
+
         Juego.personajeActual.Atacar(personaje);
+
+
+        animacionBatalla( idAtacante , idObjetibo )
+
+        
         habilidadSeleccionada = null;
       } else {
         Juego.personajeActual.usarHabilidad(habilidadSeleccionada, personaje);
@@ -432,5 +447,37 @@ function mostrarDaño(daño, personajeObjetivo, colorArgument = 'default') {
 
 
 
-console.warn('actualizar interfaz llamado de inicio')
+
+
 actualizarInterfaz();
+
+
+
+
+
+function animacionBatalla(idAtacante, idObjetivo) {
+  const imagenAtacante = document.getElementById(idAtacante).querySelector(".imagenPersonajePrincipal");
+  const imagenAtacando = document.getElementById(idObjetivo).querySelector(".imagenPersonajeEnemigo");
+  const imagenAtacado = document.getElementById(idObjetivo).querySelector(".imagenPersonajePrincipal");
+
+  console.log(imagenAtacante)
+  console.log(imagenAtacando)
+  console.log(imagenAtacado)
+
+  imagenAtacante.src = ``;
+  imagenAtacando.src = `./FrontEnd/assets/img/Personajes/${idAtacante}/Atacando.gif`;
+  imagenAtacado.classList.add("efectoDaño");
+  setTimeout(() => {
+    imagenAtacante.src = `./FrontEnd/assets/img/Personajes/${idAtacante}/Quieto.gif`;
+    imagenAtacando.src=``;
+
+
+  }, 1000);
+
+
+
+
+
+
+ 
+}

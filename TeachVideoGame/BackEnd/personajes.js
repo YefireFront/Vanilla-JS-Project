@@ -316,4 +316,4 @@ const paladin_2 = new Paladin ("Paladin ", 50, 20, 200);
 
 //Calaverson
 const calaverson_1 = new Calaverson ("Calaverson ", 50, 20, 200);
-const calaverson_2 = new Calaverson ("Calaverson ", 50, 20, 201);
+const calaverson_2 = new Calaverson ("Calaverson ", 50, 20, 2010);

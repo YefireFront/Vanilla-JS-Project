@@ -11,8 +11,14 @@
   }
 
   .ubicacionPersonajeEnemigo {
-    right: -110px;
+    right: -130px;
     top: 0;
+
+    img{
+      position: relative;
+      left: -50px;
+      top: -30px;
+    }
   }
 
   /* Condiciones */
