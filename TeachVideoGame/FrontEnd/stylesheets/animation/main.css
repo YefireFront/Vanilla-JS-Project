@@ -1,278 +1,252 @@
-@keyframes daño {
-    0% {
+@keyframes efectoDaño {
+  0% {
       filter: invert(100%);
-    }
-    50% {
-      filter: invert(0%);
-    }
-    70% {
-      filter: invert(100%);
-    }
-    100% {
-      filter: invert(0%);
-    }
   }
-  
-  @keyframes poisonEffect {
-    0% {
+  50% {
+      filter: invert(0%);
+  }
+  70% {
+      filter: invert(100%);
+  }
+  100% {
+      filter: invert(0%);
+  }
+}
+
+@keyframes efectoVeneno {
+  0% {
       filter: hue-rotate(0deg) brightness(100%) blur(0px);
-    }
-    25% {
+  }
+  25% {
       filter: hue-rotate(90deg) brightness(80%) blur(0.5px);
-    }
-    50% {
+  }
+  50% {
       filter: hue-rotate(-90deg) brightness(60%) blur(1px);
-    }
-    75% {
-      filter: hue-rotate(90deg) brightness(80%) blur(0.5px);
-    }
-    100% {
-      filter: hue-rotate(0deg) brightness(100%) blur(0px);
-    }
   }
-  
-  @keyframes healingEffect {
-    0% {
-      /* transform: scale(1); */
-      filter: brightness(100%) blur(1px) drop-shadow(0 0 0 rgba(0, 255, 0, 0))  ;
-      opacity: 1;
-    }
-    25% {
-      /* transform: scale(1.05); */
-      filter: brightness(130%) blur(1px) drop-shadow(0 10px 10px rgba(0, 255, 0, 0.5));
-      opacity: 0.9;
-    }
-    50% {
-      /* transform: scale(1.1); */
-      filter: brightness(160%) blur(1px) drop-shadow(0 20px 20px rgba(0, 255, 0, 0.7));
-      opacity: 0.7;
-    }
-    75% {
-      /* transform: scale(1.05); */
-      filter: brightness(130%) blur(1px) drop-shadow(0 10px 10px rgba(0, 255, 0, 0.5));
-      opacity: 0.9;
-    }
-    100% {
-      /* transform: scale(1); */
+  75% {
+      filter: hue-rotate(90deg) brightness(80%) blur(0.5px);
+  }
+  100% {
+      filter: hue-rotate(0deg) brightness(100%) blur(0px);
+  }
+}
+
+@keyframes efectoCuracion {
+  0% {
       filter: brightness(100%) blur(1px) drop-shadow(0 0 0 rgba(0, 255, 0, 0));
       opacity: 1;
-    }
   }
-  
-  @keyframes ghostEffect {
-    0% {
+  25% {
+      filter: brightness(130%) blur(1px) drop-shadow(0 10px 10px rgba(0, 255, 0, 0.5));
+      opacity: 0.9;
+  }
+  50% {
+      filter: brightness(160%) blur(1px) drop-shadow(0 20px 20px rgba(0, 255, 0, 0.7));
+      opacity: 0.7;
+  }
+  75% {
+      filter: brightness(130%) blur(1px) drop-shadow(0 10px 10px rgba(0, 255, 0, 0.5));
+      opacity: 0.9;
+  }
+  100% {
+      filter: brightness(100%) blur(1px) drop-shadow(0 0 0 rgba(0, 255, 0, 0));
+      opacity: 1;
+  }
+}
+
+@keyframes efectoFantasma {
+  0% {
       filter: brightness(80%) saturate(60%) grayscale(20%) blur(2px);
       opacity: 0.6;
-    }
-  
-    50% {
+  }
+  50% {
       filter: brightness(70%) saturate(40%) grayscale(30%) blur(2px);
       opacity: 0.5;
-    }
-    100% {
+  }
+  100% {
       filter: brightness(60%) saturate(20%) grayscale(40%) blur(1px);
       opacity: 0.6;
-    }
   }
-  
-  @keyframes temblor {
-    0% {
+}
+
+@keyframes efectoTemblor {
+  0% {
       transform: translate(0, 0);
-    }
-    25% {
+  }
+  25% {
       transform: translate(-2px, 2px);
-    }
-    50% {
+  }
+  50% {
       transform: translate(2px, -2px);
-    }
-    75% {
+  }
+  75% {
       transform: translate(-2px, -2px);
-    }
-    100% {
+  }
+  100% {
       transform: translate(2px, 2px);
-    }
   }
-  
-  @keyframes parpadeo{
-    0%{
+}
+
+@keyframes efectoParpadeo {
+  0% {
       opacity: 1;
-    }
-  
-    25%{
+  }
+  25% {
       opacity: 0.5;
-    }
-  
-    50%{
-      opacity: 1;
-    }
-  
-    75%{
+  }
+  50% {
+      opacity: 0;
+  }
+  75% {
       opacity: 0.5;
-    }
-  
-    100%{
+  }
+  100% {
       opacity: 0.8;
-    }
   }
-  
-  @keyframes distortion {
-    0% {
+}
+
+@keyframes efectoDistorsion {
+  0% {
       opacity: 0;
       transform: scale(1);
       filter: blur(0px);
-    }
-    20% {
+  }
+  20% {
       opacity: 0.8;
       transform: scale(1.05) skew(5deg, 5deg);
       filter: blur(3px) brightness(1.2) contrast(1.5);
-    }
-    50% {
+  }
+  50% {
       opacity: 0.6;
       transform: scale(1.1) skew(-3deg, -3deg);
       filter: blur(6px) brightness(1.4) contrast(1.8);
-    }
-    80% {
+  }
+  80% {
       opacity: 0.3;
       transform: scale(1.05) skew(2deg, 2deg);
       filter: blur(3px) brightness(1.2) contrast(1.5);
-    }
-    100% {
+  }
+  100% {
       opacity: 0;
       transform: scale(1);
       filter: blur(0px);
-    }
   }
-  
-  
-  
-  
-  @keyframes rotate-border {
-    0% {
+}
+
+@keyframes girarBorde {
+  0% {
       border-image: linear-gradient(45deg, rgb(0, 0, 0), rgb(255, 255, 255), rgb(0, 0, 0), rgb(255, 255, 255)) 1;
-    }
-    25% {
+  }
+  25% {
       border-image: linear-gradient(135deg, rgb(255, 255, 255), rgb(0, 0, 0), rgb(255, 255, 255), rgb(0, 0, 0)) 1;
-    }
-    50% {
+  }
+  50% {
       border-image: linear-gradient(225deg, rgb(0, 0, 0), rgb(255, 255, 255), rgb(0, 0, 0), rgb(255, 255, 255)) 1;
-    }
-    75% {
+  }
+  75% {
       border-image: linear-gradient(315deg, rgb(255, 255, 255), rgb(0, 0, 0), rgb(255, 255, 255), rgb(0, 0, 0)) 1;
-    }
-    100% {
+  }
+  100% {
       border-image: linear-gradient(405deg, rgb(0, 0, 0), rgb(255, 255, 255), rgb(0, 0, 0), rgb(255, 255, 255)) 1;
-    }
   }
-  
-  
-  @keyframes soporte {
-    0% {
+}
+
+@keyframes efectoSoporte {
+  0% {
       filter: drop-shadow(4px 4px 6px rgba(0, 153, 255, 0.7)) blur(1.5px);
-      /* transform: scale(1); */
-    }
-    25% {
+  }
+  25% {
       filter: drop-shadow(3px 3px 8px rgba(41, 113, 206, 0.8)) blur(1.2px);
-      /* transform: scale(1.05); */
-    }
-    50% {
+  }
+  50% {
       filter: drop-shadow(3px 3px 10px rgba(0, 225, 255, 0.9)) blur(1.5px);
-      /* transform: scale(1.1); */
-    }
-    75% {
+  }
+  75% {
       filter: drop-shadow(5px 5px 12px rgb(17, 108, 188)) blur(1.5px);
-      /* transform: scale(1.08); */
-    }
-    100% {
+  }
+  100% {
       filter: drop-shadow(4px 4px 6px rgba(0, 153, 255, 0.7)) blur(1.5px);
-      /* transform: scale(1); */
-    }
   }
-  
-  
-  @keyframes fuego {
-    0% {
-      filter: drop-shadow(5px 5px 4px  rgb(255, 69, 0)) blur(1px)   saturate(100%) hue-rotate(0deg) ; /* Rojo anaranjado */
-    }
-    25% {
-      filter: drop-shadow(5px 5px 6px  rgb(255, 140, 0)) blur(1.1px)  saturate(200%) hue-rotate(-10deg); /* Naranja intenso */
-    }
-    50% {
-      filter: drop-shadow(5px 5px 10px  rgb(255, 0, 0)) blur(1.2px)  saturate(300%) hue-rotate(-15deg) ; /* Rojo puro */
-    }
-    75% {
-      filter: drop-shadow(5px 5px 6px  rgb(255, 99, 71)) blur(1.1px)  saturate(250%) hue-rotate(10deg) ; /* Tomate (rojo suave) */
-    }
-    100% {
-      filter: drop-shadow(5px 5px 4px  rgb(255, 69, 0)) blur(1px)   saturate(200%) hue-rotate(0deg); /* Rojo anaranjado */
-    }
+}
+
+@keyframes efectoQuemadura {
+  0% {
+      filter: drop-shadow(5px 5px 4px rgb(255, 69, 0)) blur(1px) saturate(100%) hue-rotate(0deg);
   }
-  
-  
-  @keyframes fireEffect {
-    0% {
-      filter: brightness(100%) saturate(100%) hue-rotate(0deg) /*blur(0px);
-      /* transform: scale(1); */
-    }
-    20% {
-      filter: brightness(150%) saturate(200%) hue-rotate(-10deg) /*blur(1px);
-      /* transform: scale(1.02); */
-    }
-    40% {
-      filter: brightness(180%) saturate(250%) hue-rotate(10deg) /*blur(2px);
-      /* transform: scale(1.05); */
-    }
-    60% {
-      filter: brightness(220%) saturate(300%) hue-rotate(-15deg) /*blur(3px);
-      /* transform: scale(1.07); */
-    }
-    80% {
-      filter: brightness(180%) saturate(250%) hue-rotate(10deg) /*blur(2px);
-      /* transform: scale(1.05); */
-    }
-    100% {
-      filter: brightness(150%) saturate(200%) hue-rotate(0deg) /*blur(1px);
-      /* transform: scale(1); */
-    }
+  25% {
+      filter: drop-shadow(5px 5px 6px rgb(255, 140, 0)) blur(1.1px) saturate(200%) hue-rotate(-10deg);
   }
-  
-  
-  
-  
-  
-  .burnEffect{
-    animation:  fuego 1s linear  1.2s  infinite
+  50% {
+      filter: drop-shadow(5px 5px 10px rgb(255, 0, 0)) blur(1.2px) saturate(300%) hue-rotate(-15deg);
   }
-  
-  .daño{
-    animation: daño 0.5s linear  1.2s  infinite, temblor 0.1s linear  1.2s  infinite;
+  75% {
+      filter: drop-shadow(5px 5px 6px rgb(255, 99, 71)) blur(1.1px) saturate(250%) hue-rotate(10deg);
   }
-  
-  .poisonEffect{
-    animation: poisonEffect 1s linear  1.2s  infinite;
+  100% {
+      filter: drop-shadow(5px 5px 4px rgb(255, 69, 0)) blur(1px) saturate(200%) hue-rotate(0deg);
   }
-  
-  .parpadeo{
-    animation: parpadeo .3s linear  1s  forwards;
+}
+
+
+@keyframes efectoTurno {
+  0% {
+      filter: drop-shadow(4px 4px 6px rgba(0, 153, 255, 0.7));
   }
-  
-  
-  .distortion{
-    animation: distortion .5s linear  1.2s  ;
+  25% {
+      filter: drop-shadow(3px 3px 8px rgba(41, 113, 206, 0.8));
   }
-  
-  .temblor{
-    animation: temblor 0.1s linear  1.2s  infinite;
+  50% {
+      filter: drop-shadow(3px 3px 10px rgba(0, 225, 255, 0.9));
   }
-  
-  .fantasma{
-    animation: ghostEffect 1s linear  1.2s  infinite;
+  75% {
+      filter: drop-shadow(5px 5px 12px rgb(17, 108, 188));
   }
-  
-  
-  .soporte {
-    animation: soporte 0.5s infinite;
+  100% {
+      filter: drop-shadow(4px 4px 6px rgba(0, 153, 255, 0.7));
   }
-  
-  .healingEffect{
-    animation: healingEffect 1s linear  1.2s  infinite;
+}
+
+.efectoQuemadura {
+  animation: efectoQuemadura 1s linear 1.2s infinite;
+}
+
+
+.efectoDaño {
+  animation: efectoDaño 0.5s linear 1.2s infinite, efectoTemblor 0.1s linear 1.2s infinite;
+}
+
+.efectoVeneno {
+  animation: efectoVeneno 1s linear 1.2s infinite;
+  p{
+    color: violet;
+    font-weight: bold;
   }
+}
+
+.efectoParpadeo {
+  animation: efectoParpadeo 0.3s linear 1s infinite;
+}
+
+.efectoDistorsion {
+  animation: efectoDistorsion 0.5s linear 1.2s infinite;
+}
+
+.efectoTemblor {
+  animation: efectoTemblor 0.1s linear 1.2s infinite;
+}
+
+.efectoFantasma {
+  animation: efectoFantasma 1s linear 1.2s infinite;
+}
+
+.efectoSoporte {
+  animation: efectoSoporte 0.5s infinite;
+}
+
+.efectoCuracion {
+  animation: efectoCuracion 1s linear 1.2s infinite;
+}
+
+.efectoTurno {
+  animation: efectoTurno 0.5s infinite;
+}
