@@ -86,6 +86,7 @@ class Personaje {
     mostrarDaño(daño, objetivo, 'orange');
     objetivo.validarNegativos();
 
+    console.warn('actualizar turno de  atacar')
     actualizarInterfaz();
     Juego.cambiarTurno();
     return true;
@@ -134,6 +135,7 @@ class Personaje {
    
 
       objetivo.validarNegativos();
+      console.warn('actualizar interfaz llamado de usar habilidad')
       actualizarInterfaz();
       Juego.cambiarTurno();
       return true;
@@ -163,6 +165,8 @@ class Personaje {
       setTimeout(() => {
         efecto.activar(this);
         mostrarDaño(damage, this, color);
+        console.warn('actualizar interfaz llamado de efectos')
+        actualizarInterfaz();
       }, index * 1500); // Longer delay to allow animation to complete
     });
     

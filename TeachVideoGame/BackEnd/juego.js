@@ -47,6 +47,7 @@ class Juego {
   static cambiarTurno() {
     // Verificar si hay un equipo que ha ganado
     if (this.verificarVictoria()) {
+      console.warn('actualizar interfaz llamado de victoria')
         actualizarInterfaz();
         console.log("Fin de la partida.");
         return;
@@ -92,6 +93,7 @@ class Juego {
     }
 
     // Actualizar la interfaz de usuario
+    console.warn('actualizar interfaz llamado de cambiar turno')
     actualizarInterfaz();
 }
 

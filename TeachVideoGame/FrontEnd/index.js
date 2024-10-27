@@ -348,19 +348,36 @@ function actualizarDebuff() {
   allPersonajesHMTL.forEach((personaje) => {
     const personajeObjeto = allPersonajesObjetos.find((personajeObjeto) => personajeObjeto.id == personaje.id);
     if (personajeObjeto) {
-      if (personajeObjeto.debilitamiento.length > 0 && !personajeObjeto.estaMuerto()) {
-        personajeObjeto.debilitamiento.forEach((efecto) => {
-          if (efecto.nombre === "Quemadura") {
-            personaje.querySelector(".seccionDebufQuemadura").style.display = "block";
-            personaje.querySelector(".seccionVida").classList.add("efectoQuemadura");
-          }
-          if (efecto.nombre === "Veneno") {
+      if (!personajeObjeto.estaMuerto()) {
+        
+        const tieneQuemadura = personajeObjeto.debilitamiento.some(efecto => efecto.nombre === "Quemadura");
+        const tieneVeneno = personajeObjeto.debilitamiento.some(efecto => efecto.nombre === "Veneno");
+        const tieneTurno = personajeObjeto.debilitamiento.some(efecto => efecto.nombre === "Turno");
 
-            personaje.querySelector(".seccionDebufVeneno").style.display = "block";
-            personaje.querySelector(".porcentajeVida").classList.add("efectoVeneno");
-          }
-        });
+        if (tieneQuemadura) {
+          personaje.querySelector(".seccionDebufQuemadura").style.display = "block";
+          personaje.querySelector(".seccionVida").classList.add("efectoQuemadura");
+        } else {
+          personaje.querySelector(".seccionDebufQuemadura").style.display = "none";
+          personaje.querySelector(".seccionVida").classList.remove("efectoQuemadura");
+        }
+
+        if (tieneVeneno) {
+          personaje.querySelector(".seccionDebufVeneno").style.display = "block";
+          personaje.querySelector(".porcentajeVida").classList.add("efectoVeneno");
+        } else {
+          personaje.querySelector(".seccionDebufVeneno").style.display = "none";
+          personaje.querySelector(".porcentajeVida").classList.remove("efectoVeneno");
+        }
+
+        if (tieneTurno) {
+          personaje.querySelector(".seccionDebufTurno").style.display = "block";
+        } else {
+          personaje.querySelector(".seccionDebufTurno").style.display = "none";
+        }
+
       } else {
+        // Reset everything if the character is dead
         personaje.querySelector(".seccionDebufQuemadura").style.display = "none";
         personaje.querySelector(".seccionDebufVeneno").style.display = "none";
         personaje.querySelector(".seccionDebufTurno").style.display = "none";
@@ -416,5 +433,5 @@ function mostrarDaño(daño, personajeObjetivo, colorArgument = 'default') {
 
 
 
-
+console.warn('actualizar interfaz llamado de inicio')
 actualizarInterfaz();
