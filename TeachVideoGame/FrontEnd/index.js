@@ -258,9 +258,7 @@ function actualizarVida() {
   const allPersonajesObjetos = Juego.equipo1.concat(Juego.equipo2);
 
   allPersonajesHMTL.forEach((personaje) => {
-    const personajeObjeto = allPersonajesObjetos.find(
-      (personajeObjeto) => personajeObjeto.id == personaje.id
-    );
+    const personajeObjeto = allPersonajesObjetos.find( (personajeObjeto) => personajeObjeto.id == personaje.id  );
     if (personajeObjeto) {
       let porcentajeVida = personaje.querySelector(".porcentajeVida");
       let numeroPorcentaje = personaje.querySelector(".numeroPorcentaje");
@@ -319,14 +317,10 @@ function actualizarSeccionEstadisticas() {
   const allPersonajesObjetos = Juego.equipo1.concat(Juego.equipo2);
 
   allPersonajesHMTL.forEach((personaje) => {
-    const personajeObjeto = allPersonajesObjetos.find(
-      (personajeObjeto) => personajeObjeto.id == personaje.id
-    );
+    const personajeObjeto = allPersonajesObjetos.find((personajeObjeto) => personajeObjeto.id == personaje.id );
     if (personajeObjeto) {
-      personaje.querySelector(".cantidadDefensa").textContent =
-        personajeObjeto.defensa;
-      personaje.querySelector(".cantidadAtaque").textContent =
-        personajeObjeto.ataque;
+      personaje.querySelector(".cantidadDefensa").textContent =  personajeObjeto.defensa;
+      personaje.querySelector(".cantidadAtaque").textContent =   personajeObjeto.ataque;
     }
   });
 }
@@ -336,9 +330,7 @@ function actualizarseccionTurno() {
   const allPersonajesObjetos = Juego.equipo1.concat(Juego.equipo2);
 
   allPersonajesHMTL.forEach((personaje) => {
-    const personajeObjeto = allPersonajesObjetos.find(
-      (personajeObjeto) => personajeObjeto.id == personaje.id
-    );
+    const personajeObjeto = allPersonajesObjetos.find((personajeObjeto) => personajeObjeto.id == personaje.id );
     if (personajeObjeto) {
       if (Juego.personajeActual.id === personajeObjeto.id) {
         personaje.querySelector(".seccionTurno").style.display = "flex";
