@@ -521,11 +521,6 @@ function animacionBatalla(idAtacante, idObjetivo) {
 }
 
 
-function reproducirSonido(nombreArchivo) {
-  const rutaSonido = `./FrontEnd/assets/sounds/${nombreArchivo}`;
-  const sonido = new Audio(rutaSonido);
-  sonido.play();
-}
 
 
 
