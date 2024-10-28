@@ -99,23 +99,18 @@ class Personaje {
 
     if (habilidad) {
       //Valoidar que si la habilidad es de daño y no se use en un aliado
-      if (habilidad.tipo === "Daño" && this.equipo === objetivo.equipo) {
-        console.log(
-          `${this.nombre} no puede usar una habilidad de daño en su propio equipo.`
-        );
+      if ((habilidad.tipo === "Daño"|| habilidad.tipo == 'DañoMasivo' ) && this.equipo === objetivo.equipo) {
+        console.log( `${this.nombre} no puede usar una habilidad de daño en su propio equipo.`  );
         return false;
       }
 
       //vailidar si la habilidad esta en cooldown
       if (habilidad.cooldownActual > 0) {
-        console.log(
-          `estas en cooldown. Espera ${habilidad.cooldownActual} turnos más.`
-        );
+        console.log(  `estas en cooldown. Espera ${habilidad.cooldownActual} turnos más.`   );
         return false;
       }
 
       if (habilidad.nombre === "Revivir") {
-        //Activar la habilidad
         habilidad.activar(this, objetivo);
         objetivo.validarNegativos();
         Juego.cambiarTurno();
@@ -302,7 +297,7 @@ const dragon_2 = new Dragon ("Dragon ", 50, 20, 100);
 
 //Hoz
 const hoz_1 = new Hoz ("Hoz ", 50, 20, 200);
-const hoz_2 = new Hoz ("Hoz ", 50, 20, 200);
+const hoz_2 = new Hoz ("Hoz ", 50, 20, 200000);
 
 //Samurai
 const samurai_1 = new Samurai ("Samurai ", 50, 20, 200);

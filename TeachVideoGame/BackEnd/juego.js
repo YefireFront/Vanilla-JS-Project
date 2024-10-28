@@ -114,9 +114,7 @@ class Juego {
 
 Juego.agregarPersonaje(1, antorcha_1);
 Juego.agregarPersonaje(1, reptil_1);
-Juego.agregarPersonaje(1, hoz_1
-
-);
+Juego.agregarPersonaje(1, thunder_1);
 
 Juego.agregarPersonaje(2, hoz_2);
 Juego.agregarPersonaje(2, samurai_2);

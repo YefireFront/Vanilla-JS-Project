@@ -161,22 +161,19 @@ function crearPersonaje(personaje, escenario, posicion) {
   imagenPersonajePrincipal.addEventListener("click", (e) => {
     let idAtacante = Juego.personajeActual.id;  
     let idObjetibo = personaje.id;
-    
-    if (habilidadSeleccionada) {
-      if (habilidadSeleccionada === "Atacar") {
 
-        Juego.personajeActual.Atacar(personaje);
-
-        animacionBatalla( idAtacante , idObjetibo )  
-        habilidadSeleccionada = null;
-
-      } else {
-            
-        Juego.personajeActual.usarHabilidad(habilidadSeleccionada, personaje);
-        animacionBatalla( idAtacante , idObjetibo )
-        habilidadSeleccionada = null;
+    if (habilidadSeleccionada === "Atacar") {
+      if (Juego.personajeActual.Atacar(personaje)) {
+        animacionBatalla(idAtacante, idObjetibo);
       }
-    }
+      habilidadSeleccionada = null;
+    } else {
+      if (Juego.personajeActual.usarHabilidad(habilidadSeleccionada, personaje)) {
+        animacionBatalla(idAtacante, idObjetibo);
+      }
+      habilidadSeleccionada = null;
+    }   
+ 
   });
 }
 

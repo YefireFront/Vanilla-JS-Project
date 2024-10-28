@@ -10,15 +10,15 @@ class Habilidad {
   }
 
   activar(lanzador, objetivo) {
-    if (this.cooldownActual === 0) {
       this.ejecutarMostrarDaño(lanzador, objetivo);
       this.cooldownActual = this.tiempoDeEspera;
-      this.reproducirSonido(); // Play sound when ability is activated
-    } else {
-      console.log(
-        `${this.nombre} está en cooldown. Espera ${this.cooldownActual} turnos más.`
-      );
-    }
+
+      setTimeout(() => {
+        this.reproducirSonido();
+      }, 800);
+
+
+ 
   }
 
   reproducirSonido() {
@@ -69,10 +69,16 @@ function crear1000Volvios() {
       return equipo.map((personaje) => {
         personaje.vida -= 15;
         Personaje.validarExcesos(lanzador, personaje);
+
+        // Agregar efecto de parálisis al objetivo
+        if (personaje === objetivo) {
+          objetivo.debilitamiento.push(crearParalisis());
+        }
+
         return { cantidad: 15, objetivo: personaje };
       });
     },
-    "1000Voltios.mp3" // Specify the sound file name
+    "1000Voltios.m4a" // Especificar el nombre del archivo de sonido
   );
 }
 
@@ -102,7 +108,8 @@ function crearMordidaToxica() {
       Personaje.validarExcesos(lanzador, objetivo);
       objetivo.debilitamiento.push(crearVeneno());
       return [{ cantidad: 30, objetivo: objetivo }];
-    }
+    },
+    "mordidaToxica.m4a" 
   );
 }
 
@@ -233,7 +240,7 @@ function crearRevivir() {
           { cantidad: 5, objetivo: objetivo, color: 'blue' }
         ];
       } else {
-        console.log(`${lanzador.nombre} no puede usar Revivir en ${objetivo.nombre}.`);
+        console.log(`${objetivo.nombre} no está muerto.`);
         return [];
       }
     }
@@ -571,6 +578,19 @@ function crearPerdidaTurno() {
   );
 }
 
+function crearParalisis() {
+  return new EfectoContinuo(
+    "Paralisis",
+    "El personaje pierde su turno durante un turno.",
+    1,
+    (objetivo) => {
+      console.log(`${objetivo.nombre} está paralizado y pierde su turno.`);
+      Juego.cambiarTurno(); // Cambia el turno automáticamente
+    }
+  );
+}
+
+
 //
 
 
@@ -614,3 +634,4 @@ function crearDefensa(aumenta) {
     }
   );
 }
+
