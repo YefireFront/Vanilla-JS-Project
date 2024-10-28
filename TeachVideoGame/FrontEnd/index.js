@@ -30,7 +30,7 @@ function crearPersonaje(personaje, escenario, posicion) {
   cantidadDaño.textContent = `${personaje.vida}`;
   seccionInfoDaño.appendChild(cantidadDaño);
   personajeDiv.appendChild(seccionInfoDaño);
-  // seccionInfoDaño.style.display = "none";
+  seccionInfoDaño.style.display = "none";
 
   //seccion debuf Quemadura
   const seccionDebufQuemadura = document.createElement("div");
@@ -519,3 +519,18 @@ function animacionBatalla(idAtacante, idObjetivo) {
 
  
 }
+
+
+function reproducirSonido(nombreArchivo) {
+  const rutaSonido = `./FrontEnd/assets/sounds/${nombreArchivo}`;
+  const sonido = new Audio(rutaSonido);
+  sonido.play();
+}
+
+
+
+
+document.getElementById("playSoundButton").addEventListener("click", () => {
+reproducirSonido('sfx_division_crest_reveal.m4a')
+
+});

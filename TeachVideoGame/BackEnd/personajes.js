@@ -153,7 +153,7 @@ class Personaje {
         damage = 5;
         color = 'violet';
       }
-      return { efecto, damage, color };
+      return { efecto, damage, color }; 
     });
     
     // Ensure each effect is processed after the previous one is finished
