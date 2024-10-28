@@ -212,7 +212,7 @@
 
 
 .efectoDaño {
-  animation: efectoDaño 0.5s linear 1.2s infinite, efectoTemblor 0.1s linear 1.2s infinite;
+  animation: efectoDaño 0.5s linear  infinite, efectoTemblor 0.1s linear infinite; 
 }
 
 .efectoVeneno {
@@ -250,3 +250,8 @@
 .efectoTurno {
   animation: efectoTurno 0.5s infinite;
 }
+
+.girarBorde{
+  animation: girarBorde 1s linear infinite;
+}
+

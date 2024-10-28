@@ -69,8 +69,8 @@
   }
 
   .seccionDaño{
-    left:-31px;
-    top: -20px;
+    left: 20px;
+    top: -30px;
     
   }
 
@@ -88,6 +88,13 @@
     left: 10px;
     top: -55px;
   }
+
+  .seccionTurnoCirculo{
+    left:  20px;
+    bottom:-20px;
+    pointer-events: none;
+  }
+
 }
 
 

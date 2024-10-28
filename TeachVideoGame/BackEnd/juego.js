@@ -49,8 +49,6 @@ class Juego {
   static cambiarTurno() {
     // Verificar si hay un equipo que ha ganado
     if (this.verificarVictoria()) {
-      console.warn('actualizar interfaz llamado de victoria')
-        actualizarInterfaz();
         console.log("Fin de la partida.");
         return;
     }
@@ -87,35 +85,18 @@ class Juego {
 
 
 
-
-
-
-    // // Activar efectos y validar estados negativos
-    // this.personajeActual.activarEfectos();
-    // Personaje.validarExcesos(this.personajeActual);
-    
-    // // Si el personaje muere después de los efectos, cambiar turno nuevamente
-    // if (this.personajeActual.estaMuerto()) {
-    //     this.cambiarTurno();
-    // }
-
-
-
-
-
-        // Wait for the activarEfectos method to fully complete its effects, then proceed
-        this.personajeActual.activarEfectos(() => {
-          Personaje.validarExcesos(this.personajeActual);
-          // Use a ternary operator to check death and decide action
-          this.personajeActual.estaMuerto() ? this.cambiarTurno() : actualizarInterfaz();
-      });
+    // Wait for the activarEfectos method to fully complete its effects, then proceed
+    this.personajeActual.activarEfectos(() => {
+     Personaje.validarExcesos(this.personajeActual);
+     this.personajeActual.estaMuerto() ? this.cambiarTurno() : actualizarInterfaz();
+     actualizarSeccionHabilidades()
+          
+    },);
 
 
     
 
-    // Actualizar la interfaz de usuario
-    console.warn('actualizar interfaz llamado de cambiar turno')
-    actualizarInterfaz();
+   
 }
 
 

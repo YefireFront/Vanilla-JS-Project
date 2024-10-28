@@ -142,7 +142,7 @@ class Personaje {
   }
 
   //Metodo para activar los efectos de los personajes
-  activarEfectos(callback) {
+  activarEfectos(callback , callbackHabilidad) {
     // Construct an array with effects and their respective details
     const efectos = this.debilitamiento.map((efecto) => {
       let damage, color;
@@ -151,7 +151,7 @@ class Personaje {
         color = 'red';
       } else if (efecto.nombre === "Veneno") {
         damage = 5;
-        color = 'purple';
+        color = 'violet';
       }
       return { efecto, damage, color };
     });
@@ -166,15 +166,13 @@ class Personaje {
       }, (index + 1) * 1000); // Longer delay to allow animation to complete
     });
     
+    
     // Process fortification effects after all debuffs
     setTimeout(() => {
       this.fortalecimiento.forEach((efecto) => efecto.activar(this));
-      if (callback){
-        // Call the callback function after all effects have been processed
         console.warn(' callback llamado de efectos validar')
         callback();
-      } 
-    }, efectos.length * 1500);
+    }, efectos.length * 2000);
   }
 }
 

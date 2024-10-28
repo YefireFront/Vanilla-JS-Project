@@ -11,6 +11,13 @@ function crearPersonaje(personaje, escenario, posicion) {
   personajeDiv.setAttribute("id", `${personaje.id}`);
   escenario.appendChild(personajeDiv);
 
+  // seccion turno circulo 
+  const seccionTurnoCirculo = document.createElement("div");
+  seccionTurnoCirculo.classList.add("seccionTurnoCirculo");
+  personajeDiv.appendChild(seccionTurnoCirculo);
+  
+
+
 
   //seccion buff
 
@@ -23,7 +30,7 @@ function crearPersonaje(personaje, escenario, posicion) {
   cantidadDaño.textContent = `${personaje.vida}`;
   seccionInfoDaño.appendChild(cantidadDaño);
   personajeDiv.appendChild(seccionInfoDaño);
-  seccionInfoDaño.style.display = "none";
+  // seccionInfoDaño.style.display = "none";
 
   //seccion debuf Quemadura
   const seccionDebufQuemadura = document.createElement("div");
@@ -152,20 +159,21 @@ function crearPersonaje(personaje, escenario, posicion) {
   ubicacionPersonajeEnemigo.appendChild(imagenPersonajeEnemigo);
 
   imagenPersonajePrincipal.addEventListener("click", (e) => {
+    let idAtacante = Juego.personajeActual.id;  
+    let idObjetibo = personaje.id;
+    
     if (habilidadSeleccionada) {
       if (habilidadSeleccionada === "Atacar") {
-       let idAtacante = Juego.personajeActual.id;  
-       let idObjetibo = personaje.id;
 
         Juego.personajeActual.Atacar(personaje);
 
-
-        animacionBatalla( idAtacante , idObjetibo )
-
-        
+        animacionBatalla( idAtacante , idObjetibo )  
         habilidadSeleccionada = null;
+
       } else {
+            
         Juego.personajeActual.usarHabilidad(habilidadSeleccionada, personaje);
+        animacionBatalla( idAtacante , idObjetibo )
         habilidadSeleccionada = null;
       }
     }
@@ -261,12 +269,13 @@ function seleccionarHabilidad(
 
 function actualizarInterfaz() {
   actualizarVida();
-  actualizarSeccionHabilidades();
   actualizarSeccionEstadisticas();
-  actualizarseccionTurno();
   actualizarDebuff();
   actualizarMuerte();
+  actualizarseccionTurno();
 }
+
+
 
 function actualizarVida() {
   const allPersonajesHMTL = document.querySelectorAll(".personaje");
@@ -284,6 +293,7 @@ function actualizarVida() {
 }
 
 function actualizarSeccionHabilidades() {
+  informacion.style.display = "block";
   if (Juego.personajeActual.equipo == 1) {
     informacion.classList.remove("seccionHabilidades_equipo2");
     informacion.classList.add("seccionHabilidades_equipo1");
@@ -348,9 +358,11 @@ function actualizarseccionTurno() {
     const personajeObjeto = allPersonajesObjetos.find((personajeObjeto) => personajeObjeto.id == personaje.id );
     if (personajeObjeto) {
       if (Juego.personajeActual.id === personajeObjeto.id) {
-        personaje.querySelector(".seccionTurno").style.display = "flex";
+        // personaje.querySelector(".seccionTurno").style.display = "flex";
+        personaje.querySelector(".seccionTurnoCirculo").style.display = "flex";
       } else {
-        personaje.querySelector(".seccionTurno").style.display = "none";
+        // personaje.querySelector(".seccionTurno").style.display = "none";
+        personaje.querySelector(".seccionTurnoCirculo").style.display = "none";
       }
     }
   });
@@ -368,6 +380,7 @@ function actualizarDebuff() {
         const tieneQuemadura = personajeObjeto.debilitamiento.some(efecto => efecto.nombre === "Quemadura");
         const tieneVeneno = personajeObjeto.debilitamiento.some(efecto => efecto.nombre === "Veneno");
         const tieneTurno = personajeObjeto.debilitamiento.some(efecto => efecto.nombre === "Turno");
+        const tieneParalisis = personajeObjeto.debilitamiento.some(efecto => efecto.nombre === "Paralisis");
 
         if (tieneQuemadura) {
           personaje.querySelector(".seccionDebufQuemadura").style.display = "block";
@@ -389,6 +402,12 @@ function actualizarDebuff() {
           personaje.querySelector(".seccionDebufTurno").style.display = "block";
         } else {
           personaje.querySelector(".seccionDebufTurno").style.display = "none";
+        }
+
+        if (tieneParalisis){
+          personaje.querySelector(".seccionTurno").style.display = "flex";
+        }else{
+          personaje.querySelector(".seccionTurno").style.display = "none";
         }
 
       } else {
@@ -423,25 +442,25 @@ function actualizarMuerte() {
   });
 }
 
-
 function mostrarDaño(daño, personajeObjetivo, colorArgument = 'default') {
   const personajeHTML = document.getElementById(personajeObjetivo.id);
   if (personajeHTML) {
     const seccionDaño = personajeHTML.querySelector(".seccionDaño");
     const cantidadDaño = seccionDaño.querySelector(".cantidadDaño");
 
-    seccionDaño.style.display = "flex"; // Triggers CSS animation
-    
-    let color = (colorArgument === 'default') ? '#ff9900' : colorArgument;
-    seccionDaño.style.color = color;
-
-
-
-    cantidadDaño.textContent = daño > 0 ? `${daño}` : `MISS`;
-
+    // Delay the display of damage to synchronize with the animation
     setTimeout(() => {
-      seccionDaño.style.display = "none";
-    }, 500); // Matches the 1s duration in CSS
+      seccionDaño.style.display = "flex"; // Triggers CSS animation
+
+      let color = (colorArgument === 'default') ? '#ff9900' : colorArgument;
+      seccionDaño.style.color = color;
+
+      cantidadDaño.textContent = daño > 0 ? `${daño}` : `MISS`;
+
+      setTimeout(() => {
+        seccionDaño.style.display = "none";
+      }, 500); // Matches the 0.5s duration for hiding
+    }, 1000); // Delay for 1 second
   }
 }
 
@@ -450,7 +469,7 @@ function mostrarDaño(daño, personajeObjetivo, colorArgument = 'default') {
 
 
 actualizarInterfaz();
-
+actualizarSeccionHabilidades()
 
 
 
@@ -460,19 +479,38 @@ function animacionBatalla(idAtacante, idObjetivo) {
   const imagenAtacando = document.getElementById(idObjetivo).querySelector(".imagenPersonajeEnemigo");
   const imagenAtacado = document.getElementById(idObjetivo).querySelector(".imagenPersonajePrincipal");
 
-  console.log(imagenAtacante)
-  console.log(imagenAtacando)
-  console.log(imagenAtacado)
+   // Oculta las habilidades al empezar un ataque
+   informacion.style.display = "none";
+
+   // Hide the turno circle immediately when attacking starts
+  const turnCircle = document.getElementById(idAtacante).querySelector(".seccionTurnoCirculo");
+  if (turnCircle) {
+    turnCircle.style.display = "none";
+  }
+
 
   imagenAtacante.src = ``;
   imagenAtacando.src = `./FrontEnd/assets/img/Personajes/${idAtacante}/Atacando.gif`;
-  imagenAtacado.classList.add("efectoDaño");
+  
+
+  //devolvel personaje a su estado inicial
   setTimeout(() => {
     imagenAtacante.src = `./FrontEnd/assets/img/Personajes/${idAtacante}/Quieto.gif`;
     imagenAtacando.src=``;
-
+    
+  }, 1500);
+  
+  
+  //Iniicar animacion de daño
+  setTimeout(() => {
+    imagenAtacado.classList.add("efectoDaño");
 
   }, 1000);
+  
+  //Finalizar animacion de daño
+  setTimeout(() => {
+    imagenAtacado.classList.remove("efectoDaño");
+  }, 2500);
 
 
 

@@ -55,7 +55,7 @@
 
 
   .seccionDaño{
-    right:-31px;
+    right:20px;
     top: -20px;
   }
 
@@ -72,6 +72,12 @@
   .seccionDebufTurno{
     top: -55px;
     right: 10px;
+  }
+
+
+  .seccionTurnoCirculo{
+    right: 20px;
+    bottom:-20px;
   }
 
 
