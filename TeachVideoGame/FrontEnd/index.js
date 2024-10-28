@@ -530,7 +530,3 @@ function reproducirSonido(nombreArchivo) {
 
 
 
-document.getElementById("playSoundButton").addEventListener("click", () => {
-reproducirSonido('sfx_division_crest_reveal.m4a')
-
-});
