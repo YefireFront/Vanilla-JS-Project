@@ -1,21 +1,31 @@
 class Habilidad {
-  constructor(nombre, tiempoDeEspera, tipo, descripcion, efecto) {
+  constructor(nombre, tiempoDeEspera, tipo, descripcion, efecto, sonido) {
     this.nombre = nombre;
     this.tiempoDeEspera = tiempoDeEspera;
     this.tipo = tipo;
     this.descripcion = descripcion;
     this.efecto = efecto;
     this.cooldownActual = 0;
+    this.sonido = sonido; // Add sound file property
   }
 
   activar(lanzador, objetivo) {
     if (this.cooldownActual === 0) {
       this.ejecutarMostrarDaño(lanzador, objetivo);
       this.cooldownActual = this.tiempoDeEspera;
+      this.reproducirSonido(); // Play sound when ability is activated
     } else {
       console.log(
         `${this.nombre} está en cooldown. Espera ${this.cooldownActual} turnos más.`
       );
+    }
+  }
+
+  reproducirSonido() {
+    if (this.sonido) {
+      const rutaSonido = `./FrontEnd/assets/sounds/${this.sonido}`;
+      const audio = new Audio(rutaSonido);
+      audio.play().catch(err => console.error("Error al reproducir el sonido:", err));
     }
   }
 
