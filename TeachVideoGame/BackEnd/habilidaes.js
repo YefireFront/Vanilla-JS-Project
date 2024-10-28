@@ -6,7 +6,7 @@ class Habilidad {
     this.descripcion = descripcion;
     this.efecto = efecto;
     this.cooldownActual = 0;
-    this.sonido = sonido; // Add sound file property
+    this.sonido = sonido; 
   }
 
   activar(lanzador, objetivo) {
@@ -71,7 +71,8 @@ function crear1000Volvios() {
         Personaje.validarExcesos(lanzador, personaje);
         return { cantidad: 15, objetivo: personaje };
       });
-    }
+    },
+    "1000Voltios.mp3" // Specify the sound file name
   );
 }
 
