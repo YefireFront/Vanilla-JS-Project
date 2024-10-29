@@ -467,11 +467,3 @@ function mostrarDaño(daño, personajeObjetivo, colorArgument = 'default') {
 
 actualizarInterfaz();
 actualizarSeccionHabilidades()
-
-
-
-
-function animacionBatalla(idAtacante, idObjetivo) {
-  const imagenAtacante = document.getElementById(idAtacante).querySelector(".imagenPersonajePrincipal");
-  const imagenAtacando = document.getElementById(idObjetivo).querySelector(".imagenPersonajeEnemigo");
-  const imagenAtacado = document.getElementById(idObjetivo).querySelector(".imagenPersonajePrincipal");
