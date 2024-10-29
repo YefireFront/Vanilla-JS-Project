@@ -467,3 +467,32 @@ function mostrarDaño(daño, personajeObjetivo, colorArgument = 'default') {
 
 actualizarInterfaz();
 actualizarSeccionHabilidades()
+
+
+
+
+function animacionBatalla(idAtacante, idObjetivo) {
+  const imagenAtacante = document.getElementById(idAtacante).querySelector(".imagenPersonajePrincipal");
+  const imagenAtacando = document.getElementById(idObjetivo).querySelector(".imagenPersonajeEnemigo");
+  const imagenAtacado = document.getElementById(idObjetivo).querySelector(".imagenPersonajePrincipal");
+
+   // Oculta las habilidades al empezar un ataque
+   informacion.style.display = "none";
+
+   // Hide the turno circle immediately when attacking starts
+  const turnCircle = document.getElementById(idAtacante).querySelector(".seccionTurnoCirculo");
+  if (turnCircle) {
+    turnCircle.style.display = "none";
+  }
+
+
+  imagenAtacante.src = ``;
+  imagenAtacando.src = `./FrontEnd/assets/img/Personajes/${idAtacante}/Atacando.gif`;
+  
+
+  /
+
+
+
+
+
