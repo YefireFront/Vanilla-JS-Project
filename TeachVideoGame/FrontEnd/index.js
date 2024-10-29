@@ -498,6 +498,19 @@ function animacionBatalla(idAtacante, idObjetivo) {
   }, 1500);
   
   
+  //Iniicar animacion de daño
+  setTimeout(() => {
+    imagenAtacado.classList.add("efectoDaño");
+
+  }, 1000);
+  
+  //Finalizar animacion de daño
+  setTimeout(() => {
+    imagenAtacado.classList.remove("efectoDaño");
+  }, 2500);
+
+
+
 
 
 
