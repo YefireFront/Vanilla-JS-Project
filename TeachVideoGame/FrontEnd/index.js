@@ -490,7 +490,20 @@ function animacionBatalla(idAtacante, idObjetivo) {
   imagenAtacando.src = `./FrontEnd/assets/img/Personajes/${idAtacante}/Atacando.gif`;
   
 
-  /
+  //devolvel personaje a su estado inicial
+  setTimeout(() => {
+    imagenAtacante.src = `./FrontEnd/assets/img/Personajes/${idAtacante}/Quieto.gif`;
+    imagenAtacando.src=``;
+    
+  }, 1500);
+  
+  
+
+
+
+ 
+}
+
 
 
 
