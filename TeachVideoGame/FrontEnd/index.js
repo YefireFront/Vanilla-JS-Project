@@ -1,3 +1,9 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const victoriaSection = document.querySelector(".victoria");
+  victoriaSection.style.display = "none";
+});
+
+
 const body = document.querySelector("body");
 const escenario = document.querySelector(".escenario");
 const escenarioEquipo1 = document.querySelector(".escenario__equipo1");
@@ -183,7 +189,7 @@ function crearPersonaje(personaje, escenario, posicion) {
       if (Juego.personajeActual.usarHabilidad(habilidadSeleccionada, personaje)) {
         animacionBatalla(idAtacante, idObjetibo , tipoHabilidad);
       }
-      
+
       habilidadSeleccionada = null;
     }   
  
@@ -534,3 +540,8 @@ function animacionBatalla(idAtacante, idObjetivo, tipoHabilidad = 'daño') {
 
 
 
+Juego.equipo2.forEach((personaje, i) => {
+  personaje.vida = 10;
+})
+
+actualizarInterfaz();

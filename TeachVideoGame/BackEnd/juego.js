@@ -100,16 +100,52 @@ class Juego {
 }
 
 
+  // static verificarVictoria() {
+  //   // Lógica para verificar si un equipo ha ganado
+  //   if (this.equipo1.every((personaje) => personaje.vida <= 0)) {
+  //     console.log("Equipo 2 ha ganado.");
+  //     actualizarInterfaz();
+  //     return true;
+  //   } else if (this.equipo2.every((personaje) => personaje.vida <= 0)) {
+  //     console.log("Equipo 1 ha ganado.");
+  //     actualizarInterfaz();
+  //     return true;
+  //   }
+  // }
+
   static verificarVictoria() {
-    // Lógica para verificar si un equipo ha ganado
+    const victoriaSection = document.querySelector(".victoria");
+    const imagenesVictoria = document.querySelectorAll(".imagenVictoria");
+  
     if (this.equipo1.every((personaje) => personaje.vida <= 0)) {
       console.log("Equipo 2 ha ganado.");
+      actualizarInterfaz();
+      setTimeout(() => {
+        victoriaSection.style.display = "flex";
+        Juego.equipo2.forEach((personaje, index) => {
+          if (index < 3) { // Ensure there are only up to 3 images to replace
+            imagenesVictoria[index].src = `./FrontEnd/assets/img/Personajes/${personaje.id}/Quieto.gif`;
+          }
+        });
+      }, 3000); // Delay for 2 seconds
       return true;
     } else if (this.equipo2.every((personaje) => personaje.vida <= 0)) {
       console.log("Equipo 1 ha ganado.");
+      actualizarInterfaz();
+      setTimeout(() => {
+        victoriaSection.style.display = "flex";
+        Juego.equipo1.forEach((personaje, index) => {
+          if (index < 3) {
+            imagenesVictoria[index].src = `./FrontEnd/assets/img/Personajes/${personaje.id}/Quieto.gif`;
+          }
+        });
+      }, 3000); // Delay for 2 seconds
       return true;
     }
+    return false;
   }
+
+ 
 }
 
 Juego.agregarPersonaje(1, antorcha_1);

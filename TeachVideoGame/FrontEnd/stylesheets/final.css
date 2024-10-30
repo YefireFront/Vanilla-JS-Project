@@ -12,13 +12,6 @@
          /* Prueba con diferentes modos de mezcla */
          /* mix-blend-mode: normal; */
          mix-blend-mode: multiply;
-         /* mix-blend-mode: screen; */
-         /* mix-blend-mode: overlay; */
-         /* mix-blend-mode: color-dodge; */
-         /* mix-blend-mode: color-burn; */
-         /* mix-blend-mode: hard-light; */
-         /* mix-blend-mode: soft-light; */
-
 
     }
 }
@@ -78,6 +71,29 @@
         opacity: 0;
     }
     100% {
-        opacity: 1;
+        opacity: 0.8;
     }
+}
+
+
+.botonReiniciar{
+    position: absolute;
+    bottom: 50px;
+    left: 720px;
+    z-index: 10;
+    letter-spacing: 2px;
+    opacity: 0;
+
+    padding: 12px 20px;
+    border-radius: 10px;
+    color: white;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    font-size: 20px;
+    cursor: pointer;
+
+    animation: aparecer 1s  forwards 5s ;
+
+
 }
