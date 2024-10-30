@@ -40,27 +40,3 @@
     animation: translateIzquierda 40s forwards, aparecer 10s forwards; 
 
     
-}
-
-.personajevictoria2{
-    animation: aparecer 10s forwards;
-}
-
-.personajevictoria3{
-    animation: translateDerecha 30s  forwards, aparecer 10s forwards;
-
-}
-
-/* animaciontranslate */
-
-@keyframes translateIzquierda {
-    0% {
-        transform: translate(150px, 0);
-    }
-    100% {
-        transform: translate(0px, 0);
-    }
-}
-
-
-@keyframes translateDerecha {
