@@ -165,17 +165,25 @@ function crearPersonaje(personaje, escenario, posicion) {
   imagenPersonajePrincipal.addEventListener("click", (e) => {
     let idAtacante = Juego.personajeActual.id;  
     let idObjetibo = personaje.id;
-    let tipoHabilidad = habili
-
+    //encontrar habilidad seleccionada en el array de habilidades
+    
+    
+    
+    
     if (habilidadSeleccionada === "Atacar") {
       if (Juego.personajeActual.Atacar(personaje)) {
+        
         animacionBatalla(idAtacante, idObjetibo);
       }
       habilidadSeleccionada = null;
     } else {
+
+      let tipoHabilidad = Juego.personajeActual.habilidades.find(habilidad => habilidad.nombre === habilidadSeleccionada).tipo;
+
       if (Juego.personajeActual.usarHabilidad(habilidadSeleccionada, personaje)) {
-        animacionBatalla(idAtacante, idObjetibo);
+        animacionBatalla(idAtacante, idObjetibo , tipoHabilidad);
       }
+      
       habilidadSeleccionada = null;
     }   
  
@@ -474,11 +482,12 @@ actualizarSeccionHabilidades()
 
 
 
-function animacionBatalla(idAtacante, idObjetivo) {
+function animacionBatalla(idAtacante, idObjetivo, tipoHabilidad = 'daño') {
   const imagenAtacante = document.getElementById(idAtacante).querySelector(".imagenPersonajePrincipal");
   const imagenAtacando = document.getElementById(idObjetivo).querySelector(".imagenPersonajeEnemigo");
   const imagenAtacado = document.getElementById(idObjetivo).querySelector(".imagenPersonajePrincipal");
 
+  console.log(tipoHabilidad);
    // Oculta las habilidades al empezar un ataque
    informacion.style.display = "none";
 

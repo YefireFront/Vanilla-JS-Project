@@ -22,3 +22,62 @@
 
     }
 }
+
+
+.imagenesVictoria{
+    position: absolute;
+    z-index: 10;
+    bottom: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+}
+.imagenVictoria{
+    width: 25%;
+}
+.personajevictoria1{
+    animation: translateIzquierda 40s forwards, aparecer 10s forwards; 
+
+    
+}
+
+.personajevictoria2{
+    animation: aparecer 10s forwards;
+}
+
+.personajevictoria3{
+    animation: translateDerecha 30s  forwards, aparecer 10s forwards;
+
+}
+
+/* animaciontranslate */
+
+@keyframes translateIzquierda {
+    0% {
+        transform: translate(150px, 0);
+    }
+    100% {
+        transform: translate(0px, 0);
+    }
+}
+
+
+@keyframes translateDerecha {
+    0% {
+        transform: translate(-150px, 0);
+    }
+    100% {
+        transform: translate(0px, 0);
+    }
+}
+
+/* //animacion aparecre  */
+@keyframes aparecer {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
