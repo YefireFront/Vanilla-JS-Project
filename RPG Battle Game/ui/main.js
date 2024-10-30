@@ -641,7 +641,7 @@ function actualizarBarraVida() {
 
         // Actualizamos el contenido de texto con los valores del personaje
         setTimeout(() => {
-          porcentajeVida.setAttribute("style", `width: ${personaje.vida}%`);
+          porcentajeVida.setAttribute("style", `width:${personaje.vida}%`);
           numeroPorcentaje.textContent = `${personaje.vida} / 100`;
         }, 1700);
       }

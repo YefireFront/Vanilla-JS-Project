@@ -180,5 +180,47 @@ body {
 }
 
 
+/* Indicador de turno */
+.seccionTurnoCirculo {
+  width: 100px;
+  height: 50px;
+  background: radial-gradient(ellipse at center, rgba(8, 172, 242, 0.467), rgba(9, 75, 255, 0.235) 80%);
+  /* background-image: url("../assets/img/condicion/skull.gif"); */
+  border-radius: 50%;
+  position: absolute;
+  animation: turnoAnimation 2s  linear infinite;
+
+  img{
+    width: 100%;
+  }
+}
+
+@keyframes turnoAnimation {
+  0% {
+      transform: scale(1.1);
+      box-shadow: 0 0 5px rgba(9, 170, 202, 0.811), 0 0 20px rgba(8, 191, 242, 0.4);
+      /* filter: brightness(1); */
+  }
+  25% {
+      transform: scale(1.2);
+      box-shadow: 0 0 5px rgba(12, 193, 139, 0.9), 0 0 25px rgba(8, 191, 242, 0.6);
+      /* filter: brightness(1.2); */
+  }
+  50% {
+      transform: scale(1.1);
+      box-shadow: 0 0 5px rgba(12, 187, 193, 0.852), 0 0 20px rgba(8, 149, 237, 0.4);
+      /* filter: brightness(1); */
+  }
+  75% {
+      transform: scale(1.2);
+      box-shadow: 0 0 5px rgba(12, 193, 118, 0.667), 0 0 25px rgba(8, 191, 242, 0.3);
+      /* filter: brightness(0.8); */
+  }
+  100% {
+      transform: scale(1.1);
+      box-shadow: 0 0px 5px rgba(12, 90, 193, 0.7), 0 0 30px rgba(4, 131, 169, 0.4);
+      /* filter: brightness(1); */
+  }
+}
 
 

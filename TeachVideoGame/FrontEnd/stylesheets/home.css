@@ -1,4 +1,10 @@
-* {
+@font-face{
+  font-family: 'MiFuente';
+  src: url('../assets/font/TrumpGothicPro-Bold-webfont.ttf')
+  format('truetype')
+}
+
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -11,6 +17,7 @@
     margin: 0px auto;
     width: 1600px;
     height: 800px;
+    font-family: 'MiFuente', sans-serif;
   }
   
   .background {
@@ -107,3 +114,32 @@
         object-fit: cover;
     }
   }
+
+
+  .menu{
+    position: absolute;
+    z-index: 100;
+    top: 300px;
+    left: 100px;
+    opacity: 0.9;
+
+
+    p{
+      color: white;
+      font-size: 42px;
+      cursor: pointer;
+      margin: 10px 0px;
+      transition: all 100ms ease-in;
+      letter-spacing: 2px;
+    }
+
+    p:hover{
+      color: rgba(255, 255, 255, 0.905);
+      scale: 1.1;
+    }
+
+    img{
+      width: 50px;
+    }
+  }
+
