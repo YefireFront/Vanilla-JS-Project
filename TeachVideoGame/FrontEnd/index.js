@@ -165,6 +165,7 @@ function crearPersonaje(personaje, escenario, posicion) {
   imagenPersonajePrincipal.addEventListener("click", (e) => {
     let idAtacante = Juego.personajeActual.id;  
     let idObjetibo = personaje.id;
+    let tipoHabilidad = habili
 
     if (habilidadSeleccionada === "Atacar") {
       if (Juego.personajeActual.Atacar(personaje)) {

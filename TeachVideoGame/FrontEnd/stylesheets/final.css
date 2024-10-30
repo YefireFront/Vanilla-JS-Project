@@ -1,0 +1,31 @@
+.victoria{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+
+    video{
+        position: absolute;
+        width: 110%;
+        object-fit: cover;
+        top: -100px;
+
+         /* Prueba con diferentes modos de mezcla */
+         /* mix-blend-mode: normal; */
+         mix-blend-mode: multiply;
+         /* mix-blend-mode: screen; */
+         /* mix-blend-mode: overlay; */
+         /* mix-blend-mode: darken; */
+         /* mix-blend-mode: lighten; */
+         /* mix-blend-mode: color-dodge; */
+         /* mix-blend-mode: color-burn; */
+         /* mix-blend-mode: hard-light; */
+         /* mix-blend-mode: soft-light; */
+         /* mix-blend-mode: difference; */
+         /* mix-blend-mode: exclusion; */
+         /* mix-blend-mode: hue; */
+         /* mix-blend-mode: saturation; */
+         /* mix-blend-mode: color; */
+         /* mix-blend-mode: luminosity; */
+
+    }
+}

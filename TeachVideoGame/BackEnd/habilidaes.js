@@ -246,7 +246,7 @@ function crearRevivir() {
     }
   );
 }
-
+ 
 // Habilidades de Monje
 function crearPalmaFuerza() {
   return new Habilidad(
