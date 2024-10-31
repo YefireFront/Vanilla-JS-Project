@@ -293,15 +293,6 @@ const thunder_2 = new Thunder("Thunder", 50, 20, 100);
 
 //Ice Dragon
 const dragon_1 = new Dragon ("Dragon ", 50, 20, 200);
-const dragon_2 = new Dragon ("Dragon ", 50, 20, 100);
-
-//Hoz
-const hoz_1 = new Hoz ("Hoz ", 50, 20, 200);
-const hoz_2 = new Hoz ("Hoz ", 50, 20, 200000);
-
-//Samurai
-const samurai_1 = new Samurai ("Samurai ", 50, 20, 200);
-const samurai_2 = new Samurai ("Samurai ", 50, 20, 202);
 
 
 
