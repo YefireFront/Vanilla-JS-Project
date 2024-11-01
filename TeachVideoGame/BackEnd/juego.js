@@ -116,30 +116,35 @@ class Juego {
   static verificarVictoria() {
     const victoriaSection = document.querySelector(".victoria");
     const imagenesVictoria = document.querySelectorAll(".imagenVictoria");
+    const videoFondo = document.querySelector(".videoFondo")
   
     if (this.equipo1.every((personaje) => personaje.vida <= 0)) {
       console.log("Equipo 2 ha ganado.");
       actualizarInterfaz();
       setTimeout(() => {
         victoriaSection.style.display = "flex";
+        videoFondo.style.display = "none"
+
         Juego.equipo2.forEach((personaje, index) => {
-          if (index < 3) { // Ensure there are only up to 3 images to replace
+          if (index < 3) { 
             imagenesVictoria[index].src = `./FrontEnd/assets/img/Personajes/${personaje.id}/Quieto.gif`;
           }
         });
-      }, 3000); // Delay for 2 seconds
+      }, 3000); 
       return true;
     } else if (this.equipo2.every((personaje) => personaje.vida <= 0)) {
       console.log("Equipo 1 ha ganado.");
       actualizarInterfaz();
       setTimeout(() => {
         victoriaSection.style.display = "flex";
+        videoFondo.style.display = "none"
+
         Juego.equipo1.forEach((personaje, index) => {
           if (index < 3) {
             imagenesVictoria[index].src = `./FrontEnd/assets/img/Personajes/${personaje.id}/Quieto.gif`;
           }
         });
-      }, 3000); // Delay for 2 seconds
+      }, 3000); 
       return true;
     }
     return false;

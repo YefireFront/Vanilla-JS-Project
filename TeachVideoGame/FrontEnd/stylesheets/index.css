@@ -32,6 +32,16 @@ body {
     position: absolute;
     bottom: -140px;
   }
+
+  .videoFondo{
+    width: 100%;
+    position: absolute;
+    mix-blend-mode: screen;
+    z-index: 1000;
+    top: -50px;
+    pointer-events: none;
+    /* bottom: 0; */
+  }
 }
 
 .personaje {

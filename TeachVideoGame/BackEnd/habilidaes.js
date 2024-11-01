@@ -26,7 +26,7 @@ class Habilidad {
       const rutaSonido = `./FrontEnd/assets/sounds/${this.sonido}`;
       const audio = new Audio(rutaSonido);
       audio.play().catch(err => console.error("Error al reproducir el sonido:", err));
-    }
+    } 
   }
 
   ejecutarMostrarDaño(lanzador, objetivo) {
