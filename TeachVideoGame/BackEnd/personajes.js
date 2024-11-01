@@ -280,15 +280,3 @@ const gigant_1 = new Gigant("Gigant", 40, 30, 14);
 const gigant_2 = new Gigant("Gigant", 40, 30, 14);
 
 //Antorcha
-const antorcha_1 = new Antorcha("Antorcha", 50, 20, 111);
-const antorcha_2 = new Antorcha("Antorcha", 50, 20, 111);
-
-//Monje
-const monje_1 = new Monje("Monje", 40, 20, 81);
-const monje_2 = new Monje("Monje", 40, 20, 81);
-
-//thunder
-const thunder_1 = new Thunder("Thunder", 50, 20, 100);
-const thunder_2 = new Thunder("Thunder", 50, 20, 100);
-
-//Ice Dragon
