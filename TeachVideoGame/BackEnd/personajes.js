@@ -303,3 +303,17 @@ const hoz_2 = new Hoz ("Hoz ", 50, 20, 200000);
 const samurai_1 = new Samurai ("Samurai ", 50, 20, 200);
 const samurai_2 = new Samurai ("Samurai ", 50, 20, 202);
 
+//Paladin
+const paladin_1 = new Paladin ("Paladin ", 50, 20, 200);
+const paladin_2 = new Paladin ("Paladin ", 50, 20, 200);
+
+//Calaverson
+const calaverson_1 = new Calaverson ("Calaverson ", 50, 20, 200);
+const calaverson_2 = new Calaverson ("Calaverson ", 50, 20, 2010);
+
+
+1// Personajes Equipo 1 
+const personajesEquipo1 = [reptil_1, reptil_2, pandawa_1, pandawa_2, gigant_1, gigant_2, antorcha_1, antorcha_2, monje_1, monje_2, thunder_1, thunder_2, dragon_1, dragon_2, hoz_1, hoz_2, samurai_1, samurai_2, paladin_1, paladin_2, calaverson_1, calaverson_2];
+
+// Personajes Equipo 2  
+const personajesEquipo2 = [reptil_1, reptil_2, pandawa_1, pandawa_2, gigant_1, gigant_2, antorcha_1, antorcha_2, monje_1, monje_2, thunder_1, thunder_2, dragon_1, dragon_2, hoz_1, hoz_2, samurai_1, samurai_2, paladin_1, paladin_2, calaverson_1, calaverson_2];
