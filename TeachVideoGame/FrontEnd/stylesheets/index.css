@@ -205,6 +205,21 @@ body {
   }
 }
 
+.salud{
+  width: 100px;
+  position: absolute;
+  left: 1100px;
+  top: 660px;
+  
+  img{
+    z-index: -100;
+    width: 100%;
+    mix-blend-mode: multiply;
+    mix-blend-mode: screen;
+    mix-blend-mode: lighten;
+  }
+}
+
 @keyframes turnoAnimation {
   0% {
       transform: scale(1.1);

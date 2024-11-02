@@ -4,7 +4,7 @@
   position: relative;
 
   .ubicacionPersonajePrincipal {
-    left: 0;
+    left: 40px;
     bottom: 0;
   }
 
@@ -90,7 +90,7 @@
   }
 
   .seccionTurnoCirculo{
-    left:  20px;
+    left:  60px;
     bottom:-20px;
     pointer-events: none;
   }
@@ -99,13 +99,13 @@
 
 
 .lugar4 {
-  left: 200px;
+  left: 150px;
   bottom: 30px;
 }
 
 .lugar5 {
-  left: 250px;
-  bottom: 180px;
+  left: 200px;
+  bottom: 190px;
 }
 
 .lugar6 {
