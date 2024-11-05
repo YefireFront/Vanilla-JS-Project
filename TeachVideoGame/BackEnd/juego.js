@@ -158,3 +158,8 @@ Juego.agregarPersonaje(1, reptil_1);
 Juego.agregarPersonaje(1, thunder_1);
 
 Juego.agregarPersonaje(2, hoz_2);
+Juego.agregarPersonaje(2, samurai_2);
+Juego.agregarPersonaje(2, calaverson_2);
+
+Juego.iniciarJuego();
+
