@@ -153,6 +153,11 @@ class Juego {
  
 }
 
+const antorcha_1 = new Personaje("antorcha_1", "Antorcha", 1, 1, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+const reptil_1 = new Personaje("reptil_1", "Reptil", 1, 1, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+const thunder_1 = new Personaje("thunder_1", "Thunder", 1, 1, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+const hoz_2 = new Personaje("hoz_2", "Hoz", 2, 1, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+const samurai_2 = new Personaje("samurai_2", "Samurai", 2, 1, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 Juego.agregarPersonaje(1, antorcha_1);
 Juego.agregarPersonaje(1, reptil_1);
 Juego.agregarPersonaje(1, thunder_1);
@@ -162,4 +167,4 @@ Juego.agregarPersonaje(2, samurai_2);
 Juego.agregarPersonaje(2, calaverson_2);
 
 Juego.iniciarJuego();
-
+  
