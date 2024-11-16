@@ -242,3 +242,16 @@
 .efectoSoporte {
   animation: efectoSoporte 0.5s infinite;
 }
+
+.efectoCuracion {
+  animation: efectoCuracion 1s linear 1.2s infinite;
+}
+
+.efectoTurno {
+  animation: efectoTurno 0.5s infinite;
+}
+
+.girarBorde{
+  animation: girarBorde 1s linear infinite;
+}
+
