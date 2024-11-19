@@ -540,8 +540,5 @@ function animacionBatalla(idAtacante, idObjetivo, tipoHabilidad = 'daño') {
 
 
 
-// Juego.equipo2.forEach((personaje, i) => {
-//   personaje.vida = 1;
-// })
 
 actualizarInterfaz();
