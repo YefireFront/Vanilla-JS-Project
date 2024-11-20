@@ -419,3 +419,219 @@ function crearEspadaVeneno() {
   );
 }
 
+
+// Habilidades de hoz
+
+function lluviaMaldita() {
+  return new Habilidad(
+    "Lluvia Maldita",
+    4,
+    "DañoMasivo",
+    "Inflige 10 de daños a los aliados y 30 a los enemigos.",
+    (lanzador, objetivo) => {
+      const equipoAliado = lanzador.equipo === 1 ? Juego.equipo1 : Juego.equipo2;
+      const equipoEnemigo = lanzador.equipo === 1 ? Juego.equipo2 : Juego.equipo1;
+      
+      const resultado = [];
+
+      // Apply damage to allies
+      equipoAliado.forEach((personaje) => {
+        if (!personaje.estaMuerto()) {
+          personaje.vida -= 10;
+          Personaje.validarExcesos(lanzador, personaje);
+          resultado.push({ cantidad: 10, objetivo: personaje, color: 'red' });
+        }
+      });
+
+      // Apply damage to enemies
+      equipoEnemigo.forEach((personaje) => {
+        if (!personaje.estaMuerto()) {
+          personaje.vida -= 30;
+          Personaje.validarExcesos(lanzador, personaje);
+          resultado.push({ cantidad: 30, objetivo: personaje, color: 'orange' });
+        }
+      });
+
+      return resultado;
+    }
+  );
+}
+
+// Continue adjusting other abilities in a similar manner
+
+//* Efectos
+
+class Efecto {
+  constructor(nombre, descripcion, duracion, efecto, tipo) {
+    this.nombre = nombre;
+    this.descripcion = descripcion;
+    this.duracion = duracion;
+    this.efecto = efecto;
+    this.tipo = tipo;
+  }
+
+  limpiarEfectos() {
+    objetivo.debilitamiento = objetivo.debilitamiento.filter( (efecto) => efecto !== this  );
+    objetivo.fortalecimiento = objetivo.fortalecimiento.filter( (efecto) => efecto !== this );
+  }
+}
+
+class EfectoContinuo extends Efecto {
+  constructor(nombre, descripcion, duracion, efecto) {
+    super(nombre, descripcion, duracion, efecto);
+  }
+
+  activar(objetivo) {
+    this.efecto(objetivo);
+    this.duracion--;
+    if (this.duracion === 0) {
+      console.log(`${this.nombre} ha terminado.`);
+      objetivo.debilitamiento = objetivo.debilitamiento.filter( (efecto) => efecto !== this   );
+    }
+  }
+}
+
+class EfectoFijo extends Efecto {
+  constructor(nombre, descripcion, duracion, efecto, efectoOff, tipo) {
+    super(nombre, descripcion, duracion, efecto, tipo);
+    this.efectoOff = efectoOff;
+    this.aplicado = false;
+    this.Objetivo = null;
+  }
+
+  aplicar(objetivo) {
+    this.efecto(objetivo);
+    this.aplicado = true;
+    this.Objetivo = objetivo;
+  }
+
+  desAplicar() {
+    this.efectoOff(this.Objetivo);
+  }
+
+  reducirCooldown() {
+    this.duracion--;
+    if (this.duracion === 0) {
+      console.log(`${this.nombre} ha terminado.`);
+      this.desAplicar();
+      this.aplicado = false;
+      this.Objetivo.fortalecimiento = this.Objetivo.fortalecimiento.filter(
+        (efecto) => efecto !== this
+      );
+    }
+  }
+
+  activar(objetivo) {
+    this.aplicado ? this.reducirCooldown() : this.aplicar(objetivo);
+  }
+}
+
+
+
+// Effectos continuos
+function crearQuemadura() {
+  return new EfectoContinuo(
+    "Quemadura",
+    "Recibe 10 de Daño por turno durante 2 turnos.",
+    2,
+    (objetivo) => {
+      objetivo.vida -= 10;
+      Personaje.validarExcesos(objetivo);
+      console.log(`${objetivo.nombre} recibe Daño por quemadura.`);
+    }
+  );
+}
+
+function crearVeneno() {
+  return new EfectoContinuo(
+    "Veneno",
+    "Recibe 5 de Daño por turno durante 5 turnos.",
+    5,
+    (objetivo) => {
+      objetivo.vida -= 5;
+      Personaje.validarExcesos(objetivo);
+      console.log(`${objetivo.nombre} recibe Daño por veneno.`);
+    }
+  );
+}
+
+function crearRegeneracion() {
+  return new EfectoContinuo(
+    "Regeneración",
+    "Recupera 10 de vida por turno durante 3 turnos.",
+    3,
+    (objetivo) => {
+      objetivo.vida += 10;
+      Personaje.validarExcesos(objetivo);
+      console.log(`${objetivo.nombre} ha recuperado 10 de vida.`);
+    }
+  );
+}
+function crearPerdidaTurno() {
+  return new EfectoContinuo(
+    "Turno",
+    "Perde el turno.",
+    1,
+    () => {
+      Juego.cambiarTurno();
+    }
+  );
+}
+
+function crearParalisis() {
+  return new EfectoContinuo(
+    "Paralisis",
+    "El personaje pierde su turno durante un turno.",
+    1,
+    (objetivo) => {
+      console.log(`${objetivo.nombre} está paralizado y pierde su turno.`);
+      Juego.cambiarTurno(); // Cambia el turno automáticamente
+    }
+  );
+}
+
+
+//
+
+
+
+
+// Effectos fijos
+function crearAtaque(Aumento) {
+  return new EfectoFijo(
+    "Ataque",
+    "Aumenta el ataque del personaje 2 turnos",
+    5,
+    (objetivo) => {
+      objetivo.ataque += Aumento;
+      Personaje.validarExcesos(objetivo);
+      console.log(`aumenta el ataque de ${objetivo.nombre} por 15`);
+    },
+    (objetivo) => {
+      objetivo.ataque -= Aumento;
+      Personaje.validarExcesos(objetivo);
+      console.log(`reduce el ataque de ${objetivo.nombre} por 15`);
+    }
+  );
+}
+
+function crearDefensa(aumenta) {
+  return new EfectoFijo(
+    "Defensa",
+    "Aumenta la defensa de un personaje durante 2 turnos.",
+    3,
+    (objetivo) => {
+      objetivo.defensa += aumenta;
+      Personaje.validarExcesos(objetivo);
+      console.log(`aumenta la defensa de ${objetivo.nombre} por 15`);
+    },
+    (objetivo) => {
+      console.log(`activando poder off`);
+      console.log(objetivo);
+      objetivo.defensa -= aumenta;
+      Personaje.validarExcesos(objetivo);
+      console.log(`reduce la defensa de ${objetivo.nombre} por 15`);
+    }
+  );
+}
+
