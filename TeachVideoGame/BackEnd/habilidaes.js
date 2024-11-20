@@ -368,3 +368,54 @@ function crearCraneoMaldito() {
   );
 }
 
+function crearIlusionMortal() {
+  return new Habilidad(
+    "Ilusión Mortal",
+    5,
+    "Control",
+    "Hace que el enemigo pierda el próximo turno.",
+    (lanzador, objetivo) => {
+      // Assuming crearPerdidaTurno is defined to skip a turn
+      objetivo.debilitamiento.push(crearPerdidaTurno());
+      return [{ cantidad: 0, objetivo: objetivo }];
+    }
+  );
+}
+
+
+// Habilidades de Samurai
+
+function crearBushido() {
+  return new Habilidad(
+    "Bushido",
+    5,
+    "Soporte",
+    "Aumenta el ataque y defensa en 15 durante 3 turnos.",
+    (lanzador) => {
+      const ataque = crearAtaque(15);
+      const defensa = crearDefensa(15);
+      lanzador.fortalecimiento.push(ataque, defensa);
+      ataque.aplicar(lanzador);
+      defensa.aplicar(lanzador);
+      Personaje.validarExcesos(lanzador);
+      return [{ cantidad: 15, objetivo: lanzador, color: 'blue' }];
+    }
+  );
+}
+
+function crearEspadaVeneno() {
+  return new Habilidad(
+    "Espada Veneno",
+    3,
+    "Daño",
+    "Inflige 20 de Daño y aplica veneno a un enemigo.",
+    (lanzador, objetivo) => {
+      objetivo.vida -= 20;
+      // Assuming crearVeneno is defined to apply a poison effect
+      objetivo.debilitamiento.push(crearVeneno());
+      Personaje.validarExcesos(lanzador, objetivo);
+      return [{ cantidad: 20, objetivo: objetivo }];
+    }
+  );
+}
+
