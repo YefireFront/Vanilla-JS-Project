@@ -1,24 +1,23 @@
-
-.todos{
+   /* Estilos para las cartas */
+   #app {
     display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     justify-content: center;
-}
-.pokemon-todos{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    
-}
+    margin-top: 20px;
+  }
 
-.pokemon{
+  .pokemon-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    width: 120px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
 
-}
-
-.pokemon-id-back{
-
-}
-
-
-.pokemon-imagen img{
-    width: 100%;
-    max-width: 6rem;
-}
+  .pokemon-card h3 {
+    font-size: 16px;
+    margin: 5px 0;
+  }
