@@ -456,6 +456,28 @@ function actualizarMuerte() {
   });
 }
 
+function mostrarDaño(daño, personajeObjetivo, colorArgument = 'default') {
+  const personajeHTML = document.getElementById(personajeObjetivo.id);
+  if (personajeHTML) {
+    const seccionDaño = personajeHTML.querySelector(".seccionDaño");
+    const cantidadDaño = seccionDaño.querySelector(".cantidadDaño");
+
+    // Delay the display of damage to synchronize with the animation
+    setTimeout(() => {
+      seccionDaño.style.display = "flex"; // Triggers CSS animation
+
+      let color = (colorArgument === 'default') ? '#ff9900' : colorArgument;
+      seccionDaño.style.color = color;
+
+      cantidadDaño.textContent = daño > 0 ? `${daño}` : `MISS`;
+
+      setTimeout(() => {
+        seccionDaño.style.display = "none";
+      }, 500); // Matches the 0.5s duration for hiding
+    }, 1000); // Delay for 1 second
+  }
+}
+
 
 
 
