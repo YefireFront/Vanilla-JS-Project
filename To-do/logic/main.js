@@ -52,4 +52,13 @@ function deleteCheck(e) {
     item.parentElement.parentElement.classList.toggle("checked");
   }
 }
+function filterTodo(e) {
+  const todos = todoList.childNodes;
+
+  for (let i = 3; i < todos.length; i++) {
+    const element = todos[i];
+    // console.log(element.classList[1]);
+    todo(e, element);
+  }
+}
 
