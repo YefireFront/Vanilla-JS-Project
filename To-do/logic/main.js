@@ -41,15 +41,4 @@ function addTodo(event) {
 
   todoInput.value = "";
 }
-function deleteCheck(e) {
-  let item = e.target;
-  if (item.classList[1] === "fa-trash") {
-    console.log("Deleting...");
-    item.parentElement.parentElement.remove();
-  }
-  if (item.classList[1] === "fa-check") {
-    console.log("Checked");
-    item.parentElement.parentElement.classList.toggle("checked");
-  }
-}
 
