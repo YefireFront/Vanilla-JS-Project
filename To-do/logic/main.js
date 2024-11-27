@@ -62,29 +62,3 @@ function filterTodo(e) {
   }
 }
 
-function todo(events, todo) {
-  console.log(events.target.value);
-  console.log(todo.classList[1]);
-
-  switch (events.target.value) {
-    case "All": {
-      todo.style.display = "flex";
-      break;
-    }
-    case "checked": {
-      if (todo.classList[1] === "checked") {
-        todo.style.display = "flex";
-      } else {
-        todo.style.display = "none";
-      }
-      break;
-    }
-    case 'unchecked': {
-      if (!(todo.classList[1] === "checked")) {
-        todo.style.display = "flex";
-      } else {
-        todo.style.display = "none";
-      }
-    }
-  }
-}
