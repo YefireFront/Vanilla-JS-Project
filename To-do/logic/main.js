@@ -22,35 +22,3 @@ function addTodo(event) {
   const todoLi = document.createElement("li");
   todoLi.innerText = todoInput.value;
   todoLi.classList.add("todo-item");
-  todoDiv.appendChild(todoLi);
-
-  //*Checked button
-  const CheckedButtond = document.createElement("button");
-  CheckedButtond.innerHTML = '<i class="fas fa-check"></i>';
-  CheckedButtond.classList.add("Checked-btn");
-  todoDiv.appendChild(CheckedButtond);
-
-  //*Delete button
-  const deleteButton = document.createElement("button");
-  deleteButton.innerHTML = '<i class="fas fa-trash"></i>';
-  deleteButton.classList.add("complete-btn");
-  todoDiv.appendChild(deleteButton);
-
-  //*APPEND
-  todoList.append(todoDiv);
-
-  todoInput.value = "";
-}
-function deleteCheck(e) {
-  let item = e.target;
-  if (item.classList[1] === "fa-trash") {
-    console.log("Deleting...");
-    item.parentElement.parentElement.remove();
-  }
-  if (item.classList[1] === "fa-check") {
-    console.log("Checked");
-    item.parentElement.parentElement.classList.toggle("checked");
-  }
-}
-function filterTodo(e) {
-  const todos = todoList.childNodes;
