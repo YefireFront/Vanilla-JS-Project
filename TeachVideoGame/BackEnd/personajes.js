@@ -137,7 +137,7 @@ class Personaje {
   }
 
   //Metodo para activar los efectos de los personajes
-  activarEfectos(callback , callbackHabilidad) {
+  activarEfectos(callback ) {
     // Construct an array with effects and their respective details
     const efectos = this.debilitamiento.map((efecto) => {
       let damage, color;
