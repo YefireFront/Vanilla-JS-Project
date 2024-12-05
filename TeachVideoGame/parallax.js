@@ -16,3 +16,15 @@ function parallax(e) {
     const vignette = document.querySelector('.vignette img');
 
     if (background) {
+        background.style.transform = `translate(${-mouseX * 2}px, ${-mouseY * 3}px)`;
+    }
+    if (aguila) {   
+        aguila.style.transform = `translate(${mouseX * 5}px, ${mouseY * 6}px)`; aguila  
+    }
+    if (foreground) {
+        foreground.style.transform = `translate(${-mouseX * 10}px, ${-mouseY * 10}px)`; 
+    }
+    if (vignette) {
+        vignette.style.transform = `translate(${mouseX * 5}px, ${mouseY * 5}px)`;
+    }
+}
