@@ -9,6 +9,8 @@ function parallax(e) {
     let mouseX = (e.clientX - width) / width;
     let mouseY = (e.clientY - height) / height;
 
+
+
     
     // Aplica el movimiento parallax a cada elemento
     const background = document.querySelector('.background img');
