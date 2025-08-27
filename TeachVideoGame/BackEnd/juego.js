@@ -100,19 +100,6 @@ class Juego {
 }
 
 
-  // static verificarVictoria() {
-  //   // Lógica para verificar si un equipo ha ganado
-  //   if (this.equipo1.every((personaje) => personaje.vida <= 0)) {
-  //     console.log("Equipo 2 ha ganado.");
-  //     actualizarInterfaz();
-  //     return true;
-  //   } else if (this.equipo2.every((personaje) => personaje.vida <= 0)) {
-  //     console.log("Equipo 1 ha ganado.");
-  //     actualizarInterfaz();
-  //     return true;
-  //   }
-  // }
-
   static verificarVictoria() {
     const victoriaSection = document.querySelector(".victoria");
     const imagenesVictoria = document.querySelectorAll(".imagenVictoria");
